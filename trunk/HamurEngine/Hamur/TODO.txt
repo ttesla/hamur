@@ -1,0 +1,6 @@
+OK + !TESTED - GL lerler ilgili library sorunlarý çözülecek.
+OK + !TESTED - Singleton eklenecek.
+- Doxygene uygun hale getirilecek.
+- Collision Detectionlar geliþtirilecek.
+- Kitaptan çalýþmalar yapýlacak.
+  - Animasyon sistemi geliþtirilecek.
