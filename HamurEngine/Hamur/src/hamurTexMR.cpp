@@ -21,16 +21,6 @@ namespace hamur
 	}
 
 
-	// Return HamurTexMR singleton object
-	/*
-	HamurTexMR* HamurTexMR::getInstance()
-	{
-		static HamurTexMR instance;
-		return &instance;
-	}
-	*/
-
-
 	// Get texture from "map" container according to given texture name
 	HamurTex* HamurTexMR::getTexture(const string& strTextName)
 	{

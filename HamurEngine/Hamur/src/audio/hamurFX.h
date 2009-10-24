@@ -1,7 +1,7 @@
 #ifndef HAMURFX_H
 #define HAMURFX_H
 
-#include "../hamurLog.h"
+#include "../helper/hamurLog.h"
 #include "../hamurDefinitions.h"
 #include "fmod.h"
 #include "fmod_errors.h"
@@ -11,11 +11,10 @@ using std::string;
 
 namespace hamur
 {
-	// Loads and plays PCM based or compressed file such as .WAV, .MP2, .MP3, .OGG or .RAW  as sound effects
+	/** Loads and plays PCM based or compressed file such as .WAV, .MP2, .MP3, .OGG or .RAW  as sound effects */
 	class HamurFX
 	{
 		public:
-
 			HamurFX();
 			~HamurFX();
 
@@ -28,7 +27,6 @@ namespace hamur
 			bool play_effect();
 
 		private:
-
 			FSOUND_SAMPLE* effect;
 
 			string strFxName;	 // Name of the FX

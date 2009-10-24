@@ -7,7 +7,7 @@
 #include "SDL_image.h"
 
 #include "hamurGL.h"
-#include "hamurLog.h"
+#include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 
 

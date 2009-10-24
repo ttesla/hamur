@@ -15,9 +15,6 @@ namespace hamur
 	class HamurAuMR : public Singleton<HamurAuMR>
 	{
 		public:
-
-			//static HamurAuMR* getInstance(); // Return FxMR singleton object
-
 			HamurAuMR();
 			~HamurAuMR();
 
@@ -39,16 +36,13 @@ namespace hamur
 			void addSong(const string& strFileName, const string& strSongName); //Add Song
 			void addStream(const string& strFileName, const string& strSongName); //Add Stream
 
-			void play_FX(const string& strFxName);				  // Play FX
+			void play_FX(const string& strFxName);				  /// Play FX
 			void play_song(const string& strSongName, bool loop); // Play Song
 			void play_stream(const string& strStreamName);		  // Play Stream
 
 		protected:
 
-
-
 		private:
-
 			map<string, HamurFX*> fxMap; //Store FX's according to their  names
 			map<string, HamurSong*> songMap; //Store Song's according to their  names
 			map<string, HamurStream*> streamMap; //Store Song's according to their  names

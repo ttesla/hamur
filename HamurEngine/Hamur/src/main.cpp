@@ -12,7 +12,7 @@
 #include "hamurEvent.h"
 #include "hamurTexMR.h"
 #include "hamurGP.h"
-#include "hamurLog.h"
+#include "helper/hamurLog.h"
 #include "hamurFont.h"
 #include "audio/hamurAuMR.h"
 #include "hamurDefinitions.h"
@@ -99,19 +99,21 @@ void test_display()
 
 void test_simulation()
 {
-	//float vel1 = 0.1f;
-	//float vel2 = 0.2f;
-	//// KEYS
-	//if(HAMUREVENT->is_key_pressed(SDLK_RIGHT))	x += vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_LEFT))	x -= vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_UP))		y += vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_DOWN))	y -= vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_z))		z -= vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_x))		z += vel1;
-	//if(HAMUREVENT->is_key_pressed(SDLK_q))		zcor -= vel2;
-	//if(HAMUREVENT->is_key_pressed(SDLK_e))		zcor += vel2;
-	//if(HAMUREVENT->is_key_pressed(SDLK_d))		xcor += vel2;
-	//if(HAMUREVENT->is_key_pressed(SDLK_a))		xcor -= vel2;
-	//if(HAMUREVENT->is_key_pressed(SDLK_w))		ycor += vel2;
-	//if(HAMUREVENT->is_key_pressed(SDLK_s))		ycor -= vel2;
+	float vel1 = 0.1f;
+	float vel2 = 0.2f;
+	// KEYS
+	if(HAMUREVENT->is_key_pressed(SDLK_RIGHT))	x += vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_LEFT))	x -= vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_UP))		y += vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_DOWN))	y -= vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_z))		z -= vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_x))		z += vel1;
+	if(HAMUREVENT->is_key_pressed(SDLK_q))		zcor -= vel2;
+	if(HAMUREVENT->is_key_pressed(SDLK_e))		zcor += vel2;
+	if(HAMUREVENT->is_key_pressed(SDLK_d))		xcor += vel2;
+	if(HAMUREVENT->is_key_pressed(SDLK_a))		xcor -= vel2;
+	if(HAMUREVENT->is_key_pressed(SDLK_w))		ycor += vel2;
+	if(HAMUREVENT->is_key_pressed(SDLK_s))		ycor -= vel2;
+
+
 }
