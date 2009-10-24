@@ -112,6 +112,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories=""
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -182,10 +183,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurLog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\hamurTex.cpp"
 				>
 			</File>
@@ -217,6 +214,30 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Game"
+				>
+				<File
+					RelativePath=".\src\game\hamurObject.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\game\hamurState.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\game\hamurStateMR.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Helper"
+				>
+				<File
+					RelativePath=".\src\helper\hamurLog.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -241,10 +262,6 @@
 			</File>
 			<File
 				RelativePath=".\src\hamurGP.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\hamurLog.h"
 				>
 			</File>
 			<File
@@ -276,6 +293,30 @@
 				</File>
 				<File
 					RelativePath=".\src\Audio\hamurStream.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Game"
+				>
+				<File
+					RelativePath=".\src\game\hamurObject.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\game\hamurState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\game\hamurStateMR.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Helper"
+				>
+				<File
+					RelativePath=".\src\hamurLog.h"
 					>
 				</File>
 			</Filter>

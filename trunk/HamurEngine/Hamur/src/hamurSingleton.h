@@ -1,6 +1,10 @@
 #ifndef HAMURSINGLETON_H
 #define HAMURSINGLETON_H
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 namespace hamur
 {
 

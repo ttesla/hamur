@@ -7,7 +7,7 @@
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "hamurTex.h"
-#include "hamurLog.h"
+#include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"
 

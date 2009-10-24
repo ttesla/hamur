@@ -2,7 +2,7 @@
 #define HAMUREVENT_H
 
 #include "SDL.h"
-#include "hamurLog.h"
+#include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"
 

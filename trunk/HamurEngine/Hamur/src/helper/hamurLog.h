@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 
-#include "hamurSingleton.h"
+#include "../hamurSingleton.h"
 
 using std::string;
 using std::ofstream;

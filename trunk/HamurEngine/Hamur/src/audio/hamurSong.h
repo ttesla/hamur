@@ -1,22 +1,20 @@
 #ifndef HAMURSONG_H
 #define HAMURSONG_H
 
-#include "../hamurLog.h"
+#include "../helper/hamurLog.h"
 #include "../hamurDefinitions.h"
 #include "fmod.h"
 #include "fmod_errors.h"
 #include <string>
 
-
 using std::string;
 
 namespace hamur
 {	
-	// Loads and plays sequenced music file such as .MOD, .S3M, .XM, .IT or .MID
+	/** Loads and plays sequenced music file such as .MOD, .S3M, .XM, .IT or .MID */
 	class HamurSong
 	{
 		public:
-
 			HamurSong();
 			~HamurSong();
 
@@ -31,9 +29,7 @@ namespace hamur
 			// Stops sequenced music file such as .MOD, .S3M, .XM, .IT or .MID
 			bool stop_song();
 
-
 		private:
-
 			FMUSIC_MODULE* mod;
 
 			string strSongName;	 // Name of the song

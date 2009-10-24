@@ -1,7 +1,7 @@
 #ifndef HAMURSTREAM_H
 #define HAMURSTREAM_H
 
-#include "../hamurLog.h"
+#include "../helper/hamurLog.h"
 #include "../hamurDefinitions.h"
 #include "fmod.h"
 #include "fmod_errors.h"
