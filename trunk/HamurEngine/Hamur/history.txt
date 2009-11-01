@@ -1,17 +1,23 @@
-/***************************************************************************
- *
- * HAMUR MARK II
- * 
- * 
+/********************************************************
+ *                                                      
+ * HAMUR MARK II                                        
+ *                                                      
+ *                                                      
  * Author(s) 	 : Daghan Demirci, Omer Akyol
  * Created 	 : 21 Feb. 2009
  * Last Modified : 20 Sep. 2008
  * 
  * © 2009 by inspire13 <www.inspire13.com>
  * All Rights Reserved
- ***************************************************************************/
+ ********************************************************/
 
 /*
+
+October 2009 - (Rise Of Hamur)
+----------------
+* HamurII is now remastered to a completely new design and
+capabilities! ... stay tuned for rise of Hamur!
+
 
 21 February 2009
 ----------------
