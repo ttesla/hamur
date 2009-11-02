@@ -1,6 +1,25 @@
-OK + !TESTED - GL lerler ilgili library sorunlarý çözülecek.
-OK + !TESTED - Singleton eklenecek.
+TODO:
+---------
+OK! - GL lerler ilgili library sorunlarý çözülecek.
+OK! - Singleton eklenecek.
 - Doxygene uygun hale getirilecek.
 - Collision Detectionlar geliþtirilecek.
 - Kitaptan çalýþmalar yapýlacak.
-  - Animasyon sistemi geliþtirilecek.
+- Animasyon sistemi geliþtirilecek.
+- State machine tamamlancak
+- Iskelet olustur ve test uygulamasi yap
+- HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
+
+
+
+
+
+TEST:
+---------
+- GL lerler ilgili library sorunlarý çözülecek.
+- Singleton eklenecek.
+- Doxygene uygun hale getirilecek.
+- Collision Detectionlar geliþtirilecek.
+- Kitaptan çalýþmalar yapýlacak.
+- Animasyon sistemi geliþtirilecek.
+- State machine test et
