@@ -14,8 +14,10 @@ using std::endl;
 
 namespace hamur
 {
-	// Writes Logs to log file...
-	// Log is cleared at the start of each execution.
+    /**
+     * Writes Logs to log file
+     * Log is cleared at the start of each execution.
+     */
 	class HamurLog : public Singleton<HamurLog>
 	{
 		public:
@@ -23,8 +25,10 @@ namespace hamur
 			HamurLog();
 			~HamurLog();
 
-			// Log write function
+			// Log write functions
 			void write_log(const string &log);
+            void write_log(int logValue);
+            void write_log(float logValue);
 
 			// Write initialization messages
 			void write_init_log(string log);

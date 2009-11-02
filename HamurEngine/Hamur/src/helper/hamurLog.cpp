@@ -16,17 +16,6 @@ namespace hamur
 	{
 
 	}
-	
-
-	
-	// Return HamurLog singleton object
-	/*
-	HamurLog* HamurLog::getInstance()
-	{
-		static HamurLog instance;
-		return &instance;
-	}
-	*/
 
 
 	// Write given text to log file
@@ -38,7 +27,25 @@ namespace hamur
 		logFile.close();
 	}
 
-	
+
+    // Write given int value to log file
+    void HamurLog::write_log(int logValue)
+    {
+        logFile.open(logFileName.c_str(), ios::out | ios::app);
+        logFile << logValue << endl;
+        logFile.close();
+    }
+
+
+    // Write given float value to log file
+    void HamurLog::write_log(float logValue)
+    {
+        logFile.open(logFileName.c_str(), ios::out | ios::app);
+        logFile << logValue << endl;
+        logFile.close();
+    }
+
+
 	// Write initialization message text to log file
 	// Makes some adjustments for a nifty printout.
 	void HamurLog::write_init_log(string log)

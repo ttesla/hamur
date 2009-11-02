@@ -316,7 +316,7 @@
 				Name="Helper"
 				>
 				<File
-					RelativePath=".\src\hamurLog.h"
+					RelativePath=".\src\helper\hamurLog.h"
 					>
 				</File>
 			</Filter>
