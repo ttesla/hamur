@@ -17,7 +17,7 @@ namespace hamur
 		public:
 			HamurStateMR();
 			~HamurStateMR();
-			void registerState(const string &_stateName);
+			void registerState(const string &_stateName, HamurState *_state);
 			bool removeState(const string &_stateName);
 			bool hasState(const string &_stateName);
 			HamurState* findState(const string &_stateName);

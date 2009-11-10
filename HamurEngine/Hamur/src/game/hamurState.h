@@ -15,10 +15,15 @@ namespace hamur
 			HamurState();
 			HamurState(const string &_stateName);
 			~HamurState();
+
+            virtual void draw() = 0;
+            virtual void update() = 0;
+
 			string getStateName();
 
 		protected:
-		private:
+		
+        private:
 
 			string stateName;
 	};
