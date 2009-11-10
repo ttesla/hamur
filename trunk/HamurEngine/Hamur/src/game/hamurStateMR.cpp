@@ -19,28 +19,29 @@ namespace hamur
 	}
 
 
-	/** Add state into "map" container with state name.
-		If state is already registered, it will not be registered.*/
-	void HamurStateMR::registerState(const string& _stateName)
+	/** 
+     * Add state into "map" container with state name.
+	 * If state is already registered, it will not be registered.
+     */
+	void HamurStateMR::registerState(const string &_stateName, HamurState *_state)
 	{
-		/** Look in the map if the state is already registered. If not found, then register.*/
+		// Look in the map if the state is already registered. If not found, then register.
 		if ( !(hasState(_stateName)))
-		{
-			HamurState *newState = new HamurState(_stateName);
-			stateList[_stateName] = newState;
+        {
+			stateList[_stateName] = _state;
 		}
 	}
 
 
 	bool HamurStateMR::removeState(const string &_stateName)
 	{
-		/** Get the state from the map. */
+		// Get the state from the map.
 		bool bFound = false;
 		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
 
 		if(iter != stateList.end())
 		{
-			/** If it was found, delete it then. */
+			// If it was found, delete it then. 
 			bFound = true;
 
 			if(iter->second)
@@ -56,10 +57,10 @@ namespace hamur
 	/** Checks if the manager has the given state. */
 	bool HamurStateMR::hasState(const string &_stateName)
 	{
-		/** Look in the map if the state exists. */
+		// Look in the map if the state exists.
 		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
 
-		/** If not found, return false. */
+		// If not found, return false.
 		if(iter == stateList.end())
 			return false;
 
@@ -69,10 +70,10 @@ namespace hamur
 
 	HamurState* HamurStateMR::findState(const string &_stateName)
 	{
-		/** Look in the map. */
+		// Look in the map.
 		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
 
-		/** If not found, return NULL. */
+		// If not found, return NULL.
 		if(iter == stateList.end())
 		{
 			HAMURLOG->write_log("Can't find the given state.");
@@ -98,9 +99,7 @@ namespace hamur
 	{
 		if(currentState == NULL)
 		{
-
 			HAMURLOG->write_log("Current state is not SET yet");
-
 			return NULL;
 		}
 		
@@ -111,10 +110,10 @@ namespace hamur
 	/** Checks if the manager has the state. If so change the Current State according given stateName. */
 	void HamurStateMR::setCurrentState(const string &_stateName)
 	{
-			currentState = findState(_stateName);
-		
-			if (currentState == NULL)
-				HAMURLOG->write_log("Can't set Current state. State does not exists.");
+		currentState = findState(_stateName);
+	
+		if (currentState == NULL)
+			HAMURLOG->write_log("Can't set Current state. State does not exists.");
 	}
 
 
@@ -124,7 +123,6 @@ namespace hamur
 		if(currentState == NULL)
 		{
 			HAMURLOG->write_log("Current state is not SET yet");
-			
 			return NULL;
 		}
 
