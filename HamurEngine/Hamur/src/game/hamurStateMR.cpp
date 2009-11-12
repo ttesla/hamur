@@ -4,6 +4,7 @@ namespace hamur
 	HamurStateMR::HamurStateMR()
 	{
 		currentState = NULL;
+		previousState = NULL;
 	}
 
 
@@ -84,6 +85,15 @@ namespace hamur
 	}
 
 
+	void HamurStateMR::changeState(const string &_stateName)
+	{
+		previousState = currentState;
+		currentState->exit();
+		currentState = this->findState(_stateName);
+		currentState->enter();
+	}
+
+
 	/** Checks if the manager has the state. If so change the Current State to given state. */
 	void HamurStateMR::setCurrentState(HamurState &_state)
 	{
@@ -103,6 +113,30 @@ namespace hamur
 			return NULL;
 		}
 		
+		return currentState;
+	}
+
+	/** Checks if the manager has the state. If so change the Previous State to given state. */
+	void HamurStateMR::setPreviousState(HamurState &_state)
+	{
+		if ( hasState(_state.getStateName()) )
+			previousState = &_state;
+		else
+			HAMURLOG->write_log("Can't set Previous state. State does not exists.");
+	}
+
+
+	/** Checks if Previous State available. If so returns it. */
+	HamurState* HamurStateMR::getCurrentState()
+	{
+		if(currentState == NULL)
+		{
+
+			HAMURLOG->write_log("Previous state is not SET yet");
+
+			return NULL;
+		}
+
 		return currentState;
 	}
 
@@ -127,6 +161,30 @@ namespace hamur
 		}
 
 		return currentState->getStateName();
+	}
+
+
+	/** Checks if the manager has the state. If so change the Previous State according given stateName. */
+	void HamurStateMR::setPreviousState(const string &_stateName)
+	{
+		previousState = findState(_stateName);
+
+		if (previousState == NULL)
+			HAMURLOG->write_log("Can't set Previous state. State does not exists.");
+	}
+
+
+	/** Checks if Previous State available. If so returns its name. */
+	string HamurStateMR::getPreviousStateName()
+	{
+		if(previousState == NULL)
+		{
+			HAMURLOG->write_log("Previous state is not SET yet");
+
+			return NULL;
+		}
+
+		return previousState->getStateName();
 	}
 
 }
