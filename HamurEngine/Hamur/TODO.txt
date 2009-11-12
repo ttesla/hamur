@@ -9,6 +9,7 @@ OK! - Singleton eklenecek.
 - State machine tamamlancak
 - Iskelet olustur ve test uygulamasi yap
 - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
+- Game Class olusturulcak ve gerekli ayarlar yapilcak
 
 
 
