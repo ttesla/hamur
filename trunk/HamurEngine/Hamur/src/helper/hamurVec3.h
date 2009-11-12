@@ -17,10 +17,9 @@ namespace hamur
 		float y;
 		float z;
 
-		
 		HamurVec3() {}
 		HamurVec3(float xc, float yc, float zc) : x(xc), y(yc), z(zc) {}
-		~HamurVec3();
+        ~HamurVec3() {}
 
 		/** Normalizes the vector to length 1. */
 		void normalize ()
