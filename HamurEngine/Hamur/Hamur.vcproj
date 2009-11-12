@@ -229,6 +229,10 @@
 					RelativePath=".\src\game\hamurStateMR.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\hamurWorld.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Helper"
@@ -309,6 +313,10 @@
 				</File>
 				<File
 					RelativePath=".\src\game\hamurStateMR.h"
+					>
+				</File>
+				<File
+					RelativePath=".\hamurWorld.h"
 					>
 				</File>
 			</Filter>
