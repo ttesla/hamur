@@ -11,7 +11,6 @@ namespace hamur
 	class HamurState
 	{
 		public:
-
 			HamurState();
 			HamurState(const string &_stateName);
 			~HamurState();
@@ -21,10 +20,13 @@ namespace hamur
 
 			string getStateName();
 
+			virtual void enter() = 0;
+			virtual void exit() = 0;
+			virtual void execute() = 0;
+
 		protected:
 		
         private:
-
 			string stateName;
 	};
 
