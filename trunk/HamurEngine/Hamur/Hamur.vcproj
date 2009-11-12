@@ -327,6 +327,10 @@
 					RelativePath=".\src\helper\hamurLog.h"
 					>
 				</File>
+				<File
+					RelativePath=".\src\helper\hamurVec3.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
