@@ -20,10 +20,8 @@ namespace hamur
 	}
 
 
-	/** 
-     * Add state into "map" container with state name.
-	 * If state is already registered, it will not be registered.
-     */
+    // Add state into "map" container with state name.
+    // If state is already registered, it will not be registered.
 	void HamurStateMR::registerState(const string &_stateName, HamurState *_state)
 	{
 		// Look in the map if the state is already registered. If not found, then register.
@@ -34,6 +32,8 @@ namespace hamur
 	}
 
 
+    // Search through the "map" container and remove state.
+    // If it is successful, return true else false.
 	bool HamurStateMR::removeState(const string &_stateName)
 	{
 		// Get the state from the map.
@@ -44,10 +44,6 @@ namespace hamur
 		{
 			// If it was found, delete it then. 
 			bFound = true;
-
-			if(iter->second)
-				delete iter->second;
-
 			stateList.erase(iter);
 		}
 
@@ -55,7 +51,7 @@ namespace hamur
 	}
 
 
-	/** Checks if the manager has the given state. */
+	// Checks if the manager has the given state.
 	bool HamurStateMR::hasState(const string &_stateName)
 	{
 		// Look in the map if the state exists.
@@ -69,6 +65,7 @@ namespace hamur
 	}
 
 
+    // Returns state with the given name. 
 	HamurState* HamurStateMR::findState(const string &_stateName)
 	{
 		// Look in the map.
@@ -85,26 +82,21 @@ namespace hamur
 	}
 
 
+    // Changes the current state to the given state. 
 	void HamurStateMR::changeState(const string &_stateName)
 	{
-		previousState = currentState;
-		currentState->exit();
-		currentState = this->findState(_stateName);
-		currentState->enter();
+        if(hasState(_stateName))
+        {
+		    currentState->exit();
+		    currentState = this->findState(_stateName);
+		    currentState->enter();
+        }
+        else
+            HAMURLOG->write_log("Can't change current state. State does not exists.");
 	}
 
 
-	/** Checks if the manager has the state. If so change the Current State to given state. */
-	void HamurStateMR::setCurrentState(HamurState &_state)
-	{
-		if ( hasState(_state.getStateName()) )
-			currentState = &_state;
-		else
-			HAMURLOG->write_log("Can't set Current state. State does not exists.");
-	}
-
-
-	/** Checks if Current State available. If so returns it. */
+	// Checks if Current State available. If so returns it.
 	HamurState* HamurStateMR::getCurrentState()
 	{
 		if(currentState == NULL)
@@ -116,42 +108,8 @@ namespace hamur
 		return currentState;
 	}
 
-	/** Checks if the manager has the state. If so change the Previous State to given state. */
-	void HamurStateMR::setPreviousState(HamurState &_state)
-	{
-		if ( hasState(_state.getStateName()) )
-			previousState = &_state;
-		else
-			HAMURLOG->write_log("Can't set Previous state. State does not exists.");
-	}
 
-
-	/** Checks if Previous State available. If so returns it. */
-	HamurState* HamurStateMR::getCurrentState()
-	{
-		if(currentState == NULL)
-		{
-
-			HAMURLOG->write_log("Previous state is not SET yet");
-
-			return NULL;
-		}
-
-		return currentState;
-	}
-
-
-	/** Checks if the manager has the state. If so change the Current State according given stateName. */
-	void HamurStateMR::setCurrentState(const string &_stateName)
-	{
-		currentState = findState(_stateName);
-	
-		if (currentState == NULL)
-			HAMURLOG->write_log("Can't set Current state. State does not exists.");
-	}
-
-
-	/** Checks if Current State available. If so returns its name. */
+	// Checks if Current State available. If so returns its name.
 	string HamurStateMR::getCurrentStateName()
 	{
 		if(currentState == NULL)
@@ -164,17 +122,7 @@ namespace hamur
 	}
 
 
-	/** Checks if the manager has the state. If so change the Previous State according given stateName. */
-	void HamurStateMR::setPreviousState(const string &_stateName)
-	{
-		previousState = findState(_stateName);
-
-		if (previousState == NULL)
-			HAMURLOG->write_log("Can't set Previous state. State does not exists.");
-	}
-
-
-	/** Checks if Previous State available. If so returns its name. */
+	// Checks if Previous State available. If so returns its name.
 	string HamurStateMR::getPreviousStateName()
 	{
 		if(previousState == NULL)
@@ -186,5 +134,4 @@ namespace hamur
 
 		return previousState->getStateName();
 	}
-
 }
