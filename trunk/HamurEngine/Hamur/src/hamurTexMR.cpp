@@ -37,7 +37,7 @@ namespace hamur
 
 	// Add texture into "map" container with texture name index from image file.
 	// If the texture is already loaded, it doesn't add another copy
-	void HamurTexMR::add_texture(const string& strFileName, const string& strTextName)
+	void HamurTexMR::addTexture(const string& strFileName, const string& strTextName)
 	{
 		// Look in the map if the texture is already loaded.
 		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
@@ -53,7 +53,7 @@ namespace hamur
 
 	// Add texture into "map" container with texture name index from SDL surface.
 	// If the texture is already loaded, it doesn't add another copy
-	void HamurTexMR::add_texture(const SDL_Surface *newSurface, const string& strTextName)
+	void HamurTexMR::addTexture(const SDL_Surface *newSurface, const string& strTextName)
 	{
 		// Look in the map if the texture is already loaded.
 		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
@@ -68,7 +68,7 @@ namespace hamur
 
 
 	// Deletes texture according to given texture name. 
-	bool HamurTexMR::delete_texture(const string& strTextName)
+	bool HamurTexMR::deleteTexture(const string& strTextName)
 	{
 		// Get texture from the map
 		bool bFound = false;
@@ -90,7 +90,7 @@ namespace hamur
 
 
 	// Blits image onto screen
-	void HamurTexMR::blit_texture(const string &textureName, float x, float y, float z)
+	void HamurTexMR::blitTexture(const string &textureName, float x, float y, float z)
 	{
 		HamurTex *texture = getTexture(textureName);
 
@@ -100,20 +100,20 @@ namespace hamur
 			exit(1);
 		}
 
-		texture->set_all_coord(x, y, z); // Update texture coordinates
-		glBindTexture(GL_TEXTURE_2D, texture->get_textureID()); // Bind texture
+		texture->setAllCoord(x, y, z); // Update texture coordinates
+		glBindTexture(GL_TEXTURE_2D, texture->getTextureID()); // Bind texture
 
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->get_scaledWidth(), y, z);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->get_scaledWidth(), y + texture->get_scaledHeight(), z);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->get_scaledHeight(), z); 
+			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
+			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y + texture->getScaledHeight(), z);
+			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->getScaledHeight(), z); 
 		glEnd();
 	}
 
 
 	// Blits image onto screen - without coordinates
-	void HamurTexMR::blit_texture(const string &textureName)
+	void HamurTexMR::blitTexture(const string &textureName)
 	{
 		HamurTex *texture = getTexture(textureName);
 
@@ -124,17 +124,17 @@ namespace hamur
 		}
 
 		// Get current texture coordinates...
-		float x = texture->get_corX();
-		float y = texture->get_corY();
-		float z = texture->get_corZ();
+		float x = texture->getCorX();
+		float y = texture->getCorY();
+		float z = texture->getCorZ();
 
-		glBindTexture(GL_TEXTURE_2D, texture->get_textureID()); // Bind texture
+		glBindTexture(GL_TEXTURE_2D, texture->getTextureID()); // Bind texture
 
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->get_scaledWidth(), y, z);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->get_scaledWidth(), y + texture->get_scaledHeight(), z);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->get_scaledHeight(), z); 
+			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
+			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y + texture->getScaledHeight(), z);
+			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->getScaledHeight(), z); 
 		glEnd();
 	}
 }

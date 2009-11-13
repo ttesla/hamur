@@ -9,10 +9,10 @@ namespace hamur
 
 
 	// HamurSong constructor loads song
-	HamurSong::HamurSong(const string &fileName, const string &SongName) 
-	: strFileName(fileName), strSongName(SongName)
+	HamurSong::HamurSong(const string &fileName, const string &songName) 
+	: strFileName(fileName), strSongName(songName)
 	{
-		if(!load_song(fileName)) exit(1);
+		if(!loadSong(fileName)) exit(1);
 	}
 
 
@@ -23,7 +23,7 @@ namespace hamur
 
 
 	// Loads the current song
-	bool HamurSong::load_song(const string& name)
+	bool HamurSong::loadSong(const string& name)
 	{
 		mod = FMUSIC_LoadSong(name.c_str());
 		
@@ -42,7 +42,7 @@ namespace hamur
 
 
 	// Plays the current song
-	bool HamurSong::play_song(bool loop)
+	bool HamurSong::playSong(bool loop)
 	{
 		if (!mod)
 		{
@@ -59,7 +59,7 @@ namespace hamur
 
 
 	// Stops the current song
-	bool HamurSong::stop_song()
+	bool HamurSong::stopSong()
 	{
 		if (!mod)
 		{

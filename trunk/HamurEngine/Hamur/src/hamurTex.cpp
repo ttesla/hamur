@@ -57,8 +57,8 @@ namespace hamur
 		// Set current image properties
 		textureWidth  = loadedImage->w;
 		textureHeight = loadedImage->h;
-		scaledWidth   = textureWidth  / (float)HAMURGL->get_screen_width(); 
-		scaledHeight  = textureHeight / (float)HAMURGL->get_screen_width(); 
+		scaledWidth   = textureWidth  / (float)HAMURGL->getScreenWidth(); 
+		scaledHeight  = textureHeight / (float)HAMURGL->getScreenWidth(); 
 
 		// Generate texture with LINEAR filtering
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter
@@ -103,8 +103,8 @@ namespace hamur
 		// Set current image properties
 		textureWidth  = newSurface->w;
 		textureHeight = newSurface->h;
-		scaledWidth   = textureWidth  / (float)HAMURGL->get_screen_width(); 
-		scaledHeight  = textureHeight / (float)HAMURGL->get_screen_width(); 
+		scaledWidth   = textureWidth  / (float)HAMURGL->getScreenWidth(); 
+		scaledHeight  = textureHeight / (float)HAMURGL->getScreenWidth(); 
 
 		// Generate texture with LINEAR filtering
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter
@@ -121,28 +121,28 @@ namespace hamur
 
 
 	// GETTERS & SETTERS 
-	int HamurTex::get_textureID()		{ return textureID[0];	}
-	float HamurTex::get_scaledWidth()	{ return scaledWidth;	}
-	float HamurTex::get_scaledHeight()	{ return scaledHeight;	}
-	float HamurTex::get_volume()		{ return volume;		}
+	int HamurTex::getTextureID()		{ return textureID[0];	}
+	float HamurTex::getScaledWidth()	{ return scaledWidth;	}
+	float HamurTex::getScaledHeight()	{ return scaledHeight;	}
+	float HamurTex::getVolume()		{ return volume;		}
 
-	string HamurTex::get_textName()		{ return strTextName;	}
-	string HamurTex::get_fileName()		{ return strFileName;	}
+	string HamurTex::getTextName()		{ return strTextName;	}
+	string HamurTex::getFileName()		{ return strFileName;	}
 
-	float HamurTex::get_corX() { return corX; }
-	float HamurTex::get_corY() { return corY; }
-	float HamurTex::get_corZ() { return corZ; }
+	float HamurTex::getCorX() { return corX; }
+	float HamurTex::getCorY() { return corY; }
+	float HamurTex::getCorZ() { return corZ; }
 
-	void HamurTex::set_corX(float x) { corX = x; }
-	void HamurTex::set_corY(float y) { corY = y; }
-	void HamurTex::set_corZ(float z) { corZ = z; }
+	void HamurTex::setCorX(float x) { corX = x; }
+	void HamurTex::setCorY(float y) { corY = y; }
+	void HamurTex::setCorZ(float z) { corZ = z; }
 
 	void HamurTex::setScaledWidth(float sw)  { scaledWidth  = sw; }
 	void HamurTex::setScaledHeight(float sh) { scaledHeight = sh; }
 
-	void HamurTex::set_volume(float vol){ volume =  vol; }
+	void HamurTex::setVolume(float vol){ volume =  vol; }
 
-	void HamurTex::set_all_coord(float x, float y, float z)
+	void HamurTex::setAllCoord(float x, float y, float z)
 	{
 		corX = x;
 		corY = y;

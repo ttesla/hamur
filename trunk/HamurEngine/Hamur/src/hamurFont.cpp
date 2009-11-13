@@ -4,7 +4,6 @@
 
 namespace hamur
 {
-
 	// HamurFont constructor
 	HamurFont::HamurFont()
 	{
@@ -43,7 +42,7 @@ namespace hamur
 				charRect.y = y*16;
 				SDL_BlitSurface(fontSurface, &charRect, charSurface, 0);
 				//cout << "List:" << fontList[x + y * 16] << ":" << x + y*16 << endl;
-				HAMURTEXMR->add_texture(charSurface, fontList[x + y * 16]);
+				HAMURTEXMR->addTexture(charSurface, fontList[x + y * 16]);
 			}
 		}
 
@@ -54,32 +53,21 @@ namespace hamur
 		HAMURLOG->write_init_log("HamurFont");
 	}
 
+    // HamurFont destructor
+    HamurFont::~HamurFont()
+    {
+
+    }
+
 
 	// Draw given text to screen
-	void HamurFont::draw_text(const string &text, float x, float y, float z)
+	void HamurFont::drawText(const string &text, float x, float y, float z)
 	{
 		for(unsigned int i = 0; i < text.length(); i++)
 		{
 			string tempStr;
 			tempStr.push_back(text.at(i));
-			HAMURTEXMR->blit_texture(tempStr, x + i*0.015f, y, z);
+			HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
 		}
 	}
-
-
-	// HamurFont destructor
-	HamurFont::~HamurFont()
-	{
-
-	}
-
-
-	// Return HamurFont singleton object
-	/*
-	HamurFont* HamurFont::getInstance()
-	{
-		static HamurFont instance;
-		return &instance;
-	}
-	*/
 }

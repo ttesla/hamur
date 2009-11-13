@@ -11,28 +11,32 @@
 #define ABS(x) ((x)>0 ? (x) : (-x))
 //#define DEPTH_TEST 1.5f
 
-
-// INTERFACE OF hamurGP
 namespace hamur
 {
 	class HamurGP : public Singleton<HamurGP>
 	{
 		public:
-
-			// Return HamurGP singleton object
-			//static HamurGP* getInstance(); 
-
 			HamurGP();
 			~HamurGP();
 
-			// Checks rectangular collision of 2 textures with their texture data
-			bool check_collision_2D(HamurTex* firstTex, HamurTex* secondTex);
+            /**
+            * Checks rectangular collision of 2 textures with their texture data.
+            * @param firstTex HamurTexture pointer of first texture.
+            * @param secondTex HamurTexture pointer of second texture.
+            * @return If two textures collide or not
+            */
+			bool checkCollision2D(HamurTex* firstTex, HamurTex* secondTex);
 
-			// Checks rectangular collision of 2 textures with their names
-			bool check_collision_2D(const string &firstTexName, const string &secondTexName);
+            /**
+            * Checks rectangular collision of 2 textures with their names
+            * @param firstTexName Name of the first texture.
+            * @param secondTexName Name of the second texture.
+            * @return If two textures collide or not
+            */
+			bool checkCollision2D(const string &firstTexName, const string &secondTexName);
 
 		protected:
-
 	};
 }
-#endif
+
+#endif // HAMURGP_H

@@ -1,15 +1,15 @@
 #ifndef HAMURTEX_H
 #define HAMURTEX_H
 
-#include <string>
-#include "SDL.h"
-#include "SDL_opengl.h"
-#include "SDL_image.h"
-
 #include "hamurGL.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 
+#include "SDL.h"
+#include "SDL_opengl.h"
+#include "SDL_image.h"
+
+#include <string>
 
 using std::string;
 
@@ -19,7 +19,6 @@ const float VOL = 2.0f;     // VOLUME
 
 namespace hamur
 {
-	
 	class HamurTex
 	{
 		public:
@@ -30,22 +29,22 @@ namespace hamur
 			~HamurTex();
 
 			// SETTERS & GETTERS
-			int get_textureID();
-			float get_scaledWidth();
-			float get_scaledHeight();
-			float get_volume();
-			void set_volume(float vol);
-			string get_textName();
-			string get_fileName();
-			void set_corX(float x);
-			void set_corY(float y);
-			void set_corZ(float z);
-			void set_all_coord(float x, float y, float z);
+			int getTextureID();
+			float getScaledWidth();
+			float getScaledHeight();
+			float getVolume();
+			void setVolume(float vol);
+			string getTextName();
+			string getFileName();
+			void setCorX(float x);
+			void setCorY(float y);
+			void setCorZ(float z);
+			void setAllCoord(float x, float y, float z);
 			void setScaledWidth(float sw);
 			void setScaledHeight(float sh);
-			float get_corX();
-			float get_corY();
-			float get_corZ();
+			float getCorX();
+			float getCorY();
+			float getCorZ();
 
 		private:
 

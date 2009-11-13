@@ -31,12 +31,12 @@ void test_simulation();
 int main( int argc, char *argv[] )
 {
     //Initialize SDL
-	if(HAMURGL->init_SDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL  | SDL_FULLSCREEN ) == false)
+	if(HAMURGL->initSDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL  | SDL_FULLSCREEN ) == false)
 	//if(HAMURGL->init_SDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL) == false) 
 		return 1;    
 
 	//Initialize OpenGL
-	if(HAMURGL->init_GL() == false) 
+	if(HAMURGL->initGL() == false) 
 		return 1; 
 
 	// Disable mouse

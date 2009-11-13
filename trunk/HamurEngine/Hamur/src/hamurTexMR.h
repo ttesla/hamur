@@ -25,11 +25,11 @@ namespace hamur
 			~HamurTexMR();
 
 			HamurTex* getTexture(const string& strTextName); //Get texture
-			bool delete_texture(const string& strTextName);   //Delete texture
-			void add_texture(const string& strFileName, const string& strTextName);     //Add texture from image file
-			void add_texture(const SDL_Surface *newSurface, const string& strTextName); //Add texture from SDL surface
-			void blit_texture(const string &textureName, float x, float y, float z);   // Blits image onto screen
-			void blit_texture(const string &textureName); // Blits image onto screen - without coordinates
+			bool deleteTexture(const string& strTextName);   //Delete texture
+			void addTexture(const string& strFileName, const string& strTextName);     //Add texture from image file
+			void addTexture(const SDL_Surface *newSurface, const string& strTextName); //Add texture from SDL surface
+			void blitTexture(const string &textureName, float x, float y, float z);   // Blits image onto screen
+			void blitTexture(const string &textureName); // Blits image onto screen - without coordinates
 
 		protected:
 
