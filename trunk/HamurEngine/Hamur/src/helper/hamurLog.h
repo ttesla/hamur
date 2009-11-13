@@ -24,16 +24,16 @@ namespace hamur
 			HamurLog();
 			~HamurLog();
 
-			void writeLog(const string &log);
-            void writeLog(int logValue);
-            void writeLog(float logValue);
+			void write_log(const string &log);
+            void write_log(int logValue);
+            void write_log(float logValue);
 
-            void writeLogln(const string &log);
-            void writeLogln(int logValue);
-            void writeLogln(float logValue);
+            void write_logln(const string &log);
+            void write_logln(int logValue);
+            void write_logln(float logValue);
 
 			// Write initialization messages
-			void writeInitLog(string log);
+			void write_init_log(string log);
 
 		protected:
 			
