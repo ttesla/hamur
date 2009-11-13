@@ -8,41 +8,37 @@ namespace hamur
 		// To clear out the log file.
 		logFile.open(logFileName.c_str(), ios::out);
 		logFile.close();
+
+        // Open for writing and append
+        logFile.open(logFileName.c_str(), ios::out | ios::app);
 	}
 
 
 	// HamurLog destructor
 	HamurLog::~HamurLog()
 	{
-
+        logFile.close();
 	}
 
 
 	// Write given text to log file
 	void HamurLog::write_log(const string &log)
-	{
-		// Append the text at the end of the file
-		logFile.open(logFileName.c_str(), ios::out | ios::app);
+	{	
 		logFile << log << endl;
-		logFile.close();
 	}
 
 
     // Write given int value to log file
     void HamurLog::write_log(int logValue)
     {
-        logFile.open(logFileName.c_str(), ios::out | ios::app);
         logFile << logValue << endl;
-        logFile.close();
     }
 
 
     // Write given float value to log file
     void HamurLog::write_log(float logValue)
     {
-        logFile.open(logFileName.c_str(), ios::out | ios::app);
         logFile << logValue << endl;
-        logFile.close();
     }
 
 
