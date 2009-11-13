@@ -24,7 +24,7 @@ namespace hamur
 		/** Normalizes the vector to length 1. */
 		void normalize ()
 		{
-			float l = 1.0 / sqrt(x*x + y*y + z*z);
+			float l = 1.0f / (float)(sqrt(x*x + y*y + z*z));
 			x*=l; y*=l; z*=l;
 		}
 
@@ -50,7 +50,7 @@ namespace hamur
 		const HamurVec3 operator*(float fact) const { return HamurVec3 (x*fact, y*fact, z*fact); }
 
 		/** Returns the vector scaled by \a fact. */
-		const HamurVec3 operator/(float fact) const { float xfact = 1./fact; return HamurVec3 (x*xfact, y*xfact, z*xfact); }
+		const HamurVec3 operator/(float fact) const { float xfact = 1.0f/fact; return HamurVec3 (x*xfact, y*xfact, z*xfact); }
 
 		/** Scales the vector by \a fact. */
 		HamurVec3 &operator*=(float fact){ x*=fact; y*=fact; z*=fact; return *this; }

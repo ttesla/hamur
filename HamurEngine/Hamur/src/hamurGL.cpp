@@ -17,18 +17,8 @@ namespace hamur
 
 	}
 
-	// Return HamurGP singleton object
-	/*
-	HamurGL* HamurGL::getInstance()
-	{
-		static HamurGL instance;
-		return &instance;
-	}
-	*/
-
-
 	// Initialize SDL with OpenGL support
-	bool HamurGL::init_SDL(const string &caption, int width, int height, int bpp, Uint32 flags)
+	bool HamurGL::initSDL(const string &caption, int width, int height, int bpp, Uint32 flags)
 	{
 		SCREEN_WIDTH = width;
 		SCREEN_HEIGHT = height;
@@ -42,7 +32,7 @@ namespace hamur
 		}
 
 		// Set openGL display attributes
-		set_GL_attributes();
+		setGLAttributes();
 	    
 		// Create Window
 		if(SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, flags) == NULL)
@@ -60,7 +50,7 @@ namespace hamur
 
 
 	// Initialize OpenGL and set OpenGL attributes
-	bool HamurGL::init_GL()
+	bool HamurGL::initGL()
 	{	
 		glEnable(GL_TEXTURE_2D);				// Enable 2D textures
 		glShadeModel(GL_SMOOTH);				// Enable smooth shading
@@ -104,9 +94,45 @@ namespace hamur
 	}
 
 
+    // Display some primitive openGL properties to stdout
+    void HamurGL::displayGLAttributes()
+    {
+        int red, green, blue, alpha, buffer, dbuff, depth;
+
+        SDL_GL_GetAttribute(SDL_GL_RED_SIZE, &red);
+        SDL_GL_GetAttribute(SDL_GL_GREEN_SIZE, &green);
+        SDL_GL_GetAttribute(SDL_GL_BLUE_SIZE, &blue);
+        SDL_GL_GetAttribute(SDL_GL_ALPHA_SIZE, &alpha);
+        SDL_GL_GetAttribute(SDL_GL_BUFFER_SIZE, &buffer);
+        SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &dbuff);
+        SDL_GL_GetAttribute(SDL_GL_DEPTH_SIZE, &depth);
+
+        cout << "GL Init - RGBA:" << red << " " << green << " "
+            << blue << " " << alpha << " BUFFER:" << buffer
+            << " DEPTH:" << depth << " DBUFF:" << dbuff << endl;
+    }
+
+
+    // Terminate SDL and quit
+    void HamurGL::quit()
+    {
+        SDL_Quit();
+    }
+
+
+    // GETTERS & SETTERS
+    int HamurGL::getScreenWidth()		{ return SCREEN_WIDTH;	}
+    int HamurGL::getScreenHeight()	{ return SCREEN_HEIGHT;	}
+    int HamurGL::getScreenBpp()		{ return SCREEN_BPP;	}
+
+    void HamurGL::setScreenWidth(int width)	{ SCREEN_WIDTH = width;		}
+    void HamurGL::setScreenHeight(int height)	{ SCREEN_HEIGHT = height;	}
+    void HamurGL::setScreenBpp(int bpp)		{ SCREEN_BPP = bpp;			}
+
+    
 	// Set GL display attributes, 
 	// it must be called after SDL_Init() and before SDL_SetVideoMode()
-	void HamurGL::set_GL_attributes()
+	void HamurGL::setGLAttributes()
 	{
 		SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);	// 5 is the minimum value 
 		SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);	// openGL will try to set 
@@ -116,40 +142,4 @@ namespace hamur
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // VERY IMPORTANT!!! MUST BE SET
 		//SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16); // 16 or 24
 	}
-
-
-	// Display some primitive openGL properties to stdout
-	void HamurGL::display_GL_attributes()
-	{
-		int red, green, blue, alpha, buffer, dbuff, depth;
-
-		SDL_GL_GetAttribute(SDL_GL_RED_SIZE, &red);
-		SDL_GL_GetAttribute(SDL_GL_GREEN_SIZE, &green);
-		SDL_GL_GetAttribute(SDL_GL_BLUE_SIZE, &blue);
-		SDL_GL_GetAttribute(SDL_GL_ALPHA_SIZE, &alpha);
-		SDL_GL_GetAttribute(SDL_GL_BUFFER_SIZE, &buffer);
-		SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &dbuff);
-		SDL_GL_GetAttribute(SDL_GL_DEPTH_SIZE, &depth);
-		
-		cout << "GL Init - RGBA:" << red << " " << green << " "
-			<< blue << " " << alpha << " BUFFER:" << buffer
-			<< " DEPTH:" << depth << " DBUFF:" << dbuff << endl;
-	}
-
-
-	// Terminate SDL and quit
-	void HamurGL::quit()
-	{
-		SDL_Quit();
-	}
-
-	// GETTERS & SETTERS
-	int HamurGL::get_screen_width()		{ return SCREEN_WIDTH;	}
-	int HamurGL::get_screen_height()	{ return SCREEN_HEIGHT;	}
-	int HamurGL::get_screen_bpp()		{ return SCREEN_BPP;	}
-
-	void HamurGL::set_screen_width(int width)	{ SCREEN_WIDTH = width;		}
-	void HamurGL::set_screen_height(int height)	{ SCREEN_HEIGHT = height;	}
-	void HamurGL::set_screen_bpp(int bpp)		{ SCREEN_BPP = bpp;			}
-
-} // End of namespace
+}

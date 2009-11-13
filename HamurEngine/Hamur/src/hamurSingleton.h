@@ -7,12 +7,17 @@
 
 namespace hamur
 {
-
 	template<typename T>
+    /**
+    * Template class for being base of all singleton classes.
+    */
 	class Singleton
 	{
 	public:
-
+        /**
+        * If object is not created yet, creates a new one
+        * else returns the current object.
+        */
 		static T *getInstance()
 		{
 			if(Singleton<T>::_singleton == NULL)
@@ -21,11 +26,15 @@ namespace hamur
 			return Singleton<T>::_singleton;
 		}
 
+        /**
+        * Deletes the current singleton object.
+        * Assigns the current template object to NULL.
+        */
 		static void drop();
 
 	protected:
 
-		static T* _singleton;
+		static T* _singleton; /**< Static template object */
 
 		explicit Singleton(){}
 		~Singleton(){}

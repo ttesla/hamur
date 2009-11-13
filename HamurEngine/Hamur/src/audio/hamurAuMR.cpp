@@ -44,17 +44,6 @@ namespace hamur
 		FSOUND_Close();
 	}
 
-
-	// Return HamurAuMR singleton object
-	/*
-	HamurAuMR* HamurAuMR::getInstance()
-	{
-		static HamurAuMR instance;
-		return &instance;
-	}
-	*/
-
-
 	// Default Initialization of Audio
 	bool HamurAuMR::init()
 	{
@@ -225,7 +214,7 @@ namespace hamur
 
 			if(iter->second)
 			{
-				iter->second->stop_stream();
+				iter->second->stopStream();
 				delete iter->second;
 			}
 			
@@ -237,21 +226,21 @@ namespace hamur
 
 
 	// Play FX
-	void HamurAuMR::play_FX(const string& strFxName)
+	void HamurAuMR::playFX(const string& strFxName)
 	{
-		getFX(strFxName)->play_effect();
+		getFX(strFxName)->playEffect();
 	}
 	
 	// Play Song
-	void HamurAuMR::play_song(const string& strSongName, bool loop)
+	void HamurAuMR::playSong(const string& strSongName, bool loop)
 	{
-		getSong(strSongName)->play_song(loop);
+		getSong(strSongName)->playSong(loop);
 	}
 
 	// Play Stream
-	void HamurAuMR::play_stream(const string& strStreamName)
+	void HamurAuMR::playStream(const string& strStreamName)
 	{
-		getStream(strStreamName)->play_stream();
+		getStream(strStreamName)->playStream();
 	}
 
 }

@@ -1,67 +1,105 @@
 #ifndef HAMURGL_H
 #define HAMURGL_H
-
-#include <iostream>
-#include <string>
-
-#include "SDL.h"
-#include "SDL_opengl.h"
 #include "hamurTex.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"
 
-// Used std functions
+#include "SDL.h"
+#include "SDL_opengl.h"
+
+#include <iostream>
+#include <string>
+
 using std::cout;
 using std::endl;
 using std::cerr;
 using std::string;
 
-
-// INTERFACE OF hamurGL
 namespace hamur
-{	
+{
+    /**
+    * Hamur GL Manager.
+    * Singleton class that manages graphic system.
+    */ 
 	class HamurGL : public Singleton<HamurGL>
 	{
 	public:
-
-		// Return HamurGL singleton object
-		//static HamurGL* getInstance(); 
-
-		HamurGL();
-		~HamurGL();
+        HamurGL();
+        ~HamurGL();
 	
-		// Initialize SDL with OpenGL support
-		bool init_SDL(const string &caption, int width, int height, int bpp, Uint32 flags);
+        /**
+        * Initialization of SDL with OpenGL support
+        * @param caption Sets the window tile and icon name.
+        * @param width Sets the width of the screen.
+        * @param height Sets the height of the screen.
+        * @param bpp Sets bits-per-pixel of the screen.
+        * @param flags Sets SDL flags for Video Mode.
+        */
+		bool initSDL(const string &caption, int width, int height, int bpp, Uint32 flags);
 
-		// Initialize OpenGL and set OpenGL attributes
-		bool init_GL();
+        /**
+        * Initialization of default OpenGL and OpenGL attributes.
+        */
+		bool initGL();
 
 		// Display some primitive openGL properties to stdout
-		void display_GL_attributes();
+		void displayGLAttributes();
 
-		// Terminate SDL and quit
+		/**
+		* Terminate SDL and quit.
+		*/
 		void quit();
 
-		int get_screen_width();
-		int get_screen_height();
-		int get_screen_bpp();
+        /**
+        * Gets the width of the screen.
+        * @return Screen width
+        */
+		int getScreenWidth();
 
-		void set_screen_width(int width);
-		void set_screen_height(int height);
-		void set_screen_bpp(int bpp);
+        /**
+        * Gets the height of the screen.
+        * @return Screen height
+        */
+		int getScreenHeight();
+
+        /**
+        * Gets the bits-per-pixel of the screen.
+        * @return Bits-per-pixel
+        */
+		int getScreenBpp();
+
+        /**
+        * Sets the screen width of the screen.
+        * @param width Screen width.
+        */
+		void setScreenWidth(int width);
+
+        /**
+        * Sets the height of the screen.
+        * @param height Screen height
+        */
+		void setScreenHeight(int height);
+
+        /**
+        * Sets the bits-per-pixel of the screen.
+        * @param bpp Bits-per-pixel
+        */
+		void setScreenBpp(int bpp);
 
 	protected:
 		
 	private:
+		int SCREEN_WIDTH;  /**<  Screen width */ 
+		int SCREEN_HEIGHT; /**<  Screen height */
+		int SCREEN_BPP;	   /**<  Screen bits per pixel */
 
-		// VARIABLES
-		int SCREEN_WIDTH;  // Screen width
-		int SCREEN_HEIGHT; // Screen height
-		int SCREEN_BPP;	   // Screen bits per pixel
-
-		// Sets openGL display attributes, color depth sizes, doublebuffer...
-		void set_GL_attributes();
+        /**
+        * Sets openGL display attributes, color depth sizes, doublebuffer...
+        * This function must be called after SDL_Init() and before SDL_SetVideoMode()
+        */ 
+		void setGLAttributes();
 	};
 }
+
 #endif // HAMURGL_H

@@ -13,18 +13,8 @@ namespace hamur
 	// HamurLog destructor
 	HamurEvent::~HamurEvent()
 	{
-		//delete keystate;
-	}
 
-	
-	// Return HamurEvent singleton object
-	/*
-	HamurEvent* HamurEvent::getInstance()
-	{
-		static HamurEvent instance;
-		return &instance;
 	}
-	*/
 
 
 	// Check keystate to see given key is pressed or not
@@ -49,6 +39,13 @@ namespace hamur
 	}
 
 
+    // If Quit action performed or not
+    bool HamurEvent::is_quit_performed()
+    {
+        return quit;
+    }
+
+
 	// Get X coordinate of mouse cursor
 	int HamurEvent::get_mouseX()
 	{
@@ -60,13 +57,6 @@ namespace hamur
 	int HamurEvent::get_mouseY()
 	{
 		return mouseY;
-	}
-
-
-	// If Quit action performed or not
-	bool HamurEvent::is_quit_performed()
-	{
-		return quit;
 	}
 
 

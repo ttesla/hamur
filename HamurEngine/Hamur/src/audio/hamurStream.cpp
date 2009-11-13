@@ -9,11 +9,11 @@ namespace hamur
 
 
 	// HamurStream constructor loads stream
-	HamurStream::HamurStream(const string &fileName, const string &StreamName) 
-	: strFileName(fileName), strStreamName(StreamName)
+	HamurStream::HamurStream(const string &fileName, const string &streamName) 
+	: strFileName(fileName), strStreamName(streamName)
 	{
 
-		if(!load_stream(fileName)) exit(1);
+		if(!loadStream(fileName)) exit(1);
 
 	}
 
@@ -25,7 +25,7 @@ namespace hamur
 
 
 	// Loads the current stream
-	bool HamurStream::load_stream(const string& name)
+	bool HamurStream::loadStream(const string& name)
 	{
 		stream = FSOUND_Stream_Open(name.c_str(), FSOUND_NORMAL, 0, 0);
 		
@@ -44,7 +44,7 @@ namespace hamur
 
 
 	// Plays the current stream
-	bool HamurStream::play_stream()
+	bool HamurStream::playStream()
 	{
 		if (!stream)
 		{
@@ -60,7 +60,7 @@ namespace hamur
 
 
 	// Stops the current stream
-	bool HamurStream::stop_stream()
+	bool HamurStream::stopStream()
 	{
 		if (!stream)
 		{
