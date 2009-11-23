@@ -13,6 +13,7 @@ OK! - Singleton eklenecek.
 - Hamur Font geliþtirilecek.
 - Hamur log duzenle ve kullanilan yerleri duzelt.
 - Hamur log'a cout ve enable, disable özelliði ekle.
+- Hamur lof printf style yap!
 
 
 
