@@ -8,12 +8,16 @@ OK! - Singleton eklenecek.
 - Animasyon sistemi geliþtirilecek.
 - State machine tamamlancak
 - Iskelet olustur ve test uygulamasi yap
-- HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
 - Game Class olusturulcak ve gerekli ayarlar yapilcak.
+
+HAMURFONT:
 - Hamur Font geliþtirilecek.
+
+HAMURLOG:
 - Hamur log duzenle ve kullanilan yerleri duzelt.
-- Hamur log'a cout ve enable, disable özelliði ekle.
+- Hamur log'a cout modu ekle
 - Hamur lof printf style yap!
+- HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
 
 
 
