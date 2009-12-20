@@ -42,6 +42,8 @@ namespace hamur
 			HAMURLOG->write_log("Can't load texture: " + fileName);
 			return false;
 		}
+		
+		// RAGNORA SOR!
 
 		// Work out what format to tell glTexImage2D to use...
         if(loadedImage->format->BytesPerPixel == 3) // RGB 24bit
