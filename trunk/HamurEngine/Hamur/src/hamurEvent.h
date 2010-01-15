@@ -24,37 +24,37 @@ namespace hamur
             * @param keyName Name of the key defined by SDL.
             * @return Given key is pressed or not.
             */
-			bool is_key_pressed(int keyName);
+			bool isKeyPressed(int keyName);
 
             /**
             * Checks if given mouse button is pressed or not.
             * @param button Name of the button defined by SDL.
             * @return Given button is pressed or not.
             */
-			bool is_mouse_pressed(int button); // Check given mouse button pressed or not. 
+			bool isMousePressed(int button); // Check given mouse button pressed or not. 
 
             /**
             * Checks if quit action performed or not.
             * @return Quit action performed or not.
             */
-			bool is_quit_performed();
+			bool isQuitPerformed();
 
             /**
             * Gets the X coordinate of mouse cursor.
             * @return X coordinate of mouse cursor.
             */
-			int get_mouseX();
+			int getMouseX();
 
             /**
             * Gets the Y coordinate of mouse cursor.
             * @return Y coordinate of mouse cursor.
             */
-			int get_mouseY();
+			int getMouseY();
 
             /**
             * Main method that handles all events.
             */
-			void handle_events();
+			void handleEvents();
 
 		protected:
 

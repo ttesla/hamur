@@ -24,8 +24,8 @@ using namespace hamur;
 float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
 
 // Some test functions
-void test_display();
-void test_simulation();
+void testDisplay();
+void testSimulation();
 
 
 int main( int argc, char *argv[] )
@@ -51,16 +51,16 @@ int main( int argc, char *argv[] )
 
 
 	// Main while
-	while(! HAMUREVENT->is_quit_performed())
+	while(! HAMUREVENT->isQuitPerformed())
 	{
 		// Handle all events
-		HAMUREVENT->handle_events();
+		HAMUREVENT->handleEvents();
 
-		if(HAMUREVENT->is_key_pressed(SDLK_ESCAPE)) break; // If ESC is pressed break from while()
+		if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) break; // If ESC is pressed break from while()
 
 	    // TESTS
-		test_display();
-		test_simulation();
+		testDisplay();
+		testSimulation();
 	    
 	    //Update screen
 	    SDL_GL_SwapBuffers();   
@@ -73,7 +73,7 @@ int main( int argc, char *argv[] )
 }
 
 // Test functions...
-void test_display()
+void testDisplay()
 {   
 	//Clear the screen & reset identity matrix
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -89,31 +89,29 @@ void test_display()
 	//glPolygonMode(GL_FRONT, GL_LINE);
 	//glPolygonMode(GL_BACK, GL_LINE);
 
-	//xcor = -0.55f + HAMUREVENT->get_mouseX()*(1.10f/1024);
-	//ycor = 0.42f - HAMUREVENT->get_mouseY()*(0.84f/768);
-	//HAMURTEXMR->blit_texture("red", xcor, ycor, 0);
+	//xcor = -0.55f + HAMUREVENT->getMouseX()*(1.10f/1024);
+	//ycor = 0.42f - HAMUREVENT->getMouseY()*(0.84f/768);
+	//HAMURTEXMR->blitTexture("red", xcor, ycor, 0);
 
 	//cout << "X:" << xcor << " Y:" << ycor << " Z:" << zcor << endl;
 	//cout << "rotX:" << x << " rotY:" << y << " rotZ:" << z << endl;
 }
 
-void test_simulation()
+void testSimulation()
 {
 	float vel1 = 0.1f;
 	float vel2 = 0.2f;
 	// KEYS
-	if(HAMUREVENT->is_key_pressed(SDLK_RIGHT))	x += vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_LEFT))	x -= vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_UP))		y += vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_DOWN))	y -= vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_z))		z -= vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_x))		z += vel1;
-	if(HAMUREVENT->is_key_pressed(SDLK_q))		zcor -= vel2;
-	if(HAMUREVENT->is_key_pressed(SDLK_e))		zcor += vel2;
-	if(HAMUREVENT->is_key_pressed(SDLK_d))		xcor += vel2;
-	if(HAMUREVENT->is_key_pressed(SDLK_a))		xcor -= vel2;
-	if(HAMUREVENT->is_key_pressed(SDLK_w))		ycor += vel2;
-	if(HAMUREVENT->is_key_pressed(SDLK_s))		ycor -= vel2;
-
-
+	if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))	x += vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    x -= vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_UP))		y += vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    y -= vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_z))		z -= vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_x))		z += vel1;
+	if(HAMUREVENT->isKeyPressed(SDLK_q))		zcor -= vel2;
+	if(HAMUREVENT->isKeyPressed(SDLK_e))		zcor += vel2;
+	if(HAMUREVENT->isKeyPressed(SDLK_d))		xcor += vel2;
+	if(HAMUREVENT->isKeyPressed(SDLK_a))		xcor -= vel2;
+	if(HAMUREVENT->isKeyPressed(SDLK_w))		ycor += vel2;
+	if(HAMUREVENT->isKeyPressed(SDLK_s))		ycor -= vel2;
 }
