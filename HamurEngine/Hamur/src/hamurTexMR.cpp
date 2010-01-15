@@ -26,6 +26,7 @@ namespace hamur
 	{
 		//Look in the map if the texture is already loaded.
 		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
+
 		
 		if(iter != textureMap.end())
 			return iter->second;

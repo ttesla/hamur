@@ -18,7 +18,7 @@ namespace hamur
 
 
 	// Check keystate to see given key is pressed or not
-	bool HamurEvent::is_key_pressed(int keyName)
+	bool HamurEvent::isKeyPressed(int keyName)
 	{
 		if(SDL_GetKeyState(NULL)[keyName])
 			return true; // given key is pressed
@@ -29,7 +29,7 @@ namespace hamur
 
 
 	// Check given mouse button pressed or not. 
-	bool HamurEvent::is_mouse_pressed(int button)
+	bool HamurEvent::isMousePressed(int button)
 	{
 		if(SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(button))
 			return true;
@@ -40,28 +40,28 @@ namespace hamur
 
 
     // If Quit action performed or not
-    bool HamurEvent::is_quit_performed()
+    bool HamurEvent::isQuitPerformed()
     {
         return quit;
     }
 
 
 	// Get X coordinate of mouse cursor
-	int HamurEvent::get_mouseX()
+	int HamurEvent::getMouseX()
 	{
 		return mouseX;
 	}
 
 
 	// Get Y coordinate of mouse cursor
-	int HamurEvent::get_mouseY()
+	int HamurEvent::getMouseY()
 	{
 		return mouseY;
 	}
 
 
 	// Handle all events within this method
-	void HamurEvent::handle_events()
+	void HamurEvent::handleEvents()
 	{
 		//While there are events to handle
 		while(SDL_PollEvent(&events))
