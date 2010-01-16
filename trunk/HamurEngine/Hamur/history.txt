@@ -4,10 +4,10 @@
  *                                                      
  *                                                      
  * Author(s) 	 : Daghan Demirci, Omer Akyol
- * Created 	 : 21 Feb. 2009
- * Last Modified : 20 Sep. 2008
+ * Created 	 : 20 Sep. 2008
+ * Last Modified : 16 Jan. 2010
  * 
- * © 2009 by inspire13 <www.inspire13.com>
+ * © 2010 by inspire13 <www.inspire13.com>
  * All Rights Reserved
  ********************************************************/
 
