@@ -56,11 +56,13 @@ namespace hamur
 		write_log(log);
 	}
 
+
     void HamurLog::closeLogFile()
     {
         if(logFile.is_open())
             logFile.close();
     }
+
 
     void HamurLog::clearLogFile()
     {

@@ -13,6 +13,7 @@
 #include "hamurTexMR.h"
 #include "hamurGP.h"
 #include "helper/hamurLog.h"
+#include "helper/hamurConsole.h"
 #include "hamurFont.h"
 #include "audio/hamurAuMR.h"
 #include "hamurDefinitions.h"
@@ -31,7 +32,7 @@ void testSimulation();
 int main( int argc, char *argv[] )
 {
     //Initialize SDL
-	if(HAMURGL->initSDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL  | SDL_FULLSCREEN ) == false)
+	if(HAMURGL->initSDL("Hamur II test - 2009", 800, 600, 32, SDL_OPENGL) == false)
 	//if(HAMURGL->init_SDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL) == false) 
 		return 1;    
 
@@ -49,6 +50,8 @@ int main( int argc, char *argv[] )
     HAMUREVENT->getInstance();
 	HAMURGP->getInstance();
 
+
+    HAMURCONSOLE << "Testing hamur console\n";    
 
 	// Main while
 	while(! HAMUREVENT->isQuitPerformed())

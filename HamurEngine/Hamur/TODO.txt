@@ -18,6 +18,11 @@ HAMURLOG:
 - Hamur log duzenle ve kullanilan yerleri duzelt.
 OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
 - Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
+- + overloading denencek
+
+
+HAMURGL
+- Kitaptan baka baka yaz
 
 
 
