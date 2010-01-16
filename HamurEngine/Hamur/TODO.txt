@@ -1,14 +1,15 @@
 TODO:
----------
+-----------
 OK! - GL lerler ilgili library sorunlarý çözülecek.
 OK! - Singleton eklenecek.
-- Doxygene uygun hale getirilecek.
+OK! - Doxygene uygun hale getirilecek.
 - Collision Detectionlar geliþtirilecek.
 - Kitaptan çalýþmalar yapýlacak.
 - Animasyon sistemi geliþtirilecek.
 - State machine tamamlancak
 - Iskelet olustur ve test uygulamasi yap
 - Game Class olusturulcak ve gerekli ayarlar yapilcak.
+- Colorkey, Alpha sorununu çöz
 
 HAMURFONT:
 - Hamur Font geliþtirilecek.
@@ -17,8 +18,7 @@ HAMURLOG:
 - Hamur log duzenle ve kullanilan yerleri duzelt.
 - Hamur log'a cout modu ekle
 - Hamur lof printf style yap!
-- HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
-
+OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
 
 
 
