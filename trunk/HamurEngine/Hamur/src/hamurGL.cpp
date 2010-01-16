@@ -44,7 +44,7 @@ namespace hamur
 		// Set caption
 		SDL_WM_SetCaption(caption.c_str(), NULL);
 
-		HAMURLOG->write_init_log("SDL");
+		HAMURLOG->writeInitLog("SDL");
 		return true;
 	}
 
@@ -89,7 +89,7 @@ namespace hamur
 		}
 	    
 		// If everything initialized successfully
-		HAMURLOG->write_init_log("OpenGL");
+		HAMURLOG->writeInitLog("OpenGL");
 		return true;
 	}
 

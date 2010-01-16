@@ -4,7 +4,7 @@ namespace hamur
 {
 	HamurTexMR::HamurTexMR()
 	{
-		HAMURLOG->write_init_log("HamurTexture");
+		HAMURLOG->writeInitLog("HamurTexture");
 	}
 
 

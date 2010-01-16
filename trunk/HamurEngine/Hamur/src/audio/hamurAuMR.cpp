@@ -61,7 +61,7 @@ namespace hamur
 		}
 		else
 		{
-			HAMURLOG->write_init_log("HamurAudio");
+			HAMURLOG->writeInitLog("HamurAudio");
 			return true;
 		}
 	}

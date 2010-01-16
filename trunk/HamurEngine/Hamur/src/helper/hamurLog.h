@@ -33,7 +33,7 @@ namespace hamur
             void write_logln(float logValue);
 
 			// Write initialization messages
-			void write_init_log(string log);
+			void writeInitLog(string log);
 
             void closeLogFile();
             void clearLogFile();

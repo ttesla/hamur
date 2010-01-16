@@ -6,7 +6,7 @@ namespace hamur
 	HamurEvent::HamurEvent()
 	{
 		quit = false;
-		HAMURLOG->write_init_log("HamurEvent");
+		HAMURLOG->writeInitLog("HamurEvent");
 	}
 
 
