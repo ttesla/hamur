@@ -13,6 +13,11 @@
 
 /*
 
+January 2010
+----------------
+
+
+
 October 2009 - (Rise Of Hamur)
 ----------------
 * HamurII is now remastered to a completely new design and
