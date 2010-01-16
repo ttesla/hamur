@@ -1,9 +1,9 @@
 TODO:
 -----------
 OK! - GL lerler ilgili library sorunlarý çözülecek.
-OK! - Singleton eklenecek.
+OK! - Singleton eklenecek, Singleton sorunu fried class ile çözüldü.
 OK! - Doxygene uygun hale getirilecek.
-- Collision Detectionlar geliþtirilecek.
+- Collision Detectionlar geliþtirilecek - Box2D bu iþi halledecek.
 - Kitaptan çalýþmalar yapýlacak.
 - Animasyon sistemi geliþtirilecek.
 - State machine tamamlancak
