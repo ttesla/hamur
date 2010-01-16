@@ -9,5 +9,6 @@
 #define HAMURAUMR HamurAuMR::getInstance()
 #define HAMURFONT HamurFont::getInstance()
 #define HAMURLOG HamurLog::getInstance()
+#define HAMURWORLD HamurWorld::getInstance()
 
 #endif

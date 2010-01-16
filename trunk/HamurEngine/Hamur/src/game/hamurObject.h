@@ -5,19 +5,26 @@
 
 #include <vector>
 #include <string>
+#include "../hamurDefinitions.h"
+
+#include "hamurWorld.h"
+
 
 using std::vector;
 using std::string;
+
 
 namespace hamur
 {
     /**
     * Hamur Object base class.
-    * Everything in the Hamur game environment is an Hamur object. 
+    * Everything in the Hamur game environment is a Hamur object. 
     */
 	class HamurObject
 	{
 	    public:
+
+            HamurObject(string _name);
 
             /**
             * Pure virtual update function of the object. 

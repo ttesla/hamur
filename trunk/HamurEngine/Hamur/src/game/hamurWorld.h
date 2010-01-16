@@ -1,14 +1,35 @@
 #ifndef HAMUR_WORLD
 #define HAMUR_WORLD
 
-class HamurWorld
+#include "../hamurSingleton.h"
+#include "../helper/hamurLog.h"
+#include "hamurObject.h"
+#include <map>
+
+
+using std::map;
+
+
+namespace hamur
 {
-    public:
+    class HamurWorld : public Singleton<HamurWorld>
+    {
+        public:
 
-    protected:
+            friend Singleton<HamurWorld>;
 
-    private:
-};
+            bool addObject(HamurObject* _newObject);
+            bool removeObject(HamurObject* _givenObject);
+            bool hasObject(const string &_name);
+
+            HamurObject* getObject(const string &_objectName);
+
+        protected:
+
+        private:
+            map<string, HamurObject*> worldObjects;
+    };
+}
 
 
-#endif
+#endif // HAMURWORLD_H

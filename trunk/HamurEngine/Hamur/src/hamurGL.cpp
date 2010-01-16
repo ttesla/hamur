@@ -28,7 +28,7 @@ namespace hamur
 		if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
 			HAMURLOG->write_log("Can't initialize SDL!");
-			return false; //If can't init, return false    
+			return false; //If can't init, return false 
 		}
 
 		// Set openGL display attributes
