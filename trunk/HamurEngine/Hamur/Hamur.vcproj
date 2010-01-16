@@ -239,6 +239,10 @@
 				Name="Helper"
 				>
 				<File
+					RelativePath=".\src\helper\hamurConsole.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\helper\hamurLog.cpp"
 					>
 				</File>
@@ -324,6 +328,10 @@
 			<Filter
 				Name="Helper"
 				>
+				<File
+					RelativePath=".\src\helper\hamurConsole.h"
+					>
+				</File>
 				<File
 					RelativePath=".\src\helper\hamurLog.h"
 					>
