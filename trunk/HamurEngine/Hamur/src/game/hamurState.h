@@ -14,6 +14,7 @@ namespace hamur
 	class HamurState
 	{
 		public:
+
 			HamurState();
             ~HamurState();
 

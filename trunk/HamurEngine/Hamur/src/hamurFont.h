@@ -16,14 +16,9 @@ namespace hamur
 	class HamurFont : public Singleton<HamurFont>
 	{
 		public:
-            /**
-            * Hamur Font Constructor.
-            * Loads surfaces and add textures to texture manager.
-            * @see HamurTexMR::addTexture()
-            */ 
-			HamurFont();
-			~HamurFont();
 
+            friend Singleton<HamurFont>;
+            
             /**
             * Draw string to screen with bitmap fonts.
             * @param text Given text that written to the screen.
@@ -34,6 +29,14 @@ namespace hamur
 			void drawText(const string &text, float x, float y, float z);
 
 		protected:
+
+            /**
+            * Hamur Font Constructor.
+            * Loads surfaces and add textures to texture manager.
+            * @see HamurTexMR::addTexture()
+            */ 
+            HamurFont();
+            ~HamurFont();
 
 		private:
 	};

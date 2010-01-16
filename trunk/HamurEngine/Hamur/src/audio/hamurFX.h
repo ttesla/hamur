@@ -20,6 +20,7 @@ namespace hamur
 	class HamurFX
 	{
 		public:
+
 			HamurFX();
 			~HamurFX();
 

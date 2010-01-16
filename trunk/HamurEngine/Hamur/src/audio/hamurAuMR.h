@@ -19,12 +19,8 @@ namespace hamur
 	class HamurAuMR : public Singleton<HamurAuMR>
 	{
 		public:
-			HamurAuMR();
 
-			/**
-			* Deletes all Audios in the map container.
-			*/
-			~HamurAuMR();
+            friend Singleton<HamurAuMR>;
 
 			/** 
 			* Default Initialization of Audio.
@@ -124,6 +120,13 @@ namespace hamur
 			void playStream(const string& strStreamName);
 
 		protected:
+
+            HamurAuMR();
+
+            /**
+            * Deletes all Audios in the map container.
+            */
+            ~HamurAuMR();
 
 		private:
 			map<string, HamurFX*> fxMap;         /**< Store FX's according to their  names. */
