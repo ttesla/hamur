@@ -20,6 +20,7 @@ namespace hamur
 	class HamurSong
 	{
 		public:
+
 			HamurSong();
 			~HamurSong();
    

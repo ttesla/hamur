@@ -25,8 +25,8 @@ namespace hamur
 	class HamurGL : public Singleton<HamurGL>
 	{
 	public:
-        HamurGL();
-        ~HamurGL();
+        
+        friend Singleton<HamurGL>;
 	
         /**
         * Initialization of SDL with OpenGL support
@@ -88,6 +88,9 @@ namespace hamur
 		void setScreenBpp(int bpp);
 
 	protected:
+
+        HamurGL();
+        ~HamurGL();
 		
 	private:
 		int SCREEN_WIDTH;  /**<  Screen width */ 

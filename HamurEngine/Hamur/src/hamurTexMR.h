@@ -20,9 +20,7 @@ namespace hamur
 	{
 		public:
 
-			//static HamurTexMR* getInstance(); // Return TextureMR singleton object
-			HamurTexMR();
-			~HamurTexMR();
+            friend Singleton<HamurTexMR>;
 
 			HamurTex* getTexture(const string& strTextName); //Get texture
 			bool deleteTexture(const string& strTextName);   //Delete texture
@@ -32,6 +30,9 @@ namespace hamur
 			void blitTexture(const string &textureName); // Blits image onto screen - without coordinates
 
 		protected:
+
+            HamurTexMR();
+            ~HamurTexMR();
 
 		private:
 

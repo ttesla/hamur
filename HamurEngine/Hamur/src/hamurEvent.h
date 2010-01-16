@@ -16,9 +16,9 @@ namespace hamur
 	class HamurEvent : public Singleton<HamurEvent>
 	{
 		public:
-			HamurEvent();
-			~HamurEvent();
 
+            friend Singleton<HamurEvent>;
+			
             /**
             * Checks if given key is pressed or not.
             * @param keyName Name of the key defined by SDL.
@@ -57,6 +57,9 @@ namespace hamur
 			void handleEvents();
 
 		protected:
+
+            HamurEvent();
+            ~HamurEvent();
 
 		private:
 

@@ -19,13 +19,8 @@ namespace hamur
 	class HamurStateMR : public Singleton<HamurStateMR>
 	{
 		public:
-			HamurStateMR();
 
-            /**
-            * Destructor of Hamur State Manager.
-            * Destroys all registered states.
-            */
-			~HamurStateMR();
+            friend Singleton<HamurStateMR>;
 
             /**
             * Registers given state to the state manager.
@@ -93,6 +88,14 @@ namespace hamur
 			string getPreviousStateName();
 
 		protected:
+
+            HamurStateMR();
+
+            /**
+            * Destructor of Hamur State Manager.
+            * Destroys all registered states.
+            */
+            ~HamurStateMR();
 
 		private:
 			map<string, HamurState*> stateList; /**< Stores all states according to their names. */

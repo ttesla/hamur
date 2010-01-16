@@ -16,8 +16,8 @@ namespace hamur
 	class HamurGP : public Singleton<HamurGP>
 	{
 		public:
-			HamurGP();
-			~HamurGP();
+
+            friend Singleton<HamurGP>;
 
             /**
             * Checks rectangular collision of 2 textures with their texture data.
@@ -36,6 +36,9 @@ namespace hamur
 			bool checkCollision2D(const string &firstTexName, const string &secondTexName);
 
 		protected:
+
+            HamurGP();
+            ~HamurGP();
 	};
 }
 
