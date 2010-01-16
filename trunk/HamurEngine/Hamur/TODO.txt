@@ -16,9 +16,8 @@ HAMURFONT:
 
 HAMURLOG:
 - Hamur log duzenle ve kullanilan yerleri duzelt.
-- Hamur log'a cout modu ekle
-- Hamur lof printf style yap!
 OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
+- Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
 
 
 
