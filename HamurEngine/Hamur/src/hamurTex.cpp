@@ -1,4 +1,5 @@
 #include "hamurTex.h"
+#include "hamurGL.h"
 
 namespace hamur
 {

@@ -2,13 +2,6 @@
 
 namespace hamur
 {
-
-	HamurState::HamurState()
-	{
-
-	}
-
-
 	HamurState::HamurState(const string &_stateName)
 	{
 		stateName = _stateName;
@@ -25,5 +18,4 @@ namespace hamur
 	{
 		return stateName;
 	}
-
 }

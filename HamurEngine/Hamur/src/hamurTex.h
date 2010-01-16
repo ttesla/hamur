@@ -1,7 +1,7 @@
 #ifndef HAMURTEX_H
 #define HAMURTEX_H
 
-#include "hamurGL.h"
+//#include "hamurGL.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 

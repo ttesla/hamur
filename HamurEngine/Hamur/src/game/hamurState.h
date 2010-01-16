@@ -15,7 +15,6 @@ namespace hamur
 	{
 		public:
 
-			HamurState();
             ~HamurState();
 
             /**

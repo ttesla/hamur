@@ -22,13 +22,13 @@ namespace hamur
 
     // Add state into "map" container with state name.
     // If state is already registered, it will not be registered.
-	void HamurStateMR::registerState(const string &_stateName, HamurState *_state)
+	void HamurStateMR::registerState(HamurState *_state)
 	{
 		// Look in the map if the state is already registered. If not found, then register.
-		if ( !(hasState(_stateName)))
-        {
-			stateList[_stateName] = _state;
-		}
+		if (hasState(_state->getStateName()))
+            return;
+
+		stateList[_state->getStateName()] = _state;
 	}
 
 
