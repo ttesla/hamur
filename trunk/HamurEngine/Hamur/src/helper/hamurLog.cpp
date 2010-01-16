@@ -55,4 +55,17 @@ namespace hamur
 	
 		write_log(log);
 	}
+
+    void HamurLog::closeLogFile()
+    {
+        if(logFile.is_open())
+            logFile.close();
+    }
+
+    void HamurLog::clearLogFile()
+    {
+        // To clear out the log file.
+        logFile.open(logFileName.c_str(), ios::out);
+        logFile.close();
+    }
 }

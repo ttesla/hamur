@@ -191,6 +191,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\game\hamurWorld.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
@@ -227,10 +231,6 @@
 				</File>
 				<File
 					RelativePath=".\src\game\hamurStateMR.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\hamurWorld.cpp"
 					>
 				</File>
 			</Filter>
@@ -280,6 +280,10 @@
 				RelativePath=".\src\hamurTexMR.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\game\hamurWorld.h"
+				>
+			</File>
 			<Filter
 				Name="Audio"
 				>
@@ -313,10 +317,6 @@
 				</File>
 				<File
 					RelativePath=".\src\game\hamurStateMR.h"
-					>
-				</File>
-				<File
-					RelativePath=".\hamurWorld.h"
 					>
 				</File>
 			</Filter>

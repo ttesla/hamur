@@ -35,6 +35,9 @@ namespace hamur
 			// Write initialization messages
 			void write_init_log(string log);
 
+            void closeLogFile();
+            void clearLogFile();
+
 		protected:
 			
 		private:
