@@ -4,7 +4,7 @@ namespace hamur
 {
 	HamurGP::HamurGP()
 	{
-		HAMURLOG->write_init_log("HamurGP");
+		HAMURLOG->writeInitLog("HamurGP");
 	}
 
 

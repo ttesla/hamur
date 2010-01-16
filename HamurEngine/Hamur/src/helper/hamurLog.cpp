@@ -44,7 +44,7 @@ namespace hamur
 
 	// Write initialization message text to log file
 	// Makes some adjustments for a nifty printout.
-	void HamurLog::write_init_log(string log)
+	void HamurLog::writeInitLog(string log)
 	{
 		int dotsToAdd = 15 - log.length();
 
