@@ -3,22 +3,14 @@
 
 namespace hamur
 {
-
-	HamurTex::HamurTex() : TEXTURE_RATIO(RATIO), volume(VOL)
+	HamurTex::HamurTex(const string &_filePath) 
+	: filePath(_filePath), TEXTURE_RATIO(RATIO)
 	{
-
+		if(!loadTexture()) exit(1);
 	}
 
 
-	HamurTex::HamurTex(const string &fileName, const string &textName) 
-	: strFileName(fileName), strTextName(textName), TEXTURE_RATIO(RATIO), volume(VOL)
-	{
-		if(!loadTexture(fileName)) exit(1);
-	}
-
-
-	HamurTex::HamurTex(const SDL_Surface *newSurface, const string &textName) 
-	: strTextName(textName), TEXTURE_RATIO(RATIO), volume(VOL)
+	HamurTex::HamurTex(const SDL_Surface *newSurface) : TEXTURE_RATIO(RATIO)
 	{
 		if(!loadTexture(newSurface)) exit(1);
 	}
@@ -30,17 +22,17 @@ namespace hamur
 
 
 	// Loads texture from "Image file" and registers it to openGL's texture array. 
-	bool HamurTex::loadTexture(const string &fileName)
+	bool HamurTex::loadTexture()
 	{
 		SDL_Surface *loadedImage = 0;
 		int mode; // Texture mode RGB, RGBA 
 
 		//loadedImage = SDL_LoadBMP(fileName.c_str()); //Load BMP Image
-		loadedImage = IMG_Load(fileName.c_str()); // Load BMP, PNG or JPG
+		loadedImage = IMG_Load(filePath.c_str()); // Load BMP, PNG or JPG
 
 		if(loadedImage == 0)
 		{
-			HAMURLOG->write_log("Can't load texture: " + fileName);
+			HAMURLOG->write_log("Can't load texture: " + filePath);
 			return false;
 		}
 		
@@ -76,7 +68,7 @@ namespace hamur
 		// Free SDL_surfaces
 		SDL_FreeSurface(loadedImage);
 
-		HAMURLOG->write_log("Texture loaded: " + fileName);
+		HAMURLOG->write_log("Texture loaded: " + filePath);
 		return true;
 	}
 
@@ -88,7 +80,7 @@ namespace hamur
 
 		if(newSurface == 0)
 		{
-			HAMURLOG->write_log("Can't load texture from surface: " + strTextName);
+			HAMURLOG->write_log("Can't load texture from surface.");
 			return false;
 		}
 
@@ -124,14 +116,10 @@ namespace hamur
 
 
 	// GETTERS & SETTERS 
-	int HamurTex::getTextureID()		{ return textureID[0];	}
+	int HamurTex::getGLtextureID()		{ return textureID[0];	}
 	float HamurTex::getScaledWidth()	{ return scaledWidth;	}
 	float HamurTex::getScaledHeight()	{ return scaledHeight;	}
-	float HamurTex::getVolume()		{ return volume;		}
-
-	string HamurTex::getTextName()		{ return strTextName;	}
-	string HamurTex::getFileName()		{ return strFileName;	}
-
+	string HamurTex::getFilePath()		{ return filePath;	}
 	float HamurTex::getCorX() { return corX; }
 	float HamurTex::getCorY() { return corY; }
 	float HamurTex::getCorZ() { return corZ; }
@@ -139,12 +127,8 @@ namespace hamur
 	void HamurTex::setCorX(float x) { corX = x; }
 	void HamurTex::setCorY(float y) { corY = y; }
 	void HamurTex::setCorZ(float z) { corZ = z; }
-
 	void HamurTex::setScaledWidth(float sw)  { scaledWidth  = sw; }
 	void HamurTex::setScaledHeight(float sh) { scaledHeight = sh; }
-
-	void HamurTex::setVolume(float vol){ volume =  vol; }
-
 	void HamurTex::setAllCoord(float x, float y, float z)
 	{
 		corX = x;

@@ -27,14 +27,6 @@ namespace hamur
             */
 			bool checkCollision2D(HamurTex* firstTex, HamurTex* secondTex);
 
-            /**
-            * Checks rectangular collision of 2 textures with their names
-            * @param firstTexName Name of the first texture.
-            * @param secondTexName Name of the second texture.
-            * @return If two textures collide or not
-            */
-			bool checkCollision2D(const string &firstTexName, const string &secondTexName);
-
 		protected:
 
             HamurGP();
