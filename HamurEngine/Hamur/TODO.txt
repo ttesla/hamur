@@ -10,6 +10,7 @@ OK! - Doxygene uygun hale getirilecek.
 - Iskelet olustur ve test uygulamasi yap
 - Game Class olusturulcak ve gerekli ayarlar yapilcak.
 - Colorkey, Alpha sorununu çöz
+- hamurlog, hamurconsole, hamurfile, hamur helper la alakali siniflara doxgygen comment yazilcak
 
 HAMURFONT:
 - Hamur Font geliþtirilecek.
