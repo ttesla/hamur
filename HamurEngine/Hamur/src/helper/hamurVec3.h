@@ -3,8 +3,10 @@
 
 #include <cmath>
 #include <iostream>
+#include <sstream>
 
 using std::ostream;
+using std::stringstream;
 
 namespace hamur
 {
@@ -72,7 +74,7 @@ namespace hamur
 	/** Writes the Vector to the stream */
 	inline std::ostream &operator<<(std::ostream &os, const HamurVec3 &v)
 	{
-		os << v.x << ", " << v.y << ", " << v.z << std::endl;
+		os << v.x << ", " << v.y << ", " << v.z;
 		return os;
 	}
 }

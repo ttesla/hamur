@@ -49,6 +49,9 @@ namespace hamur
 
             /** @return If the object has interaction or not */
 		    bool hasInteraction();
+
+            /** @return Sprite ID of the object */
+            int getSpriteID();
 		   
             /** 
             * Set name of the object. 

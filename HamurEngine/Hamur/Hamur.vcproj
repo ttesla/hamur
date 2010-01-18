@@ -250,6 +250,10 @@
 					RelativePath=".\src\helper\hamurLog.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\src\helper\hamurString.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -346,6 +350,10 @@
 				</File>
 				<File
 					RelativePath=".\src\helper\hamurLog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\helper\hamurString.h"
 					>
 				</File>
 				<File

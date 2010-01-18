@@ -70,4 +70,74 @@ namespace hamur
 	//		HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
 	//	}
 	//}
+
+    /*
+    // Draw an integer 
+    void HamurFont::drawText(int number, float x, float y, float z)
+    {
+        stringstream tempstring;
+        string text;
+
+        tempstring << number;
+
+        text = tempstring.str();
+
+        for(unsigned int i = 0; i < text.length(); i++)
+        {
+            string tempStr;
+            tempStr.push_back(text.at(i));
+            HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
+        }   
+    }
+
+    // Draw a float 
+    void HamurFont::drawText(float number, float x, float y, float z)
+    {
+        stringstream tempstring;
+        string text;
+
+        tempstring << number;
+
+        text = tempstring.str();
+
+        for(unsigned int i = 0; i < text.length(); i++)
+        {
+            string tempStr;
+            tempStr.push_back(text.at(i));
+            HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
+        }   
+    }
+
+    // Draw a double 
+    void HamurFont::drawText(double number, float x, float y, float z)
+    {
+        stringstream tempstring;
+        string text;
+
+        tempstring << number;
+
+        text = tempstring.str();
+
+        for(unsigned int i = 0; i < text.length(); i++)
+        {
+            string tempStr;
+            tempStr.push_back(text.at(i));
+            HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
+        }   
+    }
+
+    // Draw a Hamur String 
+    void HamurFont::drawText(HamurString _stream, float x, float y, float z)
+    {
+ 
+        string text = _stream.getString();
+
+        for(unsigned int i = 0; i < text.length(); i++)
+        {
+            string tempStr;
+            tempStr.push_back(text.at(i));
+            HAMURTEXMR->blitTexture(tempStr, x + i*0.015f, y, z);
+        }   
+    }
+    */
 }
