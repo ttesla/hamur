@@ -6,6 +6,11 @@
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"
+#include "helper/hamurString.h"
+
+#include <sstream>
+
+using std::stringstream;
 
 namespace hamur
 {
@@ -27,6 +32,10 @@ namespace hamur
             * @param z Given z coordinate of the text that will be drawn.
             */
 			void drawText(const string &text, float x, float y, float z);
+            void drawText(int _number, float x, float y, float z);
+            void drawText(float _number, float x, float y, float z);
+            void drawText(double _number, float x, float y, float z);
+            void drawText(HamurString _stream, float x, float y, float z);
 
 		protected:
 
