@@ -17,6 +17,8 @@
 #include "hamurFont.h"
 #include "audio/hamurAuMR.h"
 #include "hamurDefinitions.h"
+#include "game/hamurWorld.h"
+#include "game/hamurObject.h"
 
 using namespace hamur;
 
@@ -27,6 +29,7 @@ float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
 // Some test functions
 void testDisplay();
 void testSimulation();
+void testGameObjects();
 
 
 int main( int argc, char *argv[] )
@@ -49,7 +52,9 @@ int main( int argc, char *argv[] )
 	HAMURFONT->getInstance();
     HAMUREVENT->getInstance();
 	HAMURGP->getInstance();
+    HAMURWORLD->getInstance();
 
+    
 
     HAMURCONSOLE << "Testing hamur console\n";    
 
@@ -64,6 +69,7 @@ int main( int argc, char *argv[] )
 	    // TESTS
 		testDisplay();
 		testSimulation();
+        testGameObjects();
 	    
 	    //Update screen
 	    SDL_GL_SwapBuffers();   
@@ -117,4 +123,19 @@ void testSimulation()
 	if(HAMUREVENT->isKeyPressed(SDLK_a))		xcor -= vel2;
 	if(HAMUREVENT->isKeyPressed(SDLK_w))		ycor += vel2;
 	if(HAMUREVENT->isKeyPressed(SDLK_s))		ycor -= vel2;
+}
+
+void testGameObjects()
+{
+    HamurObject* myFirstObject = new HamurObject("Araba");
+    HamurObject* secondObject = new HamurObject("Player");
+
+    myFirstObject->setPosition(10,10,10);
+    secondObject->setPosition(5,5,5);
+
+    cout << "First Object Name: " << HAMURWORLD->getObject("Player")->getName() << " Position:  "  <<
+        HAMURWORLD->getObject("Player")->getPosition() << endl;
+
+    cout << "Second Object Name: " << HAMURWORLD->getObject("Araba")->getName() << " Position:  "  <<
+        HAMURWORLD->getObject("Araba")->getPosition() << endl;
 }

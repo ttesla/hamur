@@ -7,9 +7,6 @@
 #include <string>
 #include "../hamurDefinitions.h"
 
-#include "hamurWorld.h"
-
-
 using std::vector;
 using std::string;
 
@@ -30,13 +27,13 @@ namespace hamur
             * Pure virtual update function of the object. 
             * All update logic should be written here.
             */
-		    virtual void update() = 0;
+            virtual void update() {};
 
             /**
             * Pure virtual draw function of the object. 
             * All drawings should be written here.
             */
-		    virtual void draw() = 0;
+            virtual void draw() {};
 
 		   
             // GETTER & SETTERS
@@ -61,9 +58,23 @@ namespace hamur
 		    
             /**
             * Set position of the object.
+            * @param _pos Pointer to the position of the object.
+            */
+            void setPosition(HamurVec3* _pos);
+
+            /**
+            * Set position of the object.
             * @param _pos Position of the object.
             */
             void setPosition(const HamurVec3& _pos);
+
+            /**
+            * Set position of the object.
+            * @param _x X coordinate of the object.
+            * @param _y Y coordinate of the object.
+            * @param _z Z coordinate of the object.
+            */
+            void setPosition(float _x, float _y, float _z);
 
             /**
             * Set if the object is active or not.
@@ -77,11 +88,14 @@ namespace hamur
             */
 		    void setInteraction(bool _interaction);
 
+            void setSprite(string _path);
+
 	    protected:
 		    string name;      /**< Name of the object. */
 		    HamurVec3 pos;    /**< Position of the object. */
 		    bool active;      /**< Object is active or not. */
 		    bool interaction; /**< Object has interaction or not. */
+            int spriteID;     /**< Sprite ID of the game object. */
 
 	    private:
 	};
