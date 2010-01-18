@@ -37,11 +37,4 @@ namespace hamur
 
 		return true;
 	}
-
-
-	// Checks rectangular collision of 2 textures with their names
-	bool HamurGP::checkCollision2D(const string &firstTexName, const string &secondTexName)
-	{
-		return checkCollision2D(HAMURTEXMR->getTexture(firstTexName), HAMURTEXMR->getTexture(secondTexName));
-	}
 }

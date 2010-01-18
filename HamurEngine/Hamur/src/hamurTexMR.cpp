@@ -11,7 +11,7 @@ namespace hamur
 	// Deletes all textures in the map container
 	HamurTexMR::~HamurTexMR()
 	{
-		map<string, HamurTex*>::iterator iter;
+		map<unsigned int, HamurTex*>::iterator iter;
 
 		for(iter = textureMap.begin(); iter != textureMap.end(); iter++)
 		{
@@ -22,12 +22,11 @@ namespace hamur
 
 
 	// Get texture from "map" container according to given texture name
-	HamurTex* HamurTexMR::getTexture(const string& strTextName)
+	HamurTex* HamurTexMR::getTexture(unsigned int textureID)
 	{
 		//Look in the map if the texture is already loaded.
-		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
+		map<unsigned int, HamurTex*>::iterator iter = textureMap.find(textureID);
 
-		
 		if(iter != textureMap.end())
 			return iter->second;
 
@@ -38,42 +37,54 @@ namespace hamur
 
 	// Add texture into "map" container with texture name index from image file.
 	// If the texture is already loaded, it doesn't add another copy
-	void HamurTexMR::addTexture(const string& strFileName, const string& strTextName)
+	unsigned int HamurTexMR::addTexture(const string& filePath)
 	{
+        // Generate textureID according to hash function
+        unsigned int textureID = HamurHash::hashFunction(filePath);
+
 		// Look in the map if the texture is already loaded.
-		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
+		map<unsigned int, HamurTex*>::iterator iter = textureMap.find(textureID);
 		
 		// If not found, then add
 		if(iter == textureMap.end())
 		{
-			HamurTex *newTex = new HamurTex(strFileName, strTextName);
-			textureMap[strTextName] = newTex;
+			HamurTex *newTex = new HamurTex(filePath);
+			textureMap[textureID] = newTex;
+            return textureID;
 		}
+
+        return 0;
 	}
 
 
 	// Add texture into "map" container with texture name index from SDL surface.
 	// If the texture is already loaded, it doesn't add another copy
-	void HamurTexMR::addTexture(const SDL_Surface *newSurface, const string& strTextName)
+	unsigned int HamurTexMR::addTexture(const SDL_Surface *newSurface, const string &strName)
 	{
+        // Generate textureID according to hash function
+        unsigned int textureID = HamurHash::hashFunction(strName);
+
 		// Look in the map if the texture is already loaded.
-		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
+		map<unsigned int, HamurTex*>::iterator iter = textureMap.find(textureID);
 		
 		// If not found, then add
 		if(iter == textureMap.end())
 		{
-			HamurTex *newTex = new HamurTex(newSurface, strTextName);
-			textureMap[strTextName] = newTex;
+			HamurTex *newTex = new HamurTex(newSurface);
+			textureMap[textureID] = newTex;
+            return textureID;
 		}
+
+        return 0;
 	}
 
 
 	// Deletes texture according to given texture name. 
-	bool HamurTexMR::deleteTexture(const string& strTextName)
+	bool HamurTexMR::deleteTexture(unsigned int textureID)
 	{
 		// Get texture from the map
 		bool bFound = false;
-		map<string, HamurTex*>::iterator iter = textureMap.find(strTextName);
+		map<unsigned int, HamurTex*>::iterator iter = textureMap.find(textureID);
 
 		if(iter != textureMap.end())
 		{
@@ -91,18 +102,18 @@ namespace hamur
 
 
 	// Blits image onto screen
-	void HamurTexMR::blitTexture(const string &textureName, float x, float y, float z)
+	void HamurTexMR::blitTexture(unsigned int textureID, float x, float y, float z)
 	{
-		HamurTex *texture = getTexture(textureName);
+		HamurTex *texture = getTexture(textureID);
 
 		if(texture == 0)
 		{
-			HAMURLOG->write_log("Can't find texture: " + textureName);
+            HAMURLOG->write_log("Can't find texture: " + textureID);
 			exit(1);
 		}
 
 		texture->setAllCoord(x, y, z); // Update texture coordinates
-		glBindTexture(GL_TEXTURE_2D, texture->getTextureID()); // Bind texture
+		glBindTexture(GL_TEXTURE_2D, texture->getGLtextureID()); // Bind texture
 
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);
@@ -114,13 +125,13 @@ namespace hamur
 
 
 	// Blits image onto screen - without coordinates
-	void HamurTexMR::blitTexture(const string &textureName)
+	void HamurTexMR::blitTexture(unsigned int textureID)
 	{
-		HamurTex *texture = getTexture(textureName);
+		HamurTex *texture = getTexture(textureID);
 
 		if(texture == 0)
 		{
-			HAMURLOG->write_log("Can't find texture: " + textureName);
+			HAMURLOG->write_log("Can't find texture: " + textureID);
 			exit(1);
 		}
 
@@ -129,7 +140,7 @@ namespace hamur
 		float y = texture->getCorY();
 		float z = texture->getCorZ();
 
-		glBindTexture(GL_TEXTURE_2D, texture->getTextureID()); // Bind texture
+		glBindTexture(GL_TEXTURE_2D, texture->getGLtextureID()); // Bind texture
 
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);

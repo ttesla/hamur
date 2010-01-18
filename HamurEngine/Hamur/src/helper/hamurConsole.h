@@ -25,11 +25,11 @@ namespace hamur
                 return hamurConsole;
             }
 
-            HamurConsole HamurConsole::operator<<(int input);
-            HamurConsole HamurConsole::operator<<(float input);
-            HamurConsole HamurConsole::operator<<(double input);
-            HamurConsole HamurConsole::operator<<(char input);
-            HamurConsole HamurConsole::operator<<(const string &input);
+            HamurConsole operator<<(int input);
+            HamurConsole operator<<(float input);
+            HamurConsole operator<<(double input);
+            HamurConsole operator<<(char input);
+            HamurConsole operator<<(const string &input);
 			
 		private:
             HamurConsole() {};
