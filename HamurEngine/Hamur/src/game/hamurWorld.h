@@ -18,6 +18,8 @@ namespace hamur
 
             friend Singleton<HamurWorld>;
 
+            HamurWorld();
+
             bool addObject(HamurObject* _newObject);
             bool removeObject(HamurObject* _givenObject);
             bool hasObject(const string &_name);

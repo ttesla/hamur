@@ -3,6 +3,12 @@
 
 namespace hamur
 {
+
+    HamurWorld::HamurWorld()
+    {
+        HAMURLOG->writeInitLog("HamurWorld");
+    }
+
     bool HamurWorld::addObject(HamurObject *_newObject)
     {
         // Look in the map if the object is already added. If not found, then add.
