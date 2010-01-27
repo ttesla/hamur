@@ -20,7 +20,9 @@ HAMURLOG:
 OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
 - Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
 - + overloading denencek
-
+- Error olan yerleri belirtmek için Error! : <...>   kullan
+- Hamur string desteði ekle
+- Testleri yap
 
 HAMURGL
 - Kitaptan baka baka yaz

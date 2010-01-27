@@ -3,14 +3,10 @@
 namespace hamur
 {
 	// HamurLog constructor
-	HamurLog::HamurLog() : logFileName("hamur.log")
+	HamurLog::HamurLog()
 	{
-		// To clear out the log file.
-		logFile.open(logFileName.c_str(), ios::out);
-		logFile.close();
-
         // Open for writing and append
-        logFile.open(logFileName.c_str(), ios::out | ios::app);
+        logFile.openForWrite("hamur.log");
 	}
 
 
@@ -24,21 +20,21 @@ namespace hamur
 	// Write given text to log file
 	void HamurLog::write_log(const string &log)
 	{	
-		logFile << log << endl;
+		logFile.write(log);
 	}
 
 
     // Write given int value to log file
-    void HamurLog::write_log(int logValue)
+    void HamurLog::write_log(int log)
     {
-        logFile << logValue << endl;
+        logFile.write(log);
     }
 
 
     // Write given float value to log file
-    void HamurLog::write_log(float logValue)
+    void HamurLog::write_log(float log)
     {
-        logFile << logValue << endl;
+        logFile.write(log);
     }
 
 
@@ -51,23 +47,20 @@ namespace hamur
 		for(int i = 0; i < dotsToAdd; i++)
 			log.append(".");
 
-		log.append("OK!");
-	
-		write_log(log);
+		log.append("OK!\n");
+        logFile.write(log);
 	}
 
 
     void HamurLog::closeLogFile()
     {
-        if(logFile.is_open())
-            logFile.close();
+        logFile.close();
     }
 
 
     void HamurLog::clearLogFile()
     {
-        // To clear out the log file.
-        logFile.open(logFileName.c_str(), ios::out);
-        logFile.close();
+       //logFile.clearFile();
+       // TODO: fix here
     }
 }

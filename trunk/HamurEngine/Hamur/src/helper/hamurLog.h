@@ -2,15 +2,14 @@
 #define HAMURLOG_H
 
 #include "../hamurSingleton.h"
+#include "hamurFile.h"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 
+
 using std::string;
-using std::ofstream;
-using std::ios;
-using std::endl;
+
 
 
 namespace hamur
@@ -29,9 +28,6 @@ namespace hamur
             void write_log(int logValue);
             void write_log(float logValue);
 
-            void write_logln(const string &log);
-            void write_logln(int logValue);
-            void write_logln(float logValue);
 
 			// Write initialization messages
 			void writeInitLog(string log);
@@ -42,9 +38,7 @@ namespace hamur
 		protected:
 			
 		private:
-           
-            string logFileName;
-			ofstream logFile; // Log file where all the logs will be written
+            HamurFile logFile;
 	};
     
 }
