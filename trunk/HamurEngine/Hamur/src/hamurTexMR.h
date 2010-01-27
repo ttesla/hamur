@@ -25,7 +25,7 @@ namespace hamur
 
 			HamurTex* getTexture(unsigned int textureID); //Get texture
 			bool deleteTexture(unsigned int textureID);   //Delete texture
-			unsigned int addTexture(const string& strFileName); //Add texture from image file
+			unsigned int addTexture(const string& filePath); //Add texture from image file
 			unsigned int addTexture(const SDL_Surface *newSurface, const string &strName); //Add texture from SDL surface
 			void blitTexture(unsigned int textureID, float x, float y, float z);   // Blits image onto screen
 			void blitTexture(unsigned int textureID); // Blits image onto screen - without coordinates
