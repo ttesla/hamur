@@ -1,14 +1,16 @@
 #ifndef HAMUR_FILE_H
 #define HAMUR_FILE_H
 
+#include "../hamurDefinitions.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using std::string;
 using std::ofstream;
+using std::ifstream;
 using std::ios;
-using std::endl;
 
 
 namespace hamur
@@ -16,27 +18,37 @@ namespace hamur
     /**
      * Handles file operations.
      * File writing and reading.
+     * Can handle 1 file at a time.
      */
     class HamurFile
 	{
 		public:
-			 HamurFile();
+            HamurFile();
 			~HamurFile();
 
-			void write(const string &input);
+            bool openForWrite(const string &fileName);
+            bool openForAppend(const string &fileName);
+            bool openForRead(const string &fileName);
+            void close();
+
+            // Write functions
+            void write(const string &input);
             void write(int input);
+            void write(unsigned int input);
+            void write(char input);  
             void write(float input);
             void write(double input);
 
-            void openFile();
-            void closeFile();
+            // Read functions
+            int readInt();
+            float readFloat();
+            char readChar();
+            string readString();
 
-		protected:
-			
-		private:
-           
-            string fileName;
-			ofstream file; 
+
+        private:
+            ofstream outputFile; 
+            ifstream inputFile;
 	};
     
 }
