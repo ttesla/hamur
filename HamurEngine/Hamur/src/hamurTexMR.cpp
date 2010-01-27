@@ -50,10 +50,9 @@ namespace hamur
 		{
 			HamurTex *newTex = new HamurTex(filePath);
 			textureMap[textureID] = newTex;
-            return textureID;
 		}
 
-        return 0;
+        return textureID;
 	}
 
 
@@ -72,10 +71,9 @@ namespace hamur
 		{
 			HamurTex *newTex = new HamurTex(newSurface);
 			textureMap[textureID] = newTex;
-            return textureID;
 		}
 
-        return 0;
+        return textureID;
 	}
 
 
@@ -108,7 +106,7 @@ namespace hamur
 
 		if(texture == 0)
 		{
-            HAMURLOG->write_log("Can't find texture: " + textureID);
+            HAMURLOG->write_log("Can't find texture: ");
 			exit(1);
 		}
 
