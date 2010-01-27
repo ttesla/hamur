@@ -27,6 +27,9 @@ namespace hamur
         // If found, delete it and return success.
         if(iter != worldObjects.end())
         {
+            if(iter->second)
+                delete iter->second;
+
             worldObjects.erase(iter);
             return true;
         }
