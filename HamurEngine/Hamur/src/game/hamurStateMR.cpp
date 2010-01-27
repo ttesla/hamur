@@ -36,18 +36,21 @@ namespace hamur
     // If it is successful, return true else false.
 	bool HamurStateMR::removeState(const string &_stateName)
 	{
-		// Get the state from the map.
-		bool bFound = false;
 		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
 
 		if(iter != stateList.end())
 		{
-			// If it was found, delete it then. 
-			bFound = true;
+
+            // If it was found, delete it then. 
+            if(iter->second)
+                delete iter->second;
+			
 			stateList.erase(iter);
+
+            return true;
 		}
 
-		return bFound;
+		return false;
 	}
 
 

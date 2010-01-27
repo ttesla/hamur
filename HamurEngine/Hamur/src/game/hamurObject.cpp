@@ -13,6 +13,11 @@ namespace hamur
 
         HAMURWORLD->addObject(this);
     }
+
+    void HamurObject::draw()
+    {
+        HAMURTEXMR->blitTexture(spriteID, pos.x, pos.y, pos.z);
+    }
     
 
     // GETTERS & SETTERS
@@ -20,6 +25,7 @@ namespace hamur
     HamurVec3 HamurObject::getPosition() { return pos; }
     bool HamurObject::isActive()        { return active; }
     bool HamurObject::hasInteraction()   { return interaction; }
+    unsigned HamurObject::getSpriteID() { return spriteID; }
     void HamurObject::setName(const string& _name)       { name = _name; }
 
 
@@ -41,4 +47,9 @@ namespace hamur
 
     void HamurObject::setActive(bool _active)            { active = _active; }
     void HamurObject::setInteraction(bool _interaction)  { interaction = _interaction; }
+
+    void HamurObject::setSprite(string _path)
+    {
+        spriteID = HAMURTEXMR->addTexture(_path);
+    }
 }

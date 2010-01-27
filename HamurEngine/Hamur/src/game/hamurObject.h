@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include "../hamurDefinitions.h"
+#include "../hamurTexMR.h"
 
 using std::vector;
 using std::string;
@@ -33,7 +34,7 @@ namespace hamur
             * Pure virtual draw function of the object. 
             * All drawings should be written here.
             */
-            virtual void draw() {};
+            virtual void draw();
 
 		   
             // GETTER & SETTERS
@@ -51,7 +52,7 @@ namespace hamur
 		    bool hasInteraction();
 
             /** @return Sprite ID of the object */
-            int getSpriteID();
+            unsigned int getSpriteID();
 		   
             /** 
             * Set name of the object. 
@@ -98,7 +99,7 @@ namespace hamur
 		    HamurVec3 pos;    /**< Position of the object. */
 		    bool active;      /**< Object is active or not. */
 		    bool interaction; /**< Object has interaction or not. */
-            int spriteID;     /**< Sprite ID of the game object. */
+            unsigned int spriteID;     /**< Sprite ID of the game object. */
 
 	    private:
 	};
