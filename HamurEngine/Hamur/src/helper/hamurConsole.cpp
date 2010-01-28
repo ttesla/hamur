@@ -9,7 +9,13 @@ namespace hamur
     {
         cout << input;
         return *this;
-    } 
+    }
+
+    HamurConsole HamurConsole::operator<<(unsigned int input)
+    {
+        cout << input;
+        return *this;
+    }
 
     HamurConsole HamurConsole::operator<<(float input)
     {
