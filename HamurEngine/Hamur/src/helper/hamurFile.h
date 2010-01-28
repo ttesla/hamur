@@ -1,8 +1,6 @@
 #ifndef HAMUR_FILE_H
 #define HAMUR_FILE_H
 
-#include "../hamurDefinitions.h"
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,6 +13,9 @@ using std::ios;
 
 namespace hamur
 {
+    class HamurObject;
+    class HamurString;
+
     /**
      * Handles file operations.
      * File writing and reading.
@@ -38,6 +39,9 @@ namespace hamur
             void write(char input);  
             void write(float input);
             void write(double input);
+            void write(HamurObject &input);
+            void write(HamurObject *input);
+            void write(HamurString &input);
 
             // Read functions
             int readInt();

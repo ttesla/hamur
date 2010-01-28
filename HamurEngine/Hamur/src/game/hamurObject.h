@@ -99,10 +99,28 @@ namespace hamur
 		    HamurVec3 pos;    /**< Position of the object. */
 		    bool active;      /**< Object is active or not. */
 		    bool interaction; /**< Object has interaction or not. */
-            unsigned int spriteID;     /**< Sprite ID of the game object. */
+            unsigned int spriteID; /**< Sprite ID of the game object. */
 
 	    private:
 	};
+
+    /** Writes the Object to the stream. (pointer version) */
+    inline std::ostream &operator<<(std::ostream &os, HamurObject *object)
+    {
+        os << object->getName() << ", " << object->getPosition() << " Active:" << object->isActive() << " Inter.:" 
+           << object->hasInteraction() << " SpriteID:" << object->getSpriteID();
+        
+        return os;
+    }
+
+    /** Writes the Object to the stream. (reference version) */
+    inline std::ostream &operator<<(std::ostream &os, HamurObject &object)
+    {
+        os << object.getName() << ", " << object.getPosition() << " Active:" << object.isActive() << " Inter.:" 
+            << object.hasInteraction() << " SpriteID:" << object.getSpriteID();
+
+        return os;
+    }
 }
 
 #endif // HAMUR_OBJECT

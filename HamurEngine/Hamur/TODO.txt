@@ -28,6 +28,9 @@ HAMURGL
 - Kitaptan baka baka yaz
 
 
+hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin. 
+
+
 
 
 TEST:

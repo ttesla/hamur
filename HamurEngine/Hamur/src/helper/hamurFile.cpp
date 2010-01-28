@@ -1,4 +1,7 @@
 #include "hamurFile.h"
+#include "hamurString.h"
+#include "../game/hamurObject.h"
+
 
 namespace hamur
 {
@@ -84,6 +87,21 @@ namespace hamur
     }
 
     void HamurFile::write(double input)
+    {
+        outputFile << input;
+    }
+
+    void HamurFile::write(HamurObject &input)
+    {
+        outputFile << input;
+    }
+
+    void HamurFile::write(HamurObject *input)
+    {
+        outputFile << input;
+    }
+
+    void HamurFile::write(HamurString &input)
     {
         outputFile << input;
     }

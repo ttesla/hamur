@@ -4,12 +4,9 @@
 #include "../hamurSingleton.h"
 #include "hamurFile.h"
 
-#include <iostream>
 #include <string>
 
-
 using std::string;
-
 
 
 namespace hamur
@@ -25,8 +22,26 @@ namespace hamur
 			~HamurLog();
 
 			void write_log(const string &log);
-            void write_log(int logValue);
-            void write_log(float logValue);
+            void write_log(int log);
+            void write_log(float log);
+
+            void writeLog(const string &input);
+            void writeLog(int input);
+            void writeLog(unsigned int input); 
+            void writeLog(float input);
+            void writeLog(double input);
+            void writeLog(HamurObject &input);
+            void writeLog(HamurObject *input);
+            void writeLog(HamurString &input);
+
+            void writeLogln(const string &input);
+            void writeLogln(int input);
+            void writeLogln(unsigned int input);
+            void writeLogln(float input);
+            void writeLogln(double input);
+            void writeLogln(HamurObject &input);
+            void writeLogln(HamurObject *input);
+            void writeLogln(HamurString &input);
 
 
 			// Write initialization messages
@@ -38,7 +53,9 @@ namespace hamur
 		protected:
 			
 		private:
+
             HamurFile logFile;
+            const string logFileName;
 	};
     
 }
