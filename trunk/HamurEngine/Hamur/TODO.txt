@@ -1,40 +1,39 @@
 TODO:
------------
+-------------------------------------------------------
 OK! - GL lerler ilgili library sorunlarý çözülecek.
 OK! - Singleton eklenecek, Singleton sorunu fried class ile çözüldü.
 OK! - Doxygene uygun hale getirilecek.
 - Collision Detectionlar geliþtirilecek - Box2D bu iþi halledecek.
 - Kitaptan çalýþmalar yapýlacak.
 - Animasyon sistemi geliþtirilecek.
-- State machine tamamlancak
+OK! - State machine tamamlancak
 - Iskelet olustur ve test uygulamasi yap
 - Game Class olusturulcak ve gerekli ayarlar yapilcak.
 - Colorkey, Alpha sorununu çöz
 - hamurlog, hamurconsole, hamurfile, hamur helper la alakali siniflara doxgygen comment yazilcak
+- hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
+- Singletonlarýn hepsini kontrol et. 
+
 
 HAMURFONT:
-- Hamur Font geliþtirilecek.
+-----------
+- Hamur Font geliþtirilecek, düzeltilcek.
 
 HAMURLOG:
-- Hamur log duzenle ve kullanilan yerleri duzelt.
+-----------
+OK! - Hamur log duzenle ve kullanilan yerleri duzelt.
 OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
-- Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
-- + overloading denencek
-- Error olan yerleri belirtmek için Error! : <...>   kullan
-- Hamur string desteði ekle
-- Testleri yap
-
-HAMURGL
-- Kitaptan baka baka yaz
-
-
-hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin. 
+OK! - Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
+OK! - + overloading denencek
+OK! - Error olan yerleri belirtmek için Error!: <...>   kullan
+OK! - Hamur string desteði ekle
+OK! - Testleri yap
 
 
 
 
 TEST:
----------
+-------------------------------------------------------
 - GL lerler ilgili library sorunlarý çözülecek.
 - Singleton eklenecek.
 - Doxygene uygun hale getirilecek.

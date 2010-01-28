@@ -16,27 +16,6 @@ namespace hamur
         logFile.close();
 	}
 
-
-	// Write given text to log file
-	void HamurLog::write_log(const string &log)
-	{	
-		logFile.write(log);
-	}
-
-
-    // Write given int value to log file
-    void HamurLog::write_log(int log)
-    {
-        logFile.write(log);
-    }
-
-
-    // Write given float value to log file
-    void HamurLog::write_log(float log)
-    {
-        logFile.write(log);
-    }
-
     void HamurLog::writeLog(const string &input)
     {
         logFile.write(input);

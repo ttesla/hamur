@@ -32,12 +32,12 @@ namespace hamur
 		if (!stream)
 		{
 			string tempStr = FMOD_ErrorString(FSOUND_GetError());
-			HAMURLOG->write_log(tempStr + ": " + name);
+            HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name);
 			return false;
 		}
 		else
 		{
-			HAMURLOG->write_log("Stream loaded: " + name);
+			HAMURLOG->writeLogln("Stream loaded: " + name);
 			return true;
 		}
 	}
@@ -48,7 +48,7 @@ namespace hamur
 	{
 		if (!stream)
 		{
-			 HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			 return false;
 		}
 		else
@@ -64,7 +64,7 @@ namespace hamur
 	{
 		if (!stream)
 		{
-			 HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			 return false;
 		}
 		else

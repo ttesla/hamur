@@ -27,7 +27,7 @@ namespace hamur
 		// Initialize SDL
 		if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
-			HAMURLOG->write_log("Can't initialize SDL!");
+            HAMURLOG->writeLogln("Error!: Can't initialize SDL");
 			return false; //If can't init, return false 
 		}
 
@@ -37,7 +37,7 @@ namespace hamur
 		// Create Window
 		if(SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, flags) == NULL)
 		{
-			HAMURLOG->write_log("Can't set video mode!"); 
+            HAMURLOG->writeLogln("Error!: Can't set video mode"); 
 			return false;
 		}
 	    
@@ -84,7 +84,7 @@ namespace hamur
 		// If there was any errors
 		if(glGetError() != GL_NO_ERROR)
 		{
-			HAMURLOG->write_log("Can't initialize OpenGL");
+            HAMURLOG->writeLogln("Error!: Can't initialize OpenGL");
 			return false;    
 		}
 	    
