@@ -21,9 +21,9 @@ namespace hamur
 			 HamurLog();
 			~HamurLog();
 
-			void write_log(const string &log);
-            void write_log(int log);
-            void write_log(float log);
+			//void write_log(const string &log);
+            //void write_log(int log);
+            //void write_log(float log);
 
             void writeLog(const string &input);
             void writeLog(int input);

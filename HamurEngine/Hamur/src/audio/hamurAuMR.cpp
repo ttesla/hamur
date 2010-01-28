@@ -56,7 +56,7 @@ namespace hamur
 	{
 		if(!FSOUND_Init(mixrate, maxsoftwarechannels, flags))
 		{
-			HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			return false;
 		}
 		else

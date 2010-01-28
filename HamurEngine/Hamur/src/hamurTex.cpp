@@ -32,7 +32,7 @@ namespace hamur
 
 		if(loadedImage == 0)
 		{
-			HAMURLOG->write_log("Can't load texture: " + filePath);
+            HAMURLOG->writeLogln("Error!: Can't load texture: " + filePath);
 			return false;
 		}
 		
@@ -67,8 +67,8 @@ namespace hamur
 
 		// Free SDL_surfaces
 		SDL_FreeSurface(loadedImage);
+        HAMURLOG->writeLogln("Texture loaded: " + filePath);
 
-		HAMURLOG->write_log("Texture loaded: " + filePath);
 		return true;
 	}
 
@@ -80,7 +80,7 @@ namespace hamur
 
 		if(newSurface == 0)
 		{
-			HAMURLOG->write_log("Can't load texture from surface.");
+            HAMURLOG->writeLogln("Error!: Can't load texture from surface.");
 			return false;
 		}
 

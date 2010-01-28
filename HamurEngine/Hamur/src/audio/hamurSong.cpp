@@ -30,12 +30,12 @@ namespace hamur
 		if (!mod)
 		{
 			string tempStr = FMOD_ErrorString(FSOUND_GetError());
-			HAMURLOG->write_log(tempStr + ": " + name);
+			HAMURLOG->writeLogln(tempStr + ": " + name);
 			return false;
 		}
 		else
 		{
-			HAMURLOG->write_log("Song loaded: " + name);
+			HAMURLOG->writeLogln("Song loaded: " + name);
 			return true;
 		}
 	}
@@ -46,7 +46,7 @@ namespace hamur
 	{
 		if (!mod)
 		{
-			 HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			 return false;
 		}
 		else
@@ -63,7 +63,7 @@ namespace hamur
 	{
 		if (!mod)
 		{
-			 HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			 return false;
 		}
 		else

@@ -106,7 +106,8 @@ namespace hamur
 
 		if(texture == 0)
 		{
-            HAMURLOG->write_log("Can't find texture: ");
+            HAMURLOG->writeLog("Error!: Can't find texture: ");
+            HAMURLOG->writeLogln(textureID);
 			exit(1);
 		}
 
@@ -129,7 +130,8 @@ namespace hamur
 
 		if(texture == 0)
 		{
-			HAMURLOG->write_log("Can't find texture: " + textureID);
+            HAMURLOG->writeLog("Error!: Can't find texture: ");
+            HAMURLOG->writeLogln(textureID);
 			exit(1);
 		}
 

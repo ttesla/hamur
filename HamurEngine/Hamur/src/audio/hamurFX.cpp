@@ -32,12 +32,12 @@ namespace hamur
 		if (!effect)
 		{
 			string tempStr = FMOD_ErrorString(FSOUND_GetError());
-			HAMURLOG->write_log(tempStr + ": " + name);
+            HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name);
 			return false;
 		}
 		else
 		{
-			HAMURLOG->write_log("FX loaded: " + name);
+			HAMURLOG->writeLogln("FX loaded: " + name);
 			return true;
 		}
 	}
@@ -48,7 +48,7 @@ namespace hamur
 	{
 		if (!effect)
 		{
-			 HAMURLOG->write_log(FMOD_ErrorString(FSOUND_GetError()));
+			 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
 			 return false;
 		}
 		else
