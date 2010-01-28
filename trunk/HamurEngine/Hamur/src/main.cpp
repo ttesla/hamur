@@ -19,18 +19,21 @@
 #include "hamurDefinitions.h"
 #include "game/hamurWorld.h"
 #include "game/hamurObject.h"
+#include "helper/hamurString.h"
+#include <sstream>
 
 using namespace hamur;
+using std::stringstream;
 
 
 // GLOBALS -- for test usage only.
 float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
+float angle1 = 0, angle2 = 0;
 
 // Some test functions
-void testDisplay();
+void testDisplay(unsigned int, unsigned int);
 void testSimulation();
 void testGameObjects();
-
 
 int main( int argc, char *argv[] )
 {
@@ -49,14 +52,17 @@ int main( int argc, char *argv[] )
 	// Init all other Hamur subsystems...
 	HAMURTEXMR->getInstance();
 	HAMURAUMR->init();
-	HAMURFONT->getInstance();
+	//HAMURFONT->getInstance();
     HAMUREVENT->getInstance();
 	HAMURGP->getInstance();
     HAMURWORLD->getInstance();
 
     
 
-    HAMURCONSOLE << "Testing hamur console\n";    
+    HAMURCONSOLE << "Testing hamur console\n";  
+
+    unsigned int firstTex = HAMURTEXMR->addTexture("data/daghan.png");
+    unsigned int secondTex = HAMURTEXMR->addTexture("data/omer.png");
 
 	// Main while
 	while(! HAMUREVENT->isQuitPerformed())
@@ -67,9 +73,9 @@ int main( int argc, char *argv[] )
 		if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) break; // If ESC is pressed break from while()
 
 	    // TESTS
-		testDisplay();
+		testDisplay(firstTex, secondTex);
 		testSimulation();
-        testGameObjects();
+        //testGameObjects();
 	    
 	    //Update screen
 	    SDL_GL_SwapBuffers();   
@@ -82,17 +88,37 @@ int main( int argc, char *argv[] )
 }
 
 // Test functions...
-void testDisplay()
-{   
-	//Clear the screen & reset identity matrix
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	
-	glTranslatef(0.0f, 0.0f, -1.0f);
+void testDisplay(unsigned int first, unsigned int second)
+{
 
-	glRotatef(x/10, 1.0f, 0.0f, 0.0f); // Rotate On The X Axis
-    glRotatef(y/10, 0.0f, 1.0f, 0.0f); // Rotate On The Y Axis
-    glRotatef(z/10, 0.0f, 0.0f, 1.0f); // Rotate On The Z Axis
+    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))	angle1 += 0.1;
+    if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    angle1 -= 0.1;
+
+    HAMURCONSOLE << angle1 << "\n";
+    //if(HAMUREVENT->isKeyPressed(SDLK_UP))		angle2 += 0.1;
+    //if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.1;*/
+
+    //Clear the screen & reset identity matrix
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+
+    glTranslatef(0.0f, 0.0f, -1.0f);
+
+    glMatrixMode(GL_TEXTURE);
+    glLoadIdentity();
+    glTranslatef(0.5,0.5,0.0);
+    glRotatef(angle1, 0.0, 0.0, 1.0);
+    glTranslatef(-0.5,-0.5,0.0);
+
+    
+
+	//glRotatef(x/10, 1.0f, 0.0f, 0.0f); // Rotate On The X Axis
+    //glRotatef(y/10, 0.0f, 1.0f, 0.0f); // Rotate On The Y Axis
+    //glRotatef(z/10, 0.0f, 0.0f, 1.0f); // Rotate On The Z Axis
+
+    HAMURTEXMR->blitTexture(first, 0, 0, 0);
+
+    glMatrixMode(GL_MODELVIEW);
 
 	// Wireframe - May be handy
 	//glPolygonMode(GL_FRONT, GL_LINE);
@@ -128,14 +154,50 @@ void testSimulation()
 void testGameObjects()
 {
     HamurObject* myFirstObject = new HamurObject("Araba");
-    HamurObject* secondObject = new HamurObject("Player");
+    //HamurObject* secondObject = new HamurObject("Player");
 
-    myFirstObject->setPosition(10,10,10);
-    secondObject->setPosition(5,5,5);
+    myFirstObject->setPosition(0, 0, 0);
+    //secondObject->setPosition(5, 5, 5);
 
+    myFirstObject->setSprite("data/daghan.png");
+    //HAMURLOG->write_log(myFirstObject->getSpriteID());
+    myFirstObject->draw();
+
+    stringstream ss;
+    stringstream ss2;
+    stringstream ss3;
+    /*
+
+    ss << "First Object Name: " << HAMURWORLD->getObject("Player")->getName() << ", Position: "  <<
+        HAMURWORLD->getObject("Player")->getPosition();
     cout << "First Object Name: " << HAMURWORLD->getObject("Player")->getName() << " Position:  "  <<
         HAMURWORLD->getObject("Player")->getPosition() << endl;
 
+    ss2 << "Second Object Name: " << HAMURWORLD->getObject("Araba")->getName() << " Position: "  <<
+        HAMURWORLD->getObject("Araba")->getPosition();
+
     cout << "Second Object Name: " << HAMURWORLD->getObject("Araba")->getName() << " Position:  "  <<
         HAMURWORLD->getObject("Araba")->getPosition() << endl;
+        */
+
+
+    /*
+    HamurString mystring;
+
+    mystring << "Atisma degeri :" << 10 << 30.6;
+
+    HAMURFONT->drawText(mystring, -0.3f, -0.07f, 0);
+
+    mystring = 10.7;
+    mystring.clear();
+
+
+    HAMURFONT->drawText(mystring, -0.3f, -0.10f, 0);
+
+    */
+
+   
+    //HAMURFONT->drawText(ss3.str, -0.4f, 0.0f, 0);
+
+    //cout << ss2.str() << "hoppa";
 }
