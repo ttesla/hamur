@@ -1,7 +1,5 @@
 #include "hamurString.h"
-#include <iostream>
-
-using std::cout;
+#include "../game/hamurObject.h"
 
 namespace hamur
 {
@@ -11,7 +9,6 @@ namespace hamur
         ss << input;
         customString.append(ss.str());
 
-        cout << "sonuc: " << customString;
         return *this;
     }
 
@@ -34,6 +31,24 @@ namespace hamur
     }
 
     HamurString& HamurString::operator<<(const string& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString.append(ss.str());
+
+        return *this;
+    }
+
+    HamurString& HamurString::operator<<(HamurObject& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString.append(ss.str());
+
+        return *this;
+    }
+
+    HamurString& HamurString::operator<<(HamurObject* input)
     {
         stringstream ss;
         ss << input;
@@ -78,6 +93,24 @@ namespace hamur
         return *this;
     }
 
+    HamurString HamurString::operator=(HamurObject& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString = ss.str();
+
+        return *this;
+    }
+
+    HamurString HamurString::operator=(HamurObject* input)
+    {
+        stringstream ss;
+        ss << input;
+        customString = ss.str();
+
+        return *this;
+    }
+
     string HamurString::getString()
     {
         return customString;
@@ -87,6 +120,5 @@ namespace hamur
     {
         customString.clear();
     }
-
 
 }

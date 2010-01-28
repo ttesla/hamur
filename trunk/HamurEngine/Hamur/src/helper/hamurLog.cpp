@@ -3,10 +3,10 @@
 namespace hamur
 {
 	// HamurLog constructor
-	HamurLog::HamurLog()
+    HamurLog::HamurLog() : logFileName("hamur.log")
 	{
         // Open for writing and append
-        logFile.openForWrite("hamur.log");
+        logFile.openForWrite(logFileName);
 	}
 
 
@@ -37,6 +37,97 @@ namespace hamur
         logFile.write(log);
     }
 
+    void HamurLog::writeLog(const string &input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(int input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(unsigned int input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(float input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(double input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurObject &input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurObject *input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurString &input)
+    {
+        logFile.write(input);
+    }
+
+
+    // LN versions... 
+
+    void HamurLog::writeLogln(const string &input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(int input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(unsigned int input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(float input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(double input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(HamurObject &input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(HamurObject *input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
+    void HamurLog::writeLogln(HamurString &input)
+    {
+        logFile.write(input);
+        logFile.write("\n");
+    }
+
 
 	// Write initialization message text to log file
 	// Makes some adjustments for a nifty printout.
@@ -60,7 +151,7 @@ namespace hamur
 
     void HamurLog::clearLogFile()
     {
-       //logFile.clearFile();
-       // TODO: fix here
+        logFile.close();
+        logFile.openForWrite(logFileName);
     }
 }

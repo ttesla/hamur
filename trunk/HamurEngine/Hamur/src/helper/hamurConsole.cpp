@@ -1,4 +1,7 @@
 #include "hamurConsole.h"
+#include "../game/hamurObject.h"
+#include "hamurString.h"
+
 
 namespace hamur
 {
@@ -31,4 +34,22 @@ namespace hamur
         cout << input;
         return *this;
     } 
+
+    HamurConsole HamurConsole::operator<<(HamurObject &input)
+    {
+        cout << input;
+        return *this;
+    }
+
+    HamurConsole HamurConsole::operator<<(HamurObject *input)
+    {
+        cout << input;
+        return *this;
+    }
+
+    HamurConsole HamurConsole::operator<<(HamurString &input)
+    {
+        cout << input;
+        return *this;
+    }
 }
