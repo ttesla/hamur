@@ -29,6 +29,7 @@ namespace hamur
             }
 
             HamurConsole operator<<(int input);
+            HamurConsole operator<<(unsigned int input);
             HamurConsole operator<<(float input);
             HamurConsole operator<<(double input);
             HamurConsole operator<<(char input);
