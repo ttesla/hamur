@@ -18,7 +18,7 @@ namespace hamur
 
             friend Singleton<HamurWorld>;
 
-            HamurWorld();
+            
 
             bool addObject(HamurObject* _newObject);
             bool removeObject(HamurObject* _givenObject);
@@ -27,6 +27,7 @@ namespace hamur
             HamurObject* getObject(const string &_objectName);
 
         protected:
+            HamurWorld();
 
         private:
             map<string, HamurObject*> worldObjects;
