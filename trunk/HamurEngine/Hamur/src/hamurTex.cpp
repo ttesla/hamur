@@ -3,14 +3,13 @@
 
 namespace hamur
 {
-	HamurTex::HamurTex(const string &_filePath) 
-	: filePath(_filePath), TEXTURE_RATIO(RATIO)
+	HamurTex::HamurTex(const string &_filePath) : filePath(_filePath)
 	{
 		if(!loadTexture()) exit(1);
 	}
 
 
-	HamurTex::HamurTex(const SDL_Surface *newSurface) : TEXTURE_RATIO(RATIO)
+	HamurTex::HamurTex(const SDL_Surface *newSurface)
 	{
 		if(!loadTexture(newSurface)) exit(1);
 	}

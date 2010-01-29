@@ -13,8 +13,6 @@
 
 using std::string;
 
-const float RATIO = 128.0f; // TEXTURE_RATIO
-
 
 namespace hamur
 {
@@ -52,7 +50,6 @@ namespace hamur
 			float scaledWidth;   // Scaled width of the texture
 			float scaledHeight;  // Scaled height of the texture
 			string filePath;  // File path name of the texture
-			float TEXTURE_RATIO; // Scale ratio of all textures
 			float corX; // X coordinate of the texture
 			float corY; // Y coordinate of the texture
 			float corZ; // Z coordinate of the texture

@@ -361,6 +361,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\helper\hamurVec2.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\helper\hamurVec3.h"
 					>
 				</File>
