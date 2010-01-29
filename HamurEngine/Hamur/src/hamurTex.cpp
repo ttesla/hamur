@@ -115,7 +115,9 @@ namespace hamur
 
 
 	// GETTERS & SETTERS 
-	int HamurTex::getGLtextureID()		{ return textureID[0];	}
+	int HamurTex::getGLtextureID()	    { return textureID[0];	}
+    int HamurTex::getWidth()            { return textureWidth;  }
+    int HamurTex::getHeight()           { return textureHeight; }
 	float HamurTex::getScaledWidth()	{ return scaledWidth;	}
 	float HamurTex::getScaledHeight()	{ return scaledHeight;	}
 	string HamurTex::getFilePath()		{ return filePath;	}

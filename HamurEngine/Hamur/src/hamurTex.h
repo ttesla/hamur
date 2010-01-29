@@ -26,6 +26,8 @@ namespace hamur
 
 			// SETTERS & GETTERS
 			int getGLtextureID();
+            int getWidth();
+            int getHeight();
 			float getScaledWidth();
 			float getScaledHeight();
 			float getVolume();
