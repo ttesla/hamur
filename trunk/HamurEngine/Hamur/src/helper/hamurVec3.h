@@ -3,10 +3,8 @@
 
 #include <cmath>
 #include <iostream>
-#include <sstream>
 
 using std::ostream;
-using std::stringstream;
 
 namespace hamur
 {
