@@ -8,18 +8,8 @@
 	- Omer AKYOL	 <omer.akyol@gmail.com>
 */
 
-#include "hamurGL.h"
-#include "hamurEvent.h"
-#include "hamurTexMR.h"
-#include "hamurGP.h"
-#include "helper/hamurLog.h"
-#include "helper/hamurConsole.h"
-#include "hamurFont.h"
-#include "audio/hamurAuMR.h"
-#include "hamurDefinitions.h"
-#include "game/hamurWorld.h"
-#include "game/hamurObject.h"
-#include "helper/hamurString.h"
+#include "hamur.h"
+
 #include <sstream>
 
 using namespace hamur;
@@ -29,6 +19,7 @@ using std::stringstream;
 // GLOBALS -- for test usage only.
 float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
 float angle1 = 0, angle2 = 0;
+int Z = 0;
 
 // Some test functions
 void testDisplay(unsigned int, unsigned int);
@@ -38,7 +29,7 @@ void testGameObjects();
 int main( int argc, char *argv[] )
 {
     //Initialize SDL
-	if(HAMURGL->initSDL("Hamur II test - 2009", 800, 600, 32, SDL_OPENGL) == false)
+	if(HAMURGL->initSDL("Hamur II test - 2010", 800, 600, 32, SDL_OPENGL) == false)
 	//if(HAMURGL->init_SDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL) == false) 
 		return 1;    
 
@@ -61,7 +52,7 @@ int main( int argc, char *argv[] )
 
     HAMURCONSOLE << "Testing hamur console\n";  
 
-    unsigned int firstTex = HAMURTEXMR->addTexture("data/daghan.png");
+    unsigned int firstTex = HAMURTEXMR->addTexture("data/dot.png");
     unsigned int secondTex = HAMURTEXMR->addTexture("data/omer.png");
 
 	// Main while
@@ -91,24 +82,29 @@ int main( int argc, char *argv[] )
 void testDisplay(unsigned int first, unsigned int second)
 {
 
-    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))	angle1 += 0.1;
-    if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    angle1 -= 0.1;
+    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))	Z += 1;
+    if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    Z -= 1;
+    if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle2 += 0.001f;
+    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.001f;
 
-    HAMURCONSOLE << angle1 << "\n";
     //if(HAMUREVENT->isKeyPressed(SDLK_UP))		angle2 += 0.1;
     //if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.1;*/
 
     //Clear the screen & reset identity matrix
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-
     glTranslatef(0.0f, 0.0f, -1.0f);
 
-    glMatrixMode(GL_TEXTURE);
+    HAMURTEXMR->blitTexture(first, 798, 598, 0);
+    HAMURCONSOLE << "Z :" << Z << "\n";
+  
+    //HAMURCONSOLE << "Angle2: " << screenY << "\n";
+
+  /*  glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
     glTranslatef(0.5,0.5,0.0);
     glRotatef(angle1, 0.0, 0.0, 1.0);
-    glTranslatef(-0.5,-0.5,0.0);
+    glTranslatef(-0.5,-0.5,0.0);*/
 
     
 
@@ -116,9 +112,9 @@ void testDisplay(unsigned int first, unsigned int second)
     //glRotatef(y/10, 0.0f, 1.0f, 0.0f); // Rotate On The Y Axis
     //glRotatef(z/10, 0.0f, 0.0f, 1.0f); // Rotate On The Z Axis
 
-    HAMURTEXMR->blitTexture(first, 0, 0, 0);
+   
 
-    glMatrixMode(GL_MODELVIEW);
+   /* glMatrixMode(GL_MODELVIEW);*/
 
 	// Wireframe - May be handy
 	//glPolygonMode(GL_FRONT, GL_LINE);
