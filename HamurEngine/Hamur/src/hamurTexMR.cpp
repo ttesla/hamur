@@ -2,8 +2,14 @@
 
 namespace hamur
 {
-	HamurTexMR::HamurTexMR()
+    HamurTexMR::HamurTexMR() : openglY(0.414f)
 	{
+        // Calculactions for world - openGL coordinate translations
+        aspectRatio = (float)HAMURGL->getScreenWidth() / (float)HAMURGL->getScreenHeight();
+        openglX = openglY * aspectRatio;
+        pixRatioX = (float)HAMURGL->getScreenWidth()  / (openglX*2);
+        pixRatioY = (float)HAMURGL->getScreenHeight() / (openglY*2);
+
 		HAMURLOG->writeInitLog("HamurTexture");
 	}
 
@@ -111,15 +117,21 @@ namespace hamur
 			exit(1);
 		}
 
+        // Translate coordinates from World to openGL coordinates.
+        HamurVec3 translatedCoord = worldToGL(x, y, z);
+        x = translatedCoord.x;
+        y = translatedCoord.y;
+        z = translatedCoord.z;
+
 		texture->setAllCoord(x, y, z); // Update texture coordinates
 		glBindTexture(GL_TEXTURE_2D, texture->getGLtextureID()); // Bind texture
 
-		glBegin(GL_QUADS);
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y + texture->getScaledHeight(), z);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->getScaledHeight(), z); 
-		glEnd();
+        glBegin(GL_QUADS);
+            glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y, z);
+            glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
+            glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y - texture->getScaledHeight(), z);
+            glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y - texture->getScaledHeight(), z); 
+        glEnd();
 	}
 
 
@@ -142,11 +154,35 @@ namespace hamur
 
 		glBindTexture(GL_TEXTURE_2D, texture->getGLtextureID()); // Bind texture
 
-		glBegin(GL_QUADS);
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y, z);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y + texture->getScaledHeight(), z);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y + texture->getScaledHeight(), z); 
-		glEnd();
+        glBegin(GL_QUADS);
+            glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y, z);
+            glTexCoord2f(1.0f, 0.0f); glVertex3f(x + texture->getScaledWidth(), y, z);
+            glTexCoord2f(1.0f, 1.0f); glVertex3f(x + texture->getScaledWidth(), y - texture->getScaledHeight(), z);
+            glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y - texture->getScaledHeight(), z); 
+        glEnd();
 	}
+
+
+    // Translates world coordinate to openGL coordinates
+    HamurVec3 HamurTexMR::worldToGL(float x, float y, float z)
+    {
+        HamurVec3 GLcoord;
+        GLcoord.x = -openglX + (x / pixRatioX);
+        GLcoord.y =  openglY - (y / pixRatioY);
+        GLcoord.z = z / 1000.0f;
+        
+        return GLcoord;
+    }
+
+
+    // Translates world coordinate to openGL coordinates
+    HamurVec3 HamurTexMR::worldToGL(HamurVec3 &vec3)
+    {
+        HamurVec3 GLcoord;
+        GLcoord.x = -openglX + (vec3.x / pixRatioX);
+        GLcoord.y =  openglY - (vec3.y / pixRatioY);
+        GLcoord.z = vec3.z / 1000.0f;
+
+        return GLcoord;
+    }
 }
