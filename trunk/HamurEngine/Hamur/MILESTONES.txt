@@ -3,8 +3,8 @@ MILESTONES:
 
 Hamur, v 0.5 : ilkcan
 ------------------------
-- OpenGL coordinates.
-- Game World, Game Object, Game State.
+OK! - OpenGL coordinates.
+OK! - Game World, Game Object, Game State.
 - Basic camera.
 - Developing the mechanics up to be ready for a platform game.
 
