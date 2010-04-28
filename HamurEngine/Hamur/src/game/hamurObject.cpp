@@ -29,11 +29,6 @@ namespace hamur
     void HamurObject::setName(const string& _name)       { name = _name; }
 
 
-    void HamurObject::setPosition(HamurVec3* _pos)
-    {
-        pos = *_pos;
-    }
-
     void HamurObject::setPosition(const HamurVec3& _pos)
     {
         pos = _pos;
@@ -41,8 +36,9 @@ namespace hamur
 
     void HamurObject::setPosition(float _x, float _y, float _z)
     {
-        HamurVec3* _pos = new HamurVec3(_x, _y, _z);
-        pos = *_pos;
+        pos.x = _x;
+        pos.y = _y;
+        pos.z = _z;
     }
 
     void HamurObject::setActive(bool _active)            { active = _active; }

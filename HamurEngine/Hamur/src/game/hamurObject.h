@@ -62,12 +62,6 @@ namespace hamur
 		    
             /**
             * Set position of the object.
-            * @param _pos Pointer to the position of the object.
-            */
-            void setPosition(HamurVec3* _pos);
-
-            /**
-            * Set position of the object.
             * @param _pos Position of the object.
             */
             void setPosition(const HamurVec3& _pos);
@@ -76,9 +70,9 @@ namespace hamur
             * Set position of the object.
             * @param _x X coordinate of the object.
             * @param _y Y coordinate of the object.
-            * @param _z Z coordinate of the object.
+            * @param _z Z coordinate of the object. Default = 0.
             */
-            void setPosition(float _x, float _y, float _z);
+            void setPosition(float _x, float _y, float _z = 0);
 
             /**
             * Set if the object is active or not.
