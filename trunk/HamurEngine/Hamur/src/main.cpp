@@ -48,8 +48,6 @@ int main( int argc, char *argv[] )
 	HAMURGP->getInstance();
     HAMURWORLD->getInstance();
 
-    
-
     HAMURCONSOLE << "Testing hamur console\n";  
 
     unsigned int firstTex = HAMURTEXMR->addTexture("data/dot.png");
@@ -81,8 +79,7 @@ int main( int argc, char *argv[] )
 // Test functions...
 void testDisplay(unsigned int first, unsigned int second)
 {
-
-    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))	Z += 1;
+    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))    Z += 1;
     if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    Z -= 1;
     if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle2 += 0.001f;
     if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.001f;
@@ -158,42 +155,5 @@ void testGameObjects()
     myFirstObject->setSprite("data/daghan.png");
     //HAMURLOG->write_log(myFirstObject->getSpriteID());
     myFirstObject->draw();
-
-    stringstream ss;
-    stringstream ss2;
-    stringstream ss3;
-    /*
-
-    ss << "First Object Name: " << HAMURWORLD->getObject("Player")->getName() << ", Position: "  <<
-        HAMURWORLD->getObject("Player")->getPosition();
-    cout << "First Object Name: " << HAMURWORLD->getObject("Player")->getName() << " Position:  "  <<
-        HAMURWORLD->getObject("Player")->getPosition() << endl;
-
-    ss2 << "Second Object Name: " << HAMURWORLD->getObject("Araba")->getName() << " Position: "  <<
-        HAMURWORLD->getObject("Araba")->getPosition();
-
-    cout << "Second Object Name: " << HAMURWORLD->getObject("Araba")->getName() << " Position:  "  <<
-        HAMURWORLD->getObject("Araba")->getPosition() << endl;
-        */
-
-
-    /*
-    HamurString mystring;
-
-    mystring << "Atisma degeri :" << 10 << 30.6;
-
-    HAMURFONT->drawText(mystring, -0.3f, -0.07f, 0);
-
-    mystring = 10.7;
-    mystring.clear();
-
-
-    HAMURFONT->drawText(mystring, -0.3f, -0.10f, 0);
-
-    */
-
-   
-    //HAMURFONT->drawText(ss3.str, -0.4f, 0.0f, 0);
-
-    //cout << ss2.str() << "hoppa";
+  
 }
