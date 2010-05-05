@@ -56,7 +56,6 @@ namespace hamur
         logFile.write(input);
     }
 
-
     // LN versions... 
 
     void HamurLog::writeLogln(const string &input)

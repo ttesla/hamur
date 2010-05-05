@@ -1,31 +1,45 @@
 #include "hamurObject.h"
-#include "hamurWorld.h"
 
 
 namespace hamur
 {
     
-    HamurObject::HamurObject(string _name)
+    HamurObject::HamurObject(const string &_name) 
+        :name(_name), active(true), interaction(false)
     {
-        name = _name;
-        active = true;
-        interaction = false;
+        pos.x = 0;
+        pos.y = 0;
+        pos.z = 0;
+        rotation = 0;
+    }
 
-        HAMURWORLD->addObject(this);
+    HamurObject::HamurObject(const string &_name, const string &spritePath)
+        :name(_name), active(true), interaction(false)
+    {
+        pos.x = 0;
+        pos.y = 0;
+        pos.z = 0;
+        rotation = 0;
+        setSprite(spritePath);
     }
 
     void HamurObject::draw()
     {
-        HAMURTEXMR->blitTexture(spriteID, pos.x, pos.y, pos.z);
+        HAMURTEXMR->blitTexture(spriteID, pos, rotation);
     }
-    
+
+    void HamurObject::rotate(float rotationAngle)
+    {
+        rotation = rotationAngle;
+    }
 
     // GETTERS & SETTERS
     string HamurObject::getName()        { return name; }
     HamurVec3 HamurObject::getPosition() { return pos; }
-    bool HamurObject::isActive()        { return active; }
+    float HamurObject::getRotation()     { return rotation; }
+    bool HamurObject::isActive()         { return active; }
     bool HamurObject::hasInteraction()   { return interaction; }
-    unsigned HamurObject::getSpriteID() { return spriteID; }
+    unsigned HamurObject::getSpriteID()  { return spriteID; }
     void HamurObject::setName(const string& _name)       { name = _name; }
 
 
@@ -44,7 +58,7 @@ namespace hamur
     void HamurObject::setActive(bool _active)            { active = _active; }
     void HamurObject::setInteraction(bool _interaction)  { interaction = _interaction; }
 
-    void HamurObject::setSprite(string _path)
+    void HamurObject::setSprite(const string &_path)
     {
         spriteID = HAMURTEXMR->addTexture(_path);
     }

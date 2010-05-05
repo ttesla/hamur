@@ -19,18 +19,19 @@ using std::stringstream;
 // GLOBALS -- for test usage only.
 float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
 float angle1 = 0, angle2 = 0;
+float camX = 0, camY = 0, camZ = 0;
 int Z = 0;
 
 // Some test functions
 void testDisplay(unsigned int, unsigned int);
 void testSimulation();
 void testGameObjects();
+int DrawGLScene(GLvoid);
 
 int main( int argc, char *argv[] )
 {
     //Initialize SDL
 	if(HAMURGL->initSDL("Hamur II test - 2010", 800, 600, 32, SDL_OPENGL) == false)
-	//if(HAMURGL->init_SDL("Hamur II test - 2009", 1024, 768, 32, SDL_OPENGL) == false) 
 		return 1;    
 
 	//Initialize OpenGL
@@ -50,8 +51,14 @@ int main( int argc, char *argv[] )
 
     HAMURCONSOLE << "Testing hamur console\n";  
 
+    // :::: TESTING ::::
+    HAMURWORLD->addObject(new HamurObject("Balik"));
+    HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
+    HAMURWORLD->addObject(new HamurObject("Tank", "data/Tank.png"));
+    
     unsigned int firstTex = HAMURTEXMR->addTexture("data/dot.png");
     unsigned int secondTex = HAMURTEXMR->addTexture("data/omer.png");
+    // :::: TESTING ::::
 
 	// Main while
 	while(! HAMUREVENT->isQuitPerformed())
@@ -62,9 +69,9 @@ int main( int argc, char *argv[] )
 		if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) break; // If ESC is pressed break from while()
 
 	    // TESTS
+        testSimulation();
+        testGameObjects();
 		testDisplay(firstTex, secondTex);
-		testSimulation();
-        //testGameObjects();
 	    
 	    //Update screen
 	    SDL_GL_SwapBuffers();   
@@ -79,50 +86,44 @@ int main( int argc, char *argv[] )
 // Test functions...
 void testDisplay(unsigned int first, unsigned int second)
 {
-    if(HAMUREVENT->isKeyPressed(SDLK_RIGHT))    Z += 1;
-    if(HAMUREVENT->isKeyPressed(SDLK_LEFT))	    Z -= 1;
-    if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle2 += 0.001f;
-    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.001f;
-
-    //if(HAMUREVENT->isKeyPressed(SDLK_UP))		angle2 += 0.1;
-    //if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle2 -= 0.1;*/
+    //if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle1 += 0.5f;
+    //if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
 
     //Clear the screen & reset identity matrix
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslatef(0.0f, 0.0f, -1.0f);
 
-    HAMURTEXMR->blitTexture(first, 798, 598, 0);
-    HAMURCONSOLE << "Z :" << Z << "\n";
+    //glDisable(GL_TEXTURE_2D);
+    ////glLoadIdentity();									// Reset The Current Modelview Matrix
+    //glTranslatef(-1.5f,0.0f,-6.0f);						// Move Left 1.5 Units And Into The Screen 6.0
+    //glRotatef(angle1,0.0f,1.0f,0.0f);						// Rotate The Triangle On The Y axis ( NEW )
+    //glBegin(GL_TRIANGLES);								// Start Drawing A Triangle
+    //    glColor3f(1.0f,0.0f,0.0f);						// Set Top Point Of Triangle To Red
+    //    glVertex3f( 0.0f, 1.0f, 0.0f);					// First Point Of The Triangle
+    //    glColor3f(0.0f,1.0f,0.0f);						// Set Left Point Of Triangle To Green
+    //    glVertex3f(-1.0f,-1.0f, 0.0f);					// Second Point Of The Triangle
+    //    glColor3f(0.0f,0.0f,1.0f);						// Set Right Point Of Triangle To Blue
+    //    glVertex3f( 1.0f,-1.0f, 0.0f);					// Third Point Of The Triangle
+    //glEnd();											// Done Drawing The Triangle
+    //glEnable(GL_TEXTURE_2D);
+
+    camX = -x;
+    camY = -y;
+    camZ = z;
+
+    glTranslatef(camX, camY, camZ);
   
-    //HAMURCONSOLE << "Angle2: " << screenY << "\n";
-
-  /*  glMatrixMode(GL_TEXTURE);
-    glLoadIdentity();
-    glTranslatef(0.5,0.5,0.0);
-    glRotatef(angle1, 0.0, 0.0, 1.0);
-    glTranslatef(-0.5,-0.5,0.0);*/
-
+    HAMURWORLD->getObject("Balik")->rotate(-angle1*10);
+    HAMURWORLD->getObject("Balik")->draw();
     
-
-	//glRotatef(x/10, 1.0f, 0.0f, 0.0f); // Rotate On The X Axis
-    //glRotatef(y/10, 0.0f, 1.0f, 0.0f); // Rotate On The Y Axis
-    //glRotatef(z/10, 0.0f, 0.0f, 1.0f); // Rotate On The Z Axis
-
-   
-
-   /* glMatrixMode(GL_MODELVIEW);*/
-
-	// Wireframe - May be handy
-	//glPolygonMode(GL_FRONT, GL_LINE);
-	//glPolygonMode(GL_BACK, GL_LINE);
-
-	//xcor = -0.55f + HAMUREVENT->getMouseX()*(1.10f/1024);
-	//ycor = 0.42f - HAMUREVENT->getMouseY()*(0.84f/768);
-	//HAMURTEXMR->blitTexture("red", xcor, ycor, 0);
-
-	//cout << "X:" << xcor << " Y:" << ycor << " Z:" << zcor << endl;
-	//cout << "rotX:" << x << " rotY:" << y << " rotZ:" << z << endl;
+    HAMURWORLD->getObject("Tank")->draw();
+    HAMURWORLD->getObject("Tank")->setPosition(200, 300);
+    HAMURWORLD->getObject("Tank")->rotate(angle1);
+    HAMURWORLD->getObject("Tank")->draw();
+  
+    HAMURTEXMR->blitTexture(first, 798, 598, 0);
+  
+    HAMURCONSOLE << "Angle1:" << angle1 << "\n";
 }
 
 void testSimulation()
@@ -146,14 +147,9 @@ void testSimulation()
 
 void testGameObjects()
 {
-    HamurObject* myFirstObject = new HamurObject("Araba");
-    //HamurObject* secondObject = new HamurObject("Player");
-
-    myFirstObject->setPosition(0, 0, 0);
-    //secondObject->setPosition(5, 5, 5);
-
-    myFirstObject->setSprite("data/daghan.png");
-    //HAMURLOG->write_log(myFirstObject->getSpriteID());
-    myFirstObject->draw();
-  
+    HamurObject *object = HAMURWORLD->getObject("Balik");
+    object->setPosition(100, 100);
+    object = HAMURWORLD->getObject("Tank");
+    object->setPosition(500, 200);
 }
+
