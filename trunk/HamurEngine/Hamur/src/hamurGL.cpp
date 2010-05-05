@@ -74,7 +74,7 @@ namespace hamur
 		glLoadIdentity();
 		
 		// Set perspective
-		gluPerspective(45.0f, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 2.0f);
+		gluPerspective(45.0f, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 		
 		// Initialize modelview matrix
 		glMatrixMode(GL_MODELVIEW);

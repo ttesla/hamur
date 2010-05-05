@@ -19,7 +19,7 @@ namespace hamur
         return true;
     }
 
-    bool HamurWorld::removeObject(HamurObject* _givenObject)
+    bool HamurWorld::deleteObject(HamurObject* _givenObject)
     {
         // Look in the map if the object exists.
         map<string, HamurObject*>::iterator iter = worldObjects.find(_givenObject->getName());

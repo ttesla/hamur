@@ -22,7 +22,9 @@ namespace hamur
 	{
 	    public:
 
-            HamurObject(string _name);
+            HamurObject(const string &_name);
+
+            HamurObject(const string &name, const string &spritePath);
 
             /**
             * Pure virtual update function of the object. 
@@ -36,6 +38,12 @@ namespace hamur
             */
             virtual void draw();
 
+            /**
+            * Set rotation angle of the object
+            * @param rotationAngle Rotation value in degrees.
+            */
+            void rotate(float rotationAngle);
+
 		   
             // GETTER & SETTERS
 
@@ -44,6 +52,9 @@ namespace hamur
             
             /** @return Position of the object */
 		    HamurVec3 getPosition();
+
+            /** @return Rotation angle of the object */
+            float getRotation();
             
             /** @return If the object active or not */
 		    bool isActive();
@@ -86,11 +97,12 @@ namespace hamur
             */
 		    void setInteraction(bool _interaction);
 
-            void setSprite(string _path);
+            void setSprite(const string &_path);
 
 	    protected:
 		    string name;      /**< Name of the object. */
 		    HamurVec3 pos;    /**< Position of the object. */
+            float rotation;   /**< Rotation angle of the object */
 		    bool active;      /**< Object is active or not. */
 		    bool interaction; /**< Object has interaction or not. */
             unsigned int spriteID; /**< Sprite ID of the game object. */

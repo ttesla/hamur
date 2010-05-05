@@ -98,7 +98,7 @@ namespace hamur
 		textureWidth  = newSurface->w;
 		textureHeight = newSurface->h;
 		scaledWidth   = textureWidth  / (float)HAMURGL->getScreenWidth(); 
-		scaledHeight  = textureHeight / (float)HAMURGL->getScreenWidth(); 
+		scaledHeight  = textureHeight / (float)HAMURGL->getScreenWidth(); // this should be Width!!
 
 		// Generate texture with LINEAR filtering
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter
