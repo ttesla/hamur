@@ -13,6 +13,7 @@ OK! - State machine tamamlancak
 - hamurlog, hamurconsole, hamurfile, hamur helper la alakali siniflara doxgygen comment yazilcak
 - hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
 - Singletonlarýn hepsini kontrol et. 
+- Header'lardaki "_x" gibi deðiþkenleri düzelt
 
 
 HAMURFONT:

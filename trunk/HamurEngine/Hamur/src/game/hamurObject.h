@@ -2,6 +2,7 @@
 #define HAMUR_OBJECT
 
 #include "../helper/hamurVec3.h"
+#include "../helper/hamurVec2.h"
 
 #include <vector>
 #include <string>
@@ -73,17 +74,23 @@ namespace hamur
 		    
             /**
             * Set position of the object.
-            * @param _pos Position of the object.
+            * @param pos Position of the object.
             */
-            void setPosition(const HamurVec3& _pos);
+            void setPosition(const HamurVec3& pos);
 
             /**
             * Set position of the object.
-            * @param _x X coordinate of the object.
-            * @param _y Y coordinate of the object.
-            * @param _z Z coordinate of the object. Default = 0.
+            * @param pos Position of the object. 
             */
-            void setPosition(float _x, float _y, float _z = 0);
+            void setPosition(const HamurVec2& pos);
+
+            /**
+            * Set position of the object.
+            * @param x X coordinate of the object.
+            * @param y Y coordinate of the object.
+            * @param z Z coordinate of the object. Default = 0.
+            */
+            void setPosition(float x, float y, float z = 0);
 
             /**
             * Set if the object is active or not.

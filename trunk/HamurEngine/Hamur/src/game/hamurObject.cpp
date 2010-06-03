@@ -48,6 +48,13 @@ namespace hamur
         pos = _pos;
     }
 
+    void HamurObject::setPosition(const HamurVec2& _pos)
+    {
+        pos.x = _pos.x;
+        pos.y = _pos.y;
+        pos.z = 0;
+    }
+
     void HamurObject::setPosition(float _x, float _y, float _z)
     {
         pos.x = _x;
