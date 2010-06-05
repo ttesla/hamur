@@ -8,9 +8,10 @@
 #include "helper/hamurLog.h"
 #include "helper/hamurConsole.h"
 #include "helper/hamurHash.h"
-#include "helper/hamurVec3.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"
+#include "helper/hamurVec2.h"
+#include "helper/hamurVec3.h"
 
 using std::map;
 
@@ -34,6 +35,13 @@ namespace hamur
 			void blitTexture(unsigned int textureID, const HamurVec3 &position, float rotation = 0); // Blits image onto screen
             void blitTexture(unsigned int textureID, float x, float y, float z, float rotation = 0); // Blits image onto screen
 
+            HamurVec3 worldToGL(float x, float y, float z);
+            HamurVec3 worldToGL(const HamurVec3 &vec3);
+
+            HamurVec2 worldToGL(float x, float y);
+            HamurVec2 worldToGL(const HamurVec2 &vec2);
+
+
 		protected:
 
             HamurTexMR();
@@ -41,9 +49,7 @@ namespace hamur
 
 		private:
 
-            HamurVec3 worldToGL(float x, float y, float z);
-            HamurVec3 worldToGL(const HamurVec3 &vec3);
-
+            
 			map<unsigned int, HamurTex*> textureMap; //Store textures according to their unique texture ID
 
             const float depthShift; /**< Default shift value to keep textures in visible area. Z = -1.0f */

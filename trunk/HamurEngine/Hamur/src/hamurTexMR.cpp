@@ -207,4 +207,25 @@ namespace hamur
 
         return GLcoord;
     }
+
+    // Translates world coordinate to openGL coordinates
+    HamurVec2 HamurTexMR::worldToGL(float x, float y)
+    {
+        HamurVec2 GLcoord;
+        GLcoord.x = -openglX + (x / pixRatioX);
+        GLcoord.y =  openglY - (y / pixRatioY);
+
+        return GLcoord;
+    }
+
+
+    // Translates world coordinate to openGL coordinates
+    HamurVec2 HamurTexMR::worldToGL(const HamurVec2 &vec2)
+    {
+        HamurVec2 GLcoord;
+        GLcoord.x = -openglX + (vec2.x / pixRatioX);
+        GLcoord.y =  openglY - (vec2.y / pixRatioY);
+
+        return GLcoord;
+    }
 }

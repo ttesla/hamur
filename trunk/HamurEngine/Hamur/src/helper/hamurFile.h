@@ -11,8 +11,10 @@ using std::ifstream;
 using std::ios;
 
 
+
 namespace hamur
 {
+    // Forward declerations
     class HamurObject;
     class HamurString;
 
@@ -32,6 +34,7 @@ namespace hamur
             bool openForRead(const string &fileName);
             void close();
 
+
             // Write functions
             void write(const string &input);
             void write(int input);
@@ -48,6 +51,8 @@ namespace hamur
             float readFloat();
             char readChar();
             string readString();
+
+
 
 
         private:

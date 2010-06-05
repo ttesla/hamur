@@ -1,4 +1,5 @@
 #include "hamurObject.h"
+#include "../helper/hamurMath.h"
 
 
 namespace hamur
@@ -28,9 +29,14 @@ namespace hamur
         HAMURTEXMR->blitTexture(spriteID, pos, rotation);
     }
 
-    void HamurObject::rotate(float rotationAngle)
+    void HamurObject::rotateDegree(float rotationAngle)
     {
         rotation = rotationAngle;
+    }
+
+    void HamurObject::rotateRadian(float rotationRadian)
+    {
+        rotation = HamurMath::Converter::radianToDegree(rotationRadian);
     }
 
     // GETTERS & SETTERS
