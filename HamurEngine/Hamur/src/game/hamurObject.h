@@ -43,7 +43,13 @@ namespace hamur
             * Set rotation angle of the object
             * @param rotationAngle Rotation value in degrees.
             */
-            void rotate(float rotationAngle);
+            void rotateDegree(float rotationAngle);
+
+            /**
+            * Set rotation radian of the object
+            * @param rotationRadian Rotation value in radians.
+            */
+            void rotateRadian(float rotatinRadian);
 
 		   
             // GETTER & SETTERS
