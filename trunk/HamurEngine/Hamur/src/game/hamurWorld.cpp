@@ -57,7 +57,8 @@ namespace hamur
         // If not found, return failure.
         if(iter == worldObjects.end())
         {
-            HAMURLOG->writeLogln("Error!: Can't find the given object.");
+            HAMURLOG->writeLog("Error!: Can't find the object:");
+            HAMURLOG->writeLogln(_objectName);
             return NULL;
         }
 

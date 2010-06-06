@@ -22,6 +22,8 @@ namespace hamur
 	{
 		public:
             
+            // This can't use Singleton template because 
+            // some operator overloadings makes some conflicts...
             static HamurConsole &HamurConsole::getInstance()
             {
                 static HamurConsole hamurConsole;

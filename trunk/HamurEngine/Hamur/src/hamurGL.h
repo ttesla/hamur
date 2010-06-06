@@ -1,5 +1,6 @@
 #ifndef HAMURGL_H
 #define HAMURGL_H
+
 #include "hamurTex.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"

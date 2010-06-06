@@ -3,12 +3,12 @@
 
 // Complete include header files of Hamur engine.
 
-
 #include "hamurGL.h"
 #include "hamurEvent.h"
 #include "hamurTexMR.h"
 #include "hamurGP.h"
 #include "hamurFont.h"
+#include "hamurEngine.h"
 
 #include "helper/hamurConsole.h"
 #include "helper/hamurFile.h"
