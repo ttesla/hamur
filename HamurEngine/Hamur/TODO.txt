@@ -1,44 +1,25 @@
 TODO:
 -------------------------------------------------------
-OK! - GL lerler ilgili library sorunlarý çözülecek.
-OK! - Singleton eklenecek, Singleton sorunu fried class ile çözüldü.
-OK! - Doxygene uygun hale getirilecek.
-- Collision Detectionlar geliþtirilecek - Box2D bu iþi halledecek.
-- Kitaptan çalýþmalar yapýlacak.
-- Animasyon sistemi geliþtirilecek.
-OK! - State machine tamamlancak
+- Box2D
+- Animasyon sistemi geliþtirilecek, Flixel'deki gibi.
 - Iskelet olustur ve test uygulamasi yap
-- Game Class olusturulcak ve gerekli ayarlar yapilcak.
 - Colorkey, Alpha sorununu çöz
 - hamurlog, hamurconsole, hamurfile, hamur helper la alakali siniflara doxgygen comment yazilcak
-- hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
 - Singletonlarýn hepsini kontrol et. 
-- Header'lardaki "_x" gibi deðiþkenleri düzelt
-
-
-HAMURFONT:
------------
-- Hamur Font geliþtirilecek, düzeltilcek.
-
-HAMURLOG:
------------
-OK! - Hamur log duzenle ve kullanilan yerleri duzelt.
-OK! - HamurLog'ta dosya surekli acilip kapanmamali, bir sefer acilmali, sonra kapatilmali.
-OK! - Object, Vector...vs Hamur türleri hem consola hem dosyaya yazdýrmayý ekle
-OK! - + overloading denencek
-OK! - Error olan yerleri belirtmek için Error!: <...>   kullan
-OK! - Hamur string desteði ekle
-OK! - Testleri yap
-
-
+- Header'lardaki "_x" gibi deðiþkenleri düzelt 
+- Get fonksiyonlarýný "const" yap
+- Font bastýrma
+OK! - State machine tamamlancak
+OK! - hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
+OK! - GL lerler ilgili library sorunlarý çözülecek.
+OK! - Singleton eklenecek, Singleton sorunu friend class ile çözüldü.
+OK! - Doxygene uygun hale getirilecek.
+OK! - HamurLog yap
 
 
 TEST:
 -------------------------------------------------------
-- GL lerler ilgili library sorunlarý çözülecek.
-- Singleton eklenecek.
-- Doxygene uygun hale getirilecek.
-- Collision Detectionlar geliþtirilecek.
-- Kitaptan çalýþmalar yapýlacak.
-- Animasyon sistemi geliþtirilecek.
 - State machine test et
+- Audio test
+- World test
+- Memory, memory leak test

@@ -12,7 +12,7 @@ using namespace hamur;
 class MainState : public HamurState
 {
 	public:
-
+        
         MainState();
         ~MainState();
 
