@@ -11,5 +11,6 @@
 #define HAMURLOG HamurLog::getInstance()
 #define HAMURCONSOLE HamurConsole::getInstance()
 #define HAMURWORLD HamurWorld::getInstance()
+#define HAMURENGINE HamurEngine::getInstance()
 
 #endif

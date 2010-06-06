@@ -10,6 +10,7 @@ namespace hamur
 	template<typename T>
     /**
     * Template class for being base of all singleton classes.
+    * - Not coded by us, taken from internet
     */
 	class Singleton
 	{

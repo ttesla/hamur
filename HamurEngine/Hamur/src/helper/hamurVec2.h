@@ -8,7 +8,10 @@ using std::ostream;
 
 namespace hamur
 {
-	/** Hamur 2D Vector Class. */
+	/** 
+        Hamur 2D Vector Class. 
+        - Taken from somewhere from internet
+    */
 	class HamurVec2
 	{
 	public:

@@ -10,11 +10,7 @@
 
 #include "hamur.h"
 
-#include <sstream>
-
 using namespace hamur;
-using std::stringstream;
-
 
 // GLOBALS -- for test usage only.
 float x = 0, y = 0, z = 0, xcor = 0, ycor = 0, zcor = 0;
@@ -30,24 +26,12 @@ int DrawGLScene(GLvoid);
 
 int main( int argc, char *argv[] )
 {
-    //Initialize SDL
-	if(HAMURGL->initSDL("Hamur II test - 2010", 800, 600, 32, SDL_OPENGL) == false)
-		return 1;    
+    if(HAMURENGINE->init("Hamur II test - 2010", 800, 600) == false)
+        return 1;
 
-	//Initialize OpenGL
-	if(HAMURGL->initGL() == false) 
-		return 1; 
-
-	// Disable mouse
-	SDL_ShowCursor(SDL_DISABLE);
-
-	// Init all other Hamur subsystems...
-	HAMURTEXMR->getInstance();
-	HAMURAUMR->init();
-	//HAMURFONT->getInstance();
-    HAMUREVENT->getInstance();
-	HAMURGP->getInstance();
-    HAMURWORLD->getInstance();
+    HAMURENGINE->disableMouseCursor();
+	
+	
 
     HAMURCONSOLE << "Testing hamur console\n";  
 
@@ -113,12 +97,12 @@ void testDisplay(unsigned int first, unsigned int second)
 
     glTranslatef(camX, camY, camZ);
   
-    HAMURWORLD->getObject("Balik")->rotate(-angle1*10);
+    HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
     HAMURWORLD->getObject("Balik")->draw();
     
     HAMURWORLD->getObject("Tank")->draw();
     HAMURWORLD->getObject("Tank")->setPosition(200, 300);
-    HAMURWORLD->getObject("Tank")->rotate(angle1);
+    HAMURWORLD->getObject("Tank")->rotateDegree(90);
     HAMURWORLD->getObject("Tank")->draw();
   
     HAMURTEXMR->blitTexture(first, 798, 598, 0);

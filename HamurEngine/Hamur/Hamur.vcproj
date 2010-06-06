@@ -169,6 +169,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\src\hamurEngine.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\hamurEvent.cpp"
 				>
 			</File>
@@ -408,6 +412,10 @@
 			</File>
 			<File
 				RelativePath=".\src\hamurDefinitions.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\hamurEngine.h"
 				>
 			</File>
 			<File
