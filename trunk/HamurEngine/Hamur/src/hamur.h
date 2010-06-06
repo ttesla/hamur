@@ -15,13 +15,15 @@
 #include "helper/hamurLog.h"
 #include "helper/hamurString.h"
 #include "helper/hamurVec3.h"
+#include "helper/hamurVec2.h"
 #include "helper/hamurPlotter.h"
 #include "helper/hamurColor.h"
 #include "helper/hamurMath.h"
 #include "audio/hamurAuMR.h"
-
-#include "game/hamurWorld.h"
 #include "game/hamurObject.h"
+#include "game/hamurWorld.h"
+#include "game/hamurState.h"
+#include "game/hamurStateMR.h"
 
 #include "hamurDefinitions.h"
 

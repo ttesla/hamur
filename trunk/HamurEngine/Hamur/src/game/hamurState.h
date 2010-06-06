@@ -15,13 +15,14 @@ namespace hamur
 	{
 		public:
 
-            ~HamurState();
-
             /**
             * HamurState constructor.
             * @param _stateName Name of the state.
             */
-            HamurState(const string &_stateName);
+            HamurState(const string &stateName);
+
+            /**< Destructor */
+            ~HamurState();
 
             /**
             * Pure virtual enter function of the state.
@@ -55,13 +56,14 @@ namespace hamur
             */
             virtual void exit() = 0;
 
-            /** return State name */
+            /**< return State name */
             string getStateName();
 
 		protected:
+            string stateName; /**< Name of this state */
 		
         private:
-			string stateName; /** Name of this state */
+			
 	};
 
 }
