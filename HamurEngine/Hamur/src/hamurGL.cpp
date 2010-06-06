@@ -121,13 +121,13 @@ namespace hamur
 
 
     // GETTERS & SETTERS
-    int HamurGL::getScreenWidth()		{ return SCREEN_WIDTH;	}
+    int HamurGL::getScreenWidth()	{ return SCREEN_WIDTH;	}
     int HamurGL::getScreenHeight()	{ return SCREEN_HEIGHT;	}
     int HamurGL::getScreenBpp()		{ return SCREEN_BPP;	}
 
-    void HamurGL::setScreenWidth(int width)	{ SCREEN_WIDTH = width;		}
+    void HamurGL::setScreenWidth(int width)	    { SCREEN_WIDTH = width;		}
     void HamurGL::setScreenHeight(int height)	{ SCREEN_HEIGHT = height;	}
-    void HamurGL::setScreenBpp(int bpp)		{ SCREEN_BPP = bpp;			}
+    void HamurGL::setScreenBpp(int bpp)		    { SCREEN_BPP = bpp;			}
 
     
 	// Set GL display attributes, 
