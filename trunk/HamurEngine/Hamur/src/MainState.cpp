@@ -46,7 +46,6 @@ void MainState::update()
 // DRAW
 void MainState::draw() 
 {
-  
     //HAMURWORLD->getObject("Balik")->draw();
     //HAMURWORLD->getObject("Tank")->draw();
     testPlotter();
