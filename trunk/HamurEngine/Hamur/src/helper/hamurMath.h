@@ -1,7 +1,7 @@
 #ifndef HAMURMATH_H
 #define HAMURMATH_H
 
-#define pi 3.14159265359
+#define pi 3.14159265359f
 
 namespace hamur
 {
