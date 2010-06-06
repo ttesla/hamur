@@ -22,25 +22,31 @@ namespace hamur
 
     // Add state into "map" container with state name.
     // If state is already registered, it will not be registered.
-	void HamurStateMR::registerState(HamurState *_state)
+	bool HamurStateMR::registerState(HamurState *_state)
 	{
 		// Look in the map if the state is already registered. If not found, then register.
-		if (hasState(_state->getStateName()))
-            return;
+        if (hasState(_state->getStateName()))
+        {
+            HAMURLOG->writeLogln("Error!: Can't register state, state already exists: " 
+                + _state->getStateName());
+            return false;
+        }
 
 		stateList[_state->getStateName()] = _state;
+
+        HAMURLOG->writeLogln("State registered: " + _state->getStateName());
+        return true;
 	}
 
 
-    // Search through the "map" container and remove state.
+    // Search through the "map" container and remove & delete state.
     // If it is successful, return true else false.
-	bool HamurStateMR::removeState(const string &_stateName)
+	bool HamurStateMR::deleteState(const string &_stateName)
 	{
 		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
 
 		if(iter != stateList.end())
 		{
-
             // If it was found, delete it then. 
             if(iter->second)
                 delete iter->second;
@@ -90,13 +96,20 @@ namespace hamur
 	{
         if(hasState(_stateName))
         {
-		    currentState->exit();
-		    currentState = this->findState(_stateName);
+            if(currentState != NULL)
+            {
+                currentState->exit();
+                previousState = currentState;
+            }
+            
+		    currentState = findState(_stateName);
 		    currentState->enter();
         }
         else
+        {
             HAMURLOG->writeLogln("Error!: Can't change current state. "
-                                 "State does not exists.: " + _stateName);
+                                 "State does not exists: " + _stateName);
+        }
 	}
 
 

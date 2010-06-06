@@ -26,17 +26,18 @@ namespace hamur
             * Registers given state to the state manager.
             * If state is already registered, it will not be registered.
             * @param _state Object of the state
+            * @return True if register is successful else return False
             * @see removeState()
             */
-			void registerState(HamurState *_state);
+			bool registerState(HamurState *_state);
 
             /**
-            * Removes state from state manager, unregister state.
+            * Removes and deletes state from state manager.
             * @param _stateName Name of the state which will be removed.
             * @return If state is removed successfully or not
             * @see registerState()
             */
-			bool removeState(const string &_stateName);
+			bool deleteState(const string &_stateName);
 
             /**
             * Checks if the manager has the given state.
