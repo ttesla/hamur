@@ -13,37 +13,42 @@
 
 /*
 
-JUne 2010
+June 2010
 ----------------
-* 
+- 
 
 
 October 2009 - (Rise Of Hamur)
 ----------------
-* HamurII is now remastered to a completely new design and
+- HamurII is now remastered to a completely new design and
 capabilities! ... stay tuned for rise of Hamur!
 
 
 21 February 2009
 ----------------
-* Hamur has an event logger now.
+- Hamur has an event logger now.
+
 
 05 February 2009
 ----------------
-* Hamur is more strong and robust after Nordic Game Jam!
+- Hamur is more strong and robust after Nordic Game Jam!
+
 
 10 January 2009
 ---------------
-* Now Hamur has Audio and Font support
-* Many problems encountered with colorkey-alpha
+- Now Hamur has Audio and Font support
+- Many problems encountered with colorkey-alpha
+
 
 11 October 2008
 -----------------
-* Our texture manager system works!
+- Our texture manager system works!
+
 
 20 Septemper 2008
 -----------------
-* Hamur has born today!
-* by Daghan Demirci & Omer Akyol.  
+- Hamur has born today!
+- by Daghan Demirci & Omer Akyol.  
+
 
 */

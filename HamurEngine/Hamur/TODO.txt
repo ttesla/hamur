@@ -1,20 +1,21 @@
 TODO:
 -------------------------------------------------------
-- Box2D
-- Animasyon sistemi geliþtirilecek, Flixel'deki gibi.
-- Iskelet olustur ve test uygulamasi yap
-- Colorkey, Alpha sorununu çöz
-- hamurlog, hamurconsole, hamurfile, hamur helper la alakali siniflara doxgygen comment yazilcak
-- Singletonlarýn hepsini kontrol et. 
-- Header'lardaki "_x" gibi deðiþkenleri düzelt 
-- Get fonksiyonlarýný "const" yap
-- Font bastýrma
-OK! - State machine tamamlancak
-OK! - hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
-OK! - GL lerler ilgili library sorunlarý çözülecek.
-OK! - Singleton eklenecek, Singleton sorunu friend class ile çözüldü.
-OK! - Doxygene uygun hale getirilecek.
-OK! - HamurLog yap
+[ ] Box2D
+[ ] Animasyon sistemi geliþtirilecek, Flixel'deki gibi.
+[ ] Iskelet olustur ve test uygulamasi yap
+[ ] Colorkey, Alpha sorununu çöz
+[ ] Font bastýrma
+
+[ ] Eksik doxygenler tamamla
+[ ] Header'lardaki "_x" gibi deðiþkenleri düzelt 
+[ ] Get fonksiyonlarýný "const" yap
+
+[OK] State machine tamamlancak
+[OK] hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
+[OK] GL lerler ilgili library sorunlarý çözülecek.
+[OK] Singleton eklenecek, Singleton sorunu friend class ile çözüldü.
+[OK] Doxygene uygun hale getirilecek.
+[OK] HamurLog yap
 
 
 TEST:
