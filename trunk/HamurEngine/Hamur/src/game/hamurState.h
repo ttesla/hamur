@@ -60,6 +60,7 @@ namespace hamur
             string getStateName();
 
 		protected:
+            
             string stateName; /**< Name of this state */
 		
         private:

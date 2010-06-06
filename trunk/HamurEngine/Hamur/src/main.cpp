@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
         return 1;
 
     HAMURENGINE->disableMouseCursor();
+    
     HAMURSTATEMR->registerState(new MainState());
     HAMURSTATEMR->changeState("MainState");
     HAMURENGINE->run();
