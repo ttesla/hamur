@@ -3,6 +3,7 @@
 
 // Complete include header files of Hamur engine.
 
+#include "Box2D/Box2D.h"
 #include "hamurGL.h"
 #include "hamurEvent.h"
 #include "hamurTexMR.h"

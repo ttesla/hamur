@@ -26,6 +26,8 @@ class MainState : public HamurState
 
         
     private:
+        void testBox2D();
+        void testPlotter();
 
         float angle1;
        

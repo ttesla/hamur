@@ -1,10 +1,6 @@
 #ifndef HAMURPLOTTER_H
 #define HAMURPLOTTER_H
 
-#include "hamurColor.h"
-
-
-
 namespace hamur
 {
     class HamurVec3;
@@ -31,14 +27,25 @@ namespace hamur
             static void drawSolidPolygon(const HamurVec2* verticeList, int verticeCount, const HamurColor& color);
             static void drawSolidPolygon(const HamurVec3* verticeList, int verticeCount, const HamurColor& color);
 
-            static void drawTriangle();
-            static void drawSolidTriangle();
+            static void drawCircle(float xCenter, float yCenter, float radius, const HamurColor& color);
+            static void drawCircle(float xCenter, float yCenter, float zCenter, float radius, const HamurColor& color);
+            static void drawCircle(const HamurVec2& position, float radius, const HamurColor& color);
+            static void drawCircle(const HamurVec3& position, float radius, const HamurColor& color);
 
-            static void drawCircle();
-            static void drawSolidCircle();
+            static void drawSolidCircle(float xCenter, float yCenter, float radius, const HamurColor& color);
+            static void drawSolidCircle(float xCenter, float yCenter, float zCenter, float radius, const HamurColor& color);
+            static void drawSolidCircle(const HamurVec2& position, float radius, const HamurColor& color);
+            static void drawSolidCircle(const HamurVec3& position, float radius, const HamurColor& color);
 
-            static void drawLine();
-            static void drawPoint();
+            static void drawLine(float firstX, float firstY, float secondX, float secondY, const HamurColor& color);
+            static void drawLine(float firstX, float firstY, float firstZ, float secondX, float secondY, float secondZ, const HamurColor& color);
+            static void drawLine(const HamurVec2& pos1, const HamurVec2& pos2, const HamurColor& color);
+            static void drawLine(const HamurVec3& pos1, const HamurVec3& pos2, const HamurColor& color);
+
+            static void drawPoint(float pointX, float pointY, const HamurColor& color);
+            static void drawPoint(float pointX, float pointY, float pointZ, const HamurColor& color);
+            static void drawPoint(const HamurVec2& position, const HamurColor& color);
+            static void drawPoint(const HamurVec3& position, const HamurColor& color);
     };
 }
 
