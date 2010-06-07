@@ -47,11 +47,6 @@ namespace hamur
 		// Display some primitive openGL properties to stdout
 		void displayGLAttributes();
 
-		/**
-		* Terminate SDL and quit.
-		*/
-		void quit();
-
         /**
         * Gets the width of the screen.
         * @return Screen width

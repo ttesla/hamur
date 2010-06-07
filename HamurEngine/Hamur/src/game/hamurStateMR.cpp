@@ -5,6 +5,7 @@ namespace hamur
 	{
 		currentState = NULL;
 		previousState = NULL;
+        HAMURLOG->writeInitLog("HamurStateMR");
 	}
 
 

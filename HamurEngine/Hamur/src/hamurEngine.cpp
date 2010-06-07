@@ -21,7 +21,7 @@ namespace hamur
     // Do all remaining cleanups here...
     HamurEngine::~HamurEngine()
     {
-        // TODO: Add remaining cleaups here...
+        // Add remaining cleaups here...
     }
 
 
@@ -30,13 +30,12 @@ namespace hamur
     {
         // Init Hamur subsystems...
         if(!HAMURGL->initSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
-        if(!HAMURGL->initGL())          return false; // OpenGL
-        if(!HAMURTEXMR->getInstance())  return false; // Texture Manager
-        if(!HAMURAUMR->init())          return false; // Audio Manager
-        //HAMURFONT->getInstance()      return false; // ----
-        if(!HAMUREVENT->getInstance())  return false; // Event handler
-        if(!HAMURGP->getInstance())     return false; // Gameplay
-        if(!HAMURWORLD->getInstance())  return false; // Object manager - World
+        if(!HAMURGL->initGL())           return false; // OpenGL
+        if(!HAMURTEXMR->getInstance())   return false; // Texture Manager
+        if(!HAMURAUMR->init())           return false; // Audio Manager
+        if(!HAMURWORLD->getInstance())   return false; // Object manager - World
+        if(!HAMURSTATEMR->getInstance()) return false; // State Manager
+        if(!HAMUREVENT->getInstance())   return false; // Event handler
 
         HAMURLOG->writeInitLog("HamurEngine");
         HAMURLOG->writeLogln("");
@@ -86,8 +85,16 @@ namespace hamur
     {
         runEngine = false;
 
-        // TODO: Add "clean" method to all managers
-        HAMURGL->quit();
+        // The order is important, double check here
+        // if you are getting errors after termination
+        HAMURTEXMR->drop();
+        HAMURAUMR->drop();
+        HAMURWORLD->drop();
+        HAMURSTATEMR->drop();
+        HAMUREVENT->drop();
+        HAMURGL->drop();
+        HAMURENGINE->drop();
+        HAMURLOG->drop();
     }
 
 
