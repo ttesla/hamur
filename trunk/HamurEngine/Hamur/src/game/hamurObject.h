@@ -23,7 +23,7 @@ namespace hamur
 	{
 	    public:
 
-            HamurObject(const string &_name);
+            HamurObject(const string &name);
 
             HamurObject(const string &name, const string &spritePath);
 

@@ -9,6 +9,7 @@ namespace hamur
         HAMURLOG->writeInitLog("HamurWorld");
     }
 
+
     bool HamurWorld::addObject(HamurObject *_newObject)
     {
         // Look in the map if the object is already added. If not found, then add.
@@ -19,10 +20,11 @@ namespace hamur
         return true;
     }
 
-    bool HamurWorld::deleteObject(HamurObject* _givenObject)
+
+    bool HamurWorld::deleteObject(const string& _objectName)
     {
         // Look in the map if the object exists.
-        map<string, HamurObject*>::iterator iter = worldObjects.find(_givenObject->getName());
+        map<string, HamurObject*>::iterator iter = worldObjects.find(_objectName);
 
         // If found, delete it and return success.
         if(iter != worldObjects.end())
@@ -37,6 +39,7 @@ namespace hamur
         return false;
     }
 
+
     bool HamurWorld::hasObject(const string &_name)
     {
         // Look in the map if the object exists.
@@ -48,6 +51,7 @@ namespace hamur
 
         return true;
     }
+
 
     HamurObject* HamurWorld::getObject(const string &_objectName)
     {

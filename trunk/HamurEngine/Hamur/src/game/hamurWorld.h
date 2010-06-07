@@ -5,9 +5,10 @@
 #include "../helper/hamurLog.h"
 #include "hamurObject.h"
 #include <map>
-
+#include <string>
 
 using std::map;
+using std::string;
 
 
 namespace hamur
@@ -18,9 +19,9 @@ namespace hamur
 
             friend Singleton<HamurWorld>;
 
-            bool addObject(HamurObject* _newObject);
-            bool deleteObject(HamurObject* _givenObject);
-            bool hasObject(const string &_name);
+            bool addObject(HamurObject* newObject);
+            bool deleteObject(const string& objectName);
+            bool hasObject(const string &objectName);
 
             HamurObject* getObject(const string &_objectName);
 

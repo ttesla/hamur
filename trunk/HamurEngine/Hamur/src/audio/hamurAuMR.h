@@ -60,26 +60,26 @@ namespace hamur
 			/**
 			* Add FX into "map" container with FX name index.
 			* If the FX is already loaded, it doesn't add another copy.
-			* @param strFileName Name of the path/file.
 			* @param strFxName Name of the effect.
+            * @param strFileName Name of the path/file.
 			*/
-			void addFX(const string& strFileName, const string& strFxName);
+			void addFX(const string& strFxName, const string& strFileName);
 
 			/**
 			* Add Song into "map" container with Song name index.
 			* If the Song is already loaded, it doesn't add another copy.
-			* @param strFileName Name of the path/file.
 			* @param strSongName Name of the song.
+            * @param strFileName Name of the path/file.
 			*/
-			void addSong(const string& strFileName, const string& strSongName);
+			void addSong(const string& strSongName, const string& strFileName);
 
 			/**
 			* Add Stream into "map" container with Stream name index.
 			* If the Stream is already loaded, it doesn't add another copy.
+            * @param strStreamName Name of the stream.
 			* @param strFileName Name of the path/file.
-			* @param strStreamName Name of the stream.
 			*/
-			void addStream(const string& strFileName, const string& strSongName);
+			void addStream(const string& strSongName, const string& strFileName);
 
 			/**
 			* Deletes FX according to given FX name.
@@ -118,6 +118,11 @@ namespace hamur
             * @param strStreamName Name of the stream.
             */
 			void playStream(const string& strStreamName);
+
+            /**
+            * Clear and delete all objects in the Audio Manager
+            */
+            void clearAll();
 
 		protected:
 

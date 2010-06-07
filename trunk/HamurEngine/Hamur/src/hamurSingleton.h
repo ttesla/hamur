@@ -29,6 +29,7 @@ namespace hamur
 
         /**
         * Deletes the current singleton object.
+        * Do not call this explicitly. Call HAMURENGINE->terminate() instead.
         * Assigns the current template object to NULL.
         */
 		static void drop();
@@ -53,7 +54,7 @@ namespace hamur
 		if(Singleton<T>::_singleton != NULL)
 		{
 			delete Singleton<T>::_singleton;
-			Singleton<T>::_singleton = 0;
+			Singleton<T>::_singleton = NULL;
 		}
 	}
 

@@ -60,6 +60,7 @@ namespace hamur
             float pixRatioY;
 	};
 
+
     // Translates world coordinate to openGL coordinates
     inline HamurVec3 HamurTexMR::worldToGL(float x, float y, float z)
     {
@@ -82,6 +83,7 @@ namespace hamur
 
         return GLcoord;
     }
+
 
     // Translates world coordinate to openGL coordinates
     inline HamurVec2 HamurTexMR::worldToGL(float x, float y)

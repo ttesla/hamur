@@ -1,4 +1,5 @@
 #include "hamurAuMR.h"
+#include <assert.h>
 
 namespace hamur
 {
@@ -11,30 +12,8 @@ namespace hamur
 	// Deletes all Audios in the map container
 	HamurAuMR::~HamurAuMR()
 	{
-		map<string, HamurFX*>::iterator iterFX;
-		map<string, HamurSong*>::iterator iterSong;
-		map<string, HamurStream*>::iterator iterStream;
-		
-		// Deletes all FXs in the map container
-		for(iterFX = fxMap.begin(); iterFX != fxMap.end(); iterFX++)
-		{
-			if(iterFX->second)
-				delete iterFX->second;
-		}
-
-		// Deletes all Songs in the map container
-		for(iterSong = songMap.begin(); iterSong != songMap.end(); iterSong++)
-		{
-			if(iterSong->second)
-				delete iterSong->second;
-		}
-
-		// Deletes all Streams in the map container
-		for(iterStream = streamMap.begin(); iterStream != streamMap.end(); iterStream++)
-		{
-			if(iterStream->second)
-				delete iterStream->second;
-		}
+        // Delete all
+		clearAll();
 
 		// Shuts down the WHOLE FMOD Sound System.
 		// This also closes down the sample management system, freeing all MANAGED samples loaded 
@@ -111,7 +90,7 @@ namespace hamur
 
 	// Add FX into "map" container with FX name index.
 	// If the FX is already loaded, it doesn't add another copy
-	void HamurAuMR::addFX(const string& strFileName, const string& strFxName)
+	void HamurAuMR::addFX(const string& strFxName, const string& strFileName)
 	{
 		// Look in the map if the FX is already loaded.
 		map<string, HamurFX*>::iterator iter = fxMap.find(strFxName);
@@ -126,7 +105,7 @@ namespace hamur
 
 	// Add Song into "map" container with Song name index.
 	// If the Song is already loaded, it doesn't add another copy
-	void HamurAuMR::addSong(const string& strFileName, const string& strSongName)
+	void HamurAuMR::addSong(const string& strSongName, const string& strFileName)
 	{
 		// Look in the map if the FX is already loaded.
 		map<string, HamurSong*>::iterator iter = songMap.find(strSongName);
@@ -141,7 +120,7 @@ namespace hamur
 
 	// Add Stream into "map" container with Stream name index.
 	// If the Stream is already loaded, it doesn't add another copy
-	void HamurAuMR::addStream(const string& strFileName, const string& strStreamName)
+	void HamurAuMR::addStream(const string& strStreamName, const string& strFileName)
 	{
 		// Look in the map if the Stream is already loaded.
 		map<string, HamurStream*>::iterator iter = streamMap.find(strStreamName);
@@ -242,5 +221,37 @@ namespace hamur
 	{
 		getStream(strStreamName)->playStream();
 	}
+
+
+    // Clear and delete all objects in Audio Manager
+    void HamurAuMR::clearAll()
+    {
+        map<string, HamurFX*>::iterator iterFX;
+        map<string, HamurSong*>::iterator iterSong;
+        map<string, HamurStream*>::iterator iterStream;
+
+        // Deletes all FXs in the map container
+        for(iterFX = fxMap.begin(); iterFX != fxMap.end(); iterFX++)
+        {
+            if(iterFX->second)
+                delete iterFX->second;
+        }
+
+        // Deletes all Songs in the map container
+        for(iterSong = songMap.begin(); iterSong != songMap.end(); iterSong++)
+        {
+            if(iterSong->second)
+                delete iterSong->second;
+        }
+
+        // Deletes all Streams in the map container
+        for(iterStream = streamMap.begin(); iterStream != streamMap.end(); iterStream++)
+        {
+            if(iterStream->second)
+                delete iterStream->second;
+        }
+
+        HAMURLOG->writeLogln("Hamur Audio Manager cleared.");
+    }
 
 }

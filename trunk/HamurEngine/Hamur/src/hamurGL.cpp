@@ -14,7 +14,7 @@ namespace hamur
 	// HamurGL destructor
 	HamurGL::~HamurGL()
 	{
-
+        SDL_Quit();
 	}
 
 	// Initialize SDL with OpenGL support
@@ -110,13 +110,6 @@ namespace hamur
         cout << "GL Init - RGBA:" << red << " " << green << " "
             << blue << " " << alpha << " BUFFER:" << buffer
             << " DEPTH:" << depth << " DBUFF:" << dbuff << endl;
-    }
-
-
-    // Terminate SDL and quit
-    void HamurGL::quit()
-    {
-        SDL_Quit();
     }
 
 
