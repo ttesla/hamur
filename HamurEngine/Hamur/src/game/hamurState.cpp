@@ -10,7 +10,7 @@ namespace hamur
 
 	HamurState::~HamurState()
 	{
-
+        HAMURLOG->writeLogln("State deleted: " + stateName);
 	}
 
 

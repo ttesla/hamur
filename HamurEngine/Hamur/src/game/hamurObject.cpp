@@ -12,6 +12,7 @@ namespace hamur
         pos.y = 0;
         pos.z = 0;
         rotation = 0;
+        HAMURLOG->writeLogln("Object created: " + name);
     }
 
     HamurObject::HamurObject(const string &_name, const string &spritePath)
@@ -22,6 +23,12 @@ namespace hamur
         pos.z = 0;
         rotation = 0;
         setSprite(spritePath);
+        HAMURLOG->writeLogln("Object created: " + name + ", " + spritePath);
+    }
+
+    HamurObject::~HamurObject()
+    {
+        HAMURLOG->writeLogln("Object deleted: " + name);
     }
 
     void HamurObject::draw()

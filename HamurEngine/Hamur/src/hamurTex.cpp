@@ -17,6 +17,7 @@ namespace hamur
 
 	HamurTex::~HamurTex()
 	{
+        HAMURLOG->writeLogln("Texture deleted: " + filePath);
 	}
 
 

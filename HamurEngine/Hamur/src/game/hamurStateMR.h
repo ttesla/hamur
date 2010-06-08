@@ -23,6 +23,12 @@ namespace hamur
             friend Singleton<HamurStateMR>;
 
             /**
+            * Initialize Hamur State Manager
+            * @return True if initialization is successful else return False
+            */
+            bool init();
+
+            /**
             * Registers given state to the state manager.
             * If state is already registered, it will not be registered.
             * @param _state Object of the state
@@ -86,6 +92,11 @@ namespace hamur
             * @see getPreviousStateName()
             */
 			string getPreviousStateName();
+
+            /**
+            * Clear and delete all state objects in the State Manager
+            */
+            void clearAll();
 
 		protected:
 

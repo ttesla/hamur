@@ -14,7 +14,7 @@ namespace hamur
 {
     HamurEngine::HamurEngine()
     {
-        HAMURLOG->writeLogln("Initializing Hamur Engine...");
+
     }
 
 
@@ -22,20 +22,23 @@ namespace hamur
     HamurEngine::~HamurEngine()
     {
         // Add remaining cleaups here...
+        HAMURLOG->writeTerminateLog("HamurEngine");
     }
 
 
     // Initializes Hamur engine with the given parameters...
     bool HamurEngine::init(const string& applicationName, int screenWidth, int screenHeight)
     {
+        HAMURLOG->writeLogln("Initializing Hamur Engine...");
+
         // Init Hamur subsystems...
         if(!HAMURGL->initSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
-        if(!HAMURGL->initGL())           return false; // OpenGL
-        if(!HAMURTEXMR->getInstance())   return false; // Texture Manager
-        if(!HAMURAUMR->init())           return false; // Audio Manager
-        if(!HAMURWORLD->getInstance())   return false; // Object manager - World
-        if(!HAMURSTATEMR->getInstance()) return false; // State Manager
-        if(!HAMUREVENT->getInstance())   return false; // Event handler
+        if(!HAMURGL->initGL())      return false; // OpenGL
+        if(!HAMURTEXMR->init())     return false; // Texture Manager
+        if(!HAMURAUMR->init())      return false; // Audio Manager
+        if(!HAMURWORLD->init())     return false; // Object manager - World
+        if(!HAMURSTATEMR->init())   return false; // State Manager
+        if(!HAMUREVENT->init())     return false; // Event handler
 
         HAMURLOG->writeInitLog("HamurEngine");
         HAMURLOG->writeLogln("");
@@ -83,10 +86,11 @@ namespace hamur
     // Delete all objects in all Hamur managers... 
     void HamurEngine::terminate()
     {
+        HAMURLOG->writeLogln("\nTerminating Hamur Engine...");
+
         runEngine = false;
 
-        // The order is important, double check here
-        // if you are getting errors after termination
+        // The termination order is important !!!
         HAMURTEXMR->drop();
         HAMURAUMR->drop();
         HAMURWORLD->drop();

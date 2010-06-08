@@ -18,6 +18,12 @@ namespace hamur
 		public:
 
             friend Singleton<HamurEvent>;
+
+            /**
+            * Initialize Hamur Event
+            * @return True if initialization is successfull, else return False
+            */
+            bool init();
 			
             /**
             * Checks if given key is pressed or not.

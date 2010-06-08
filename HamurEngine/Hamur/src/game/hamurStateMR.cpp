@@ -3,22 +3,26 @@ namespace hamur
 {
 	HamurStateMR::HamurStateMR()
 	{
-		currentState = NULL;
-		previousState = NULL;
-        HAMURLOG->writeInitLog("HamurStateMR");
+        // empty
 	}
 
 
 	HamurStateMR::~HamurStateMR()
 	{
-		map<string, HamurState*>::iterator iter;
-
-		for(iter = stateList.begin(); iter != stateList.end(); iter++)
-		{
-			if(iter->second)
-				delete iter->second;
-		}
+        clearAll();
+        HAMURLOG->writeTerminateLog("HamurStateMR");
 	}
+
+
+    // Init Hamur State Manager
+    bool HamurStateMR::init()
+    {
+        currentState = NULL;
+        previousState = NULL;
+        HAMURLOG->writeInitLog("HamurStateMR");
+
+        return true; // We dont have much choice here :)
+    }
 
 
     // Add state into "map" container with state name.
@@ -152,4 +156,19 @@ namespace hamur
 
 		return previousState->getStateName();
 	}
+
+    
+    // Delete all state objects in the State Manager
+    void HamurStateMR::clearAll()
+    {
+        map<string, HamurState*>::iterator iter;
+
+        for(iter = stateList.begin(); iter != stateList.end(); iter++)
+        {
+            if(iter->second)
+                delete iter->second;
+        }
+
+        HAMURLOG->writeLogln("All state objects deleted.");
+    }
 }

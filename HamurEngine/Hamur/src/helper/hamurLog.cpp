@@ -16,45 +16,6 @@ namespace hamur
         logFile.close();
 	}
 
-    void HamurLog::writeLog(const string &input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(int input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(unsigned int input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(float input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(double input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(HamurObject &input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(HamurObject *input)
-    {
-        logFile.write(input);
-    }
-
-    void HamurLog::writeLog(HamurString &input)
-    {
-        logFile.write(input);
-    }
 
     // LN versions... 
 
@@ -107,6 +68,50 @@ namespace hamur
     }
 
 
+    // WITHOUT LN versions...
+
+    void HamurLog::writeLog(const string &input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(int input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(unsigned int input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(float input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(double input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurObject &input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurObject *input)
+    {
+        logFile.write(input);
+    }
+
+    void HamurLog::writeLog(HamurString &input)
+    {
+        logFile.write(input);
+    }
+
+    
+
 	// Write initialization message text to log file
 	// Makes some adjustments for a nifty printout.
 	void HamurLog::writeInitLog(string log)
@@ -119,6 +124,20 @@ namespace hamur
 		log.append("OK!\n");
         logFile.write(log);
 	}
+
+
+    // Write termination message text to log file
+    // Same style as writeInitLog()
+    void HamurLog::writeTerminateLog(string log)
+    {
+        int dotsToAdd = 15 - log.length();
+
+        for(int i = 0; i < dotsToAdd; i++)
+            log.append(".");
+
+        log.append("terminated!\n");
+        logFile.write(log);
+    }
 
 
     void HamurLog::closeLogFile()

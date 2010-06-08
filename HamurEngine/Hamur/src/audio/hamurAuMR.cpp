@@ -21,7 +21,10 @@ namespace hamur
 		// Streams are not freed. You must close them yourself.
 		// CD Tracks are stopped.
 		FSOUND_Close();
+
+        HAMURLOG->writeTerminateLog("HamurAudio");
 	}
+
 
 	// Default Initialization of Audio
 	bool HamurAuMR::init()
@@ -251,7 +254,7 @@ namespace hamur
                 delete iterStream->second;
         }
 
-        HAMURLOG->writeLogln("Hamur Audio Manager cleared.");
+        HAMURLOG->writeLogln("All audio objects deleted.");
     }
 
 }

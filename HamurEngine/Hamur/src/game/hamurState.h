@@ -2,6 +2,8 @@
 #define HAMUR_STATE_H
 
 #include <string>
+#include "../helper/hamurLog.h"
+#include "../hamurDefinitions.h"
 
 using std::string;
 

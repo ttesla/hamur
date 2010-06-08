@@ -19,6 +19,7 @@ namespace hamur
 	HamurSong::~HamurSong()
 	{
 		FMUSIC_FreeSong(mod);
+        HAMURLOG->writeLogln("Song deleted: " + strSongName + ", " + strFileName);
 	}
 
 

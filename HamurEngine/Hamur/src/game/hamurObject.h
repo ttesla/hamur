@@ -27,6 +27,8 @@ namespace hamur
 
             HamurObject(const string &name, const string &spritePath);
 
+            ~HamurObject();
+
             /**
             * Pure virtual update function of the object. 
             * All update logic should be written here.

@@ -21,6 +21,7 @@ namespace hamur
 	HamurStream::~HamurStream()
 	{
 		FSOUND_Stream_Close(stream);
+        HAMURLOG->writeLogln("Stream deleted: " + strStreamName + ", " + strFileName);
 	}
 
 
