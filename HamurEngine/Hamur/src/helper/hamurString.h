@@ -11,6 +11,8 @@ namespace hamur
 {
     // Forward declaration
     class HamurObject;
+    class HamurVec2;
+    class HamurVec3;
 
     class HamurString
     {
@@ -22,6 +24,8 @@ namespace hamur
             HamurString& operator<<(const string& input);
             HamurString& operator<<(HamurObject& input);
             HamurString& operator<<(HamurObject* input);
+            HamurString& operator<<(const HamurVec2& input);
+            HamurString& operator<<(const HamurVec3& input);
 
             HamurString operator=(int input);
             HamurString operator=(float input);
@@ -29,6 +33,8 @@ namespace hamur
             HamurString operator=(const string& input);
             HamurString operator=(HamurObject& input);
             HamurString operator=(HamurObject* input);
+            HamurString operator=(const HamurVec2& input);
+            HamurString operator=(const HamurVec3& input);
 
             string getString();
             void clear();

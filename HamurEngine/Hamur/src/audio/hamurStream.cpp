@@ -33,7 +33,7 @@ namespace hamur
 		if (!stream)
 		{
 			string tempStr = FMOD_ErrorString(FSOUND_GetError());
-            HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name);
+            HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name, HamurLog::ALWAYS);
 			return false;
 		}
 		else

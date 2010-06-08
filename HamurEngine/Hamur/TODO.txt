@@ -5,6 +5,7 @@ TODO:
 [ ] Iskelet olustur ve test uygulamasi yap
 [ ] Colorkey, Alpha sorununu çöz
 [ ] Font bastýrma
+[ ] Log'lar konsola da yazdýrýlabilsin.
 
 [ ] Eksik doxygenler tamamla
 [ ] Header'lardaki "_x" gibi deðiþkenleri düzelt 

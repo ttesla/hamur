@@ -10,13 +10,15 @@ MainState::MainState() : HamurState("MainState")
 
 MainState::~MainState()
 {
-
+ 
 }
 
 
 // ENTER
 void MainState::enter() 
 {
+    HAMURLOG->setDebugMode(true);
+
     // Add some objects
     HAMURWORLD->addObject(new HamurObject("Balik"));
     HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
@@ -31,6 +33,13 @@ void MainState::enter()
 
     HAMURAUMR->addStream("Warfare", "data/warfare.mp3");
     HAMURAUMR->playStream("Warfare");
+
+   
+    HamurVec2 vec;
+    vec.x = 10;
+    vec.y = 20;
+
+    HAMURCONSOLE << vec;
 }
 
 

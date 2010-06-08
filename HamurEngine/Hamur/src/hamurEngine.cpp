@@ -29,7 +29,7 @@ namespace hamur
     // Initializes Hamur engine with the given parameters...
     bool HamurEngine::init(const string& applicationName, int screenWidth, int screenHeight)
     {
-        HAMURLOG->writeLogln("Initializing Hamur Engine...");
+        HAMURLOG->writeLogln("Initializing Hamur Engine...", HamurLog::ALWAYS);
 
         // Init Hamur subsystems...
         if(!HAMURGL->initSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
@@ -41,7 +41,7 @@ namespace hamur
         if(!HAMUREVENT->init())     return false; // Event handler
 
         HAMURLOG->writeInitLog("HamurEngine");
-        HAMURLOG->writeLogln("");
+        HAMURLOG->writeLogln("", HamurLog::ALWAYS);
         
         return true; // Initialization OK!
     }
@@ -86,7 +86,7 @@ namespace hamur
     // Delete all objects in all Hamur managers... 
     void HamurEngine::terminate()
     {
-        HAMURLOG->writeLogln("\nTerminating Hamur Engine...");
+        HAMURLOG->writeLogln("\nTerminating Hamur Engine...", HamurLog::ALWAYS);
 
         runEngine = false;
 

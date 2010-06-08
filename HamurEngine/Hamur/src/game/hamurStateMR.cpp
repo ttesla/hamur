@@ -33,7 +33,7 @@ namespace hamur
         if (hasState(_state->getStateName()))
         {
             HAMURLOG->writeLogln("Error!: Can't register state, state already exists: " 
-                + _state->getStateName());
+                + _state->getStateName(), HamurLog::ALWAYS);
             return false;
         }
 
@@ -88,7 +88,8 @@ namespace hamur
 		// If not found, return NULL.
 		if(iter == stateList.end())
 		{
-            HAMURLOG->writeLogln("Error!: Can't find the given state: " + _stateName);
+            HAMURLOG->writeLogln("Error!: Can't find the given state: " 
+                + _stateName, HamurLog::ALWAYS);
 			return NULL;
 		}
 
@@ -113,7 +114,8 @@ namespace hamur
         else
         {
             HAMURLOG->writeLogln("Error!: Can't change current state. "
-                                 "State does not exists: " + _stateName);
+                                 "State does not exists: " + _stateName, 
+                                 HamurLog::ALWAYS);
         }
 	}
 
@@ -123,7 +125,8 @@ namespace hamur
 	{
 		if(currentState == NULL)
 		{
-            HAMURLOG->writeLogln("Error!: Current state is not SET yet.");
+            HAMURLOG->writeLogln("Error!: Current state is not SET yet.", 
+                HamurLog::ALWAYS);
 			return NULL;
 		}
 		
@@ -136,7 +139,8 @@ namespace hamur
 	{
 		if(currentState == NULL)
 		{
-            HAMURLOG->writeLogln("Error!: Current state is not SET yet.");
+            HAMURLOG->writeLogln("Error!: Current state is not SET yet.", 
+                HamurLog::ALWAYS);
 			return NULL;
 		}
 
@@ -149,7 +153,8 @@ namespace hamur
 	{
 		if(previousState == NULL)
 		{
-            HAMURLOG->writeLogln("Error!: Previous state is not SET yet.");
+            HAMURLOG->writeLogln("Error!: Previous state is not SET yet.", 
+                HamurLog::ALWAYS);
 
 			return NULL;
 		}

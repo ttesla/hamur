@@ -32,7 +32,7 @@ namespace hamur
 
 		if(loadedImage == 0)
 		{
-            HAMURLOG->writeLogln("Error!: Can't load texture: " + filePath);
+            HAMURLOG->writeLogln("Error!: Can't load texture: " + filePath, HamurLog::ALWAYS);
 			return false;
 		}
 		
@@ -80,7 +80,7 @@ namespace hamur
 
 		if(newSurface == 0)
 		{
-            HAMURLOG->writeLogln("Error!: Can't load texture from surface.");
+            HAMURLOG->writeLogln("Error!: Can't load texture from surface.", HamurLog::ALWAYS);
 			return false;
 		}
 
