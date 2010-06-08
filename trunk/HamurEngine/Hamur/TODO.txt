@@ -10,6 +10,10 @@ TODO:
 [ ] Header'lardaki "_x" gibi deðiþkenleri düzelt 
 [ ] Get fonksiyonlarýný "const" yap
 
+[ ] Forward decleration kullanýlabilecek yerler belirle ve kullan
+[ ] Inline yapýlabilecek fonksiyonlar, tr-scene'e sor
+[ ] Kritik yerlere assert() ekle
+
 [OK] State machine tamamlancak
 [OK] hamur.h yap, tüm headerlar olsun. Kullanýcý sadece bunu include etsin.
 [OK] GL lerler ilgili library sorunlarý çözülecek.
