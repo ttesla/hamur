@@ -20,33 +20,50 @@ namespace hamur
 		public:
 			 HamurLog();
 			~HamurLog();
-
-            void writeLogln(const string &input);
-            void writeLogln(int input);
-            void writeLogln(unsigned int input);
-            void writeLogln(float input);
-            void writeLogln(double input);
-            void writeLogln(HamurObject &input);
-            void writeLogln(HamurObject *input);
-            void writeLogln(HamurString &input);
             
-            void writeLog(const string &input);
-            void writeLog(int input);
-            void writeLog(unsigned int input); 
-            void writeLog(float input);
-            void writeLog(double input);
-            void writeLog(HamurObject &input);
-            void writeLog(HamurObject *input);
-            void writeLog(HamurString &input);
+            void writeLog(const string &input, bool writeMode = DEBUG_ONLY); 
+            void writeLog(int input,           bool writeMode = DEBUG_ONLY);
+            void writeLog(unsigned int input,  bool writeMode = DEBUG_ONLY); 
+            void writeLog(float input,         bool writeMode = DEBUG_ONLY);
+            void writeLog(double input,        bool writeMode = DEBUG_ONLY);
+            void writeLog(HamurObject &input,  bool writeMode = DEBUG_ONLY);
+            void writeLog(HamurObject *input,  bool writeMode = DEBUG_ONLY);
+            void writeLog(HamurString &input,  bool writeMode = DEBUG_ONLY);
+
+            void writeLogln(const string &input, bool writeMode = DEBUG_ONLY);
+            void writeLogln(int input,           bool writeMode = DEBUG_ONLY);
+            void writeLogln(unsigned int input,  bool writeMode = DEBUG_ONLY);
+            void writeLogln(float input,         bool writeMode = DEBUG_ONLY);
+            void writeLogln(double input,        bool writeMode = DEBUG_ONLY);
+            void writeLogln(HamurObject &input,  bool writeMode = DEBUG_ONLY);
+            void writeLogln(HamurObject *input,  bool writeMode = DEBUG_ONLY);
+            void writeLogln(HamurString &input,  bool writeMode = DEBUG_ONLY);
 
 			// Write initialization messages
-			void writeInitLog(string log);
+			void writeInitLog(string log, bool writeMode = ALWAYS);
 
             // Write termination log
-            void writeTerminateLog(string log);
+            void writeTerminateLog(string log, bool writeMode = ALWAYS);
 
             void closeLogFile();
             void clearLogFile();
+
+            /**
+            * Turn on-off debug mode.
+            * If True passed, all massages will be written to log file,
+            * If False passed, only messages with ALWAYS flag will be written.
+            * @param mode True-False
+            */
+            void setDebugMode(bool mode);
+
+            /**
+            * Flag for function to write always, whether Debug mode on or off. 
+            * Error logs should use this flag.
+            */
+            const static bool ALWAYS = true;
+
+            /**< Flag for function to write in Debug mode only. */
+            const static bool DEBUG_ONLY = false;
 
 		protected:
 			
@@ -54,6 +71,7 @@ namespace hamur
 
             HamurFile logFile;
             const string logFileName;
+            bool debugMode;
 	};
     
 }

@@ -63,7 +63,7 @@ namespace hamur
 
             const float depthShift; /**< Default shift value to keep textures in visible area. Z = -1.0f */
             float openglX;
-            float openglY;
+            const float openglY;
             float aspectRatio;
             float pixRatioX;
             float pixRatioY;

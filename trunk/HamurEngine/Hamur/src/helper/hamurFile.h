@@ -34,7 +34,6 @@ namespace hamur
             bool openForRead(const string &fileName);
             void close();
 
-
             // Write functions
             void write(const string &input);
             void write(int input);
@@ -51,9 +50,6 @@ namespace hamur
             float readFloat();
             char readChar();
             string readString();
-
-
-
 
         private:
             ofstream outputFile; 

@@ -57,6 +57,24 @@ namespace hamur
         return *this;
     }
 
+    HamurString& HamurString::operator<<(const HamurVec2& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString.append(ss.str());
+
+        return *this;
+    }
+
+    HamurString& HamurString::operator<<(const HamurVec3& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString.append(ss.str());
+
+        return *this;
+    }
+
     HamurString HamurString::operator=(int input)
     {
         stringstream ss;
@@ -103,6 +121,24 @@ namespace hamur
     }
 
     HamurString HamurString::operator=(HamurObject* input)
+    {
+        stringstream ss;
+        ss << input;
+        customString = ss.str();
+
+        return *this;
+    }
+
+    HamurString HamurString::operator=(const HamurVec2& input)
+    {
+        stringstream ss;
+        ss << input;
+        customString = ss.str();
+
+        return *this;
+    }
+
+    HamurString HamurString::operator=(const HamurVec3& input)
     {
         stringstream ss;
         ss << input;
