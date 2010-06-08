@@ -5,16 +5,24 @@ namespace hamur
 	// HamurEvent constructor
 	HamurEvent::HamurEvent()
 	{
-		quit = false;
-		HAMURLOG->writeInitLog("HamurEvent");
+		
 	}
 
 
 	// HamurLog destructor
 	HamurEvent::~HamurEvent()
 	{
-
+        HAMURLOG->writeTerminateLog("HamurEvent");
 	}
+
+
+    // Initialize Hamur Event
+    bool HamurEvent::init()
+    {
+        quit = false;
+        HAMURLOG->writeInitLog("HamurEvent");
+        return true;
+    }
 
 
 	// Check keystate to see given key is pressed or not

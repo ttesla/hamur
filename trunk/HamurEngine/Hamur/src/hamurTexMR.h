@@ -28,6 +28,12 @@ namespace hamur
 
             friend Singleton<HamurTexMR>;
 
+            /**
+            * Initialize Hamur Texture Manager
+            * @return True if initialization is successful else return False
+            */
+            bool init();
+
 			HamurTex* getTexture(unsigned int textureID); //Get texture
 			bool deleteTexture(unsigned int textureID);   //Delete texture
 			unsigned int addTexture(const string& filePath); //Add texture from image file
@@ -41,6 +47,10 @@ namespace hamur
             HamurVec2 worldToGL(float x, float y);
             HamurVec2 worldToGL(const HamurVec2 &vec2);
 
+            /**
+            * Clear and delete all texture objects in Texture manager
+            */
+            void clearAll();
 
 		protected:
 
@@ -49,7 +59,6 @@ namespace hamur
 
 		private:
 
-            
 			map<unsigned int, HamurTex*> textureMap; //Store textures according to their unique texture ID
 
             const float depthShift; /**< Default shift value to keep textures in visible area. Z = -1.0f */

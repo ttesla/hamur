@@ -8,22 +8,23 @@ namespace hamur
         aspectRatio = (float)HAMURGL->getScreenWidth() / (float)HAMURGL->getScreenHeight();
         openglX = openglY * aspectRatio;
         pixRatioX = (float)HAMURGL->getScreenWidth()  / (openglX*2);
-        pixRatioY = (float)HAMURGL->getScreenHeight() / (openglY*2);
-
-		HAMURLOG->writeInitLog("HamurTexture");
+        pixRatioY = (float)HAMURGL->getScreenHeight() / (openglY*2);		
 	}
+
+
+    // Initialize Hamur texture manager
+    bool HamurTexMR::init()
+    {
+        HAMURLOG->writeInitLog("HamurTexMR");  
+        return true;
+    }
 
 
 	// Deletes all textures in the map container
 	HamurTexMR::~HamurTexMR()
 	{
-		map<unsigned int, HamurTex*>::iterator iter;
-
-		for(iter = textureMap.begin(); iter != textureMap.end(); iter++)
-		{
-			if(iter->second)
-				delete iter->second;
-		}
+		clearAll();
+        HAMURLOG->writeTerminateLog("HamurTexMR");
 	}
 
 
@@ -86,22 +87,19 @@ namespace hamur
 	// Deletes texture according to given texture name. 
 	bool HamurTexMR::deleteTexture(unsigned int textureID)
 	{
-		// Get texture from the map
-		bool bFound = false;
 		map<unsigned int, HamurTex*>::iterator iter = textureMap.find(textureID);
 
 		if(iter != textureMap.end())
 		{
-			// If it was found, delete it then
-			bFound = true;
-
 			if(iter->second)
 				delete iter->second;
 			
 			textureMap.erase(iter);
+
+            return true;
 		}
 
-		return bFound;
+		return false;
 	}
 
 
@@ -182,5 +180,18 @@ namespace hamur
         glEnd();
 
         glPopMatrix();
+    }
+
+    void HamurTexMR::clearAll()
+    {
+        map<unsigned int, HamurTex*>::iterator iter;
+
+        for(iter = textureMap.begin(); iter != textureMap.end(); iter++)
+        {
+            if(iter->second)
+                delete iter->second;
+        }
+
+        HAMURLOG->writeLogln("All textures deleted.");
     }
 }

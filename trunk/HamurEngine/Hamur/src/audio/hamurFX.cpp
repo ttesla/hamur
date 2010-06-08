@@ -19,6 +19,7 @@ namespace hamur
 	HamurFX::~HamurFX()
 	{
 		FSOUND_Sample_Free(effect);
+        HAMURLOG->writeLogln("FX deleted: " + strFxName + ", " + strFileName);
 	}
 
 

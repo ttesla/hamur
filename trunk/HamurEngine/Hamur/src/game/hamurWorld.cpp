@@ -6,7 +6,20 @@ namespace hamur
 
     HamurWorld::HamurWorld()
     {
+        // Empty
+    }
+
+    HamurWorld::~HamurWorld()
+    {
+        clearAll();
+        HAMURLOG->writeTerminateLog("HamurWorld");
+    }
+
+    // Initialize Hamur World
+    bool HamurWorld::init()
+    {
         HAMURLOG->writeInitLog("HamurWorld");
+        return true;
     }
 
 
@@ -66,5 +79,20 @@ namespace hamur
         }
 
         return iter->second;
+    }
+
+
+    // Delete all objects in the Hamur World
+    void HamurWorld::clearAll()
+    {
+        map<string, HamurObject*>::iterator iter;
+
+        for(iter = worldObjects.begin(); iter != worldObjects.end(); iter++)
+        {
+            if(iter->second)
+                delete iter->second;
+        }
+
+        HAMURLOG->writeLogln("All world objects deleted.");
     }
 }

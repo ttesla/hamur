@@ -15,6 +15,7 @@ namespace hamur
 	HamurGL::~HamurGL()
 	{
         SDL_Quit();
+        HAMURLOG->writeTerminateLog("HamurGL");
 	}
 
 	// Initialize SDL with OpenGL support

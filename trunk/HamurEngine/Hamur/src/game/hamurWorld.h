@@ -19,14 +19,26 @@ namespace hamur
 
             friend Singleton<HamurWorld>;
 
+            /**
+            * Initialize Hamur World, object world.
+            * @return True if initialization is successful else return False
+            */
+            bool init();
+
             bool addObject(HamurObject* newObject);
             bool deleteObject(const string& objectName);
             bool hasObject(const string &objectName);
 
             HamurObject* getObject(const string &_objectName);
 
+            /**
+            * Clear and delete all objects in the World. 
+            */
+            void clearAll();
+
         protected:
             HamurWorld();
+            ~HamurWorld();
 
         private:
             map<string, HamurObject*> worldObjects;

@@ -28,8 +28,6 @@ void MainState::enter()
 
     HAMURWORLD->addObject(new HamurObject("Tank2", "data/Tank.png"));
     HAMURWORLD->getObject("Tank2")->setPosition(400, 300);
-    HamurWorld::getInstance()->deleteObject("Tank2");
-    HAMURWORLD->addObject(new HamurObject("Tank2", "data/Tank.png"));
 
     HAMURAUMR->addStream("Warfare", "data/warfare.mp3");
     HAMURAUMR->playStream("Warfare");
@@ -42,10 +40,10 @@ void MainState::update()
     if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) 
         HAMURENGINE->stop();
 
-    if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle1 += 0.5f;
-    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
+    if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle1 += 0.01f;
+    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle1 -= 0.01f;
 
-    HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
+    HAMURWORLD->getObject("Balik")->rotateRadian(angle1);
     HAMURCONSOLE << "Angle1:" << angle1 << "\n";
 }
 
@@ -55,6 +53,7 @@ void MainState::draw()
 {
     HAMURWORLD->getObject("Balik")->draw();
     HAMURWORLD->getObject("Tank")->draw();
+    HAMURWORLD->getObject("Tank2")->draw();
     //HAMURWORLD->getObject("Tank2")->draw();
     //testPlotter();
     //HamurPlotter::drawRectangle(10, 10, 50, 50, HamurColor::CYAN);

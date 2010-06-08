@@ -120,7 +120,7 @@ namespace hamur
 			void playStream(const string& strStreamName);
 
             /**
-            * Clear and delete all objects in the Audio Manager
+            * Clear and delete all audio objects in the Audio Manager
             */
             void clearAll();
 
