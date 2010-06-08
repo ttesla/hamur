@@ -58,4 +58,17 @@ namespace hamur
         cout << input;
         return *this;
     }
+
+    HamurConsole HamurConsole::operator<<(const HamurVec2 &input)
+    {
+        cout << input;
+        return *this;
+    }
+
+    HamurConsole HamurConsole::operator<<(const HamurVec3 &input)
+    {
+        cout << input;
+        return *this;
+    }
+
 }
