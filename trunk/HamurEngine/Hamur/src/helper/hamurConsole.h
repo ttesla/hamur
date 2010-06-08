@@ -13,6 +13,8 @@ namespace hamur
 {
     class HamurObject;
     class HamurString;
+    class HamurVec2;
+    class HamurVec3;
 
     /**
      * Writes given text to console. 
@@ -39,6 +41,8 @@ namespace hamur
             HamurConsole operator<<(HamurObject &input);
             HamurConsole operator<<(HamurObject *input);
             HamurConsole operator<<(HamurString &input);
+            HamurConsole operator<<(const HamurVec2 &input);
+            HamurConsole operator<<(const HamurVec3 &input);
 			
 		private:
             HamurConsole() {};
