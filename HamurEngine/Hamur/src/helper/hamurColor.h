@@ -7,6 +7,8 @@ namespace hamur
     {
         public:
 
+            HamurColor() {};
+
             // Red, Green, Blue color values.
             HamurColor(float R, float G, float B);
 
