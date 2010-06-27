@@ -10,36 +10,28 @@ MainState::MainState() : HamurState("MainState")
 
 MainState::~MainState()
 {
- 
+
 }
 
 
 // ENTER
 void MainState::enter() 
 {
-    HAMURLOG->setDebugMode(true);
-
     // Add some objects
-    HAMURWORLD->addObject(new HamurObject("Balik"));
-    HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
-    HAMURWORLD->getObject("Balik")->setPosition(100, 100);
+    //HAMURWORLD->addObject(new HamurObject("Balik"));
+    //HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
+    //HAMURWORLD->getObject("Balik")->setPosition(100, 100);
 
-    HAMURWORLD->addObject(new HamurObject("Tank", "data/Tank.png"));
-    HAMURWORLD->getObject("Tank")->setPosition(200, 300);
-    HAMURWORLD->getObject("Tank")->rotateDegree(90);
+   // HAMURWORLD->addObject(new HamurObject("Tank", "data/Tank.png"));
+    //HAMURWORLD->getObject("Tank")->setPosition(200, 300);
+    //HAMURWORLD->getObject("Tank")->rotateDegree(90);
 
-    HAMURWORLD->addObject(new HamurObject("Tank2", "data/Tank.png"));
-    HAMURWORLD->getObject("Tank2")->setPosition(400, 300);
+    //HamurVec2 pos1(110, 20);
+    //HamurVec2 pos2(480, 150);
 
-    HAMURAUMR->addStream("Warfare", "data/warfare.mp3");
-    HAMURAUMR->playStream("Warfare");
-
-   
-    HamurVec2 vec;
-    vec.x = 10;
-    vec.y = 20;
-
-    HAMURCONSOLE << vec;
+    HAMURWORLD->addObject(new groundObject("Ground"));
+    //HAMURWORLD->addObject(new dynamicObject("Dynamic", pos1));
+    //HAMURWORLD->addObject(new dynamicObject("Dynamic2", pos2));
 }
 
 
@@ -49,23 +41,45 @@ void MainState::update()
     if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) 
         HAMURENGINE->stop();
 
-    if(HAMUREVENT->isKeyPressed(SDLK_UP))	    angle1 += 0.01f;
-    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle1 -= 0.01f;
+    static bool keyPressed = false;
 
-    HAMURWORLD->getObject("Balik")->rotateRadian(angle1);
-    HAMURCONSOLE << "Angle1:" << angle1 << "\n";
+    if(HAMUREVENT->isKeyPressed(SDLK_UP) && !keyPressed)
+    {
+        spawnObjects();
+        keyPressed = true;
+    }
+
+    if(! HAMUREVENT->isKeyPressed(SDLK_UP))
+        keyPressed = false;
+
+    if(HAMUREVENT->isKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
+
+    //HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
+    HAMURWORLD->runPhysicSimulation();
+   
+   // HAMURCONSOLE << "Angle1:" << angle1 << "\n";
 }
 
 
 // DRAW
 void MainState::draw() 
 {
-    HAMURWORLD->getObject("Balik")->draw();
-    HAMURWORLD->getObject("Tank")->draw();
-    HAMURWORLD->getObject("Tank2")->draw();
-    //HAMURWORLD->getObject("Tank2")->draw();
+    HAMURWORLD->getObject("Ground")->draw();
+    //HAMURWORLD->getObject("Dynamic")->draw();
+    //HAMURWORLD->getObject("Dynamic2")->draw();
+    //HAMURWORLD->getObject("Tank")->draw();
     //testPlotter();
     //HamurPlotter::drawRectangle(10, 10, 50, 50, HamurColor::CYAN);
+    //testBox2D();
+
+    map<string, HamurObject*>::iterator iter;
+
+    // Draw all objects
+    for (int i = 0; i < HAMURWORLD->getWorldSize(); i++)
+    {
+        HAMURWORLD->getObjectbyIndex(i)->draw();
+    }
+    
 }
 
 
@@ -164,7 +178,7 @@ void MainState::testPlotter()
     HamurVec3 vecs[6] = {HamurVec3(300,10,50), HamurVec3(100,250,50), HamurVec3(300,450,50),
         HamurVec3(450, 450,50), HamurVec3(600,250,50), HamurVec3(450, 10,50)};
 
-    HamurPlotter::drawPolygon(vecs, 6, HamurColor::CYAN);
+    HamurPlotter::drawPolygon(vecs, 6, HamurColor::CYAN,180);
 
     HamurPlotter::drawRectangle(225, 100, 280, 275, HamurColor::RED);
 
@@ -175,15 +189,15 @@ void MainState::testPlotter()
 
     for ( int i =0; i< 40; i++)
     {
-        HamurPlotter::drawCircle(400, 300, (i+1)*8, HamurColor::RED);
+        HamurPlotter::drawCircle(400, 300, (i+1)* 8.0f, HamurColor::RED);
     }
 
 
-    HamurVec2 down1(300, 550);
-    HamurVec2 down2(500,550);
+    HamurVec2 down1(140, 70);
+    HamurVec2 down2(140,350);
 
-    HamurVec3 up1(500, 550, 0);
-    HamurVec3 up2(650, 70, 0);
+    HamurVec3 up1(140, 70, 0);
+    HamurVec3 up2(140, 350, 0);
 
     HamurColor newcolor1(255, 50, 0);
     HamurColor newcolor2 (255, 0, 255);
@@ -191,7 +205,9 @@ void MainState::testPlotter()
     HamurVec2 try1(1,1);
     HamurVec3 try2(3,3,0);
 
-    HamurPlotter::drawLine(30, 70, 0, 300, 550, 0, HamurColor::WHITE);
+    //HamurPlotter::drawLine(140, 70, 0, 140, 350, 0, HamurColor::WHITE, 90);
+    HamurPlotter::drawLine(down1, down2, HamurColor::WHITE, 90);
+    HamurPlotter::drawLine(up1, up2, HamurColor::YELLOW, 45);
     HamurPlotter::drawLine(down1, down2, newcolor1);
     HamurPlotter::drawLine(up1, up2, newcolor2);
 
@@ -200,6 +216,33 @@ void MainState::testPlotter()
         HamurPlotter::drawPoint(try1, HamurColor::YELLOW);
         HamurPlotter::drawPoint(try2, HamurColor::BLUE);
     }
+}
+
+void MainState::spawnObjects()
+{
+    static float x = 0;
+    static float y = 0;
+    static int i = HAMURWORLD->getWorldSize()- 1;
+
+    bool spawn = false;
 
 
+    HamurVec2 pos(x, y);
+    HamurString ss;
+    //pos.x = 0 + i *30;
+    //pos.y = 0 + i *5;
+
+    pos.x = 250.0f;
+    pos.y = 0.0f;
+    
+    x = pos.x;
+    y = pos.y;
+
+    ss << "Dynamic" << i;
+    HAMURWORLD->addObject(new dynamicObject(ss.getString(), pos));
+    HAMURWORLD->getObject(ss.getString())->setPosition(pos);
+    //HAMURWORLD->getObject(ss.getString())->setSprite("data/fish.png");
+
+   // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.getString()))->setColor(1, 1, 1);
+    i = HAMURWORLD->getWorldSize()-1;
 }

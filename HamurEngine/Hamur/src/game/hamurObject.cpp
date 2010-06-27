@@ -1,5 +1,6 @@
 #include "hamurObject.h"
 #include "../helper/hamurMath.h"
+#include "hamurWorld.h"
 
 
 namespace hamur
@@ -81,5 +82,40 @@ namespace hamur
     void HamurObject::setSprite(const string &_path)
     {
         spriteID = HAMURTEXMR->addTexture(_path);
+    }
+
+    b2Body* HamurObject::getBody()
+    {
+        return body;
+    }
+
+    b2BodyDef HamurObject::getBodyDef()
+    {
+        return bodyDef;
+    }
+
+    void HamurObject::setBodyDef(const b2BodyDef& _bodyDef)
+    {
+        bodyDef = _bodyDef;
+    }
+
+    b2PolygonShape HamurObject::getPolygonShape()
+    {
+        return box;
+    }
+
+    void HamurObject::setPolygonShape(const b2PolygonShape& _box)
+    {
+        box = _box;
+    }
+
+    b2FixtureDef HamurObject::getFixDef()
+    {
+        return fixtureDef;
+    }
+
+    void HamurObject::setFixDef(const b2FixtureDef& _fixDef)
+    {
+        fixtureDef = _fixDef;
     }
 }

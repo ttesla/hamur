@@ -28,6 +28,7 @@ class MainState : public HamurState
     private:
         void testBox2D();
         void testPlotter();
+		void spawnObjects();
 
         float angle1;
        

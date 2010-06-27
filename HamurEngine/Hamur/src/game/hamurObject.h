@@ -8,6 +8,7 @@
 #include <string>
 #include "../hamurDefinitions.h"
 #include "../hamurTexMR.h"
+#include "Box2D/Box2D.h"
 
 using std::vector;
 using std::string;
@@ -15,6 +16,13 @@ using std::string;
 
 namespace hamur
 {
+    enum bodyType
+    {
+        StaticBody = 0,
+        KinematicBody,
+        DynamicBody,
+    };
+
     /**
     * Hamur Object base class.
     * Everything in the Hamur game environment is a Hamur object. 
@@ -114,6 +122,17 @@ namespace hamur
 
             void setSprite(const string &_path);
 
+            b2Body* getBody();
+            b2BodyDef getBodyDef();
+            void setBodyDef(const b2BodyDef& body);
+            b2PolygonShape getPolygonShape();
+            void setPolygonShape(const b2PolygonShape& box);
+            b2FixtureDef getFixDef();
+            void setFixDef(const b2FixtureDef& fixDef);
+
+            float width;
+            float height;
+
 	    protected:
 		    string name;      /**< Name of the object. */
 		    HamurVec3 pos;    /**< Position of the object. */
@@ -122,7 +141,16 @@ namespace hamur
 		    bool interaction; /**< Object has interaction or not. */
             unsigned int spriteID; /**< Sprite ID of the game object. */
 
+            // Box2D Attributes
+            b2BodyDef bodyDef;
+            b2Body* body;
+            b2PolygonShape box;
+            b2FixtureDef fixtureDef;
+
+         
 	    private:
+            // Inner Attributes of Box2D
+            bodyType 
 	};
 
     /** Writes the Object to the stream. (pointer version) */
