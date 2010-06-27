@@ -24,11 +24,6 @@ namespace hamur
         return true;
     }
 
-        HAMURLOG->writeInitLog("HamurWorld");
-
-    }
-
-
 
     bool HamurWorld::addObject(HamurObject *_newObject)
     {
@@ -106,6 +101,7 @@ namespace hamur
 
         HAMURLOG->writeLogln("All world objects deleted.");
     }
+
     HamurObject* HamurWorld::getObjectbyIndex(int index)
     {
         map<string, HamurObject*>::iterator iter;
