@@ -150,7 +150,6 @@ namespace hamur
          
 	    private:
             // Inner Attributes of Box2D
-            bodyType 
 	};
 
     /** Writes the Object to the stream. (pointer version) */
