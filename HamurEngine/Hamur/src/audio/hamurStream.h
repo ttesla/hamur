@@ -43,7 +43,7 @@ namespace hamur
             * Plays PCM based or compressed file as music/stream.
             * @return If playing successful or not.
             */
-			bool playStream();
+			bool PlayStream();
 
             /**
             * Stops PCM based or compressed file.

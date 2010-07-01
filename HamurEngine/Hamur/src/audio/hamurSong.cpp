@@ -43,7 +43,7 @@ namespace hamur
 
 
 	// Plays the current song
-	bool HamurSong::playSong(bool loop)
+	bool HamurSong::PlaySong(bool loop)
 	{
 		if (!mod)
 		{
