@@ -1,143 +1,148 @@
 #ifndef HAMURAUMR_H
 #define HAMURAUMR_H
 
-#include "hamurFx.h"
-#include "hamurSong.h"
-#include "hamurStream.h"
 #include "../hamurSingleton.h"
 
 #include <map>
 
 using std::map;
 
+
 namespace hamur
 {
-    /**
-    * Hamur Audio Manager.
-    * Singleton class that manages the audio system.
-    */
-	class HamurAuMR : public Singleton<HamurAuMR>
-	{
-		public:
 
-            friend Singleton<HamurAuMR>;
+// Forward declarations
+class HamurFX;
+class HamurSong;
+class HamurStream;
 
-			/** 
-			* Default Initialization of Audio.
-			* Inits with 44100hz mixrate and 32 channels.
-			* @return If initialization successful or not
-			*/
-			bool init();
+/**
+* Hamur Audio Manager.
+* Singleton class that manages the audio system.
+*/
+class HamurAuMR : public Singleton<HamurAuMR>
+{
+	public:
 
-			/**
-			* Initialization of Audio.
-			* @see init()
-			* @param mixrate Output rate in hz between 4000 and 65535.
-			* @param maxsoftwarechannels Maximum number of SOFTWARE channels available.
-			* @param flags Controls some global or initialization time aspects of playback.
-			* @return If initialization successful or not
-			*/ 
-			bool init(int mixrate, int maxsoftwarechannels, unsigned int flags);
+        friend Singleton<HamurAuMR>;
 
-			/**
-			* Get FX from "map" container according to given FX name.
-			* @param strFxName Name of the effect file.
-			*/
-			HamurFX* getFX(const string& strFxName);
+		/** 
+		* Default Initialization of Audio.
+		* Inits with 44100hz mixrate and 32 channels.
+		* @return If initialization successful or not
+		*/
+		bool Init();
 
-			/**
-			* Get Song from "map" container according to given Song name.
-			* @param strSongName Name of the song file.
-			*/
-			HamurSong* getSong(const string& strSongName);
+		/**
+		* Initialization of Audio.
+		* @see init()
+		* @param mixrate Output rate in hz between 4000 and 65535.
+		* @param maxsoftwarechannels Maximum number of SOFTWARE channels available.
+		* @param flags Controls some global or initialization time aspects of playback.
+		* @return If initialization successful or not
+		*/ 
+		bool Init(int mixrate, int maxsoftwarechannels, unsigned int flags);
 
-			/**
-			* Get Stream from "map" container according to given Stream name.
-			* @param strStreamName Name of the stream file.
-			*/
-			HamurStream* getStream(const string& strStreamName);
+		/**
+		* Get FX from "map" container according to given FX name.
+		* @param strFxName Name of the effect file.
+		*/
+		HamurFX* GetFX(const string& strFxName);
 
-			/**
-			* Add FX into "map" container with FX name index.
-			* If the FX is already loaded, it doesn't add another copy.
-			* @param strFxName Name of the effect.
-            * @param strFileName Name of the path/file.
-			*/
-			void addFX(const string& strFxName, const string& strFileName);
+		/**
+		* Get Song from "map" container according to given Song name.
+		* @param strSongName Name of the song file.
+		*/
+		HamurSong* GetSong(const string& strSongName);
 
-			/**
-			* Add Song into "map" container with Song name index.
-			* If the Song is already loaded, it doesn't add another copy.
-			* @param strSongName Name of the song.
-            * @param strFileName Name of the path/file.
-			*/
-			void addSong(const string& strSongName, const string& strFileName);
+		/**
+		* Get Stream from "map" container according to given Stream name.
+		* @param strStreamName Name of the stream file.
+		*/
+		HamurStream* GetStream(const string& strStreamName);
 
-			/**
-			* Add Stream into "map" container with Stream name index.
-			* If the Stream is already loaded, it doesn't add another copy.
-            * @param strStreamName Name of the stream.
-			* @param strFileName Name of the path/file.
-			*/
-			void addStream(const string& strSongName, const string& strFileName);
+		/**
+		* Add FX into "map" container with FX name index.
+		* If the FX is already loaded, it doesn't add another copy.
+		* @param strFxName Name of the effect.
+        * @param strFileName Name of the path/file.
+		*/
+		void AddFX(const string& strFxName, const string& strFileName);
 
-			/**
-			* Deletes FX according to given FX name.
-            * @param strFxName Name of the effect.
-			*/
-			bool deleteFX(const string& strFxName);
+		/**
+		* Add Song into "map" container with Song name index.
+		* If the Song is already loaded, it doesn't add another copy.
+		* @param strSongName Name of the song.
+        * @param strFileName Name of the path/file.
+		*/
+		void AddSong(const string& strSongName, const string& strFileName);
 
-            /**
-            * Deletes Song according to given Song name.
-            * @param strSongName Name of the song.
-            */
-			bool deleteSong(const string& strSongName);
+		/**
+		* Add Stream into "map" container with Stream name index.
+		* If the Stream is already loaded, it doesn't add another copy.
+        * @param strStreamName Name of the stream.
+		* @param strFileName Name of the path/file.
+		*/
+		void AddStream(const string& strStreamName, const string& strFileName);
 
-            /**
-            * Deletes Stream according to given Stream name.
-            * @param strStreamName Name of the stream.
-            */
-			bool deleteStream(const string& strStreamName);
+		/**
+		* Deletes FX according to given FX name.
+        * @param strFxName Name of the effect.
+		*/
+		bool DeleteFX(const string& strFxName);
 
-			
-            /**
-            * Plays effect according to given effect name.
-            * @param strFxName Name of the effect.
-            */
-			void playFX(const string& strFxName);
+        /**
+        * Deletes Song according to given Song name.
+        * @param strSongName Name of the song.
+        */
+		bool DeleteSong(const string& strSongName);
 
-            /**
-            * Plays song according to given song name.
-            * @param strSongName Name of the song.
-            * @param loop Sets if song loops or not.
-            */
-			void playSong(const string& strSongName, bool loop);
+        /**
+        * Deletes Stream according to given Stream name.
+        * @param strStreamName Name of the stream.
+        */
+		bool DeleteStream(const string& strStreamName);
 
-            /**
-            * Plays stream according to given stream name.
-            * @param strStreamName Name of the stream.
-            */
-			void playStream(const string& strStreamName);
+		
+        /**
+        * Plays effect according to given effect name.
+        * @param strFxName Name of the effect.
+        */
+		void PlayFX(const string& strFxName);
 
-            /**
-            * Clear and delete all audio objects in the Audio Manager
-            */
-            void clearAll();
+        /**
+        * Plays song according to given song name.
+        * @param strSongName Name of the song.
+        * @param loop Sets if song loops or not.
+        */
+		void PlaySong(const string& strSongName, bool loop);
 
-		protected:
+        /**
+        * Plays stream according to given stream name.
+        * @param strStreamName Name of the stream.
+        */
+		void PlayStream(const string& strStreamName);
 
-            HamurAuMR();
+        /**
+        * Clear and delete all audio objects in the Audio Manager
+        */
+        void ClearAll();
 
-            /**
-            * Deletes all Audios in the map container.
-            */
-            ~HamurAuMR();
+	protected:
 
-		private:
-			map<string, HamurFX*> fxMap;         /**< Store FX's according to their  names. */
-			map<string, HamurSong*> songMap;     /**< Store Song's according to their  names. */
-			map<string, HamurStream*> streamMap; /**< Store Song's according to their  names. */
-	};
-}
+        HamurAuMR();
+
+        /**
+        * Deletes all Audios in the map container.
+        */
+        ~HamurAuMR();
+
+	private:
+		map<string, HamurFX*> mFxMap;         /**< Store FX's according to their  names. */
+		map<string, HamurSong*> mSongMap;     /**< Store Song's according to their  names. */
+		map<string, HamurStream*> mStreamMap; /**< Store Song's according to their  names. */
+};
+
+} // namespace hamur
 
 #endif	// HAMURAUMR_H

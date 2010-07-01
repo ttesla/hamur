@@ -39,13 +39,13 @@ namespace hamur
             * @param name Name of the effect.
             * @return If loading successful or not.
 			*/ 
-			bool loadEffect(const string& name);
+			bool LoadFX(const string& name);
 			
 			/**
 			* Plays the PCM based or compress file as sound effect.
             * @return If playing successful or not.
 			*/ 
-			bool playEffect();
+			bool PlayFX();
 
 		private:
             /**

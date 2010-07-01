@@ -46,7 +46,7 @@ namespace hamur
             * @param loop Sets if the song looping or not.
             * @return If playing successful or not.
             */ 
-			bool playSong(bool loop);
+			bool PlaySong(bool loop);
 
             /**
             * Stops sequenced music file.

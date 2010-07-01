@@ -12,7 +12,7 @@ namespace hamur
 	HamurFX::HamurFX(const string &fileName, const string &fxName) 
 	: strFileName(fileName), strFxName(fxName)
 	{
-		if(!loadEffect(fileName)) exit(1);
+		if(!LoadFX(fileName)) exit(1);
 	}
 
 
@@ -24,7 +24,7 @@ namespace hamur
 
 
 	// Loads the current effect
-	bool HamurFX::loadEffect(const std::string &name)
+	bool HamurFX::LoadFX(const std::string &name)
 	{
 		// FSOUND_UNMANAGED : Do not use FSOUND's sample manager.
 		// FSOUND_FREE : Selects an empty index for our effect. Do not use 0 here!
@@ -45,7 +45,7 @@ namespace hamur
 
 
 	// Plays the current effect
-	bool HamurFX::playEffect()
+	bool HamurFX::PlayFX()
 	{
 		if (!effect)
 		{

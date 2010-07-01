@@ -45,7 +45,7 @@ namespace hamur
 
 
 	// Plays the current stream
-	bool HamurStream::playStream()
+	bool HamurStream::PlayStream()
 	{
 		if (!stream)
 		{
