@@ -1,6 +1,6 @@
 #include "MainState.h"
-#include "../groundObject.h"
-#include "../dynamicObject.h"
+#include "groundObject.h"
+#include "dynamicObject.h"
 
 
 // Calling HamurState("Name") is a must!

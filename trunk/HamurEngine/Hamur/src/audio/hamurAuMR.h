@@ -7,7 +7,6 @@
 
 using std::map;
 
-
 namespace hamur
 {
 
