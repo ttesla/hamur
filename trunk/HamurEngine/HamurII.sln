@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hamur", "Hamur\Hamur.vcproj", "{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "TestProject\TestProject.vcproj", "{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059} = {A63E4CF8-02DC-4E5F-AF41-F4CA10341059}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
