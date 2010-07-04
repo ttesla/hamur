@@ -10,6 +10,7 @@
 
 #include "hamur.h"
 #include "ExampleState.h"
+#include "MainState.h"
 
 using namespace hamur;
 
@@ -20,8 +21,8 @@ int main(int argc, char *argv[])
 
     HAMURENGINE->disableMouseCursor();
     
-    HAMURSTATEMR->registerState(new ExampleState());
-    HAMURSTATEMR->changeState("ExampleState");
+    HAMURSTATEMR->registerState(new MainState());
+    HAMURSTATEMR->changeState("MainState");
     HAMURENGINE->run();
     HAMURENGINE->terminate();
 	

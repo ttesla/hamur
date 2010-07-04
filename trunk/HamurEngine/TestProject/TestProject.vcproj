@@ -174,7 +174,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\dynamicObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ExampleState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\groundObject.cpp"
 				>
 			</File>
 			<File
@@ -192,7 +200,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\dynamicObject.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ExampleState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\groundObject.h"
 				>
 			</File>
 			<File
