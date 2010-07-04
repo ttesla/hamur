@@ -99,6 +99,7 @@ namespace hamur
                 delete iter->second;
         }
 
+        objectCount = 0;
         HAMURLOG->writeLogln("All world objects deleted.");
     }
 
