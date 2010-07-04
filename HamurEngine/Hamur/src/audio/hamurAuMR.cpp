@@ -1,7 +1,7 @@
 #include "hamurFX.h"
+#include "hamurAuMR.h"
 #include "hamurStream.h"
 #include "hamurSong.h"
-#include "hamurAuMR.h"
 #include <assert.h>
 
 namespace hamur

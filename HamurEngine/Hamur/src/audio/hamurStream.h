@@ -5,6 +5,7 @@
 #include "../hamurDefinitions.h"
 #include "fmod.h"
 #include "fmod_errors.h"
+
 #include <string>
 
 using std::string;
