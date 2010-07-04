@@ -174,23 +174,23 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\dynamicObject.cpp"
+				RelativePath=".\src\DynamicObject.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ExampleState.cpp"
+				RelativePath=".\src\ExampleState.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\groundObject.cpp"
+				RelativePath=".\src\GroundObject.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\main.cpp"
+				RelativePath=".\src\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\MainState.cpp"
+				RelativePath=".\src\MainState.cpp"
 				>
 			</File>
 		</Filter>
@@ -200,19 +200,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\dynamicObject.h"
+				RelativePath=".\src\DynamicObject.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ExampleState.h"
+				RelativePath=".\src\ExampleState.h"
 				>
 			</File>
 			<File
-				RelativePath=".\groundObject.h"
+				RelativePath=".\src\GroundObject.h"
 				>
 			</File>
 			<File
-				RelativePath=".\MainState.h"
+				RelativePath=".\src\MainState.h"
 				>
 			</File>
 		</Filter>
