@@ -164,10 +164,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurFont.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\hamurGL.cpp"
 				>
 			</File>
@@ -188,6 +184,10 @@
 				>
 				<File
 					RelativePath=".\src\Audio\hamurAuMR.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\hamurFont.cpp"
 					>
 				</File>
 				<File
