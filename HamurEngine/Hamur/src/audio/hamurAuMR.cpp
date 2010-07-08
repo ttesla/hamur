@@ -1,8 +1,12 @@
-#include "hamurFX.h"
 #include "hamurAuMR.h"
+#include "hamurFX.h"
 #include "hamurStream.h"
 #include "hamurSong.h"
+#include "fmod_errors.h"
+#include "../helper/hamurLog.h"
+#include "../hamurDefinitions.h"
 #include <assert.h>
+
 
 namespace hamur
 {
@@ -200,7 +204,7 @@ bool HamurAuMR::DeleteStream(const string& strStreamName)
 
 		if(iter->second)
 		{
-			iter->second->stopStream();
+			iter->second->StopStream();
 			delete iter->second;
 		}
 		

@@ -4,7 +4,9 @@
 #include "../hamurSingleton.h"
 
 #include <map>
+#include <string>
 
+using std::string;
 using std::map;
 
 namespace hamur
@@ -21,7 +23,7 @@ class HamurStream;
 */
 class HamurAuMR : public Singleton<HamurAuMR>
 {
-	public:
+    public:
 
         friend Singleton<HamurAuMR>;
 
@@ -34,7 +36,7 @@ class HamurAuMR : public Singleton<HamurAuMR>
 
 		/**
 		* Initialization of Audio.
-		* @see init()
+		* @see Init()
 		* @param mixrate Output rate in hz between 4000 and 65535.
 		* @param maxsoftwarechannels Maximum number of SOFTWARE channels available.
 		* @param flags Controls some global or initialization time aspects of playback.
@@ -137,9 +139,9 @@ class HamurAuMR : public Singleton<HamurAuMR>
         ~HamurAuMR();
 
 	private:
-		map<string, HamurFX*> mFxMap;         /**< Store FX's according to their  names. */
-		map<string, HamurSong*> mSongMap;     /**< Store Song's according to their  names. */
-		map<string, HamurStream*> mStreamMap; /**< Store Song's according to their  names. */
+		map<string, HamurFX*> mFxMap;         /**< Store FXs according to their  names. */
+		map<string, HamurSong*> mSongMap;     /**< Store Songs according to their  names. */
+		map<string, HamurStream*> mStreamMap; /**< Store Streams according to their  names. */
 };
 
 } // namespace hamur
