@@ -18,16 +18,16 @@ namespace hamur
 	bool HamurGP::checkCollision2D(HamurTex* firstTex, HamurTex* secondTex)
 	{
 		// Calculate the sides of first texture
-		float leftA   = firstTex->getCorX();
-		float rightA  = firstTex->getCorX() + firstTex->getScaledWidth();
-		float topA    = firstTex->getCorY();
-		float bottomA = firstTex->getCorY() + firstTex->getScaledHeight();
+		float leftA   = firstTex->GetCorX();
+		float rightA  = firstTex->GetCorX() + firstTex->GetScaledWidth();
+		float topA    = firstTex->GetCorY();
+		float bottomA = firstTex->GetCorY() + firstTex->GetScaledHeight();
 
 		// Calculate the sides of second texture
-		float leftB   = secondTex->getCorX();
-		float rightB  = secondTex->getCorX() + secondTex->getScaledWidth();
-		float topB    = secondTex->getCorY();
-		float bottomB = secondTex->getCorY() + secondTex->getScaledHeight();
+		float leftB   = secondTex->GetCorX();
+		float rightB  = secondTex->GetCorX() + secondTex->GetScaledWidth();
+		float topB    = secondTex->GetCorY();
+		float bottomB = secondTex->GetCorY() + secondTex->GetScaledHeight();
 
 		// If any of the sides from First texture are outside of Second texture
 		if(bottomA <= topB) { return false; }

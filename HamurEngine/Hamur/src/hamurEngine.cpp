@@ -34,7 +34,7 @@ namespace hamur
         // Init Hamur subsystems...
         if(!HAMURGL->initSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
         if(!HAMURGL->initGL())      return false; // OpenGL
-        if(!HAMURTEXMR->init())     return false; // Texture Manager
+        if(!HAMURTEXMR->Init())     return false; // Texture Manager
         if(!HAMURAUMR->Init())      return false; // Audio Manager
         if(!HAMURWORLD->init())     return false; // Object manager - World
         if(!HAMURSTATEMR->init())   return false; // State Manager
