@@ -241,10 +241,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\hamurFont.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\Audio\hamurFX.cpp"
 					>
 				</File>
