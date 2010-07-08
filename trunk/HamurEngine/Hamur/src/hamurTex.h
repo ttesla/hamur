@@ -1,10 +1,6 @@
 #ifndef HAMURTEX_H
 #define HAMURTEX_H
 
-//#include "hamurGL.h"
-#include "helper/hamurLog.h"
-#include "hamurDefinitions.h"
-
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "SDL_image.h"
@@ -16,48 +12,52 @@ using std::string;
 
 namespace hamur
 {
-	class HamurTex
-	{
-		public:
 
-			HamurTex(const string& _filePath);
-			HamurTex(const SDL_Surface *newSurface);
-			~HamurTex();
+class HamurTex
+{
+	public:
 
-			// SETTERS & GETTERS
-			int getGLtextureID();
-            int getWidth();
-            int getHeight();
-			float getScaledWidth();
-			float getScaledHeight();
-			float getVolume();
-			void setVolume(float vol);
-			string getTextName();
-			string getFilePath();
-			void setCorX(float x);
-			void setCorY(float y);
-			void setCorZ(float z);
-			void setAllCoord(float x, float y, float z);
-			void setScaledWidth(float sw);
-			void setScaledHeight(float sh);
-			float getCorX();
-			float getCorY();
-			float getCorZ();
+		HamurTex(const string& filePath);
+		HamurTex(const SDL_Surface* newSurface);
+		~HamurTex();
 
-		private:
+		// SETTERS & GETTERS
+		int GetGLtextureID() const;
+        int GetWidth() const;
+        int GetHeight() const;
+		float GetScaledWidth() const;
+		float GetScaledHeight() const;
+		float GetVolume() const;
+        float GetCorX() const;
+        float GetCorY() const;
+        float GetCorZ() const;
+        string GetTextName() const;
+        string GetFilePath() const;
 
-			GLuint textureID[1]; // Storage for one texture
-			int textureWidth;    // Width of the texture
-			int textureHeight;   // Height of the texture
-			float scaledWidth;   // Scaled width of the texture
-			float scaledHeight;  // Scaled height of the texture
-			string filePath;  // File path name of the texture
-			float corX; // X coordinate of the texture
-			float corY; // Y coordinate of the texture
-			float corZ; // Z coordinate of the texture
+		void SetCorX(float x);
+		void SetCorY(float y);
+		void setCorZ(float z);
+		void SetAllCoord(float x, float y, float z);
+		void SetScaledWidth(float sw);
+		void SetScaledHeight(float sh);
+		
 
-			bool loadTexture(); // Loads texture from image file
-			bool loadTexture(const SDL_Surface *newSurface); // Loads texture from SDL surface
-	};
-}
+	private:
+
+		GLuint mTextureID[1]; // Storage for one texture
+		int mTextureWidth;    // Width of the texture
+		int mTextureHeight;   // Height of the texture
+		float mScaledWidth;   // Scaled width of the texture
+		float mScaledHeight;  // Scaled height of the texture
+		string mFilePath;  // File path name of the texture
+		float mCorX; // X coordinate of the texture
+		float mCorY; // Y coordinate of the texture
+		float mCorZ; // Z coordinate of the texture
+
+		bool LoadTexture(); // Loads texture from image file
+		bool LoadTexture(const SDL_Surface* newSurface); // Loads texture from SDL surface
+};
+
+}// namespace hamur
+
 #endif //HAMURTEX_H

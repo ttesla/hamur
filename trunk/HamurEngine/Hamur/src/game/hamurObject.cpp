@@ -34,7 +34,7 @@ namespace hamur
 
     void HamurObject::draw()
     {
-        HAMURTEXMR->blitTexture(spriteID, pos, rotation);
+        HAMURTEXMR->BlitTexture(spriteID, pos, rotation);
     }
 
     void HamurObject::rotateDegree(float rotationAngle)
@@ -81,7 +81,7 @@ namespace hamur
 
     void HamurObject::setSprite(const string &_path)
     {
-        spriteID = HAMURTEXMR->addTexture(_path);
+        spriteID = HAMURTEXMR->AddTexture(_path);
     }
 
     b2Body* HamurObject::getBody()

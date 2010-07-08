@@ -30,10 +30,10 @@ namespace hamur
         _vertex4.y = _y;
 
         // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -106,10 +106,10 @@ namespace hamur
         _vertex4.z = _z;
 
         // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -178,10 +178,10 @@ namespace hamur
         _vertex4.y = _pos.y;
 
         // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -254,10 +254,10 @@ namespace hamur
         _vertex4.z = _pos.z;
 
         // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         /*
         HAMURCONSOLE << "Vertice1: " << _vertice1.x << " " << _vertice1.y << "\n";
@@ -333,10 +333,10 @@ namespace hamur
         _vertex4.y = _y;
 
         // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -399,10 +399,10 @@ namespace hamur
         _vertex4.z = _z;
 
         // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -461,10 +461,10 @@ namespace hamur
         _vertex4.y = _pos.y;
 
         // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -527,10 +527,10 @@ namespace hamur
         _vertex4.z = _pos.z;
 
         // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->worldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->worldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->worldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->worldToGL(_vertex4);
+        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
+        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
+        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
+        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
 
         // Find the middle of vertices
         float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
@@ -592,7 +592,7 @@ namespace hamur
         _centroid.y = _sumY / _verticeCount;
 
         // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->worldToGL(_centroid);
+        _centroid = HAMURTEXMR->WorldToGL(_centroid);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -620,7 +620,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _verticeCount; i++)
             {
-                _transformVector = HAMURTEXMR->worldToGL(_verticeList[i]);
+                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
                 glVertex2f(_transformVector.x, _transformVector.y);
             }
         glEnd();
@@ -661,7 +661,7 @@ namespace hamur
         _centroid.z = _verticeList[0].z; // Same for all vertices
 
         // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->worldToGL(_centroid);
+        _centroid = HAMURTEXMR->WorldToGL(_centroid);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -689,7 +689,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _verticeCount; i++)
             {
-                _transformVector = HAMURTEXMR->worldToGL(_verticeList[i]);
+                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
                 glVertex3f(_transformVector.x, _transformVector.y, _transformVector.z);
             }
         glEnd();
@@ -729,7 +729,7 @@ namespace hamur
         _centroid.y = _sumY / _verticeCount;
 
         // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->worldToGL(_centroid);
+        _centroid = HAMURTEXMR->WorldToGL(_centroid);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -750,7 +750,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _verticeCount; i++)
             {
-                _transformVector = HAMURTEXMR->worldToGL(_verticeList[i]);
+                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
                 glVertex2f(_transformVector.x, _transformVector.y);
             }
         glEnd();
@@ -788,7 +788,7 @@ namespace hamur
         _centroid.z = _verticeList[0].z; // Same for all vertices
 
         // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->worldToGL(_centroid);
+        _centroid = HAMURTEXMR->WorldToGL(_centroid);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -809,7 +809,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _verticeCount; i++)
             {
-                _transformVector = HAMURTEXMR->worldToGL(_verticeList[i]);
+                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
                 glVertex3f(_transformVector.x, _transformVector.y, _transformVector.z);
             }
         glEnd();
@@ -852,7 +852,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_xCenter + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
                                                      _yCenter + _radius * sinf(_angle));
                 glVertex2f(_transformVec.x, _transformVec.y);
                 _angle += _angleIncrement;
@@ -896,7 +896,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_xCenter + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
                     _yCenter + _radius * sinf(_angle), _zCenter);
                 glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
                 _angle += _angleIncrement;
@@ -940,7 +940,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_pos.x + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
                     _pos.y + _radius * sinf(_angle));
                 glVertex2f(_transformVec.x, _transformVec.y);
                 _angle += _angleIncrement;
@@ -984,7 +984,7 @@ namespace hamur
         glBegin(GL_LINE_LOOP);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_pos.x + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
                     _pos.y + _radius * sinf(_angle), _pos.z);
                 glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
                 _angle += _angleIncrement;
@@ -1021,7 +1021,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_xCenter + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
                     _yCenter + _radius * sinf(_angle));
                 glVertex2f(_transformVec.x, _transformVec.y);
                 _angle += _angleIncrement;
@@ -1055,7 +1055,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_xCenter + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
                     _yCenter + _radius * sinf(_angle), _zCenter);
                 glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
                 _angle += _angleIncrement;
@@ -1089,7 +1089,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_pos.x + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
                     _pos.y + _radius * sinf(_angle));
                 glVertex2f(_transformVec.x, _transformVec.y);
                 _angle += _angleIncrement;
@@ -1123,7 +1123,7 @@ namespace hamur
         glBegin(GL_TRIANGLE_FAN);
             for(int i = 0; i < _loopCount; i++)
             {
-                _transformVec = HAMURTEXMR->worldToGL(_pos.x + _radius * cosf(_angle),
+                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
                     _pos.y + _radius * sinf(_angle), _pos.z);
                 glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
                 _angle += _angleIncrement;
@@ -1151,11 +1151,11 @@ namespace hamur
         _lineCenter.y = _firstY + _secondY / 2.0f;
 
         // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->worldToGL(_lineCenter);
+        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
 
         // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->worldToGL(_firstX, _firstY);
-        _transformVec2 = HAMURTEXMR->worldToGL(_secondX, _secondY);
+        _transformVec1 = HAMURTEXMR->WorldToGL(_firstX, _firstY);
+        _transformVec2 = HAMURTEXMR->WorldToGL(_secondX, _secondY);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -1213,11 +1213,11 @@ namespace hamur
         _lineCenter.z = _firstZ; // Same for both
 
         // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->worldToGL(_lineCenter);
+        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
 
         // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->worldToGL(_firstX, _firstY, _firstZ);
-        _transformVec2 = HAMURTEXMR->worldToGL(_secondX, _secondY, _secondZ);
+        _transformVec1 = HAMURTEXMR->WorldToGL(_firstX, _firstY, _firstZ);
+        _transformVec2 = HAMURTEXMR->WorldToGL(_secondX, _secondY, _secondZ);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -1274,11 +1274,11 @@ namespace hamur
         _lineCenter.y = (_pos1.y + _pos2.y) / 2.0f;
 
         // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->worldToGL(_lineCenter);
+        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
 
         // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->worldToGL(_pos1);
-        _transformVec2 = HAMURTEXMR->worldToGL(_pos2);
+        _transformVec1 = HAMURTEXMR->WorldToGL(_pos1);
+        _transformVec2 = HAMURTEXMR->WorldToGL(_pos2);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -1336,11 +1336,11 @@ namespace hamur
         _lineCenter.z = _pos1.z;
 
         // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->worldToGL(_lineCenter);
+        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
 
         // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->worldToGL(_pos1);
-        _transformVec2 = HAMURTEXMR->worldToGL(_pos2);
+        _transformVec1 = HAMURTEXMR->WorldToGL(_pos1);
+        _transformVec2 = HAMURTEXMR->WorldToGL(_pos2);
 
         // Save current matrix. 
         // Perform translation to geometric shape's middle
@@ -1395,7 +1395,7 @@ namespace hamur
         // Drawing here
         glBegin(GL_POINTS);
             glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->worldToGL(_pointX, _pointY);
+            transformVec = HAMURTEXMR->WorldToGL(_pointX, _pointY);
             glVertex2f(transformVec.x, transformVec.y);
         glEnd();
 
@@ -1417,7 +1417,7 @@ namespace hamur
         // Drawing here
         glBegin(GL_POINTS);
             glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->worldToGL(_pointX, _pointY, _pointZ);
+            transformVec = HAMURTEXMR->WorldToGL(_pointX, _pointY, _pointZ);
             glVertex3f(transformVec.x, transformVec.y, transformVec.z);
         glEnd();
 
@@ -1439,7 +1439,7 @@ namespace hamur
         // Drawing here
         glBegin(GL_POINTS);
             glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->worldToGL(_pos);
+            transformVec = HAMURTEXMR->WorldToGL(_pos);
             glVertex2f(transformVec.x, transformVec.y);
         glEnd();
 
@@ -1461,7 +1461,7 @@ namespace hamur
         // Drawing here
         glBegin(GL_POINTS);
             glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->worldToGL(_pos);
+            transformVec = HAMURTEXMR->WorldToGL(_pos);
             glVertex3f(transformVec.x, transformVec.y, transformVec.z);
         glEnd();
 
