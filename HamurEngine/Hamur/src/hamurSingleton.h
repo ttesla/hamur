@@ -22,10 +22,10 @@ class Singleton
         */
 	    static T* getInstance()
 	    {
-		    if(Singleton<T>::_singleton == NULL)
-			    Singleton<T>::_singleton = new T();
+		    if(Singleton<T>::mSingleton == NULL)
+			    Singleton<T>::mSingleton = new T();
 
-		    return Singleton<T>::_singleton;
+		    return Singleton<T>::mSingleton;
 	    }
 
         /**
@@ -37,7 +37,7 @@ class Singleton
 
     protected:
 
-	    static T* _singleton; /**< Static template object */
+	    static T* mSingleton; /**< Static template object */
 
 	    explicit Singleton(){}
 	    ~Singleton(){}
@@ -52,15 +52,15 @@ class Singleton
 template<typename T>
 void Singleton<T>::drop()
 {
-	if(Singleton<T>::_singleton != NULL)
+	if(Singleton<T>::mSingleton != NULL)
 	{
-		delete Singleton<T>::_singleton;
-		Singleton<T>::_singleton = NULL;
+		delete Singleton<T>::mSingleton;
+		Singleton<T>::mSingleton = NULL;
 	}
 }
 
 template<typename T>
-typename T* Singleton<T>::_singleton = NULL;
+typename T* Singleton<T>::mSingleton = NULL;
 
 }// namespace hamur
 

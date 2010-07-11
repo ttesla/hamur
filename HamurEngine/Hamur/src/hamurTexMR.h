@@ -115,6 +115,6 @@ inline HamurVec2 HamurTexMR::WorldToGL(const HamurVec2 &vec2) const
     return GLcoord;
 }
 
-} // namespace hamur
+}// namespace hamur
 
 #endif //HAMURTEXMR_H

@@ -38,7 +38,7 @@ namespace hamur
         if(!HAMURAUMR->Init())      return false; // Audio Manager
         if(!HAMURWORLD->init())     return false; // Object manager - World
         if(!HAMURSTATEMR->init())   return false; // State Manager
-        if(!HAMUREVENT->init())     return false; // Event handler
+        if(!HAMUREVENT->Init())     return false; // Event handler
 
         HAMURLOG->writeInitLog("HamurEngine");
         HAMURLOG->writeLogln("", HamurLog::ALWAYS);
@@ -55,7 +55,7 @@ namespace hamur
         while(runEngine)
         {
             // Handle all events
-            HAMUREVENT->handleEvents();
+            HAMUREVENT->HandleEvents();
 
             //Clear the screen & reset identity matrix
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -67,7 +67,7 @@ namespace hamur
             HAMURSTATEMR->getCurrentState()->draw();
 
             // Check if game window closed by user
-            if(HAMUREVENT->isQuitPerformed()) 
+            if(HAMUREVENT->IsQuitPerformed()) 
                 runEngine = false;
 
             //Update screen
