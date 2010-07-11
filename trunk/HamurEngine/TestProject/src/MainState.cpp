@@ -1,7 +1,6 @@
 #include "MainState.h"
 #include "GroundObject.h"
 #include "DynamicObject.h"
-#include "hamur.h"
 
 using namespace hamur;
 

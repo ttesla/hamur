@@ -29,22 +29,22 @@ bool HamurWorld::Init()
 }
 
 
-bool HamurWorld::AddObject(HamurObject *_newObject)
+bool HamurWorld::AddObject(HamurObject* newObject)
 {
     // Look in the map if the object is already added. If not found, then add.
-    if(HasObject(_newObject->GetName()))
+    if(HasObject(newObject->GetName()))
         return false;
 
-    mWorldObjects[_newObject->GetName()] = _newObject;
+    mWorldObjects[newObject->GetName()] = newObject;
     mObjectCount++;
     return true;
 }
 
 
-bool HamurWorld::DeleteObject(const string& _objectName)
+bool HamurWorld::DeleteObject(const string& objectName)
 {
     // Look in the map if the object exists.
-    map<string, HamurObject*>::iterator iter = mWorldObjects.find(_objectName);
+    map<string, HamurObject*>::iterator iter = mWorldObjects.find(objectName);
 
     // If found, delete it and return success.
     if(iter != mWorldObjects.end())
@@ -61,10 +61,10 @@ bool HamurWorld::DeleteObject(const string& _objectName)
 }
 
 
-bool HamurWorld::HasObject(const string &_name)
+bool HamurWorld::HasObject(const string& name) const
 {
     // Look in the map if the object exists.
-    map<string, HamurObject*>::iterator iter = mWorldObjects.find(_name);
+    map<string, HamurObject*>::const_iterator iter = mWorldObjects.find(name);
 
     // If not found, return failure.
     if(iter == mWorldObjects.end())
@@ -74,23 +74,23 @@ bool HamurWorld::HasObject(const string &_name)
 }
 
 
-/*
-HamurObject* HamurWorld::GetObject(const string &_objectName)
+
+HamurObject* HamurWorld::GetObject(const string& objectName) const
 {
     // Look in the map if the object exists..
-    map<string, HamurObject*>::iterator iter = mWorldObjects.find(_objectName);
+    map<string, HamurObject*>::const_iterator iter = mWorldObjects.find(objectName);
 
     // If not found, return failure.
     if(iter == mWorldObjects.end())
     {
-        HAMURLOG->writeLogln("Error!: Can't find the object: " + _objectName, 
+        HAMURLOG->writeLogln("Error!: Can't find the object: " + objectName, 
             HamurLog::ALWAYS);
         return NULL;
     }
 
     return iter->second;
 }
-*/
+
 
 
 
@@ -109,9 +109,9 @@ void HamurWorld::ClearAll()
     HAMURLOG->writeLogln("All world objects deleted.");
 }
 
-HamurObject* HamurWorld::GetObjectbyIndex(int index)
+HamurObject* HamurWorld::GetObjectbyIndex(int index) const
 {
-    map<string, HamurObject*>::iterator iter;
+    map<string, HamurObject*>::const_iterator iter;
     int i = 0;
 
     bool bFound;
@@ -131,12 +131,12 @@ HamurObject* HamurWorld::GetObjectbyIndex(int index)
         return NULL;
 }
 
-int HamurWorld::GetWorldSize()
+int HamurWorld::GetWorldSize() const
 {
     return mObjectCount;
 }
 
-b2World* HamurWorld::Getb2World()
+b2World* HamurWorld::Getb2World() const
 {
     return mWorld;
 }
@@ -201,16 +201,7 @@ void HamurWorld::RunPhysicSimulation()
 
         iter->second->SetPosition((tempVec.x - (iter->second->mWidth / 200)) * 100, (tempVec.y - (iter->second->mHeight / 200)) *100);
         iter->second->RotateRadian(-tempAngle);
-//             HAMURCONSOLE << "Object: " << iter->second->GetName() << "  Position: " << iter->second->getPosition() <<"\n"; 
-//             HAMURCONSOLE << "Box2D position: " << tempVec.x << "   " << tempVec.y << "\n";
-        //HAMURCONSOLE << "Box2D Angle:" << tempAngle << "\n";
-        //HAMURCONSOLE << "hamur Angle:" << HamurMath::Converter::degreeToRadian(iter->second->getRotation()) << "\n";
-    //printf("%4.2f %4.2f %4.2f\n", tempVec.x, tempVec.y, tempAngle);
-    }
-
-    //HAMURCONSOLE << GetObject("Dynamic") << "\n" << GetObject("Ground") << "\n"
-      //  << GetObject("Dynamic2") << "\n";
-    
+    }  
 }
 
 void HamurWorld::InitializePhysics()

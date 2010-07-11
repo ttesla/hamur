@@ -8,7 +8,7 @@
 	- Omer AKYOL	 <omer.akyol@gmail.com>
 */
 
-#include "hamur.h"
+//#include "hamur.h"
 #include "ExampleState.h"
 #include "MainState.h"
 

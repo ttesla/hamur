@@ -1,7 +1,7 @@
 #ifndef MAINSTATE_H
 #define MAINSTATE_H
 
-#include "game/hamurState.h"
+#include "hamur.h"
 
 using namespace hamur;
 
