@@ -1,79 +1,79 @@
 #ifndef HAMUREVENT_H
 #define HAMUREVENT_H
 
-#include "helper/hamurLog.h"
-#include "hamurDefinitions.h"
+#include "SDL.h"
 #include "hamurSingleton.h"
 
-#include "SDL.h"
 
 namespace hamur
 {
-    /**
-    * Hamur Event Manager.
-    * Singleton class that manages the event system.
-    */ 
-	class HamurEvent : public Singleton<HamurEvent>
-	{
-		public:
 
-            friend Singleton<HamurEvent>;
+/**
+* Hamur Event Manager.
+* Singleton class that manages the event system.
+*/ 
+class HamurEvent : public Singleton<HamurEvent>
+{
+	public:
 
-            /**
-            * Initialize Hamur Event
-            * @return True if initialization is successfull, else return False
-            */
-            bool init();
-			
-            /**
-            * Checks if given key is pressed or not.
-            * @param keyName Name of the key defined by SDL.
-            * @return Given key is pressed or not.
-            */
-			bool isKeyPressed(int keyName);
+        friend Singleton<HamurEvent>;
 
-            /**
-            * Checks if given mouse button is pressed or not.
-            * @param button Name of the button defined by SDL.
-            * @return Given button is pressed or not.
-            */
-			bool isMousePressed(int button); // Check given mouse button pressed or not. 
+        /**
+        * Initialize Hamur Event
+        * @return True if initialization is successfull, else return False
+        */
+        bool Init();
+		
+        /**
+        * Checks if given key is pressed or not.
+        * @param keyName Name of the key defined by SDL.
+        * @return Given key is pressed or not.
+        */
+		bool IsKeyPressed(int keyName) const;
 
-            /**
-            * Checks if quit action performed or not.
-            * @return Quit action performed or not.
-            */
-			bool isQuitPerformed();
+        /**
+        * Checks if given mouse button is pressed or not.
+        * @param button Name of the button defined by SDL.
+        * @return Given button is pressed or not.
+        */
+		bool IsMousePressed(int button) const; 
 
-            /**
-            * Gets the X coordinate of mouse cursor.
-            * @return X coordinate of mouse cursor.
-            */
-			int getMouseX();
+        /**
+        * Checks if quit action performed or not.
+        * @return Quit action performed or not.
+        */
+		bool IsQuitPerformed() const;
 
-            /**
-            * Gets the Y coordinate of mouse cursor.
-            * @return Y coordinate of mouse cursor.
-            */
-			int getMouseY();
+        /**
+        * Gets the X coordinate of mouse cursor.
+        * @return X coordinate of mouse cursor.
+        */
+		int GetMouseX() const;
 
-            /**
-            * Main method that handles all events.
-            */
-			void handleEvents();
+        /**
+        * Gets the Y coordinate of mouse cursor.
+        * @return Y coordinate of mouse cursor.
+        */
+		int GetMouseY() const;
 
-		protected:
+        /**
+        * Main method that handles all events.
+        */
+		void HandleEvents();
 
-            HamurEvent();
-            ~HamurEvent();
+	protected:
 
-		private:
+        HamurEvent();
+        ~HamurEvent();
 
-			SDL_Event events; /**< SDL_Events are accessed from this handle. */
-			bool quit;		  /**< If Quit action is performed on the window frame. */
-			int mouseX;       /**< X coordinate of the mouse. */
-            int mouseY;       /**< Y coordinate of the mouse. */
-	};
-}
+	private:
+
+		SDL_Event mEvents; /**< SDL_Events are accessed from this handle. */
+		bool mQuit;		  /**< If Quit action is performed on the window frame. */
+		int mMouseX;       /**< X coordinate of the mouse. */
+        int mMouseY;       /**< Y coordinate of the mouse. */
+};
+
+}// namespace hamur
 
 #endif // HAMUREVENT_H

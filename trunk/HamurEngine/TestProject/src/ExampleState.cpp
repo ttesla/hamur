@@ -23,17 +23,17 @@ void ExampleState::enter()
 // UPDATE
 void ExampleState::update() 
 {
-    if(HAMUREVENT->isKeyPressed(SDLK_ESCAPE)) 
+    if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
         HAMURENGINE->stop();
 
     static bool keyPressed = false;
 
-    if(HAMUREVENT->isKeyPressed(SDLK_UP) && !keyPressed)
+    if(HAMUREVENT->IsKeyPressed(SDLK_UP) && !keyPressed)
     {
         keyPressed = true;
     }
 
-    if(! HAMUREVENT->isKeyPressed(SDLK_UP))
+    if(! HAMUREVENT->IsKeyPressed(SDLK_UP))
         keyPressed = false;
 }
 
