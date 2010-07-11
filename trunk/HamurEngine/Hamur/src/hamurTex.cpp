@@ -57,8 +57,8 @@ bool HamurTex::LoadTexture()
 	// Set current image properties
 	mTextureWidth  = loadedImage->w;
 	mTextureHeight = loadedImage->h;
-	mScaledWidth   = mTextureWidth  / (float)HAMURGL->getScreenWidth(); 
-	mScaledHeight  = mTextureHeight / (float)HAMURGL->getScreenWidth(); 
+	mScaledWidth   = mTextureWidth  / (float)HAMURGL->GetScreenWidth(); 
+	mScaledHeight  = mTextureHeight / (float)HAMURGL->GetScreenWidth(); 
 
 	// Generate texture with LINEAR filtering
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter
@@ -103,8 +103,8 @@ bool HamurTex::LoadTexture(const SDL_Surface* newSurface)
 	// Set current image properties
 	mTextureWidth  = newSurface->w;
 	mTextureHeight = newSurface->h;
-	mScaledWidth   = mTextureWidth  / (float)HAMURGL->getScreenWidth(); 
-	mScaledHeight  = mTextureHeight / (float)HAMURGL->getScreenWidth(); // this should be Width!!
+	mScaledWidth   = mTextureWidth  / (float)HAMURGL->GetScreenWidth(); 
+	mScaledHeight  = mTextureHeight / (float)HAMURGL->GetScreenWidth(); // this should be Width!!
 
 	// Generate texture with LINEAR filtering
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter

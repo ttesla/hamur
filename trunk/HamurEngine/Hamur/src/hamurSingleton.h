@@ -7,58 +7,61 @@
 
 namespace hamur
 {
-	template<typename T>
-    /**
-    * Template class for being base of all singleton classes.
-    * - Not coded by us, taken from internet
-    */
-	class Singleton
-	{
-	public:
+
+template<typename T>
+
+/**
+* Template class for being base of all singleton classes.
+*/
+class Singleton
+{
+    public:
         /**
         * If object is not created yet, creates a new one
         * else returns the current object.
         */
-		static T *getInstance()
-		{
-			if(Singleton<T>::_singleton == NULL)
-				Singleton<T>::_singleton = new T();
+	    static T* getInstance()
+	    {
+		    if(Singleton<T>::_singleton == NULL)
+			    Singleton<T>::_singleton = new T();
 
-			return Singleton<T>::_singleton;
-		}
+		    return Singleton<T>::_singleton;
+	    }
 
         /**
         * Deletes the current singleton object.
         * Do not call this explicitly. Call HAMURENGINE->terminate() instead.
         * Assigns the current template object to NULL.
         */
-		static void drop();
+	    static void drop();
 
-	protected:
+    protected:
 
-		static T* _singleton; /**< Static template object */
+	    static T* _singleton; /**< Static template object */
 
-		explicit Singleton(){}
-		~Singleton(){}
+	    explicit Singleton(){}
+	    ~Singleton(){}
 
-	private:
+    private:
 
-		Singleton(const Singleton<T>&){}
-		Singleton &operator =(const Singleton&){}
-	};
+	    Singleton(const Singleton<T>&){}
+	    Singleton& operator =(const Singleton&){}
+};
 
 
-	template<typename T>
-	void Singleton<T>::drop()
+template<typename T>
+void Singleton<T>::drop()
+{
+	if(Singleton<T>::_singleton != NULL)
 	{
-		if(Singleton<T>::_singleton != NULL)
-		{
-			delete Singleton<T>::_singleton;
-			Singleton<T>::_singleton = NULL;
-		}
+		delete Singleton<T>::_singleton;
+		Singleton<T>::_singleton = NULL;
 	}
-
-	template<typename T>
-	typename T* Singleton<T>::_singleton = NULL;
 }
+
+template<typename T>
+typename T* Singleton<T>::_singleton = NULL;
+
+}// namespace hamur
+
 #endif // HAMURSINGLETON_H
