@@ -32,8 +32,8 @@ namespace hamur
         HAMURLOG->writeLogln("Initializing Hamur Engine...", HamurLog::ALWAYS);
 
         // Init Hamur subsystems...
-        if(!HAMURGL->initSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
-        if(!HAMURGL->initGL())      return false; // OpenGL
+        if(!HAMURGL->InitSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
+        if(!HAMURGL->InitGL())      return false; // OpenGL
         if(!HAMURTEXMR->Init())     return false; // Texture Manager
         if(!HAMURAUMR->Init())      return false; // Audio Manager
         if(!HAMURWORLD->init())     return false; // Object manager - World

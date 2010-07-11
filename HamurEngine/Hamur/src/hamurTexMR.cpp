@@ -14,10 +14,10 @@ namespace hamur
 HamurTexMR::HamurTexMR() : mDepthShift(1.0f), mOpenglY(0.414f)
 {
     // Calculactions for world - openGL coordinate translations
-    mAspectRatio = (float)HAMURGL->getScreenWidth() / (float)HAMURGL->getScreenHeight();
+    mAspectRatio = (float)HAMURGL->GetScreenWidth() / (float)HAMURGL->GetScreenHeight();
     mOpenglX     = mOpenglY * mAspectRatio;
-    mPixRatioX   = (float)HAMURGL->getScreenWidth()  / (mOpenglX*2);
-    mPixRatioY   = (float)HAMURGL->getScreenHeight() / (mOpenglY*2);		
+    mPixRatioX   = (float)HAMURGL->GetScreenWidth()  / (mOpenglX*2);
+    mPixRatioY   = (float)HAMURGL->GetScreenHeight() / (mOpenglY*2);		
 }
 
 

@@ -136,7 +136,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="Hamur.lib"
 				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
