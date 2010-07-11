@@ -12,6 +12,7 @@ using std::string;
 namespace hamur
 {
 
+// Forward decleration
 class HamurState;
 
 /**

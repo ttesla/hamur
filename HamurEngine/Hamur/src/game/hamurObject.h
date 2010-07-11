@@ -5,13 +5,15 @@
 #include "../helper/hamurVec2.h"
 
 #include <string>
-#include "../hamurTexMR.h"
 #include "Box2D/Box2D.h"
 
 using std::string;
 
 namespace hamur
 {
+
+// Forward declerations
+class HamurTexMR;
 
 enum bodyType
 {

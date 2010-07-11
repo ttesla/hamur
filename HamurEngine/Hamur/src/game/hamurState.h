@@ -18,7 +18,7 @@ class HamurState
 
         /**
         * HamurState constructor.
-        * @param _stateName Name of the state.
+        * @param stateName Name of the state.
         */
         HamurState(const string& stateName);
 

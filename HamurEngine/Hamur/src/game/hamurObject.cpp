@@ -1,7 +1,9 @@
 #include "hamurObject.h"
 #include "../helper/hamurMath.h"
-#include "hamurWorld.h"
+#include "../helper/hamurLog.h"
+#include "../hamurTexMR.h"
 #include "../hamurDefinitions.h"
+
 
 
 namespace hamur
@@ -35,7 +37,7 @@ HamurObject::~HamurObject()
 
 void HamurObject::Draw()
 {
-    HAMURTEXMR->blitTexture(mSpriteID, mPos, mRotation);
+    HAMURTEXMR->BlitTexture(mSpriteID, mPos, mRotation);
 }
 
 void HamurObject::RotateDegree(float rotationAngle)
@@ -82,7 +84,7 @@ void HamurObject::SetInteraction(bool interactive)  { mInteractive = interactive
 
 void HamurObject::SetSprite(const string& path)
 {
-    mSpriteID = HAMURTEXMR->addTexture(path);
+    mSpriteID = HAMURTEXMR->AddTexture(path);
 }
 
 b2Body* HamurObject::GetBody() const
