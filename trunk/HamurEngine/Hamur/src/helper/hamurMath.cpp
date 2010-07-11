@@ -2,14 +2,14 @@
 
 namespace hamur
 {
-    float HamurMath::converter::degreeToRadian(float _degree)
+    float HamurMath::Converter::DegreeToRadian(float degree)
     {
-       return (float)((_degree / 180) * pi);
+       return (float)((degree / 180) * PI);
 
     }
 
-    float HamurMath::converter::radianToDegree(float _radian)
+    float HamurMath::Converter::RadianToDegree(float radian)
     {
-        return (float)((_radian / pi) * 180);
+        return (float)((radian / PI) * 180);
     }
 }

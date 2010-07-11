@@ -842,8 +842,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2 * pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2 * PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -886,8 +886,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2 * pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2 * PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -930,8 +930,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -974,8 +974,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -1011,8 +1011,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -1045,8 +1045,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -1079,8 +1079,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);
@@ -1113,8 +1113,8 @@ namespace hamur
 
         // Circle Attributes calculations
         float _angle = 0.0f;
-        float _angleIncrement = pi / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*pi / _angleIncrement;
+        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
+        float _loopCount = 2*PI / _angleIncrement;
 
         // Set color
         glColor3f(_color.R, _color.G, _color.B);

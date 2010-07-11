@@ -4,171 +4,169 @@
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
 
-#include <vector>
 #include <string>
-#include "../hamurDefinitions.h"
 #include "../hamurTexMR.h"
 #include "Box2D/Box2D.h"
 
-using std::vector;
 using std::string;
-
 
 namespace hamur
 {
-    enum bodyType
-    {
-        StaticBody = 0,
-        KinematicBody,
-        DynamicBody,
-    };
 
-    /**
-    * Hamur Object base class.
-    * Everything in the Hamur game environment is a Hamur object. 
-    */
-	class HamurObject
-	{
-	    public:
+enum bodyType
+{
+    StaticBody = 0,
+    KinematicBody,
+    DynamicBody,
+};
 
-            HamurObject(const string &name);
+/**
+* Hamur Object base class.
+* Everything in the Hamur game environment is a Hamur object. 
+*/
+class HamurObject
+{
+    public:
 
-            HamurObject(const string &name, const string &spritePath);
+        HamurObject(const string& name);
 
-            ~HamurObject();
+        HamurObject(const string& name, const string& spritePath);
 
-            /**
-            * Pure virtual update function of the object. 
-            * All update logic should be written here.
-            */
-            virtual void update() {};
+        ~HamurObject();
 
-            /**
-            * Pure virtual draw function of the object. 
-            * All drawings should be written here.
-            */
-            virtual void draw();
+        /**
+        * Pure virtual update function of the object. 
+        * All update logic should be written here.
+        */
+        virtual void Update() {};
 
-            /**
-            * Set rotation angle of the object
-            * @param rotationAngle Rotation value in degrees.
-            */
-            void rotateDegree(float rotationAngle);
+        /**
+        * Pure virtual draw function of the object. 
+        * All drawings should be written here.
+        */
+        virtual void Draw();
 
-            /**
-            * Set rotation radian of the object
-            * @param rotationRadian Rotation value in radians.
-            */
-            void rotateRadian(float rotatinRadian);
+        /**
+        * Set rotation angle of the object
+        * @param rotationAngle Rotation value in degrees.
+        */
+        void RotateDegree(float rotationAngle);
 
-		   
-            // GETTER & SETTERS
+        /**
+        * Set rotation radian of the object
+        * @param rotationRadian Rotation value in radians.
+        */
+        void RotateRadian(float rotationRadian);
 
-            /** @return Name of the object */
-		    string getName();
-            
-            /** @return Position of the object */
-		    HamurVec3 getPosition();
+	   
+        // GETTER & SETTERS
 
-            /** @return Rotation angle of the object */
-            float getRotation();
-            
-            /** @return If the object active or not */
-		    bool isActive();
-
-            /** @return If the object has interaction or not */
-		    bool hasInteraction();
-
-            /** @return Sprite ID of the object */
-            unsigned int getSpriteID();
-		   
-            /** 
-            * Set name of the object. 
-            * @param _name Name of the object.
-            */
-		    void setName(const string& _name);
-		    
-            /**
-            * Set position of the object.
-            * @param pos Position of the object.
-            */
-            void setPosition(const HamurVec3& pos);
-
-            /**
-            * Set position of the object.
-            * @param pos Position of the object. 
-            */
-            void setPosition(const HamurVec2& pos);
-
-            /**
-            * Set position of the object.
-            * @param x X coordinate of the object.
-            * @param y Y coordinate of the object.
-            * @param z Z coordinate of the object. Default = 0.
-            */
-            void setPosition(float x, float y, float z = 0);
-
-            /**
-            * Set if the object is active or not.
-            * @param _active True or False
-            */
-		    void setActive(bool _active);
-
-            /**
-            * Set if the object has interaction or not.
-            * @param _interaction True or False
-            */
-		    void setInteraction(bool _interaction);
-
-            void setSprite(const string &_path);
-
-            b2Body* getBody();
-            b2BodyDef getBodyDef();
-            void setBodyDef(const b2BodyDef& body);
-            b2PolygonShape getPolygonShape();
-            void setPolygonShape(const b2PolygonShape& box);
-            b2FixtureDef getFixDef();
-            void setFixDef(const b2FixtureDef& fixDef);
-
-            float width;
-            float height;
-
-	    protected:
-		    string name;      /**< Name of the object. */
-		    HamurVec3 pos;    /**< Position of the object. */
-            float rotation;   /**< Rotation angle of the object */
-		    bool active;      /**< Object is active or not. */
-		    bool interaction; /**< Object has interaction or not. */
-            unsigned int spriteID; /**< Sprite ID of the game object. */
-
-            // Box2D Attributes
-            b2BodyDef bodyDef;
-            b2Body* body;
-            b2PolygonShape box;
-            b2FixtureDef fixtureDef;
-
-         
-	    private:
-            // Inner Attributes of Box2D
-	};
-
-    /** Writes the Object to the stream. (pointer version) */
-    inline std::ostream &operator<<(std::ostream &os, HamurObject *object)
-    {
-        os << object->getName() << ", " << object->getPosition() << " Active:" << object->isActive() << " Inter.:" 
-           << object->hasInteraction() << " SpriteID:" << object->getSpriteID();
+        /** @return Name of the object */
+	    string GetName() const;
         
-        return os;
-    }
+        /** @return Position of the object */
+	    HamurVec3 GetPosition() const;
 
-    /** Writes the Object to the stream. (reference version) */
-    inline std::ostream &operator<<(std::ostream &os, HamurObject &object)
-    {
-        os << object.getName() << ", " << object.getPosition() << " Active:" << object.isActive() << " Inter.:" 
-            << object.hasInteraction() << " SpriteID:" << object.getSpriteID();
+        /** @return Rotation angle of the object */
+        float GetRotation() const;
+        
+        /** @return If the object active or not */
+	    bool IsActive() const;
 
-        return os;
-    }
+        /** @return If the object has interaction or not */
+	    bool IsInteractive() const;
+
+        /** @return Sprite ID of the object */
+        unsigned int GetSpriteID() const;
+	   
+        /** 
+        * Set name of the object. 
+        * @param name Name of the object.
+        */
+	    void SetName(const string& name);
+	    
+        /**
+        * Set position of the object.
+        * @param pos Position of the object.
+        */
+        void SetPosition(const HamurVec3& pos);
+
+        /**
+        * Set position of the object.
+        * @param pos Position of the object. 
+        */
+        void SetPosition(const HamurVec2& pos);
+
+        /**
+        * Set position of the object.
+        * @param x X coordinate of the object.
+        * @param y Y coordinate of the object.
+        * @param z Z coordinate of the object. Default = 0.
+        */
+        void SetPosition(float x, float y, float z = 0);
+
+        /**
+        * Set if the object is active or not.
+        * @param active True or False
+        */
+	    void SetActive(bool active);
+
+        /**
+        * Set if the object has interaction or not.
+        * @param interactive True or False
+        */
+	    void SetInteraction(bool interactive);
+
+        void SetSprite(const string& path);
+
+        b2Body* GetBody() const;
+        b2BodyDef GetBodyDef() const;
+        void SetBodyDef(const b2BodyDef& body);
+        b2PolygonShape GetPolygonShape() const;
+        void SetPolygonShape(const b2PolygonShape& box);
+        b2FixtureDef GetFixDef() const;
+        void SetFixDef(const b2FixtureDef& fixDef);
+
+        float mWidth;
+        float mHeight;
+
+    protected:
+	    string mName;      /**< Name of the object. */
+	    HamurVec3 mPos;    /**< Position of the object. */
+        float mRotation;   /**< Rotation angle of the object */
+	    bool mActive;      /**< Object is active or not. */
+	    bool mInteractive; /**< Object has interaction or not. */
+        unsigned int mSpriteID; /**< Sprite ID of the game object. */
+
+        // Box2D Attributes
+        b2BodyDef mBodyDef;
+        b2Body* mBody;
+        b2PolygonShape mBox;
+        b2FixtureDef mFixtureDef;
+
+     
+    private:
+        // Inner Attributes of Box2D
+};
+
+/** Writes the Object to the stream. (pointer version) */
+inline std::ostream &operator<<(std::ostream& os, HamurObject* object)
+{
+    os << object->GetName() << ", " << object->GetPosition() << " Active:" << object->IsActive() << " Inter.:" 
+       << object->IsInteractive() << " SpriteID:" << object->GetSpriteID();
+    
+    return os;
 }
+
+/** Writes the Object to the stream. (reference version) */
+inline std::ostream &operator<<(std::ostream& os, HamurObject& object)
+{
+    os << object.GetName() << ", " << object.GetPosition() << " Active:" << object.IsActive() << " Inter.:" 
+        << object.IsInteractive() << " SpriteID:" << object.GetSpriteID();
+
+    return os;
+}
+
+} // namespace hamur
 
 #endif // HAMUR_OBJECT

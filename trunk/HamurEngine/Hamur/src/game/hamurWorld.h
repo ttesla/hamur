@@ -2,17 +2,10 @@
 #define HAMUR_WORLD
 
 #include "../hamurSingleton.h"
-#include "../helper/hamurLog.h"
-#include "hamurObject.h"
 #include "Box2D/Box2D.h"
+
 #include <map>
 #include <string>
-
-// KALDIR
-#include "../hamurEvent.h"
-#include "../hamurDefinitions.h"
-// KALDIR
-
 
 using std::map;
 using std::string;
@@ -20,50 +13,54 @@ using std::string;
 
 namespace hamur
 {
-    class HamurWorld : public Singleton<HamurWorld>
-    {
-        public:
 
-            friend Singleton<HamurWorld>;
+class HamurObject;
 
-            /**
-            * Initialize Hamur World, object world.
-            * @return True if initialization is successful else return False
-            */
-            bool init();
+class HamurWorld : public Singleton<HamurWorld>
+{
+    public:
 
-            bool addObject(HamurObject* newObject);
-            bool deleteObject(const string& objectName);
-            bool hasObject(const string &objectName);
+        friend Singleton<HamurWorld>;
 
-            HamurObject* getObject(const string &_objectName);
-            HamurObject* getObjectbyIndex(int index);
-            int getWorldSize();
-            b2World* getb2World();
-            void runPhysicSimulation();
+        /**
+        * Initialize Hamur World, object world.
+        * @return True if initialization is successful else return False
+        */
+        bool Init();
 
-            /**
-            * Clear and delete all objects in the World. 
-            */
-            void clearAll();
+        bool AddObject(HamurObject* newObject);
+        bool DeleteObject(const string& objectName);
+        bool HasObject(const string &objectName);
 
-        protected:
-            HamurWorld();
-            ~HamurWorld();
+        HamurObject* GetObject(const string &_objectName);
+        HamurObject* GetObjectbyIndex(int index);
+        int GetWorldSize();
+        b2World* Getb2World();
+        void RunPhysicSimulation();
 
-        private:
-            void initializePhysics();
-            map<string, HamurObject*> worldObjects;
-            int objectCount;
-            // BOX2D Attributes
-            b2Vec2 gravity;
-            bool doSleep;
-            b2World* world;
-            float32 timeStep;
-            int32 velocityIterations;
-            int32 positionIterations;
-    };
-}
+        /**
+        * Clear and delete all objects in the World. 
+        */
+        void ClearAll();
+
+    protected:
+        HamurWorld();
+        ~HamurWorld();
+
+    private:
+        void InitializePhysics();
+        map<string, HamurObject*> mWorldObjects;
+        int mObjectCount;
+        // BOX2D Attributes
+        b2Vec2 mGravity;
+        bool mDoSleep;
+        b2World* mWorld;
+        float mTimeStep;
+        int mVelocityIterations;
+        int mPositionIterations;
+};
+
+} // namespace hamur
 
 
 #endif // HAMURWORLD_H

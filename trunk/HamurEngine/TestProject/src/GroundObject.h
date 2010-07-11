@@ -10,7 +10,7 @@ class groundObject : public HamurObject
     public:
         groundObject(const string& name);
         void setPhysics();
-        virtual void draw();
+        virtual void Draw();
 
     protected:
         

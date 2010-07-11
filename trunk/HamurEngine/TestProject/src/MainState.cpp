@@ -1,6 +1,9 @@
 #include "MainState.h"
 #include "GroundObject.h"
 #include "DynamicObject.h"
+#include "hamur.h"
+
+using namespace hamur;
 
 
 // Calling HamurState("Name") is a must!
@@ -17,28 +20,28 @@ MainState::~MainState()
 
 
 // ENTER
-void MainState::enter() 
+void MainState::Enter() 
 {
     // Add some objects
     //HAMURWORLD->addObject(new HamurObject("Balik"));
     //HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
-    //HAMURWORLD->getObject("Balik")->setPosition(100, 100);
+    //HAMURWORLD->getObject("Balik")->SetPosition(100, 100);
 
    // HAMURWORLD->addObject(new HamurObject("Tank", "data/Tank.png"));
-    //HAMURWORLD->getObject("Tank")->setPosition(200, 300);
+    //HAMURWORLD->getObject("Tank")->SetPosition(200, 300);
     //HAMURWORLD->getObject("Tank")->rotateDegree(90);
 
     //HamurVec2 pos1(110, 20);
     //HamurVec2 pos2(480, 150);
 
-    HAMURWORLD->addObject(new groundObject("Ground"));
+    HAMURWORLD->AddObject(new groundObject("Ground"));
     //HAMURWORLD->addObject(new dynamicObject("Dynamic", pos1));
     //HAMURWORLD->addObject(new dynamicObject("Dynamic2", pos2));
 }
 
 
 // UPDATE
-void MainState::update() 
+void MainState::Update() 
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
         HAMURENGINE->stop();
@@ -57,16 +60,16 @@ void MainState::update()
     if(HAMUREVENT->IsKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
 
     //HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
-    HAMURWORLD->runPhysicSimulation();
+    HAMURWORLD->RunPhysicSimulation();
    
    // HAMURCONSOLE << "Angle1:" << angle1 << "\n";
 }
 
 
 // DRAW
-void MainState::draw() 
+void MainState::Draw() 
 {
-    HAMURWORLD->getObject("Ground")->draw();
+    HAMURWORLD->GetObject("Ground")->Draw();
     //HAMURWORLD->getObject("Dynamic")->draw();
     //HAMURWORLD->getObject("Dynamic2")->draw();
     //HAMURWORLD->getObject("Tank")->draw();
@@ -77,16 +80,16 @@ void MainState::draw()
     map<string, HamurObject*>::iterator iter;
 
     // Draw all objects
-    for (int i = 0; i < HAMURWORLD->getWorldSize(); i++)
+    for (int i = 0; i < HAMURWORLD->GetWorldSize(); i++)
     {
-        HAMURWORLD->getObjectbyIndex(i)->draw();
+        HAMURWORLD->GetObjectbyIndex(i)->Draw();
     }
     
 }
 
 
 // EXIT
-void MainState::exit() 
+void MainState::Exit() 
 {
 
 }
@@ -147,12 +150,12 @@ void MainState::testBox2D()
     // Prepare for simulation. Typically we use a time step of 1/60 of a
     // second (60Hz) and 10 iterations. This provides a high quality simulation
     // in most game scenarios.
-    float32 timeStep = 1.0f / 60.0f;
-    int32 velocityIterations = 6;
-    int32 positionIterations = 2;
+    float timeStep = 1.0f / 60.0f;
+    int velocityIterations = 6;
+    int positionIterations = 2;
 
     // This is our little game loop.
-    for (int32 i = 0; i < 60; ++i)
+    for (int i = 0; i < 60; ++i)
     {
         // Instruct the world to perform a single step of simulation.
         // It is generally best to keep the time step and iterations fixed.
@@ -164,7 +167,7 @@ void MainState::testBox2D()
 
         // Now print the position and angle of the body.
         b2Vec2 position = body->GetPosition();
-        float32 angle = body->GetAngle();
+        float angle = body->GetAngle();
 
         printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
     }
@@ -224,7 +227,7 @@ void MainState::spawnObjects()
 {
     static float x = 0;
     static float y = 0;
-    static int i = HAMURWORLD->getWorldSize()- 1;
+    static int i = HAMURWORLD->GetWorldSize()- 1;
 
     bool spawn = false;
 
@@ -241,10 +244,10 @@ void MainState::spawnObjects()
     y = pos.y;
 
     ss << "Dynamic" << i;
-    HAMURWORLD->addObject(new dynamicObject(ss.getString(), pos));
-    HAMURWORLD->getObject(ss.getString())->setPosition(pos);
+    HAMURWORLD->AddObject(new dynamicObject(ss.getString(), pos));
+    HAMURWORLD->GetObject(ss.getString())->SetPosition(pos);
     //HAMURWORLD->getObject(ss.getString())->setSprite("data/fish.png");
 
    // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.getString()))->setColor(1, 1, 1);
-    i = HAMURWORLD->getWorldSize()-1;
+    i = HAMURWORLD->GetWorldSize()-1;
 }

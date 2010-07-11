@@ -17,10 +17,10 @@ class ExampleState : public HamurState
         ~ExampleState();
 
         // Virtual function implementations comes from HamurState
-        void enter();
-        void update();      
-        void draw();
-        void exit();
+        void Enter();
+        void Update();      
+        void Draw();
+        void Exit();
         
 	protected:
 

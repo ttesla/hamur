@@ -1,9 +1,10 @@
 #ifndef MAINSTATE_H
 #define MAINSTATE_H
 
-#include "hamur.h"
+#include "game/hamurState.h"
 
 using namespace hamur;
+
 
 /**
 * This is the main state of the game.
@@ -17,10 +18,10 @@ class MainState : public HamurState
         ~MainState();
 
         // Virtual function implementations comes from HamurState
-        void enter();
-        void update();      
-        void draw();
-        void exit();
+        void Enter();
+        void Update();      
+        void Draw();
+        void Exit();
         
 	protected:
 

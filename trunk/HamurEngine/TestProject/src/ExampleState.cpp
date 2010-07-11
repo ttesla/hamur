@@ -14,14 +14,14 @@ ExampleState::~ExampleState()
 
 
 // ENTER
-void ExampleState::enter() 
+void ExampleState::Enter() 
 {
 
 }
 
 
 // UPDATE
-void ExampleState::update() 
+void ExampleState::Update() 
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
         HAMURENGINE->stop();
@@ -39,14 +39,14 @@ void ExampleState::update()
 
 
 // DRAW
-void ExampleState::draw() 
+void ExampleState::Draw() 
 {
  
 }
 
 
 // EXIT
-void ExampleState::exit() 
+void ExampleState::Exit() 
 {
 
 }
