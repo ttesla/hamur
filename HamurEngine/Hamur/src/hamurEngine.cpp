@@ -4,11 +4,16 @@
 #include "hamurTexMR.h"
 #include "hamurGP.h"
 #include "hamurFont.h"
+
+#include "helper/hamurConsole.h"
+#include "helper/hamurLog.h"
 #include "audio/hamurAuMR.h"
 #include "game/hamurWorld.h"
 #include "game/hamurStateMR.h"
-#include "helper/hamurLog.h"
+#include "game/hamurState.h"
+
 #include "hamurDefinitions.h"
+
 
 namespace hamur
 {
@@ -36,8 +41,8 @@ namespace hamur
         if(!HAMURGL->InitGL())      return false; // OpenGL
         if(!HAMURTEXMR->Init())     return false; // Texture Manager
         if(!HAMURAUMR->Init())      return false; // Audio Manager
-        if(!HAMURWORLD->init())     return false; // Object manager - World
-        if(!HAMURSTATEMR->init())   return false; // State Manager
+        if(!HAMURWORLD->Init())     return false; // Object manager - World
+        if(!HAMURSTATEMR->Init())   return false; // State Manager
         if(!HAMUREVENT->Init())     return false; // Event handler
 
         HAMURLOG->writeInitLog("HamurEngine");
@@ -63,8 +68,8 @@ namespace hamur
             glTranslatef(0, 0, -1.0f);
 
             // Run state machine
-            HAMURSTATEMR->getCurrentState()->update();
-            HAMURSTATEMR->getCurrentState()->draw();
+            HAMURSTATEMR->GetCurrentState()->Update();
+            HAMURSTATEMR->GetCurrentState()->Draw();
 
             // Check if game window closed by user
             if(HAMUREVENT->IsQuitPerformed()) 

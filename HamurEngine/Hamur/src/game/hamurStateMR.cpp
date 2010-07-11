@@ -1,4 +1,8 @@
 #include "hamurStateMR.h"
+#include "hamurState.h"
+#include "../helper/hamurLog.h"
+#include "../hamurDefinitions.h"
+
 namespace hamur
 {
 	HamurStateMR::HamurStateMR()
@@ -9,16 +13,16 @@ namespace hamur
 
 	HamurStateMR::~HamurStateMR()
 	{
-        clearAll();
+        ClearAll();
         HAMURLOG->writeTerminateLog("HamurStateMR");
 	}
 
 
     // Init Hamur State Manager
-    bool HamurStateMR::init()
+    bool HamurStateMR::Init()
     {
-        currentState = NULL;
-        previousState = NULL;
+        mCurrentState = NULL;
+        mPreviousState = NULL;
         HAMURLOG->writeInitLog("HamurStateMR");
 
         return true; // We dont have much choice here :)
@@ -27,36 +31,36 @@ namespace hamur
 
     // Add state into "map" container with state name.
     // If state is already registered, it will not be registered.
-	bool HamurStateMR::registerState(HamurState *_state)
+	bool HamurStateMR::RegisterState(HamurState *_state)
 	{
 		// Look in the map if the state is already registered. If not found, then register.
-        if (hasState(_state->getStateName()))
+        if (HasState(_state->GetStateName()))
         {
             HAMURLOG->writeLogln("Error!: Can't register state, state already exists: " 
-                + _state->getStateName(), HamurLog::ALWAYS);
+                + _state->GetStateName(), HamurLog::ALWAYS);
             return false;
         }
 
-		stateList[_state->getStateName()] = _state;
+		mStateList[_state->GetStateName()] = _state;
 
-        HAMURLOG->writeLogln("State registered: " + _state->getStateName());
+        HAMURLOG->writeLogln("State registered: " + _state->GetStateName());
         return true;
 	}
 
 
     // Search through the "map" container and remove & delete state.
     // If it is successful, return true else false.
-	bool HamurStateMR::deleteState(const string &_stateName)
+	bool HamurStateMR::DeleteState(const string &_stateName)
 	{
-		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
+		map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
 
-		if(iter != stateList.end())
+		if(iter != mStateList.end())
 		{
             // If it was found, delete it then. 
             if(iter->second)
                 delete iter->second;
 			
-			stateList.erase(iter);
+			mStateList.erase(iter);
 
             return true;
 		}
@@ -66,13 +70,13 @@ namespace hamur
 
 
 	// Checks if the manager has the given state.
-	bool HamurStateMR::hasState(const string &_stateName)
+	bool HamurStateMR::HasState(const string &_stateName)
 	{
 		// Look in the map if the state exists.
-		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
+		map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
 
 		// If not found, return false.
-		if(iter == stateList.end())
+		if(iter == mStateList.end())
 			return false;
 
 		return true;
@@ -80,13 +84,13 @@ namespace hamur
 
 
     // Returns state with the given name. 
-	HamurState* HamurStateMR::findState(const string &_stateName)
+	HamurState* HamurStateMR::FindState(const string &_stateName)
 	{
 		// Look in the map.
-		map<string, HamurState*>::iterator iter = stateList.find(_stateName);
+		map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
 
 		// If not found, return NULL.
-		if(iter == stateList.end())
+		if(iter == mStateList.end())
 		{
             HAMURLOG->writeLogln("Error!: Can't find the given state: " 
                 + _stateName, HamurLog::ALWAYS);
@@ -98,18 +102,18 @@ namespace hamur
 
 
     // Changes the current state to the given state. 
-	void HamurStateMR::changeState(const string &_stateName)
+	void HamurStateMR::ChangeState(const string &_stateName)
 	{
-        if(hasState(_stateName))
+        if(HasState(_stateName))
         {
-            if(currentState != NULL)
+            if(mCurrentState != NULL)
             {
-                currentState->exit();
-                previousState = currentState;
+                mCurrentState->Exit();
+                mPreviousState = mCurrentState;
             }
             
-		    currentState = findState(_stateName);
-		    currentState->enter();
+		    mCurrentState = FindState(_stateName);
+		    mCurrentState->Enter();
         }
         else
         {
@@ -121,37 +125,37 @@ namespace hamur
 
 
 	// Checks if Current State available. If so returns it.
-	HamurState* HamurStateMR::getCurrentState()
+	HamurState* HamurStateMR::GetCurrentState()
 	{
-		if(currentState == NULL)
+		if(mCurrentState == NULL)
 		{
             HAMURLOG->writeLogln("Error!: Current state is not SET yet.", 
                 HamurLog::ALWAYS);
 			return NULL;
 		}
 		
-		return currentState;
+		return mCurrentState;
 	}
 
 
 	// Checks if Current State available. If so returns its name.
-	string HamurStateMR::getCurrentStateName()
+	string HamurStateMR::GetCurrentStateName()
 	{
-		if(currentState == NULL)
+		if(mCurrentState == NULL)
 		{
             HAMURLOG->writeLogln("Error!: Current state is not SET yet.", 
                 HamurLog::ALWAYS);
 			return NULL;
 		}
 
-		return currentState->getStateName();
+		return mCurrentState->GetStateName();
 	}
 
 
 	// Checks if Previous State available. If so returns its name.
-	string HamurStateMR::getPreviousStateName()
+	string HamurStateMR::GetPreviousStateName()
 	{
-		if(previousState == NULL)
+		if(mPreviousState == NULL)
 		{
             HAMURLOG->writeLogln("Error!: Previous state is not SET yet.", 
                 HamurLog::ALWAYS);
@@ -159,16 +163,16 @@ namespace hamur
 			return NULL;
 		}
 
-		return previousState->getStateName();
+		return mPreviousState->GetStateName();
 	}
 
     
     // Delete all state objects in the State Manager
-    void HamurStateMR::clearAll()
+    void HamurStateMR::ClearAll()
     {
         map<string, HamurState*>::iterator iter;
 
-        for(iter = stateList.begin(); iter != stateList.end(); iter++)
+        for(iter = mStateList.begin(); iter != mStateList.end(); iter++)
         {
             if(iter->second)
                 delete iter->second;
@@ -176,4 +180,5 @@ namespace hamur
 
         HAMURLOG->writeLogln("All state objects deleted.");
     }
-}
+
+} // namespace hamur

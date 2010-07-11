@@ -58,10 +58,10 @@ bool HamurAuMR::Init(int mixrate, int maxsoftwarechannels, unsigned int flags)
 
 
 // Get FX from "map" container according to given FX name
-HamurFX* HamurAuMR::GetFX(const string& strFxName)
+HamurFX* HamurAuMR::GetFX(const string& strFxName) const
 {
 	//Look in the map if the FX is already loaded.
-	map<string, HamurFX*>::iterator iter = mFxMap.find(strFxName);
+    map<string, HamurFX*>::const_iterator iter = mFxMap.find(strFxName);
 	
 	if(iter != mFxMap.end())
 		return iter->second;
@@ -72,10 +72,10 @@ HamurFX* HamurAuMR::GetFX(const string& strFxName)
 
 
 // Get Song from "map" container according to given Song name
-HamurSong* HamurAuMR::GetSong(const string& strSongName)
+HamurSong* HamurAuMR::GetSong(const string& strSongName) const
 {
 	//Look in the map if the Song is already loaded.
-	map<string, HamurSong*>::iterator iter = mSongMap.find(strSongName);
+    map<string, HamurSong*>::const_iterator iter = mSongMap.find(strSongName);
 	
 	if(iter != mSongMap.end())
 		return iter->second;
@@ -86,10 +86,10 @@ HamurSong* HamurAuMR::GetSong(const string& strSongName)
 
 
 // Get Stream from "map" container according to given Stream name
-HamurStream* HamurAuMR::GetStream(const string& strStreamName)
+HamurStream* HamurAuMR::GetStream(const string& strStreamName) const
 {
 	//Look in the map if the Stream is already loaded.
-	map<string, HamurStream*>::iterator iter = mStreamMap.find(strStreamName);
+	map<string, HamurStream*>::const_iterator iter = mStreamMap.find(strStreamName);
 	
 	if(iter != mStreamMap.end())
 		return iter->second;

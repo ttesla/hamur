@@ -1,121 +1,123 @@
 #include "hamurObject.h"
 #include "../helper/hamurMath.h"
 #include "hamurWorld.h"
+#include "../hamurDefinitions.h"
 
 
 namespace hamur
 {
     
-    HamurObject::HamurObject(const string &_name) 
-        :name(_name), active(true), interaction(false)
-    {
-        pos.x = 0;
-        pos.y = 0;
-        pos.z = 0;
-        rotation = 0;
-        HAMURLOG->writeLogln("Object created: " + name);
-    }
-
-    HamurObject::HamurObject(const string &_name, const string &spritePath)
-        :name(_name), active(true), interaction(false)
-    {
-        pos.x = 0;
-        pos.y = 0;
-        pos.z = 0;
-        rotation = 0;
-        setSprite(spritePath);
-        HAMURLOG->writeLogln("Object created: " + name + ", " + spritePath);
-    }
-
-    HamurObject::~HamurObject()
-    {
-        HAMURLOG->writeLogln("Object deleted: " + name);
-    }
-
-    void HamurObject::draw()
-    {
-        HAMURTEXMR->BlitTexture(spriteID, pos, rotation);
-    }
-
-    void HamurObject::rotateDegree(float rotationAngle)
-    {
-        rotation = rotationAngle;
-    }
-
-    void HamurObject::rotateRadian(float rotationRadian)
-    {
-        rotation = HamurMath::Converter::radianToDegree(rotationRadian);
-    }
-
-    // GETTERS & SETTERS
-    string HamurObject::getName()        { return name; }
-    HamurVec3 HamurObject::getPosition() { return pos; }
-    float HamurObject::getRotation()     { return rotation; }
-    bool HamurObject::isActive()         { return active; }
-    bool HamurObject::hasInteraction()   { return interaction; }
-    unsigned HamurObject::getSpriteID()  { return spriteID; }
-    void HamurObject::setName(const string& _name)       { name = _name; }
-
-
-    void HamurObject::setPosition(const HamurVec3& _pos)
-    {
-        pos = _pos;
-    }
-
-    void HamurObject::setPosition(const HamurVec2& _pos)
-    {
-        pos.x = _pos.x;
-        pos.y = _pos.y;
-        pos.z = 0;
-    }
-
-    void HamurObject::setPosition(float _x, float _y, float _z)
-    {
-        pos.x = _x;
-        pos.y = _y;
-        pos.z = _z;
-    }
-
-    void HamurObject::setActive(bool _active)            { active = _active; }
-    void HamurObject::setInteraction(bool _interaction)  { interaction = _interaction; }
-
-    void HamurObject::setSprite(const string &_path)
-    {
-        spriteID = HAMURTEXMR->AddTexture(_path);
-    }
-
-    b2Body* HamurObject::getBody()
-    {
-        return body;
-    }
-
-    b2BodyDef HamurObject::getBodyDef()
-    {
-        return bodyDef;
-    }
-
-    void HamurObject::setBodyDef(const b2BodyDef& _bodyDef)
-    {
-        bodyDef = _bodyDef;
-    }
-
-    b2PolygonShape HamurObject::getPolygonShape()
-    {
-        return box;
-    }
-
-    void HamurObject::setPolygonShape(const b2PolygonShape& _box)
-    {
-        box = _box;
-    }
-
-    b2FixtureDef HamurObject::getFixDef()
-    {
-        return fixtureDef;
-    }
-
-    void HamurObject::setFixDef(const b2FixtureDef& _fixDef)
-    {
-        fixtureDef = _fixDef;
-    }
+HamurObject::HamurObject(const string& name) 
+    :mName(name), mActive(true), mInteractive(false)
+{
+    mPos.x = 0;
+    mPos.y = 0;
+    mPos.z = 0;
+    mRotation = 0;
+    HAMURLOG->writeLogln("Object created: " + mName);
 }
+
+HamurObject::HamurObject(const string& name, const string& spritePath)
+    :mName(name), mActive(true), mInteractive(false)
+{
+    mPos.x = 0;
+    mPos.y = 0;
+    mPos.z = 0;
+    mRotation = 0;
+    SetSprite(spritePath);
+    HAMURLOG->writeLogln("Object created: " + mName + ", " + spritePath);
+}
+
+HamurObject::~HamurObject()
+{
+    HAMURLOG->writeLogln("Object deleted: " + mName);
+}
+
+void HamurObject::Draw()
+{
+    HAMURTEXMR->blitTexture(mSpriteID, mPos, mRotation);
+}
+
+void HamurObject::RotateDegree(float rotationAngle)
+{
+    mRotation = rotationAngle;
+}
+
+void HamurObject::RotateRadian(float rotationRadian)
+{
+    mRotation = HamurMath::Converter::RadianToDegree(rotationRadian);
+}
+
+// GETTERS & SETTERS
+string HamurObject::GetName() const             { return mName; }
+HamurVec3 HamurObject::GetPosition() const      { return mPos; }
+float HamurObject::GetRotation() const          { return mRotation; }
+bool HamurObject::IsActive() const              { return mActive; }
+bool HamurObject::IsInteractive() const         { return mInteractive; }
+unsigned HamurObject::GetSpriteID() const       { return mSpriteID; }
+void HamurObject::SetName(const string& name)   { mName = name; }
+
+
+void HamurObject::SetPosition(const HamurVec3& pos)
+{
+    mPos = pos;
+}
+
+void HamurObject::SetPosition(const HamurVec2& pos)
+{
+    mPos.x = pos.x;
+    mPos.y = pos.y;
+    mPos.z = 0;
+}
+
+void HamurObject::SetPosition(float x, float y, float z)
+{
+    mPos.x = x;
+    mPos.y = y;
+    mPos.z = z;
+}
+
+void HamurObject::SetActive(bool active)            { mActive = active; }
+void HamurObject::SetInteraction(bool interactive)  { mInteractive = interactive; }
+
+void HamurObject::SetSprite(const string& path)
+{
+    mSpriteID = HAMURTEXMR->addTexture(path);
+}
+
+b2Body* HamurObject::GetBody() const
+{
+    return mBody;
+}
+
+b2BodyDef HamurObject::GetBodyDef() const
+{
+    return mBodyDef;
+}
+
+void HamurObject::SetBodyDef(const b2BodyDef& bodyDef)
+{
+    mBodyDef = bodyDef;
+}
+
+b2PolygonShape HamurObject::GetPolygonShape() const
+{
+    return mBox;
+}
+
+void HamurObject::SetPolygonShape(const b2PolygonShape& box)
+{
+    mBox = box;
+}
+
+b2FixtureDef HamurObject::GetFixDef() const
+{
+    return mFixtureDef;
+}
+
+void HamurObject::SetFixDef(const b2FixtureDef& fixDef)
+{
+    mFixtureDef = fixDef;
+}
+
+} // namespace hamur

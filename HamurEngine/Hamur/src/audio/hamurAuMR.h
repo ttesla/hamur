@@ -48,19 +48,19 @@ class HamurAuMR : public Singleton<HamurAuMR>
 		* Get FX from "map" container according to given FX name.
 		* @param strFxName Name of the effect file.
 		*/
-		HamurFX* GetFX(const string& strFxName);
+		HamurFX* GetFX(const string& strFxName) const;
 
 		/**
 		* Get Song from "map" container according to given Song name.
 		* @param strSongName Name of the song file.
 		*/
-		HamurSong* GetSong(const string& strSongName);
+		HamurSong* GetSong(const string& strSongName) const;
 
 		/**
 		* Get Stream from "map" container according to given Stream name.
 		* @param strStreamName Name of the stream file.
 		*/
-		HamurStream* GetStream(const string& strStreamName);
+		HamurStream* GetStream(const string& strStreamName) const;
 
 		/**
 		* Add FX into "map" container with FX name index.

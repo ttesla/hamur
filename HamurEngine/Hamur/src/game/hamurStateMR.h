@@ -2,117 +2,120 @@
 #define HAMUR_STATEMR_H
 
 #include "../hamurSingleton.h"
-#include "hamurState.h"
-#include "../helper/hamurLog.h"
-#include "../hamurDefinitions.h"
 
 #include <map>
+#include <string>
 
 using std::map;
+using std::string;
 
 namespace hamur
 {
-    /**
-    * Hamur State Manager
-    * All states are registered and managed here. 
-    */
-	class HamurStateMR : public Singleton<HamurStateMR>
-	{
-		public:
 
-            friend Singleton<HamurStateMR>;
+class HamurState;
 
-            /**
-            * Initialize Hamur State Manager
-            * @return True if initialization is successful else return False
-            */
-            bool init();
+/**
+* Hamur State Manager
+* All states are registered and managed here. 
+*/
+class HamurStateMR : public Singleton<HamurStateMR>
+{
+	public:
 
-            /**
-            * Registers given state to the state manager.
-            * If state is already registered, it will not be registered.
-            * @param _state Object of the state
-            * @return True if register is successful else return False
-            * @see removeState()
-            */
-			bool registerState(HamurState *_state);
+        friend Singleton<HamurStateMR>;
 
-            /**
-            * Removes and deletes state from state manager.
-            * @param _stateName Name of the state which will be removed.
-            * @return If state is removed successfully or not
-            * @see registerState()
-            */
-			bool deleteState(const string &_stateName);
+        /**
+        * Initialize Hamur State Manager
+        * @return True if initialization is successful else return False
+        */
+        bool Init();
 
-            /**
-            * Checks if the manager has the given state.
-            * @param _stateName Name of the state.
-            * @return If given state is found or not
-            */
-			bool hasState(const string &_stateName);
+        /**
+        * Registers given state to the state manager.
+        * If state is already registered, it will not be registered.
+        * @param _state Object of the state
+        * @return True if register is successful else return False
+        * @see RemoveState()
+        */
+		bool RegisterState(HamurState* state);
 
-            /**
-            * Returns state with the given name. 
-            * @param _stateName Name of the state
-            * @return State object, NULL if it is not found.
-            */
-			HamurState* findState(const string &_stateName);
+        /**
+        * Removes and deletes state from state manager.
+        * @param _stateName Name of the state which will be removed.
+        * @return If state is removed successfully or not
+        * @see RegisterState()
+        */
+		bool DeleteState(const string& stateName);
 
-			/** 
-            * Changes the current state to the given state. 
-            * @param _stateName Name of the state which will be changed to.
-            */
-			void changeState(const string &_stateName);
+        /**
+        * Checks if the manager has the given state.
+        * @param stateName Name of the state.
+        * @return If given state is found or not
+        */
+		bool HasState(const string& stateName);
 
-            /**
-            * Get current state.
-            * @return Object of the current state
-            * @see getPreviousState();
-            */
-			HamurState* getCurrentState();
+        /**
+        * Returns state with the given name. 
+        * @param stateName Name of the state
+        * @return State object, NULL if it is not found.
+        */
+		HamurState* FindState(const string& stateName);
 
-            /**
-            * Get previous state.
-            * @return Object of the previous state
-            * @see getCurrentState()
-            */
-			HamurState* getPreviousState();
+		/** 
+        * Changes the current state to the given state. 
+        * @param stateName Name of the state which will be changed to.
+        */
+		void ChangeState(const string& stateName);
 
-            /**
-            * Get current state name.
-            * @return Name of the current state
-            * @see getPreviousStateName()
-            */
-			string getCurrentStateName();
+        /**
+        * Get current state.
+        * @return Object of the current state
+        * @see GetPreviousState();
+        */
+		HamurState* GetCurrentState();
 
-            /**
-            * Get previous state name.
-            * @return Name of the previous state
-            * @see getPreviousStateName()
-            */
-			string getPreviousStateName();
+        /**
+        * Get previous state.
+        * @return Object of the previous state
+        * @see GetCurrentState()
+        */
+		HamurState* GetPreviousState();
 
-            /**
-            * Clear and delete all state objects in the State Manager
-            */
-            void clearAll();
+        /**
+        * Get current state name.
+        * @return Name of the current state
+        * @see GetPreviousStateName()
+        */
+		string GetCurrentStateName();
 
-		protected:
+        /**
+        * Get previous state name.
+        * @return Name of the previous state
+        * @see GetPreviousStateName()
+        */
+		string GetPreviousStateName();
 
-            HamurStateMR();
+        /**
+        * Clear and delete all state objects in the State Manager
+        */
+        void ClearAll();
 
-            /**
-            * Destructor of Hamur State Manager.
-            * Destroys all registered states.
-            */
-            ~HamurStateMR();
+	protected:
 
-		private:
-			map<string, HamurState*> stateList; /**< Stores all states according to their names. */
-			HamurState* currentState; /** Current state of the game. */
-			HamurState* previousState; /**< Previous state of the game. */ 
-	};
-}
+        HamurStateMR();
+
+        /**
+        * Destructor of Hamur State Manager.
+        * Destroys all registered states.
+        */
+        ~HamurStateMR();
+
+	private:
+		map<string, HamurState*> mStateList; /**< Stores all states according to their names. */
+		HamurState* mCurrentState; /** Current state of the game. */
+		HamurState* mPreviousState; /**< Previous state of the game. */ 
+};
+
+} // namespace hamur
 
 #endif // HAMURSTATEMR_H
