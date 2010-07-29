@@ -2,7 +2,7 @@
 #include "GroundObject.h"
 #include "DynamicObject.h"
 
-using namespace hamur;
+
 
 
 // Calling HamurState("Name") is a must!
@@ -68,7 +68,8 @@ void MainState::Update()
 // DRAW
 void MainState::Draw() 
 {
-    HAMURWORLD->GetObject("Ground")->Draw();
+    using namespace hamur;
+    HamurWorld::getInstance()->GetObject("Ground")->Draw();
     //HAMURWORLD->getObject("Dynamic")->draw();
     //HAMURWORLD->getObject("Dynamic2")->draw();
     //HAMURWORLD->getObject("Tank")->draw();
@@ -81,7 +82,7 @@ void MainState::Draw()
     // Draw all objects
     for (int i = 0; i < HAMURWORLD->GetWorldSize(); i++)
     {
-        HAMURWORLD->GetObjectbyIndex(i)->Draw();
+       // HAMURWORLD->GetObjectbyIndex(i)->Draw();
     }
     
 }
@@ -244,7 +245,7 @@ void MainState::spawnObjects()
 
     ss << "Dynamic" << i;
     HAMURWORLD->AddObject(new dynamicObject(ss.getString(), pos));
-    HAMURWORLD->GetObject(ss.getString())->SetPosition(pos);
+    //HAMURWORLD->GetObject(ss.getString())->SetPosition(pos);
     //HAMURWORLD->getObject(ss.getString())->setSprite("data/fish.png");
 
    // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.getString()))->setColor(1, 1, 1);

@@ -1,13 +1,14 @@
 #ifndef HAMUR_OBJECT
 #define HAMUR_OBJECT
 
+#include "Box2D/Box2D.h"
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
 
 #include <string>
-#include "Box2D/Box2D.h"
 
 using std::string;
+
 
 namespace hamur
 {
