@@ -3,6 +3,7 @@
 #include "../helper/hamurLog.h"
 #include "../hamurDefinitions.h"
 
+
 namespace hamur
 {
 	HamurStateMR::HamurStateMR()

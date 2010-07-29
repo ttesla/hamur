@@ -1,7 +1,7 @@
 #include "hamurWorld.h"
-#include "../helper/hamurMath.h"
 #include "hamurObject.h"
 #include "../helper/hamurLog.h"
+#include "../helper/hamurMath.h"
 #include "../hamurEvent.h"
 #include "../hamurDefinitions.h"
 
