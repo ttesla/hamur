@@ -23,7 +23,7 @@ HamurGP::~HamurGP()
 // Init function
 bool HamurGP::Init()
 {
-    HAMURLOG->writeInitLog("HamurGP");
+    HAMURLOG->WriteInitLog("HamurGP");
     return true;
 }
 

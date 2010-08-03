@@ -30,7 +30,7 @@ HamurAuMR::~HamurAuMR()
 	// CD Tracks are stopped.
 	FSOUND_Close();
 
-    HAMURLOG->writeTerminateLog("HamurAudio");
+    HAMURLOG->WriteTerminateLog("HamurAudio");
 }
 
 
@@ -46,12 +46,12 @@ bool HamurAuMR::Init(int mixrate, int maxsoftwarechannels, unsigned int flags)
 {
 	if(!FSOUND_Init(mixrate, maxsoftwarechannels, flags))
 	{
-		HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		return false;
 	}
 	else
 	{
-		HAMURLOG->writeInitLog("HamurAudio");
+		HAMURLOG->WriteInitLog("HamurAudio");
 		return true;
 	}
 }
@@ -262,7 +262,7 @@ void HamurAuMR::ClearAll()
             delete iterStream->second;
     }
 
-    HAMURLOG->writeLogln("All audio objects deleted.");
+    HAMURLOG->WriteLogln("All audio objects deleted.");
 }
 
 } // namespace hamur

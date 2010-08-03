@@ -34,11 +34,11 @@ class HamurTexMR : public Singleton<HamurTexMR>
         */
         bool Init();
 
-		HamurTex* GetTexture(unsigned int textureID) const; //Get texture
-		bool DeleteTexture(unsigned int textureID);   //Delete texture
-		unsigned int AddTexture(const string& filePath); //Add texture from image file
-		unsigned int AddTexture(const SDL_Surface* newSurface, const string &strName); //Add texture from SDL surface
-		void BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation = 0); // Blits image onto screen
+	    HamurTex* GetTexture(unsigned int textureID) const; //Get texture
+	    bool DeleteTexture(unsigned int textureID);   //Delete texture
+	    unsigned int AddTexture(const string& filePath); //Add texture from image file
+	    unsigned int AddTexture(const SDL_Surface* newSurface, const string &strName); //Add texture from SDL surface
+	    void BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation = 0); // Blits image onto screen
         void BlitTexture(unsigned int textureID, float x, float y, float z, float rotation = 0); // Blits image onto screen
 
         HamurVec3 WorldToGL(float x, float y, float z) const;
@@ -70,7 +70,7 @@ class HamurTexMR : public Singleton<HamurTexMR>
 };
 
 
-// Translates world coordinate to openGL coordinates
+/**< Translates world coordinate to openGL coordinates */
 inline HamurVec3 HamurTexMR::WorldToGL(float x, float y, float z) const
 {
     HamurVec3 GLcoord;
@@ -82,7 +82,7 @@ inline HamurVec3 HamurTexMR::WorldToGL(float x, float y, float z) const
 }
 
 
-// Translates world coordinate to openGL coordinates
+/**< Translates world coordinate to openGL coordinates */
 inline HamurVec3 HamurTexMR::WorldToGL(const HamurVec3 &vec3) const
 {
     HamurVec3 GLcoord;
@@ -94,7 +94,7 @@ inline HamurVec3 HamurTexMR::WorldToGL(const HamurVec3 &vec3) const
 }
 
 
-// Translates world coordinate to openGL coordinates
+/**< Translates world coordinate to openGL coordinates */
 inline HamurVec2 HamurTexMR::WorldToGL(float x, float y) const
 {
     HamurVec2 GLcoord;
@@ -105,7 +105,7 @@ inline HamurVec2 HamurTexMR::WorldToGL(float x, float y) const
 }
 
 
-// Translates world coordinate to openGL coordinates
+/**< Translates world coordinate to openGL coordinates */
 inline HamurVec2 HamurTexMR::WorldToGL(const HamurVec2 &vec2) const
 {
     HamurVec2 GLcoord;
@@ -115,6 +115,6 @@ inline HamurVec2 HamurTexMR::WorldToGL(const HamurVec2 &vec2) const
     return GLcoord;
 }
 
-}// namespace hamur
+} // namespace hamur
 
-#endif //HAMURTEXMR_H
+#endif // HAMURTEXMR_H

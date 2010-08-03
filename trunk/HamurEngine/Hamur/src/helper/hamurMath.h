@@ -13,10 +13,10 @@ class HamurMath
         {
             static float DegreeToRadian(float degree);
             static float RadianToDegree(float radian);
-
         };
 
 };
 
 } // namespace hamur
-#endif
+
+#endif // HAMURMATH_H

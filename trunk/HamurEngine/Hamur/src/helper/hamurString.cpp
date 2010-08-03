@@ -7,7 +7,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -16,7 +16,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -25,7 +25,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -34,7 +34,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -43,7 +43,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -52,7 +52,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -61,7 +61,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -70,7 +70,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString.append(ss.str());
+        mCustomString.append(ss.str());
 
         return *this;
     }
@@ -79,7 +79,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -88,7 +88,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -97,7 +97,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -106,7 +106,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -115,7 +115,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -124,7 +124,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -133,7 +133,7 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
@@ -142,19 +142,19 @@ namespace hamur
     {
         stringstream ss;
         ss << input;
-        customString = ss.str();
+        mCustomString = ss.str();
 
         return *this;
     }
 
-    string HamurString::getString()
+    string HamurString::GetString()
     {
-        return customString;
+        return mCustomString;
     }
 
-    void HamurString::clear()
+    void HamurString::Clear()
     {
-        customString.clear();
+        mCustomString.clear();
     }
 
 }

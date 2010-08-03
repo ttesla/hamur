@@ -15,7 +15,7 @@ HamurObject::HamurObject(const string& name)
     mPos.y = 0;
     mPos.z = 0;
     mRotation = 0;
-    HAMURLOG->writeLogln("Object created: " + mName);
+    HAMURLOG->WriteLogln("Object created: " + mName);
 }
 
 HamurObject::HamurObject(const string& name, const string& spritePath)
@@ -26,12 +26,12 @@ HamurObject::HamurObject(const string& name, const string& spritePath)
     mPos.z = 0;
     mRotation = 0;
     SetSprite(spritePath);
-    HAMURLOG->writeLogln("Object created: " + mName + ", " + spritePath);
+    HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
 }
 
 HamurObject::~HamurObject()
 {
-    HAMURLOG->writeLogln("Object deleted: " + mName);
+    HAMURLOG->WriteLogln("Object deleted: " + mName);
 }
 
 void HamurObject::Draw()

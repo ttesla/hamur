@@ -31,11 +31,11 @@ namespace hamur
             * @param y Given y coordinate of the text that will be drawn.
             * @param z Given z coordinate of the text that will be drawn.
             */
-			void drawText(const string &text, float x, float y, float z);
-            void drawText(int _number, float x, float y, float z);
-            void drawText(float _number, float x, float y, float z);
-            void drawText(double _number, float x, float y, float z);
-            void drawText(HamurString _stream, float x, float y, float z);
+			void DrawText(const string& text, float x, float y, float z);
+            void DrawText(int number, float x, float y, float z);
+            void DrawText(float number, float x, float y, float z);
+            void DrawText(double number, float x, float y, float z);
+            void DrawText(HamurString stream, float x, float y, float z);
 
 		protected:
 
@@ -49,6 +49,6 @@ namespace hamur
 
 		private:
 	};
-}
+} // namespace hamur
 
 #endif // HAMURFONT_H

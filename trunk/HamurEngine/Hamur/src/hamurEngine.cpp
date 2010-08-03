@@ -27,14 +27,14 @@ namespace hamur
     HamurEngine::~HamurEngine()
     {
         // Add remaining cleaups here...
-        HAMURLOG->writeTerminateLog("HamurEngine");
+        HAMURLOG->WriteTerminateLog("HamurEngine");
     }
 
 
     // Initializes Hamur engine with the given parameters...
-    bool HamurEngine::init(const string& applicationName, int screenWidth, int screenHeight)
+    bool HamurEngine::Init(const string& applicationName, int screenWidth, int screenHeight)
     {
-        HAMURLOG->writeLogln("Initializing Hamur Engine...", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Initializing Hamur Engine...", HamurLog::ALWAYS);
 
         // Init Hamur subsystems...
         if(!HAMURGL->InitSDL(applicationName, screenWidth, screenHeight, 32, SDL_OPENGL)) return false; // SDL
@@ -45,19 +45,19 @@ namespace hamur
         if(!HAMURSTATEMR->Init())   return false; // State Manager
         if(!HAMUREVENT->Init())     return false; // Event handler
 
-        HAMURLOG->writeInitLog("HamurEngine");
-        HAMURLOG->writeLogln("", HamurLog::ALWAYS);
+        HAMURLOG->WriteInitLog("HamurEngine");
+        HAMURLOG->WriteLogln("", HamurLog::ALWAYS);
         
         return true; // Initialization OK!
     }
 
 
     // Core of the engine
-    void HamurEngine::run()
+    void HamurEngine::Run()
     {
-        runEngine = true;
+        mRunEngine = true;
 
-        while(runEngine)
+        while(mRunEngine)
         {
             // Handle all events
             HAMUREVENT->HandleEvents();
@@ -73,7 +73,7 @@ namespace hamur
 
             // Check if game window closed by user
             if(HAMUREVENT->IsQuitPerformed()) 
-                runEngine = false;
+                mRunEngine = false;
 
             //Update screen
             SDL_GL_SwapBuffers();   
@@ -82,18 +82,18 @@ namespace hamur
 
 
     // Stop Hamur engine, quit main loop
-    void HamurEngine::stop()
+    void HamurEngine::Stop()
     {
-        runEngine = false;
+        mRunEngine = false;
     }
 
 
     // Delete all objects in all Hamur managers... 
-    void HamurEngine::terminate()
+    void HamurEngine::Terminate()
     {
-        HAMURLOG->writeLogln("\nTerminating Hamur Engine...", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("\nTerminating Hamur Engine...", HamurLog::ALWAYS);
 
-        runEngine = false;
+        mRunEngine = false;
 
         // The termination order is important !!!
         HAMURTEXMR->drop();
@@ -108,14 +108,14 @@ namespace hamur
 
 
     // Shows mouse cursor on window
-    void HamurEngine::enableMouseCursor()
+    void HamurEngine::EnableMouseCursor()
     {
         SDL_ShowCursor(SDL_ENABLE);
     }
 
 
     // Hides mouse cursor 
-    void HamurEngine::disableMouseCursor()
+    void HamurEngine::DisableMouseCursor()
     {
         SDL_ShowCursor(SDL_DISABLE);
     }

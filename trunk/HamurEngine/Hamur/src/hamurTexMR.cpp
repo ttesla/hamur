@@ -24,7 +24,7 @@ HamurTexMR::HamurTexMR() : mDepthShift(1.0f), mOpenglY(0.414f)
 // Initialize Hamur texture manager
 bool HamurTexMR::Init()
 {
-    HAMURLOG->writeInitLog("HamurTexMR");  
+    HAMURLOG->WriteInitLog("HamurTexMR");  
     return true;
 }
 
@@ -33,7 +33,7 @@ bool HamurTexMR::Init()
 HamurTexMR::~HamurTexMR()
 {
 	ClearAll();
-    HAMURLOG->writeTerminateLog("HamurTexMR");
+    HAMURLOG->WriteTerminateLog("HamurTexMR");
 }
 
 
@@ -119,8 +119,8 @@ void HamurTexMR::BlitTexture(unsigned int textureID, const HamurVec3& position, 
 
 	if(texture == 0)
 	{
-        HAMURLOG->writeLog("Error!: Can't find texture: ", HamurLog::ALWAYS);
-        HAMURLOG->writeLogln(textureID, HamurLog::ALWAYS);
+        HAMURLOG->WriteLog("Error!: Can't find texture: ", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln(textureID, HamurLog::ALWAYS);
 		exit(1);
 	}
 
@@ -159,8 +159,8 @@ void HamurTexMR::BlitTexture(unsigned int textureID, float x, float y, float z, 
 
     if(texture == 0)
     {
-        HAMURLOG->writeLog("Error!: Can't find texture: ", HamurLog::ALWAYS);
-        HAMURLOG->writeLogln(textureID, HamurLog::ALWAYS);
+        HAMURLOG->WriteLog("Error!: Can't find texture: ", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln(textureID, HamurLog::ALWAYS);
         exit(1);
     }
 
@@ -202,7 +202,7 @@ void HamurTexMR::ClearAll()
             delete iter->second;
     }
 
-    HAMURLOG->writeLogln("All textures deleted.");
+    HAMURLOG->WriteLogln("All textures deleted.");
 }
 
 } // namespace hamur

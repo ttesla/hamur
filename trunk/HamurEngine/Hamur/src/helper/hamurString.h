@@ -9,47 +9,47 @@ using std::string;
 
 namespace hamur
 {
-    // Forward declaration
-    class HamurObject;
-    class HamurVec2;
-    class HamurVec3;
+// Forward declaration
+class HamurObject;
+class HamurVec2;
+class HamurVec3;
 
-    class HamurString
-    {
-        public:
+class HamurString
+{
+    public:
 
-            HamurString& operator<<(int input);
-            HamurString& operator<<(float input);
-            HamurString& operator<<(double input);
-            HamurString& operator<<(const string& input);
-            HamurString& operator<<(HamurObject& input);
-            HamurString& operator<<(HamurObject* input);
-            HamurString& operator<<(const HamurVec2& input);
-            HamurString& operator<<(const HamurVec3& input);
+        HamurString& operator<<(int input);
+        HamurString& operator<<(float input);
+        HamurString& operator<<(double input);
+        HamurString& operator<<(const string& input);
+        HamurString& operator<<(HamurObject& input);
+        HamurString& operator<<(HamurObject* input);
+        HamurString& operator<<(const HamurVec2& input);
+        HamurString& operator<<(const HamurVec3& input);
 
-            HamurString operator=(int input);
-            HamurString operator=(float input);
-            HamurString operator=(double input);
-            HamurString operator=(const string& input);
-            HamurString operator=(HamurObject& input);
-            HamurString operator=(HamurObject* input);
-            HamurString operator=(const HamurVec2& input);
-            HamurString operator=(const HamurVec3& input);
+        HamurString operator=(int input);
+        HamurString operator=(float input);
+        HamurString operator=(double input);
+        HamurString operator=(const string& input);
+        HamurString operator=(HamurObject& input);
+        HamurString operator=(HamurObject* input);
+        HamurString operator=(const HamurVec2& input);
+        HamurString operator=(const HamurVec3& input);
 
-            string getString();
-            void clear();
+        string GetString();
+        void Clear();
 
-        private:
+    private:
+        string mCustomString;
+};
 
-            string customString;
-    };
-
-    /** Writes the HamurString to the stream */
-    inline std::ostream &operator<<(std::ostream &os, HamurString &str)
-    {
-        os << str.getString();
-        return os;
-    }
+/** Writes the HamurString to the stream */
+inline std::ostream &operator<<(std::ostream &os, HamurString &str)
+{
+    os << str.GetString();
+    return os;
 }
 
-#endif
+} // namespace hamur
+
+#endif // HAMURSTRING_H

@@ -12,125 +12,125 @@ namespace hamur
 
     HamurFile::~HamurFile() 
     {
-        outputFile.close();
-        inputFile.close();
+        mOutputFile.close();
+        mInputFile.close();
     }
 
-    bool HamurFile::openForWrite(const string &_fileName)
+    bool HamurFile::OpenForWrite(const string &_fileName)
     {
-        if(outputFile.is_open())
-            outputFile.close();
+        if(mOutputFile.is_open())
+            mOutputFile.close();
 
-        outputFile.open(_fileName.c_str(), ios::out);
+        mOutputFile.open(_fileName.c_str(), ios::out);
 
-        if(outputFile.is_open())
+        if(mOutputFile.is_open())
             return true;
         else
             return false;
     }
 
-    bool HamurFile::openForAppend(const string &_fileName)
+    bool HamurFile::OpenForAppend(const string &_fileName)
     {
-        if(outputFile.is_open())
-            outputFile.close();
+        if(mOutputFile.is_open())
+            mOutputFile.close();
 
-        outputFile.open(_fileName.c_str(), ios::out | ios::app);
+        mOutputFile.open(_fileName.c_str(), ios::out | ios::app);
 
-        if(outputFile.is_open())
+        if(mOutputFile.is_open())
             return true;
         else
             return false;
     }
 
-    bool HamurFile::openForRead(const string &_fileName)
+    bool HamurFile::OpenForRead(const string &_fileName)
     {
-        if(inputFile.is_open())
-            inputFile.close();
+        if(mInputFile.is_open())
+            mInputFile.close();
 
-        inputFile.open(_fileName.c_str(), ios::in);
+        mInputFile.open(_fileName.c_str(), ios::in);
 
-        if(inputFile.is_open())
+        if(mInputFile.is_open())
             return true;
         else
             return false;
     }
 
-    void HamurFile::close()
+    void HamurFile::Close()
     {
-        if(outputFile.is_open()) outputFile.close();
-        if(inputFile.is_open())  inputFile.close();
+        if(mOutputFile.is_open()) mOutputFile.close();
+        if(mInputFile.is_open())  mInputFile.close();
     }
 
-    void HamurFile::write(const string &input)
+    void HamurFile::Write(const string &input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(int input)
+    void HamurFile::Write(int input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(unsigned int input)
+    void HamurFile::Write(unsigned int input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(char input)
+    void HamurFile::Write(char input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(float input)
+    void HamurFile::Write(float input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(double input)
+    void HamurFile::Write(double input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(HamurObject &input)
+    void HamurFile::Write(HamurObject &input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(HamurObject *input)
+    void HamurFile::Write(HamurObject *input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    void HamurFile::write(HamurString &input)
+    void HamurFile::Write(HamurString &input)
     {
-        outputFile << input;
+        mOutputFile << input;
     }
 
-    int HamurFile::readInt()
+    int HamurFile::ReadInt()
     {
         int temp;
-        inputFile >> temp;
+        mInputFile >> temp;
         return temp;
     }
 
-    float HamurFile::readFloat()
+    float HamurFile::ReadFloat()
     {
         float temp;
-        inputFile >> temp;
+        mInputFile >> temp;
         return temp;
     }
 
-    char HamurFile::readChar()
+    char HamurFile::ReadChar()
     {
         char temp;
-        inputFile >> temp;
+        mInputFile >> temp;
         return temp;
     }
 
-    string HamurFile::readString()
+    string HamurFile::ReadString()
     {
         string temp;
-        inputFile >> temp;
+        mInputFile >> temp;
         return temp;
     }	
 	
