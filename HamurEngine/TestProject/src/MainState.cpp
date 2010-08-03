@@ -43,7 +43,7 @@ void MainState::Enter()
 void MainState::Update() 
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
-        HAMURENGINE->stop();
+        HAMURENGINE->Stop();
 
     static bool keyPressed = false;
 
@@ -244,10 +244,10 @@ void MainState::spawnObjects()
     y = pos.y;
 
     ss << "Dynamic" << i;
-    HAMURWORLD->AddObject(new dynamicObject(ss.getString(), pos));
-    //HAMURWORLD->GetObject(ss.getString())->SetPosition(pos);
-    //HAMURWORLD->getObject(ss.getString())->setSprite("data/fish.png");
+    HAMURWORLD->AddObject(new dynamicObject(ss.GetString(), pos));
+    //HAMURWORLD->GetObject(ss.GetString())->SetPosition(pos);
+    //HAMURWORLD->getObject(ss.GetString())->setSprite("data/fish.png");
 
-   // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.getString()))->setColor(1, 1, 1);
+   // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.GetString()))->setColor(1, 1, 1);
     i = HAMURWORLD->GetWorldSize()-1;
 }

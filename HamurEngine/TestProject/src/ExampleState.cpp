@@ -24,7 +24,7 @@ void ExampleState::Enter()
 void ExampleState::Update() 
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
-        HAMURENGINE->stop();
+        HAMURENGINE->Stop();
 
     static bool keyPressed = false;
 

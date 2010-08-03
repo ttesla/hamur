@@ -74,6 +74,6 @@ class HamurEvent : public Singleton<HamurEvent>
         int mMouseY;       /**< Y coordinate of the mouse. */
 };
 
-}// namespace hamur
+} // namespace hamur
 
 #endif // HAMUREVENT_H

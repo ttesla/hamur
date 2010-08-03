@@ -23,7 +23,7 @@ HamurFX::HamurFX(const string &fileName, const string &fxName)
 HamurFX::~HamurFX()
 {
 	FSOUND_Sample_Free(mEffect);
-    HAMURLOG->writeLogln("FX deleted: " + mStrFxName + ", " + mStrFileName);
+    HAMURLOG->WriteLogln("FX deleted: " + mStrFxName + ", " + mStrFileName);
 }
 
 
@@ -37,12 +37,12 @@ bool HamurFX::LoadFX(const std::string& name)
 	if (!mEffect)
 	{
 		string tempStr = FMOD_ErrorString(FSOUND_GetError());
-        HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name, HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: " + tempStr + ": " + name, HamurLog::ALWAYS);
 		return false;
 	}
 	else
 	{
-		HAMURLOG->writeLogln("FX loaded: " + name);
+		HAMURLOG->WriteLogln("FX loaded: " + name);
 		return true;
 	}
 }
@@ -53,7 +53,7 @@ bool HamurFX::PlayFX()
 {
 	if (!mEffect)
 	{
-		 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		 HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		 return false;
 	}
 	else

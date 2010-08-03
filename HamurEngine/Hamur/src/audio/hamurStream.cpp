@@ -24,7 +24,7 @@ HamurStream::HamurStream(const string& fileName, const string& streamName)
 HamurStream::~HamurStream()
 {
 	FSOUND_Stream_Close(mStream);
-    HAMURLOG->writeLogln("Stream deleted: " + mStrStreamName + ", " + mStrFileName);
+    HAMURLOG->WriteLogln("Stream deleted: " + mStrStreamName + ", " + mStrFileName);
 }
 
 
@@ -36,12 +36,12 @@ bool HamurStream::LoadStream(const string& name)
 	if (!mStream)
 	{
 		string tempStr = FMOD_ErrorString(FSOUND_GetError());
-        HAMURLOG->writeLogln("Error!: " + tempStr + ": " + name, HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: " + tempStr + ": " + name, HamurLog::ALWAYS);
 		return false;
 	}
 	else
 	{
-		HAMURLOG->writeLogln("Stream loaded: " + name);
+		HAMURLOG->WriteLogln("Stream loaded: " + name);
 		return true;
 	}
 }
@@ -52,7 +52,7 @@ bool HamurStream::PlayStream()
 {
 	if (!mStream)
 	{
-		 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		 HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		 return false;
 	}
 	else
@@ -68,7 +68,7 @@ bool HamurStream::StopStream()
 {
 	if (!mStream)
 	{
-		 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		 HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		 return false;
 	}
 	else

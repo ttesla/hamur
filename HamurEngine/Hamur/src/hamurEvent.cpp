@@ -16,7 +16,7 @@ HamurEvent::HamurEvent()
 // HamurLog destructor
 HamurEvent::~HamurEvent()
 {
-    HAMURLOG->writeTerminateLog("HamurEvent");
+    HAMURLOG->WriteTerminateLog("HamurEvent");
 }
 
 
@@ -24,7 +24,7 @@ HamurEvent::~HamurEvent()
 bool HamurEvent::Init()
 {
     mQuit = false;
-    HAMURLOG->writeInitLog("HamurEvent");
+    HAMURLOG->WriteInitLog("HamurEvent");
     return true;
 }
 

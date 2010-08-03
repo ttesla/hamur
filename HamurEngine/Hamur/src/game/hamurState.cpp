@@ -13,7 +13,7 @@ HamurState::HamurState(const string& stateName)
 
 HamurState::~HamurState()
 {
-    HAMURLOG->writeLogln("State deleted: " + mStateName);
+    HAMURLOG->WriteLogln("State deleted: " + mStateName);
 }
 
 

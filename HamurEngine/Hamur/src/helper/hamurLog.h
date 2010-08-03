@@ -11,69 +11,70 @@ using std::string;
 
 namespace hamur
 {
-    /**
-     * Writes Logs to log file.
-     * Log is cleared at the start of each execution.
-     */
-    class HamurLog : public Singleton<HamurLog>
-	{
-		public:
-			 HamurLog();
-			~HamurLog();
-            
-            void writeLog(const string &input, bool writeMode = DEBUG_ONLY); 
-            void writeLog(int input,           bool writeMode = DEBUG_ONLY);
-            void writeLog(unsigned int input,  bool writeMode = DEBUG_ONLY); 
-            void writeLog(float input,         bool writeMode = DEBUG_ONLY);
-            void writeLog(double input,        bool writeMode = DEBUG_ONLY);
-            void writeLog(HamurObject &input,  bool writeMode = DEBUG_ONLY);
-            void writeLog(HamurObject *input,  bool writeMode = DEBUG_ONLY);
-            void writeLog(HamurString &input,  bool writeMode = DEBUG_ONLY);
 
-            void writeLogln(const string &input, bool writeMode = DEBUG_ONLY);
-            void writeLogln(int input,           bool writeMode = DEBUG_ONLY);
-            void writeLogln(unsigned int input,  bool writeMode = DEBUG_ONLY);
-            void writeLogln(float input,         bool writeMode = DEBUG_ONLY);
-            void writeLogln(double input,        bool writeMode = DEBUG_ONLY);
-            void writeLogln(HamurObject &input,  bool writeMode = DEBUG_ONLY);
-            void writeLogln(HamurObject *input,  bool writeMode = DEBUG_ONLY);
-            void writeLogln(HamurString &input,  bool writeMode = DEBUG_ONLY);
+/**
+ * Writes Logs to log file.
+ * Log is cleared at the start of each execution.
+ */
+class HamurLog : public Singleton<HamurLog>
+{
+	public:
+		 HamurLog();
+		~HamurLog();
+        
+        void WriteLog(const string &input, bool writeMode = DEBUG_ONLY); 
+        void WriteLog(int input,           bool writeMode = DEBUG_ONLY);
+        void WriteLog(unsigned int input,  bool writeMode = DEBUG_ONLY); 
+        void WriteLog(float input,         bool writeMode = DEBUG_ONLY);
+        void WriteLog(double input,        bool writeMode = DEBUG_ONLY);
+        void WriteLog(HamurObject &input,  bool writeMode = DEBUG_ONLY);
+        void WriteLog(HamurObject *input,  bool writeMode = DEBUG_ONLY);
+        void WriteLog(HamurString &input,  bool writeMode = DEBUG_ONLY);
 
-			// Write initialization messages
-			void writeInitLog(string log, bool writeMode = ALWAYS);
+        void WriteLogln(const string &input, bool writeMode = DEBUG_ONLY);
+        void WriteLogln(int input,           bool writeMode = DEBUG_ONLY);
+        void WriteLogln(unsigned int input,  bool writeMode = DEBUG_ONLY);
+        void WriteLogln(float input,         bool writeMode = DEBUG_ONLY);
+        void WriteLogln(double input,        bool writeMode = DEBUG_ONLY);
+        void WriteLogln(HamurObject &input,  bool writeMode = DEBUG_ONLY);
+        void WriteLogln(HamurObject *input,  bool writeMode = DEBUG_ONLY);
+        void WriteLogln(HamurString &input,  bool writeMode = DEBUG_ONLY);
 
-            // Write termination log
-            void writeTerminateLog(string log, bool writeMode = ALWAYS);
+		// Write initialization messages
+		void WriteInitLog(string log, bool writeMode = ALWAYS);
 
-            void closeLogFile();
-            void clearLogFile();
+        // Write termination log
+        void WriteTerminateLog(string log, bool writeMode = ALWAYS);
 
-            /**
-            * Turn on-off debug mode.
-            * If True passed, all massages will be written to log file,
-            * If False passed, only messages with ALWAYS flag will be written.
-            * @param mode True-False
-            */
-            void setDebugMode(bool mode);
+        void CloseLogFile();
+        void ClearLogFile();
 
-            /**
-            * Flag for function to write always, whether Debug mode on or off. 
-            * Error logs should use this flag.
-            */
-            const static bool ALWAYS = true;
+        /**
+        * Turn on-off debug mode.
+        * If True passed, all massages will be written to log file,
+        * If False passed, only messages with ALWAYS flag will be written.
+        * @param mode True-False
+        */
+        void SetDebugMode(bool mode);
 
-            /**< Flag for function to write in Debug mode only. */
-            const static bool DEBUG_ONLY = false;
+        /**
+        * Flag for function to write always, whether Debug mode on or off. 
+        * Error logs should use this flag.
+        */
+        const static bool ALWAYS = true;
 
-		protected:
-			
-		private:
+        /**< Flag for function to write in Debug mode only. */
+        const static bool DEBUG_ONLY = false;
 
-            HamurFile logFile;
-            const string logFileName;
-            bool debugMode;
-	};
+	protected:
+		
+	private:
+
+        HamurFile mLogFile;
+        const string mLogFileName;
+        bool mDebugMode;
+};
     
-}
+} // namespace hamur
 
 #endif // HAMURLOG_H  

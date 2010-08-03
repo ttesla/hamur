@@ -98,9 +98,9 @@ class HamurGL : public Singleton<HamurGL>
         * Sets openGL display attributes, color depth sizes, doublebuffer...
         * This function must be called after SDL_Init() and before SDL_SetVideoMode()
         */ 
-	    void setGLAttributes();
+	    void SetGLAttributes();
 };
 
-}// namespace hamur
+} // namespace hamur
 
 #endif // HAMURGL_H

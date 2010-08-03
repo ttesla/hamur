@@ -22,7 +22,7 @@ HamurTex::HamurTex(const SDL_Surface* newSurface)
 
 HamurTex::~HamurTex()
 {
-    HAMURLOG->writeLogln("Texture deleted: " + mFilePath);
+    HAMURLOG->WriteLogln("Texture deleted: " + mFilePath);
 }
 
 
@@ -37,7 +37,7 @@ bool HamurTex::LoadTexture()
 
 	if(loadedImage == 0)
 	{
-        HAMURLOG->writeLogln("Error!: Can't load texture: " + mFilePath, HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: Can't load texture: " + mFilePath, HamurLog::ALWAYS);
 		return false;
 	}
 	
@@ -72,7 +72,7 @@ bool HamurTex::LoadTexture()
 
 	// Free SDL_surfaces
 	SDL_FreeSurface(loadedImage);
-    HAMURLOG->writeLogln("Texture loaded: " + mFilePath);
+    HAMURLOG->WriteLogln("Texture loaded: " + mFilePath);
 
 	return true;
 }
@@ -85,7 +85,7 @@ bool HamurTex::LoadTexture(const SDL_Surface* newSurface)
 
 	if(newSurface == 0)
 	{
-        HAMURLOG->writeLogln("Error!: Can't load texture from surface.", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: Can't load texture from surface.", HamurLog::ALWAYS);
 		return false;
 	}
 

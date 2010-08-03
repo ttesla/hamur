@@ -23,7 +23,7 @@ HamurSong::HamurSong(const string& fileName, const string& songName)
 HamurSong::~HamurSong()
 {
 	FMUSIC_FreeSong(mMod);
-    HAMURLOG->writeLogln("Song deleted: " + mStrSongName + ", " + mStrFileName);
+    HAMURLOG->WriteLogln("Song deleted: " + mStrSongName + ", " + mStrFileName);
 }
 
 
@@ -35,12 +35,12 @@ bool HamurSong::LoadSong(const string& name)
 	if (!mMod)
 	{
 		string tempStr = FMOD_ErrorString(FSOUND_GetError());
-		HAMURLOG->writeLogln(tempStr + ": " + name);
+		HAMURLOG->WriteLogln(tempStr + ": " + name);
 		return false;
 	}
 	else
 	{
-		HAMURLOG->writeLogln("Song loaded: " + name);
+		HAMURLOG->WriteLogln("Song loaded: " + name);
 		return true;
 	}
 }
@@ -51,7 +51,7 @@ bool HamurSong::PlaySong(bool loop)
 {
 	if (!mMod)
 	{
-		 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		 HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		 return false;
 	}
 	else
@@ -68,7 +68,7 @@ bool HamurSong::StopSong()
 {
 	if (!mMod)
 	{
-		 HAMURLOG->writeLogln(FMOD_ErrorString(FSOUND_GetError()));
+		 HAMURLOG->WriteLogln(FMOD_ErrorString(FSOUND_GetError()));
 		 return false;
 	}
 	else

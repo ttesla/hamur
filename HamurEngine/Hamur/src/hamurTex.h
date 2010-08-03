@@ -44,20 +44,20 @@ class HamurTex
 
 	private:
 
-		GLuint mTextureID[1]; // Storage for one texture
-		int mTextureWidth;    // Width of the texture
-		int mTextureHeight;   // Height of the texture
-		float mScaledWidth;   // Scaled width of the texture
-		float mScaledHeight;  // Scaled height of the texture
-		string mFilePath;  // File path name of the texture
-		float mCorX; // X coordinate of the texture
-		float mCorY; // Y coordinate of the texture
-		float mCorZ; // Z coordinate of the texture
+		GLuint mTextureID[1]; /// Storage for one texture
+		int mTextureWidth;    /// Width of the texture
+		int mTextureHeight;   /// Height of the texture
+		float mScaledWidth;   /// Scaled width of the texture
+		float mScaledHeight;  /// Scaled height of the texture
+		string mFilePath;  /// File path name of the texture
+		float mCorX; /// X coordinate of the texture
+		float mCorY; /// Y coordinate of the texture
+		float mCorZ; /// Z coordinate of the texture
 
-		bool LoadTexture(); // Loads texture from image file
-		bool LoadTexture(const SDL_Surface* newSurface); // Loads texture from SDL surface
+		bool LoadTexture(); /// Loads texture from image file
+		bool LoadTexture(const SDL_Surface* newSurface); /// Loads texture from SDL surface
 };
 
-}// namespace hamur
+} // namespace hamur
 
 #endif //HAMURTEX_H

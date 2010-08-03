@@ -34,6 +34,6 @@ class HamurGP : public Singleton<HamurGP>
         ~HamurGP();
 };
 
-}// namespace hamur
+} // namespace hamur
 
 #endif // HAMURGP_H

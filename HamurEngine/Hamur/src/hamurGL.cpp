@@ -19,7 +19,7 @@ HamurGL::HamurGL()
 HamurGL::~HamurGL()
 {
     SDL_Quit();
-    HAMURLOG->writeTerminateLog("HamurGL");
+    HAMURLOG->WriteTerminateLog("HamurGL");
 }
 
 // Initialize SDL with OpenGL support
@@ -32,12 +32,12 @@ bool HamurGL::InitSDL(const string& caption, int width, int height, int bpp, Uin
 	// Initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
-        HAMURLOG->writeLogln("Error!: Can't initialize SDL", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: Can't initialize SDL", HamurLog::ALWAYS);
 		return false; //If can't init, return false 
 	}
 
 	// Set openGL display attributes
-	setGLAttributes();
+	SetGLAttributes();
 
     // Set icon
     SDL_Surface* image = NULL; // We don't free this, its just an icon. 
@@ -51,20 +51,20 @@ bool HamurGL::InitSDL(const string& caption, int width, int height, int bpp, Uin
     }
     else
     {
-        HAMURLOG->writeLogln("Error!: Can't load icon: hamurIcon.bmp", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: Can't load icon: hamurIcon.bmp", HamurLog::ALWAYS);
     }
     
 	// Create Window
 	if(SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, flags) == NULL)
 	{
-        HAMURLOG->writeLogln("Error!: Can't set video mode", HamurLog::ALWAYS); 
+        HAMURLOG->WriteLogln("Error!: Can't set video mode", HamurLog::ALWAYS); 
 		return false;
 	}
     
 	// Set caption
 	SDL_WM_SetCaption(caption.c_str(), "Hamur Engine");
 
-	HAMURLOG->writeInitLog("SDL");
+	HAMURLOG->WriteInitLog("SDL");
 	return true;
 }
 
@@ -104,12 +104,12 @@ bool HamurGL::InitGL()
 	// If there was any errors
 	if(glGetError() != GL_NO_ERROR)
 	{
-        HAMURLOG->writeLogln("Error!: Can't initialize OpenGL", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln("Error!: Can't initialize OpenGL", HamurLog::ALWAYS);
 		return false;    
 	}
     
 	// If everything initialized successfully
-	HAMURLOG->writeInitLog("OpenGL");
+	HAMURLOG->WriteInitLog("OpenGL");
 	return true;
 }
 
@@ -145,7 +145,7 @@ void HamurGL::SetScreenBpp(int bpp)         { SCREEN_BPP = bpp;         }
 
 // Set GL display attributes, 
 // it must be called after SDL_Init() and before SDL_SetVideoMode()
-void HamurGL::setGLAttributes()
+void HamurGL::SetGLAttributes()
 {
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);	// 5 is the minimum value 
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);	// openGL will try to set 

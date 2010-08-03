@@ -50,7 +50,7 @@ namespace hamur
 	//	SDL_FreeSurface(charSurface);
 	//	SDL_FreeSurface(fontSurface);
 
-	//	HAMURLOG->writeInitLog("HamurFont");
+	//	HAMURLOG->WriteInitLog("HamurFont");
 	//}
 
  //   // HamurFont destructor

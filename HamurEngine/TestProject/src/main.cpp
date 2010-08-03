@@ -16,15 +16,15 @@ using namespace hamur;
 
 int main(int argc, char *argv[])
 {
-    if(HAMURENGINE->init("Hamur II test - 2010", 800, 600) == false)
+    if(HAMURENGINE->Init("Hamur II test - 2010", 800, 600) == false)
         return 1;
 
-    HAMURENGINE->disableMouseCursor();
+    HAMURENGINE->DisableMouseCursor();
     
     HAMURSTATEMR->RegisterState(new MainState());
     HAMURSTATEMR->ChangeState("MainState");
-    HAMURENGINE->run();
-    HAMURENGINE->terminate();
+    HAMURENGINE->Run();
+    HAMURENGINE->Terminate();
 	
     return 0;
 }

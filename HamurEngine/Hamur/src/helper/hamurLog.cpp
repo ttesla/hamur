@@ -3,150 +3,150 @@
 namespace hamur
 {
 	// HamurLog constructor
-    HamurLog::HamurLog() : logFileName("hamur.log") , debugMode(true)
+    HamurLog::HamurLog() : mLogFileName("hamur.log") , mDebugMode(true)
 	{
         // Open for writing and append
-        logFile.openForWrite(logFileName);
+        mLogFile.OpenForWrite(mLogFileName);
 	}
 
 
 	// HamurLog destructor
 	HamurLog::~HamurLog()
 	{
-        logFile.close();
+        mLogFile.Close();
 	}
 
 
     // WITHOUT LN versions...
 
-    void HamurLog::writeLog(const string &input, bool writeMode)
+    void HamurLog::WriteLog(const string &input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(int input, bool writeMode)
+    void HamurLog::WriteLog(int input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(unsigned int input, bool writeMode)
+    void HamurLog::WriteLog(unsigned int input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(float input, bool writeMode)
+    void HamurLog::WriteLog(float input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(double input, bool writeMode)
+    void HamurLog::WriteLog(double input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(HamurObject &input, bool writeMode)
+    void HamurLog::WriteLog(HamurObject &input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(HamurObject *input, bool writeMode)
+    void HamurLog::WriteLog(HamurObject *input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
-    void HamurLog::writeLog(HamurString &input, bool writeMode)
+    void HamurLog::WriteLog(HamurString &input, bool writeMode)
     {
-        if(debugMode || writeMode)
-            logFile.write(input);
+        if(mDebugMode || writeMode)
+            mLogFile.Write(input);
     }
 
     // LN versions... 
 
-    void HamurLog::writeLogln(const string &input, bool writeMode)
+    void HamurLog::WriteLogln(const string &input, bool writeMode)
     {  
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(int input, bool writeMode)
+    void HamurLog::WriteLogln(int input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(unsigned int input, bool writeMode)
+    void HamurLog::WriteLogln(unsigned int input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(float input, bool writeMode)
+    void HamurLog::WriteLogln(float input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(double input, bool writeMode)
+    void HamurLog::WriteLogln(double input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(HamurObject &input, bool writeMode)
+    void HamurLog::WriteLogln(HamurObject &input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(HamurObject *input, bool writeMode)
+    void HamurLog::WriteLogln(HamurObject *input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
 
-    void HamurLog::writeLogln(HamurString &input, bool writeMode)
+    void HamurLog::WriteLogln(HamurString &input, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
-            logFile.write(input);
-            logFile.write("\n");
+            mLogFile.Write(input);
+            mLogFile.Write("\n");
         }
     }
     
 
 	// Write initialization message text to log file
 	// Makes some adjustments for a nifty printout.
-	void HamurLog::writeInitLog(string log, bool writeMode)
+	void HamurLog::WriteInitLog(string log, bool writeMode)
 	{
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
 		    int dotsToAdd = 15 - log.length();
 
@@ -154,16 +154,16 @@ namespace hamur
 			    log.append(".");
 
 		    log.append("OK!\n");
-            logFile.write(log);
+            mLogFile.Write(log);
         }
 	}
 
 
     // Write termination message text to log file
-    // Same style as writeInitLog()
-    void HamurLog::writeTerminateLog(string log, bool writeMode)
+    // Same style as WriteInitLog()
+    void HamurLog::WriteTerminateLog(string log, bool writeMode)
     {
-        if(debugMode || writeMode)
+        if(mDebugMode || writeMode)
         {
             int dotsToAdd = 15 - log.length();
 
@@ -171,27 +171,27 @@ namespace hamur
                 log.append(".");
 
             log.append("terminated!\n");
-            logFile.write(log);
+            mLogFile.Write(log);
         }
     }
 
 
-    void HamurLog::closeLogFile()
+    void HamurLog::CloseLogFile()
     {
-        logFile.close();
+        mLogFile.Close();
     }
 
 
-    void HamurLog::clearLogFile()
+    void HamurLog::ClearLogFile()
     {
-        logFile.close();
-        logFile.openForWrite(logFileName);
+        mLogFile.Close();
+        mLogFile.OpenForWrite(mLogFileName);
     }
 
 
     // Turn on-off debug mode
-    void HamurLog::setDebugMode(bool _mode)
+    void HamurLog::SetDebugMode(bool _mode)
     {
-        debugMode = _mode;
+        mDebugMode = _mode;
     }
 }

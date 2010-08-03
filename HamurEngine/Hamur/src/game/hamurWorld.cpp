@@ -18,13 +18,13 @@ HamurWorld::HamurWorld()
 HamurWorld::~HamurWorld()
 {
     ClearAll();
-    HAMURLOG->writeTerminateLog("HamurWorld");
+    HAMURLOG->WriteTerminateLog("HamurWorld");
 }
 
 // Initialize Hamur World
 bool HamurWorld::Init()
 {
-    HAMURLOG->writeInitLog("HamurWorld");
+    HAMURLOG->WriteInitLog("HamurWorld");
     return true;
 }
 
@@ -83,7 +83,7 @@ HamurObject* HamurWorld::GetObject(const string& objectName) const
     // If not found, return failure.
     if(iter == mWorldObjects.end())
     {
-        HAMURLOG->writeLogln("Error!: Can't find the object: " + objectName, 
+        HAMURLOG->WriteLogln("Error!: Can't find the object: " + objectName, 
             HamurLog::ALWAYS);
         return NULL;
     }
@@ -106,7 +106,7 @@ void HamurWorld::ClearAll()
     }
 
     mObjectCount = 0;
-    HAMURLOG->writeLogln("All world objects deleted.");
+    HAMURLOG->WriteLogln("All world objects deleted.");
 }
 
 HamurObject* HamurWorld::GetObjectbyIndex(int index) const
