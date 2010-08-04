@@ -11,1464 +11,1459 @@
 
 namespace hamur
 {
-    void HamurPlotter::drawRectangle(float _x, float _y, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec2 _vertex1, _vertex2, _vertex3, _vertex4;
 
-        // For World to OpenGL coordinate conversions 
-        _vertex1.x = _x;
-        _vertex1.y = _y;
-
-        _vertex2.x = _x;
-        _vertex2.y = _y + _height;
-
-        _vertex3.x = _x + _width;
-        _vertex3.y = _y + _height;
-
-        _vertex4.x = _x + _width;
-        _vertex4.y = _y;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix.
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex2f(_vertex1.x, _vertex1.y);
-            glVertex2f(_vertex2.x, _vertex2.y);
-            glVertex2f(_vertex3.x, _vertex3.y);
-            glVertex2f(_vertex4.x, _vertex4.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawRectangle(float _x, float _y, float _z, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec3 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // For World to OpenGL coordinate conversions 
-        _vertex1.x = _x;
-        _vertex1.y = _y;
-        _vertex1.z = _z;
-
-        _vertex2.x = _x;
-        _vertex2.y = _y + _height;
-        _vertex2.z = _z;
-
-        _vertex3.x = _x + _width;
-        _vertex3.y = _y + _height;
-        _vertex3.z = _z;
-
-        _vertex4.x = _x + _width;
-        _vertex4.y = _y;
-        _vertex4.z = _z;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix.
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, _vertex1.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, _vertex1.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex3f(_vertex1.x, _vertex1.y, _vertex1.z);
-            glVertex3f(_vertex2.x, _vertex2.y, _vertex2.z);
-            glVertex3f(_vertex3.x, _vertex3.y, _vertex3.z);
-            glVertex3f(_vertex4.x, _vertex4.y, _vertex4.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    
-    void HamurPlotter::drawRectangle(const HamurVec2& _pos, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec2 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1.x = _pos.x;
-        _vertex1.y = _pos.y;
-
-        _vertex2.x = _pos.x;
-        _vertex2.y = _pos.y + _height;
-
-        _vertex3.x = _pos.x + _width;
-        _vertex3.y = _pos.y + _height;
-
-        _vertex4.x = _pos.x + _width;
-        _vertex4.y = _pos.y;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex2f(_vertex1.x, _vertex1.y);
-            glVertex2f(_vertex2.x, _vertex2.y);
-            glVertex2f(_vertex3.x, _vertex3.y);
-            glVertex2f(_vertex4.x, _vertex4.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawRectangle(const HamurVec3& _pos, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec3 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1.x = _pos.x;
-        _vertex1.y = _pos.y;
-        _vertex1.z = _pos.z;
-
-        _vertex2.x = _pos.x;
-        _vertex2.y = _pos.y + _height;
-        _vertex2.z = _pos.z;
-
-        _vertex3.x = _pos.x + _width;
-        _vertex3.y = _pos.y + _height;
-        _vertex3.z = _pos.z;
-
-        _vertex4.x = _pos.x + _width;
-        _vertex4.y = _pos.y;
-        _vertex4.z = _pos.z;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        /*
-        HAMURCONSOLE << "Vertice1: " << _vertice1.x << " " << _vertice1.y << "\n";
-        HAMURCONSOLE << "Vertice2: " << _vertice2.x << " " << _vertice2.y << "\n";
-        HAMURCONSOLE << "Vertice3: " << _vertice3.x << " " << _vertice3.y << "\n";
-        HAMURCONSOLE << "Vertice4: " << _vertice4.x << " " << _vertice4.y << "\n";
-        */
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, _vertex1.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, _vertex1.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex3f(_vertex1.x, _vertex1.y, _vertex1.z);
-            glVertex3f(_vertex2.x, _vertex2.y, _vertex2.z);
-            glVertex3f(_vertex3.x, _vertex3.y, _vertex3.z);
-            glVertex3f(_vertex4.x, _vertex4.y, _vertex4.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-         // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawSolidRectangle(float _x, float _y, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec2 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1.x = _x;
-        _vertex1.y = _y;
-
-        _vertex2.x = _x;
-        _vertex2.y = _y + _height;
-
-        _vertex3.x = _x + _width;
-        _vertex3.y = _y + _height;
-
-        _vertex4.x = _x + _width;
-        _vertex4.y = _y;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            glVertex2f(_vertex1.x, _vertex1.y);
-            glVertex2f(_vertex2.x, _vertex2.y);
-            glVertex2f(_vertex3.x, _vertex3.y);
-            glVertex2f(_vertex4.x, _vertex4.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawSolidRectangle(float _x, float _y, float _z, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec3 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1.x = _x;
-        _vertex1.y = _y;
-        _vertex1.z = _z;
-
-        _vertex2.x = _x;
-        _vertex2.y = _y + _height;
-        _vertex2.z = _z;
-
-        _vertex3.x = _x + _width;
-        _vertex3.y = _y + _height;
-        _vertex3.z = _z;
-
-        _vertex4.x = _x + _width;
-        _vertex4.y = _y;
-        _vertex4.z = _z;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, _vertex1.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, _vertex1.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            glVertex3f(_vertex1.x, _vertex1.y, _vertex1.z);
-            glVertex3f(_vertex2.x, _vertex2.y, _vertex2.z);
-            glVertex3f(_vertex3.x, _vertex3.y, _vertex3.z);
-            glVertex3f(_vertex4.x, _vertex4.y, _vertex4.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawSolidRectangle(const HamurVec2& _pos, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec2 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1.x = _pos.x;
-        _vertex1.y = _pos.y;
-
-        _vertex2.x = _pos.x;
-        _vertex2.y = _pos.y + _height;
-
-        _vertex3.x = _pos.x + _width;
-        _vertex3.y = _pos.y + _height;
-
-        _vertex4.x = _pos.x + _width;
-        _vertex4.y = _pos.y;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            glVertex2f(_vertex1.x, _vertex1.y);
-            glVertex2f(_vertex2.x, _vertex2.y);
-            glVertex2f(_vertex3.x, _vertex3.y);
-            glVertex2f(_vertex4.x, _vertex4.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawSolidRectangle(const HamurVec3& _pos, float _width, float _height, const HamurColor& _color, float _rotationAngle)
-    {
-        // All vertices of the Rectangle
-        HamurVec3 _vertex1, _vertex2, _vertex3, _vertex4;
-
-        // For World to OpenGL coordinate conversions
-        _vertex1.x = _pos.x;
-        _vertex1.y = _pos.y;
-        _vertex1.z = _pos.z;
-
-        _vertex2.x = _pos.x;
-        _vertex2.y = _pos.y + _height;
-        _vertex2.z = _pos.z;
-
-        _vertex3.x = _pos.x + _width;
-        _vertex3.y = _pos.y + _height;
-        _vertex3.z = _pos.z;
-
-        _vertex4.x = _pos.x + _width;
-        _vertex4.y = _pos.y;
-        _vertex4.z = _pos.z;
-
-        // Here World to OpenGL coordinate conversions
-        _vertex1 = HAMURTEXMR->WorldToGL(_vertex1);
-        _vertex2 = HAMURTEXMR->WorldToGL(_vertex2);
-        _vertex3 = HAMURTEXMR->WorldToGL(_vertex3);
-        _vertex4 = HAMURTEXMR->WorldToGL(_vertex4);
-
-        // Find the middle of vertices
-        float _middleX = _vertex1.x + ((_vertex4.x - _vertex1.x) / 2);
-        float _middleY = _vertex1.y + ((_vertex2.y - _vertex1.y) / 2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_middleX, _middleY, _vertex1.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_middleX, -_middleY, _vertex1.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            glVertex3f(_vertex1.x, _vertex1.y, _vertex1.z);
-            glVertex3f(_vertex2.x, _vertex2.y, _vertex2.z);
-            glVertex3f(_vertex3.x, _vertex3.y, _vertex3.z);
-            glVertex3f(_vertex4.x, _vertex4.y, _vertex4.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawPolygon(const HamurVec2* _verticeList, int _verticeCount, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVector;
-
-        // Polygon's centroid calculations
-        HamurVec2 _centroid;
-        float _sumX = 0;
-        float _sumY = 0;
-
-        // Calculate the centroid of the Polygon
-        for(int i = 0; i < _verticeCount; i++)
-        {
-           _sumX += _verticeList[i].x;
-           _sumY += _verticeList[i].y;
-        }
-
-        // Set the centroid
-        _centroid.x = _sumX / _verticeCount;
-        _centroid.y = _sumY / _verticeCount;
-
-        // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->WorldToGL(_centroid);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_centroid.x, _centroid.y, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_centroid.x, -_centroid.y, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _verticeCount; i++)
-            {
-                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
-                glVertex2f(_transformVector.x, _transformVector.y);
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawPolygon(const HamurVec3* _verticeList, int _verticeCount, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVector;
-
-        // Polygon's centroid calculations
-        HamurVec3 _centroid;
-        float _sumX = 0;
-        float _sumY = 0;
-
-        // Calculate the centroid of the Polygon
-        for(int i = 0; i < _verticeCount; i++)
-        {
-            _sumX += _verticeList[i].x;
-            _sumY += _verticeList[i].y;
-        }
-
-        // Set the centroid
-        _centroid.x = _sumX / _verticeCount;
-        _centroid.y = _sumY / _verticeCount;
-        _centroid.z = _verticeList[0].z; // Same for all vertices
-
-        // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->WorldToGL(_centroid);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_centroid.x, _centroid.y, _centroid.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_centroid.x, -_centroid.y, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-         // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _verticeCount; i++)
-            {
-                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
-                glVertex3f(_transformVector.x, _transformVector.y, _transformVector.z);
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawSolidPolygon(const HamurVec2* _verticeList, int _verticeCount, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVector;
-
-        // Polygon's centroid calculations
-        HamurVec2 _centroid;
-        float _sumX = 0;
-        float _sumY = 0;
-
-        // Calculate the centroid of the Polygon
-        for(int i = 0; i < _verticeCount; i++)
-        {
-            _sumX += _verticeList[i].x;
-            _sumY += _verticeList[i].y;
-        }
-
-        // Set the centroid
-        _centroid.x = _sumX / _verticeCount;
-        _centroid.y = _sumY / _verticeCount;
-
-        // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->WorldToGL(_centroid);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_centroid.x, _centroid.y, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_centroid.x, -_centroid.y, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _verticeCount; i++)
-            {
-                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
-                glVertex2f(_transformVector.x, _transformVector.y);
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawSolidPolygon(const HamurVec3* _verticeList, int _verticeCount, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVector;
-
-        // Polygon's centroid calculations
-        HamurVec3 _centroid;
-        float _sumX = 0;
-        float _sumY = 0;
-
-        // Calculate the centroid of the Polygon
-        for(int i = 0; i < _verticeCount; i++)
-        {
-            _sumX += _verticeList[i].x;
-            _sumY += _verticeList[i].y;
-        }
-
-        // Set the centroid
-        _centroid.x = _sumX / _verticeCount;
-        _centroid.y = _sumY / _verticeCount;
-        _centroid.z = _verticeList[0].z; // Same for all vertices
-
-        // World to OpenGL coordinate conversion
-        _centroid = HAMURTEXMR->WorldToGL(_centroid);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_centroid.x, _centroid.y, _centroid.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_centroid.x, -_centroid.y, _centroid.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _verticeCount; i++)
-            {
-                _transformVector = HAMURTEXMR->WorldToGL(_verticeList[i]);
-                glVertex3f(_transformVector.x, _transformVector.y, _transformVector.z);
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawCircle(float _xCenter, float _yCenter, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec(_xCenter, _yCenter);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2 * PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
-                                                     _yCenter + _radius * sinf(_angle));
-                glVertex2f(_transformVec.x, _transformVec.y);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawCircle(float _xCenter, float _yCenter, float _zCenter, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec(_xCenter, _yCenter, _zCenter);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2 * PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
-                    _yCenter + _radius * sinf(_angle), _zCenter);
-                glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawCircle(const HamurVec2& _pos, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec(_pos.x, _pos.y);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
-                    _pos.y + _radius * sinf(_angle));
-                glVertex2f(_transformVec.x, _transformVec.y);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawCircle(const HamurVec3& _pos, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec(_pos.x, _pos.y, _pos.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
-                    _pos.y + _radius * sinf(_angle), _pos.z);
-                glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawSolidCircle(float _xCenter, float _yCenter, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec(_xCenter, _yCenter);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
-                    _yCenter + _radius * sinf(_angle));
-                glVertex2f(_transformVec.x, _transformVec.y);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawSolidCircle(float _xCenter, float _yCenter, float _zCenter, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec(_xCenter, _yCenter,_zCenter);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_xCenter + _radius * cosf(_angle),
-                    _yCenter + _radius * sinf(_angle), _zCenter);
-                glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawSolidCircle(const HamurVec2& _pos, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec(_pos.x, _pos.y);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
-                    _pos.y + _radius * sinf(_angle));
-                glVertex2f(_transformVec.x, _transformVec.y);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawSolidCircle(const HamurVec3& _pos, float _radius, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec(_pos.x, _pos.y,_pos.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Circle Attributes calculations
-        float _angle = 0.0f;
-        float _angleIncrement = PI / ((_radius / 8.0f ) + 8.0f);
-        float _loopCount = 2*PI / _angleIncrement;
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_TRIANGLE_FAN);
-            for(int i = 0; i < _loopCount; i++)
-            {
-                _transformVec = HAMURTEXMR->WorldToGL(_pos.x + _radius * cosf(_angle),
-                    _pos.y + _radius * sinf(_angle), _pos.z);
-                glVertex3f(_transformVec.x, _transformVec.y, _transformVec.z);
-                _angle += _angleIncrement;
-            }
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawLine(float _firstX, float _firstY, float _secondX, float _secondY, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec1;
-        HamurVec2 _transformVec2;
-
-        // For finding center of the line
-        HamurVec2 _lineCenter;
-
-        // Find the center of the line
-        _lineCenter.x = _firstX + _secondX / 2.0f;
-        _lineCenter.y = _firstY + _secondY / 2.0f;
-
-        // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
-
-        // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->WorldToGL(_firstX, _firstY);
-        _transformVec2 = HAMURTEXMR->WorldToGL(_secondX, _secondY);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_lineCenter.x, _lineCenter.y, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_lineCenter.x, -_lineCenter.y, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex2f(_transformVec1.x, _transformVec1.y);
-            glVertex2f(_transformVec2.x, _transformVec2.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawLine(float _firstX, float _firstY, float _firstZ, float _secondX, float _secondY, float _secondZ, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec1;
-        HamurVec3 _transformVec2;
-
-        // For finding center of the line
-        HamurVec3 _lineCenter;
-
-        // Find the center of the line
-        _lineCenter.x = (_firstX + _secondX) / 2.0f;
-        _lineCenter.y = (_firstY + _secondY) / 2.0f;
-        _lineCenter.z = _firstZ; // Same for both
-
-        // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
-
-        // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->WorldToGL(_firstX, _firstY, _firstZ);
-        _transformVec2 = HAMURTEXMR->WorldToGL(_secondX, _secondY, _secondZ);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_lineCenter.x, _lineCenter.y, _lineCenter.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_lineCenter.x, -_lineCenter.y, _lineCenter.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex3f(_transformVec1.x, _transformVec1.y, _transformVec1.z);
-            glVertex3f(_transformVec2.x, _transformVec2.y, _transformVec2.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawLine(const HamurVec2& _pos1, const HamurVec2& _pos2, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 _transformVec1;
-        HamurVec2 _transformVec2;
-
-        // For finding center of the line
-        HamurVec2 _lineCenter;
-
-        // Find the center of the line
-        _lineCenter.x = (_pos1.x + _pos2.x) / 2.0f;
-        _lineCenter.y = (_pos1.y + _pos2.y) / 2.0f;
-
-        // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
-
-        // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->WorldToGL(_pos1);
-        _transformVec2 = HAMURTEXMR->WorldToGL(_pos2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_lineCenter.x, _lineCenter.y, 0.0f);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_lineCenter.x, -_lineCenter.y, 0.0f);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex2f(_transformVec1.x, _transformVec1.y);
-            glVertex2f(_transformVec2.x, _transformVec2.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-    void HamurPlotter::drawLine(const HamurVec3& _pos1, const HamurVec3& _pos2, const HamurColor& _color, float _rotationAngle)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 _transformVec1;
-        HamurVec3 _transformVec2;
-
-        // For finding center of the line
-        HamurVec3 _lineCenter;
-
-        // Find the center of the line
-        _lineCenter.x = (_pos1.x + _pos2.x) / 2.0f;
-        _lineCenter.y = (_pos1.y + _pos2.y) / 2.0f;
-        _lineCenter.z = _pos1.z;
-
-        // World to OpenGL coordinate conversion
-        _lineCenter = HAMURTEXMR->WorldToGL(_lineCenter);
-
-        // Here World to OpenGL coordinate conversion
-        _transformVec1 = HAMURTEXMR->WorldToGL(_pos1);
-        _transformVec2 = HAMURTEXMR->WorldToGL(_pos2);
-
-        // Save current matrix. 
-        // Perform translation to geometric shape's middle
-        // and rotate from middle around Z axis.
-        // Translate back and draw the shape.
-        glPushMatrix();
-        glTranslatef(_lineCenter.x, _lineCenter.y, _lineCenter.z);
-        glRotatef(_rotationAngle, 0, 0, 1.0f); 
-        glTranslatef(-_lineCenter.x, -_lineCenter.y, _lineCenter.z);
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // For Anti-aliasing
-        glDisable(GL_ALPHA_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-        // Set color
-        glColor3f(_color.R, _color.G, _color.B);
-
-        // Drawing here
-        glBegin(GL_LINE_LOOP);
-            glVertex3f(_transformVec1.x, _transformVec1.y, _transformVec1.z);
-            glVertex3f(_transformVec2.x, _transformVec2.y, _transformVec2.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_ALPHA_TEST);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        // Restore matrix
-        glPopMatrix();
-    }
-
-
-    void HamurPlotter::drawPoint(float _pointX, float _pointY, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 transformVec;
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Drawing here
-        glBegin(GL_POINTS);
-            glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->WorldToGL(_pointX, _pointY);
-            glVertex2f(transformVec.x, transformVec.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawPoint(float _pointX, float _pointY, float _pointZ, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 transformVec;
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Drawing here
-        glBegin(GL_POINTS);
-            glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->WorldToGL(_pointX, _pointY, _pointZ);
-            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawPoint(const HamurVec2& _pos, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec2 transformVec;
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Drawing here
-        glBegin(GL_POINTS);
-            glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->WorldToGL(_pos);
-            glVertex2f(transformVec.x, transformVec.y);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-
-    void HamurPlotter::drawPoint(const HamurVec3& _pos, const HamurColor& _color)
-    {
-        // For World to OpenGL coordinate conversions
-        HamurVec3 transformVec;
-
-        // Disable Texture Mode to draw geometry
-        glDisable(GL_TEXTURE_2D);
-
-        // Drawing here
-        glBegin(GL_POINTS);
-            glColor3f(_color.R, _color.G, _color.B);
-            transformVec = HAMURTEXMR->WorldToGL(_pos);
-            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
-        glEnd();
-
-        // OpenGL State Machine Reset
-        glEnable(GL_TEXTURE_2D);
-
-        // Clear color to white
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
+void HamurPlotter::DrawRectangle(float x, float y, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec2 vertex1, vertex2, vertex3, vertex4;
+
+    // For World to OpenGL coordinate conversions 
+    vertex1.x = x;
+    vertex1.y = y;
+
+    vertex2.x = x;
+    vertex2.y = y + height;
+
+    vertex3.x = x + width;
+    vertex3.y = y + height;
+
+    vertex4.x = x + width;
+    vertex4.y = y;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix.
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(vertex1.x, vertex1.y);
+        glVertex2f(vertex2.x, vertex2.y);
+        glVertex2f(vertex3.x, vertex3.y);
+        glVertex2f(vertex4.x, vertex4.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
 }
+
+
+void HamurPlotter::DrawRectangle(float x, float y, float z, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec3 vertex1, vertex2, vertex3, vertex4;
+
+    // For World to OpenGL coordinate conversions 
+    vertex1.x = x;
+    vertex1.y = y;
+    vertex1.z = z;
+
+    vertex2.x = x;
+    vertex2.y = y + height;
+    vertex2.z = z;
+
+    vertex3.x = x + width;
+    vertex3.y = y + height;
+    vertex3.z = z;
+
+    vertex4.x = x + width;
+    vertex4.y = y;
+    vertex4.z = z;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix.
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, vertex1.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, vertex1.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex3f(vertex1.x, vertex1.y, vertex1.z);
+        glVertex3f(vertex2.x, vertex2.y, vertex2.z);
+        glVertex3f(vertex3.x, vertex3.y, vertex3.z);
+        glVertex3f(vertex4.x, vertex4.y, vertex4.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawRectangle(const HamurVec2& pos, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec2 vertex1, vertex2, vertex3, vertex4;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1.x = pos.x;
+    vertex1.y = pos.y;
+
+    vertex2.x = pos.x;
+    vertex2.y = pos.y + height;
+
+    vertex3.x = pos.x + width;
+    vertex3.y = pos.y + height;
+
+    vertex4.x = pos.x + width;
+    vertex4.y = pos.y;
+
+    // For World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(vertex1.x, vertex1.y);
+        glVertex2f(vertex2.x, vertex2.y);
+        glVertex2f(vertex3.x, vertex3.y);
+        glVertex2f(vertex4.x, vertex4.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawRectangle(const HamurVec3& pos, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec3 vertex1, vertex2, vertex3, vertex4;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1.x = pos.x;
+    vertex1.y = pos.y;
+    vertex1.z = pos.z;
+
+    vertex2.x = pos.x;
+    vertex2.y = pos.y + height;
+    vertex2.z = pos.z;
+
+    vertex3.x = pos.x + width;
+    vertex3.y = pos.y + height;
+    vertex3.z = pos.z;
+
+    vertex4.x = pos.x + width;
+    vertex4.y = pos.y;
+    vertex4.z = pos.z;
+
+    // For World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, vertex1.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, vertex1.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex3f(vertex1.x, vertex1.y, vertex1.z);
+        glVertex3f(vertex2.x, vertex2.y, vertex2.z);
+        glVertex3f(vertex3.x, vertex3.y, vertex3.z);
+        glVertex3f(vertex4.x, vertex4.y, vertex4.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+     // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawSolidRectangle(float x, float y, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec2 vertex1, vertex2, vertex3, vertex4;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1.x = x;
+    vertex1.y = y;
+
+    vertex2.x = x;
+    vertex2.y = y + height;
+
+    vertex3.x = x + width;
+    vertex3.y = y + height;
+
+    vertex4.x = x + width;
+    vertex4.y = y;
+
+    // For World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(vertex1.x, vertex1.y);
+        glVertex2f(vertex2.x, vertex2.y);
+        glVertex2f(vertex3.x, vertex3.y);
+        glVertex2f(vertex4.x, vertex4.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawSolidRectangle(float x, float y, float z, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec3 vertex1, vertex2, vertex3, vertex4;
+
+    // For World to OpenGL coordinate conversions
+    vertex1.x = x;
+    vertex1.y = y;
+    vertex1.z = z;
+
+    vertex2.x = x;
+    vertex2.y = y + height;
+    vertex2.z = z;
+
+    vertex3.x = x + width;
+    vertex3.y = y + height;
+    vertex3.z = z;
+
+    vertex4.x = x + width;
+    vertex4.y = y;
+    vertex4.z = z;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, vertex1.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, vertex1.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex3f(vertex1.x, vertex1.y, vertex1.z);
+        glVertex3f(vertex2.x, vertex2.y, vertex2.z);
+        glVertex3f(vertex3.x, vertex3.y, vertex3.z);
+        glVertex3f(vertex4.x, vertex4.y, vertex4.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawSolidRectangle(const HamurVec2& pos, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec2 vertex1, vertex2, vertex3, vertex4;
+
+    // For World to OpenGL coordinate conversions
+    vertex1.x = pos.x;
+    vertex1.y = pos.y;
+
+    vertex2.x = pos.x;
+    vertex2.y = pos.y + height;
+
+    vertex3.x = pos.x + width;
+    vertex3.y = pos.y + height;
+
+    vertex4.x = pos.x + width;
+    vertex4.y = pos.y;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(vertex1.x, vertex1.y);
+        glVertex2f(vertex2.x, vertex2.y);
+        glVertex2f(vertex3.x, vertex3.y);
+        glVertex2f(vertex4.x, vertex4.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawSolidRectangle(const HamurVec3& pos, float width, float height, const HamurColor& color, float rotationAngle)
+{
+    // All vertices of the Rectangle
+    HamurVec3 vertex1, vertex2, vertex3, vertex4;
+
+    // For World to OpenGL coordinate conversions
+    vertex1.x = pos.x;
+    vertex1.y = pos.y;
+    vertex1.z = pos.z;
+
+    vertex2.x = pos.x;
+    vertex2.y = pos.y + height;
+    vertex2.z = pos.z;
+
+    vertex3.x = pos.x + width;
+    vertex3.y = pos.y + height;
+    vertex3.z = pos.z;
+
+    vertex4.x = pos.x + width;
+    vertex4.y = pos.y;
+    vertex4.z = pos.z;
+
+    // Here World to OpenGL coordinate conversions
+    vertex1 = HAMURTEXMR->WorldToGL(vertex1);
+    vertex2 = HAMURTEXMR->WorldToGL(vertex2);
+    vertex3 = HAMURTEXMR->WorldToGL(vertex3);
+    vertex4 = HAMURTEXMR->WorldToGL(vertex4);
+
+    // Find the middle of vertices
+    float middleX = vertex1.x + ((vertex4.x - vertex1.x) / 2);
+    float middleY = vertex1.y + ((vertex2.y - vertex1.y) / 2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(middleX, middleY, vertex1.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-middleX, -middleY, vertex1.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex3f(vertex1.x, vertex1.y, vertex1.z);
+        glVertex3f(vertex2.x, vertex2.y, vertex2.z);
+        glVertex3f(vertex3.x, vertex3.y, vertex3.z);
+        glVertex3f(vertex4.x, vertex4.y, vertex4.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawPolygon(const HamurVec2* verticeList, int verticeCount, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVector;
+
+    // Polygon's centroid calculations
+    HamurVec2 centroid;
+    float sumX = 0;
+    float sumY = 0;
+
+    // Calculate the centroid of the Polygon
+    for(int i = 0; i < verticeCount; i++)
+    {
+       sumX += verticeList[i].x;
+       sumY += verticeList[i].y;
+    }
+
+    // Set the centroid
+    centroid.x = sumX / verticeCount;
+    centroid.y = sumY / verticeCount;
+
+    // World to OpenGL coordinate conversion
+    centroid = HAMURTEXMR->WorldToGL(centroid);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(centroid.x, centroid.y, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-centroid.x, -centroid.y, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < verticeCount; i++)
+        {
+            transformVector = HAMURTEXMR->WorldToGL(verticeList[i]);
+            glVertex2f(transformVector.x, transformVector.y);
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawPolygon(const HamurVec3* verticeList, int verticeCount, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVector;
+
+    // Polygon's centroid calculations
+    HamurVec3 centroid;
+    float sumX = 0;
+    float sumY = 0;
+
+    // Calculate the centroid of the Polygon
+    for(int i = 0; i < verticeCount; i++)
+    {
+        sumX += verticeList[i].x;
+        sumY += verticeList[i].y;
+    }
+
+    // Set the centroid
+    centroid.x = sumX / verticeCount;
+    centroid.y = sumY / verticeCount;
+    centroid.z = verticeList[0].z; // Same for all vertices
+
+    // World to OpenGL coordinate conversion
+    centroid = HAMURTEXMR->WorldToGL(centroid);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(centroid.x, centroid.y, centroid.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-centroid.x, -centroid.y, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+     // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < verticeCount; i++)
+        {
+            transformVector = HAMURTEXMR->WorldToGL(verticeList[i]);
+            glVertex3f(transformVector.x, transformVector.y, transformVector.z);
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawSolidPolygon(const HamurVec2* verticeList, int verticeCount, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVector;
+
+    // Polygon's centroid calculations
+    HamurVec2 centroid;
+    float sumX = 0;
+    float sumY = 0;
+
+    // Calculate the centroid of the Polygon
+    for(int i = 0; i < verticeCount; i++)
+    {
+        sumX += verticeList[i].x;
+        sumY += verticeList[i].y;
+    }
+
+    // Set the centroid
+    centroid.x = sumX / verticeCount;
+    centroid.y = sumY / verticeCount;
+
+    // World to OpenGL coordinate conversion
+    centroid = HAMURTEXMR->WorldToGL(centroid);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(centroid.x, centroid.y, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-centroid.x, -centroid.y, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < verticeCount; i++)
+        {
+            transformVector = HAMURTEXMR->WorldToGL(verticeList[i]);
+            glVertex2f(transformVector.x, transformVector.y);
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawSolidPolygon(const HamurVec3* verticeList, int verticeCount, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVector;
+
+    // Polygon's centroid calculations
+    HamurVec3 centroid;
+    float sumX = 0;
+    float sumY = 0;
+
+    // Calculate the centroid of the Polygon
+    for(int i = 0; i < verticeCount; i++)
+    {
+        sumX += verticeList[i].x;
+        sumY += verticeList[i].y;
+    }
+
+    // Set the centroid
+    centroid.x = sumX / verticeCount;
+    centroid.y = sumY / verticeCount;
+    centroid.z = verticeList[0].z; // Same for all vertices
+
+    // World to OpenGL coordinate conversion
+    centroid = HAMURTEXMR->WorldToGL(centroid);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(centroid.x, centroid.y, centroid.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-centroid.x, -centroid.y, centroid.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < verticeCount; i++)
+        {
+            transformVector = HAMURTEXMR->WorldToGL(verticeList[i]);
+            glVertex3f(transformVector.x, transformVector.y, transformVector.z);
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawCircle(float xCenter, float yCenter, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec(xCenter, yCenter);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2 * PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(xCenter + radius * cosf(angle),
+                                                 yCenter + radius * sinf(angle));
+            glVertex2f(transformVec.x, transformVec.y);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawCircle(float xCenter, float yCenter, float zCenter, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec(xCenter, yCenter, zCenter);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2 * PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(xCenter + radius * cosf(angle),
+                yCenter + radius * sinf(angle), zCenter);
+            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawCircle(const HamurVec2& pos, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec(pos.x, pos.y);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(pos.x + radius * cosf(angle),
+                pos.y + radius * sinf(angle));
+            glVertex2f(transformVec.x, transformVec.y);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawCircle(const HamurVec3& pos, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec(pos.x, pos.y, pos.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(pos.x + radius * cosf(angle),
+                pos.y + radius * sinf(angle), pos.z);
+            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawSolidCircle(float xCenter, float yCenter, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec(xCenter, yCenter);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(xCenter + radius * cosf(angle),
+                yCenter + radius * sinf(angle));
+            glVertex2f(transformVec.x, transformVec.y);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawSolidCircle(float xCenter, float yCenter, float zCenter, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec(xCenter, yCenter,zCenter);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(xCenter + radius * cosf(angle),
+                yCenter + radius * sinf(angle), zCenter);
+            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawSolidCircle(const HamurVec2& pos, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec(pos.x, pos.y);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(pos.x + radius * cosf(angle),
+                pos.y + radius * sinf(angle));
+            glVertex2f(transformVec.x, transformVec.y);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawSolidCircle(const HamurVec3& pos, float radius, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec(pos.x, pos.y,pos.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Circle Attributes calculations
+    float angle = 0.0f;
+    float angleIncrement = PI / ((radius / 8.0f ) + 8.0f);
+    float loopCount = 2*PI / angleIncrement;
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_TRIANGLE_FAN);
+        for(int i = 0; i < loopCount; i++)
+        {
+            transformVec = HAMURTEXMR->WorldToGL(pos.x + radius * cosf(angle),
+                pos.y + radius * sinf(angle), pos.z);
+            glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+            angle += angleIncrement;
+        }
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawLine(float firstX, float firstY, float secondX, float secondY, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec1;
+    HamurVec2 transformVec2;
+
+    // For finding center of the line
+    HamurVec2 lineCenter;
+
+    // Find the center of the line
+    lineCenter.x = firstX + secondX / 2.0f;
+    lineCenter.y = firstY + secondY / 2.0f;
+
+    // World to OpenGL coordinate conversion
+    lineCenter = HAMURTEXMR->WorldToGL(lineCenter);
+
+    // Here World to OpenGL coordinate conversion
+    transformVec1 = HAMURTEXMR->WorldToGL(firstX, firstY);
+    transformVec2 = HAMURTEXMR->WorldToGL(secondX, secondY);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(lineCenter.x, lineCenter.y, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-lineCenter.x, -lineCenter.y, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(transformVec1.x, transformVec1.y);
+        glVertex2f(transformVec2.x, transformVec2.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawLine(float firstX, float firstY, float firstZ, float secondX, float secondY, float secondZ, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec1;
+    HamurVec3 transformVec2;
+
+    // For finding center of the line
+    HamurVec3 lineCenter;
+
+    // Find the center of the line
+    lineCenter.x = (firstX + secondX) / 2.0f;
+    lineCenter.y = (firstY + secondY) / 2.0f;
+    lineCenter.z = firstZ; // Same for both
+
+    // World to OpenGL coordinate conversion
+    lineCenter = HAMURTEXMR->WorldToGL(lineCenter);
+
+    // Here World to OpenGL coordinate conversion
+    transformVec1 = HAMURTEXMR->WorldToGL(firstX, firstY, firstZ);
+    transformVec2 = HAMURTEXMR->WorldToGL(secondX, secondY, secondZ);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(lineCenter.x, lineCenter.y, lineCenter.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-lineCenter.x, -lineCenter.y, lineCenter.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex3f(transformVec1.x, transformVec1.y, transformVec1.z);
+        glVertex3f(transformVec2.x, transformVec2.y, transformVec2.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawLine(const HamurVec2& pos1, const HamurVec2& pos2, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec1;
+    HamurVec2 transformVec2;
+
+    // For finding center of the line
+    HamurVec2 lineCenter;
+
+    // Find the center of the line
+    lineCenter.x = (pos1.x + pos2.x) / 2.0f;
+    lineCenter.y = (pos1.y + pos2.y) / 2.0f;
+
+    // World to OpenGL coordinate conversion
+    lineCenter = HAMURTEXMR->WorldToGL(lineCenter);
+
+    // Here World to OpenGL coordinate conversion
+    transformVec1 = HAMURTEXMR->WorldToGL(pos1);
+    transformVec2 = HAMURTEXMR->WorldToGL(pos2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(lineCenter.x, lineCenter.y, 0.0f);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-lineCenter.x, -lineCenter.y, 0.0f);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(transformVec1.x, transformVec1.y);
+        glVertex2f(transformVec2.x, transformVec2.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+void HamurPlotter::DrawLine(const HamurVec3& pos1, const HamurVec3& pos2, const HamurColor& color, float rotationAngle)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec1;
+    HamurVec3 transformVec2;
+
+    // For finding center of the line
+    HamurVec3 lineCenter;
+
+    // Find the center of the line
+    lineCenter.x = (pos1.x + pos2.x) / 2.0f;
+    lineCenter.y = (pos1.y + pos2.y) / 2.0f;
+    lineCenter.z = pos1.z;
+
+    // World to OpenGL coordinate conversion
+    lineCenter = HAMURTEXMR->WorldToGL(lineCenter);
+
+    // Here World to OpenGL coordinate conversion
+    transformVec1 = HAMURTEXMR->WorldToGL(pos1);
+    transformVec2 = HAMURTEXMR->WorldToGL(pos2);
+
+    // Save current matrix. 
+    // Perform translation to geometric shape's middle
+    // and rotate from middle around Z axis.
+    // Translate back and draw the shape.
+    glPushMatrix();
+    glTranslatef(lineCenter.x, lineCenter.y, lineCenter.z);
+    glRotatef(rotationAngle, 0, 0, 1.0f); 
+    glTranslatef(-lineCenter.x, -lineCenter.y, lineCenter.z);
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // For Anti-aliasing
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+    // Set color
+    glColor3f(color.R, color.G, color.B);
+
+    // Drawing here
+    glBegin(GL_LINE_LOOP);
+        glVertex3f(transformVec1.x, transformVec1.y, transformVec1.z);
+        glVertex3f(transformVec2.x, transformVec2.y, transformVec2.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glEnable(GL_ALPHA_TEST);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Restore matrix
+    glPopMatrix();
+}
+
+
+void HamurPlotter::DrawPoint(float pointX, float pointY, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec;
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Drawing here
+    glBegin(GL_POINTS);
+        glColor3f(color.R, color.G, color.B);
+        transformVec = HAMURTEXMR->WorldToGL(pointX, pointY);
+        glVertex2f(transformVec.x, transformVec.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawPoint(float pointX, float pointY, float pointZ, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec;
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Drawing here
+    glBegin(GL_POINTS);
+        glColor3f(color.R, color.G, color.B);
+        transformVec = HAMURTEXMR->WorldToGL(pointX, pointY, pointZ);
+        glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawPoint(const HamurVec2& pos, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec2 transformVec;
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Drawing here
+    glBegin(GL_POINTS);
+        glColor3f(color.R, color.G, color.B);
+        transformVec = HAMURTEXMR->WorldToGL(pos);
+        glVertex2f(transformVec.x, transformVec.y);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+void HamurPlotter::DrawPoint(const HamurVec3& pos, const HamurColor& color)
+{
+    // For World to OpenGL coordinate conversions
+    HamurVec3 transformVec;
+
+    // Disable Texture Mode to draw geometry
+    glDisable(GL_TEXTURE_2D);
+
+    // Drawing here
+    glBegin(GL_POINTS);
+        glColor3f(color.R, color.G, color.B);
+        transformVec = HAMURTEXMR->WorldToGL(pos);
+        glVertex3f(transformVec.x, transformVec.y, transformVec.z);
+    glEnd();
+
+    // OpenGL State Machine Reset
+    glEnable(GL_TEXTURE_2D);
+
+    // Clear color to white
+    glColor3f(1.0f, 1.0f, 1.0f);
+}
+
+} // namespace hamur

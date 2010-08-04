@@ -75,5 +75,5 @@ void dynamicObject::setColor(float _R, float _G, float _B)
 
 void dynamicObject::Draw()
 {
-    HamurPlotter::drawRectangle(mPos, mWidth, mHeight, HamurColor::GREEN, mRotation);
+    HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor::GREEN, mRotation);
 }
