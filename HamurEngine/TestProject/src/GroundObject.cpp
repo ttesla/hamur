@@ -1,7 +1,7 @@
 #include "groundObject.h"
 
 
-groundObject::groundObject(const string &name):HamurObject(name)
+GroundObject::GroundObject(const string &name):HamurObject(name)
 {
     mPos.x = 2.0f;
     mPos.y = 500.0f;
@@ -11,7 +11,7 @@ groundObject::groundObject(const string &name):HamurObject(name)
     setPhysics();
 }
 
-void groundObject::setPhysics()
+void GroundObject::setPhysics()
 {
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set((mPos.x + mWidth / 2) / 100.0f, (mPos.y + mHeight /2) / 100.0f);
@@ -49,7 +49,7 @@ void groundObject::setPhysics()
     mBody->CreateFixture(&fixtureDef);
 }
 
-void groundObject::Draw()
+void GroundObject::Draw()
 {
 
     /*

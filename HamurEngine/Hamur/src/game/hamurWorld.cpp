@@ -206,7 +206,7 @@ void HamurWorld::RunPhysicSimulation()
 
 void HamurWorld::InitializePhysics()
 {
-    mGravity.Set(0.0f, 0.12f);
+    mGravity.Set(0.0f, 0.40f);
     mDoSleep = true;
     mWorld = new b2World(mGravity, mDoSleep);
     mTimeStep = 1.0f / 60.0f;

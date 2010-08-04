@@ -7,6 +7,7 @@
 namespace hamur
 {
 
+// Forward declarations
 class HamurTex;
 
 class HamurGP : public Singleton<HamurGP>

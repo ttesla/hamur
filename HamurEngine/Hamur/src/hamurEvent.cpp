@@ -91,4 +91,4 @@ void HamurEvent::HandleEvents()
 	}
 }
 
-}// namespace hamur
+} // namespace hamur

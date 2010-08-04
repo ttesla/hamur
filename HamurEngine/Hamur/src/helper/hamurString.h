@@ -9,7 +9,7 @@ using std::string;
 
 namespace hamur
 {
-// Forward declaration
+// Forward declarations
 class HamurObject;
 class HamurVec2;
 class HamurVec3;

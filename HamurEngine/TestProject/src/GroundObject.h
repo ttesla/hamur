@@ -5,10 +5,10 @@
 
 using namespace hamur;
 
-class groundObject : public HamurObject
+class GroundObject : public HamurObject
 {
     public:
-        groundObject(const string& name);
+        GroundObject(const string& name);
         void setPhysics();
         virtual void Draw();
 

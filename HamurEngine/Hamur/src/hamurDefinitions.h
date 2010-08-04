@@ -14,4 +14,4 @@
 #define HAMURSTATEMR HamurStateMR::getInstance()
 #define HAMURENGINE HamurEngine::getInstance()
 
-#endif
+#endif // HAMURHEADER_H

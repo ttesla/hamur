@@ -21,21 +21,9 @@ MainState::~MainState()
 // ENTER
 void MainState::Enter() 
 {
-    // Add some objects
-    //HAMURWORLD->addObject(new HamurObject("Balik"));
-    //HAMURWORLD->getObject("Balik")->setSprite("data/fish.png");
-    //HAMURWORLD->getObject("Balik")->SetPosition(100, 100);
+    HamurVec2 pos2(480, 150);
 
-   // HAMURWORLD->addObject(new HamurObject("Tank", "data/Tank.png"));
-    //HAMURWORLD->getObject("Tank")->SetPosition(200, 300);
-    //HAMURWORLD->getObject("Tank")->rotateDegree(90);
-
-    //HamurVec2 pos1(110, 20);
-    //HamurVec2 pos2(480, 150);
-
-    HAMURWORLD->AddObject(new groundObject("Ground"));
-    //HAMURWORLD->addObject(new dynamicObject("Dynamic", pos1));
-    //HAMURWORLD->addObject(new dynamicObject("Dynamic2", pos2));
+    HAMURWORLD->AddObject(new GroundObject("Ground"));
 }
 
 
@@ -70,19 +58,13 @@ void MainState::Draw()
 {
     using namespace hamur;
     HamurWorld::getInstance()->GetObject("Ground")->Draw();
-    //HAMURWORLD->getObject("Dynamic")->draw();
-    //HAMURWORLD->getObject("Dynamic2")->draw();
-    //HAMURWORLD->getObject("Tank")->draw();
-    //testPlotter();
-    //HamurPlotter::DrawRectangle(10, 10, 50, 50, HamurColor::CYAN);
-    //testBox2D();
 
     map<string, HamurObject*>::iterator iter;
 
     // Draw all objects
     for (int i = 0; i < HAMURWORLD->GetWorldSize(); i++)
     {
-       // HAMURWORLD->GetObjectbyIndex(i)->Draw();
+        HAMURWORLD->GetObjectbyIndex(i)->Draw();
     }
     
 }
@@ -244,10 +226,6 @@ void MainState::spawnObjects()
     y = pos.y;
 
     ss << "Dynamic" << i;
-    HAMURWORLD->AddObject(new dynamicObject(ss.GetString(), pos));
-    //HAMURWORLD->GetObject(ss.GetString())->SetPosition(pos);
-    //HAMURWORLD->getObject(ss.GetString())->setSprite("data/fish.png");
-
-   // (dynamic_cast<dynamicObject*>HAMURWORLD->getObject(ss.GetString()))->setColor(1, 1, 1);
+    HAMURWORLD->AddObject(new DynamicObject(ss.GetString(), pos));
     i = HAMURWORLD->GetWorldSize()-1;
 }

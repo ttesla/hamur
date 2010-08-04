@@ -11,6 +11,8 @@ using std::endl;
 
 namespace hamur
 {
+
+// Forward declarations
 class HamurObject;
 class HamurString;
 class HamurVec2;

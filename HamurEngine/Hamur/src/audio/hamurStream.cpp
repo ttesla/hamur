@@ -5,6 +5,7 @@
 
 namespace hamur
 {
+
 HamurStream::HamurStream()
 {
 
