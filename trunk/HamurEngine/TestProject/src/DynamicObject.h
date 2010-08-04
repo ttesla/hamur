@@ -5,10 +5,10 @@
 
 using namespace hamur;
 
-class dynamicObject : public HamurObject
+class DynamicObject : public HamurObject
 {
     public:
-    dynamicObject(const string& name, const HamurVec2& pos);
+    DynamicObject(const string& name, const HamurVec2& pos);
 
     void setPhysics();
     void setColor(float x, float y, float z);

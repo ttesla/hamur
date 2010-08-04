@@ -143,4 +143,4 @@ void HamurTex::SetAllCoord(float x, float y, float z)
 	mCorZ = z;
 }
 
-}// namespace hamur
+} // namespace hamur

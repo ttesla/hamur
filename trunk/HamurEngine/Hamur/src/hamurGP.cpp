@@ -52,4 +52,4 @@ bool HamurGP::CheckCollision2D(HamurTex* firstTex, HamurTex* secondTex)
 	return true;
 }
 
-}// namespace hamur
+} // namespace hamur

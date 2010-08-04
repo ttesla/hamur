@@ -3,29 +3,31 @@
 
 namespace hamur
 {
-    class HamurColor
-    {
-        public:
 
-            HamurColor() {};
+class HamurColor
+{
+    public:
 
-            // Red, Green, Blue color values.
-            HamurColor(float R, float G, float B);
+        HamurColor() {};
 
-            static HamurColor RED;
-            static HamurColor GREEN;
-            static HamurColor BLUE;
-            static HamurColor BLACK;
-            static HamurColor WHITE;
-            static HamurColor YELLOW;
-            static HamurColor CYAN;
-            static HamurColor MAGENTA;
-            static HamurColor GREY;
+        // Red, Green, Blue color values.
+        HamurColor(float R, float G, float B);
 
-            float R;
-            float G;
-            float B;
-    };
-}
+        static HamurColor RED;
+        static HamurColor GREEN;
+        static HamurColor BLUE;
+        static HamurColor BLACK;
+        static HamurColor WHITE;
+        static HamurColor YELLOW;
+        static HamurColor CYAN;
+        static HamurColor MAGENTA;
+        static HamurColor GREY;
+
+        float R;
+        float G;
+        float B;
+};
+
+} // namespace hamur
 
 #endif // HAMURCOLOR_H

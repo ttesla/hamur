@@ -156,4 +156,4 @@ void HamurGL::SetGLAttributes()
 	//SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16); // 16 or 24
 }
 
-}// namespace hamur
+} // namespace hamur
