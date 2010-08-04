@@ -74,7 +74,7 @@ void MainState::Draw()
     //HAMURWORLD->getObject("Dynamic2")->draw();
     //HAMURWORLD->getObject("Tank")->draw();
     //testPlotter();
-    //HamurPlotter::drawRectangle(10, 10, 50, 50, HamurColor::CYAN);
+    //HamurPlotter::DrawRectangle(10, 10, 50, 50, HamurColor::CYAN);
     //testBox2D();
 
     map<string, HamurObject*>::iterator iter;
@@ -175,26 +175,26 @@ void MainState::testBox2D()
 
 void MainState::testPlotter()
 {
-    HamurPlotter::drawSolidRectangle(100, 100, 50, 50, HamurColor::RED);
+    HamurPlotter::DrawSolidRectangle(100, 100, 50, 50, HamurColor::RED);
 
-    HamurPlotter::drawSolidRectangle(400, 400, 10, 80, HamurColor::GREEN);
+    HamurPlotter::DrawSolidRectangle(400, 400, 10, 80, HamurColor::GREEN);
 
 
     HamurVec3 vecs[6] = {HamurVec3(300,10,50), HamurVec3(100,250,50), HamurVec3(300,450,50),
         HamurVec3(450, 450,50), HamurVec3(600,250,50), HamurVec3(450, 10,50)};
 
-    HamurPlotter::drawPolygon(vecs, 6, HamurColor::CYAN,180);
+    HamurPlotter::DrawPolygon(vecs, 6, HamurColor::CYAN,180);
 
-    HamurPlotter::drawRectangle(225, 100, 280, 275, HamurColor::RED);
+    HamurPlotter::DrawRectangle(225, 100, 280, 275, HamurColor::RED);
 
-    HamurPlotter::drawCircle(365, 237, 136, HamurColor::MAGENTA);
+    HamurPlotter::DrawCircle(365, 237, 136, HamurColor::MAGENTA);
 
-    HamurPlotter::drawSolidCircle(365, 237, 50, HamurColor::YELLOW);
+    HamurPlotter::DrawSolidCircle(365, 237, 50, HamurColor::YELLOW);
 
 
     for ( int i =0; i< 40; i++)
     {
-        HamurPlotter::drawCircle(400, 300, (i+1)* 8.0f, HamurColor::RED);
+        HamurPlotter::DrawCircle(400, 300, (i+1)* 8.0f, HamurColor::RED);
     }
 
 
@@ -210,16 +210,16 @@ void MainState::testPlotter()
     HamurVec2 try1(1,1);
     HamurVec3 try2(3,3,0);
 
-    //HamurPlotter::drawLine(140, 70, 0, 140, 350, 0, HamurColor::WHITE, 90);
-    HamurPlotter::drawLine(down1, down2, HamurColor::WHITE, 90);
-    HamurPlotter::drawLine(up1, up2, HamurColor::YELLOW, 45);
-    HamurPlotter::drawLine(down1, down2, newcolor1);
-    HamurPlotter::drawLine(up1, up2, newcolor2);
+    //HamurPlotter::DrawLine(140, 70, 0, 140, 350, 0, HamurColor::WHITE, 90);
+    HamurPlotter::DrawLine(down1, down2, HamurColor::WHITE, 90);
+    HamurPlotter::DrawLine(up1, up2, HamurColor::YELLOW, 45);
+    HamurPlotter::DrawLine(down1, down2, newcolor1);
+    HamurPlotter::DrawLine(up1, up2, newcolor2);
 
     for (int i = 0, k=0; i < 50; i++)
     {
-        HamurPlotter::drawPoint(try1, HamurColor::YELLOW);
-        HamurPlotter::drawPoint(try2, HamurColor::BLUE);
+        HamurPlotter::DrawPoint(try1, HamurColor::YELLOW);
+        HamurPlotter::DrawPoint(try2, HamurColor::BLUE);
     }
 }
 

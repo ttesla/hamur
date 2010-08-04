@@ -63,5 +63,5 @@ void groundObject::Draw()
 
     //HamurVec3 temp(body->GetPosition().x, body->GetPosition().y, 0.0f);
     //HAMURCONSOLE << "BODY POS: " << temp << "\n";
-    HamurPlotter::drawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
+    HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
 }
