@@ -355,10 +355,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\helper\hamurConsole.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\helper\hamurConsole.h"
 					>
 				</File>

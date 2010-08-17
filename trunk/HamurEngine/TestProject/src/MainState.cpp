@@ -57,7 +57,7 @@ void MainState::Update()
 void MainState::Draw() 
 {
     using namespace hamur;
-    HamurWorld::getInstance()->GetObject("Ground")->Draw();
+    HamurWorld::GetInstance()->GetObject("Ground")->Draw();
 
     map<string, HamurObject*>::iterator iter;
 

@@ -20,7 +20,7 @@ class Singleton
         * If object is not created yet, creates a new one
         * else returns the current object.
         */
-	    static T* getInstance()
+	    static T* GetInstance()
 	    {
 		    if(Singleton<T>::mSingleton == NULL)
 			    Singleton<T>::mSingleton = new T();
@@ -33,7 +33,7 @@ class Singleton
         * Do not call this explicitly. Call HAMURENGINE->terminate() instead.
         * Assigns the current template object to NULL.
         */
-	    static void drop();
+	    static void Drop();
 
     protected:
 
@@ -50,7 +50,7 @@ class Singleton
 
 
 template<typename T>
-void Singleton<T>::drop()
+void Singleton<T>::Drop()
 {
 	if(Singleton<T>::mSingleton != NULL)
 	{

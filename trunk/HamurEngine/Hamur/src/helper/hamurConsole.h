@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 
+#include "../game/hamurObject.h"
+#include "hamurString.h"
+#include "hamurVec2.h"
+#include "hamurVec3.h"
+
 using std::string;
 using std::cout;
 using std::endl;
@@ -11,12 +16,6 @@ using std::endl;
 
 namespace hamur
 {
-
-// Forward declarations
-class HamurObject;
-class HamurString;
-class HamurVec2;
-class HamurVec3;
 
 /**
  * Writes given text to console. 
@@ -28,27 +27,95 @@ class HamurConsole
         
         // This can't use Singleton template because 
         // some operator overloadings makes some conflicts...
-        static HamurConsole &HamurConsole::getInstance()
+        static HamurConsole& HamurConsole::GetInstance()
         {
             static HamurConsole hamurConsole;
             return hamurConsole;
         }
 
-        HamurConsole operator<<(int input);
-        HamurConsole operator<<(unsigned int input);
-        HamurConsole operator<<(float input);
-        HamurConsole operator<<(double input);
-        HamurConsole operator<<(char input);
-        HamurConsole operator<<(const string &input);
-        HamurConsole operator<<(HamurObject &input);
-        HamurConsole operator<<(HamurObject *input);
-        HamurConsole operator<<(HamurString &input);
-        HamurConsole operator<<(const HamurVec2 &input);
-        HamurConsole operator<<(const HamurVec3 &input);
+        HamurConsole& operator<<(int input);
+        HamurConsole& operator<<(unsigned int input);
+        HamurConsole& operator<<(float input);
+        HamurConsole& operator<<(double input);
+        HamurConsole& operator<<(char input);
+        HamurConsole& operator<<(const string &input);
+        HamurConsole& operator<<(HamurObject &input);
+        HamurConsole& operator<<(HamurObject *input);
+        HamurConsole& operator<<(HamurString &input);
+        HamurConsole& operator<<(const HamurVec2 &input);
+        HamurConsole& operator<<(const HamurVec3 &input);
 		
 	private:
         HamurConsole() {};
 };
+
+// Function Definitions //
+
+inline HamurConsole& HamurConsole::operator<<(int input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(unsigned int input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(float input)
+{
+    cout << input;
+    return *this;
+} 
+
+inline HamurConsole& HamurConsole::operator<<(double input)
+{
+    cout << input;
+    return *this;
+} 
+
+inline HamurConsole& HamurConsole::operator<<(char input)
+{
+    cout << input;
+    return *this;
+} 
+
+inline HamurConsole& HamurConsole::operator<<(const string &input)
+{
+    cout << input;
+    return *this;
+} 
+
+inline HamurConsole& HamurConsole::operator<<(HamurObject &input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(HamurObject *input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(HamurString &input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(const HamurVec2 &input)
+{
+    cout << input;
+    return *this;
+}
+
+inline HamurConsole& HamurConsole::operator<<(const HamurVec3 &input)
+{
+    cout << input;
+    return *this;
+}
     
 } // namespace hamur
 
