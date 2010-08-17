@@ -4,7 +4,7 @@
 // Calling HamurState("Name") is a must!
 ExampleState::ExampleState() : HamurState("ExampleState")
 {
-
+    HAMURWORLD->AddObject(new HamurObject("Tahta"));
 }
 
 ExampleState::~ExampleState()
@@ -28,13 +28,7 @@ void ExampleState::Update()
 
     static bool keyPressed = false;
 
-    if(HAMUREVENT->IsKeyPressed(SDLK_UP) && !keyPressed)
-    {
-        keyPressed = true;
-    }
-
-    if(! HAMUREVENT->IsKeyPressed(SDLK_UP))
-        keyPressed = false;
+    HAMURCONSOLE << "Yes Sir?" << HAMURWORLD->GetObject("Tahta") << "\n";
 }
 
 

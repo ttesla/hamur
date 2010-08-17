@@ -97,14 +97,14 @@ void HamurEngine::Terminate()
     mRunEngine = false;
 
     // The termination order is important !!!
-    HAMURTEXMR->drop();
-    HAMURAUMR->drop();
-    HAMURWORLD->drop();
-    HAMURSTATEMR->drop();
-    HAMUREVENT->drop();
-    HAMURGL->drop();
-    HAMURENGINE->drop();
-    HAMURLOG->drop();
+    HAMURTEXMR->Drop();
+    HAMURAUMR->Drop();
+    HAMURWORLD->Drop();
+    HAMURSTATEMR->Drop();
+    HAMUREVENT->Drop();
+    HAMURGL->Drop();
+    HAMURENGINE->Drop();
+    HAMURLOG->Drop();
 }
 
 
