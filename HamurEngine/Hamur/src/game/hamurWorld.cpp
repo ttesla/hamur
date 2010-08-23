@@ -74,8 +74,23 @@ bool HamurWorld::HasObject(const string& name) const
 }
 
 
+void HamurWorld::DrawAllObjects()
+{
+    map<string, HamurObject*>::iterator iter;
 
-HamurObject* HamurWorld::GetObject(const string& objectName) const
+    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
+    {
+        if(iter->second)
+        {
+            if(iter->second->mVisible)
+                iter->second->Draw();
+        }
+    }
+}
+
+
+
+HamurObject* HamurWorld::GetHamurObject(const string& objectName) const
 {
     // Look in the map if the object exists..
     map<string, HamurObject*>::const_iterator iter = mWorldObjects.find(objectName);
@@ -109,7 +124,7 @@ void HamurWorld::ClearAll()
     HAMURLOG->WriteLogln("All world objects deleted.");
 }
 
-HamurObject* HamurWorld::GetObjectbyIndex(int index) const
+HamurObject* HamurWorld::GetHamurObjectByIndex(int index) const
 {
     map<string, HamurObject*>::const_iterator iter;
     int i = 0;

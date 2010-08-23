@@ -2,6 +2,7 @@
 #include "../hamurTexMR.h"
 #include "../helper/hamurMath.h"
 #include "../helper/hamurLog.h"
+#include "hamurWorld.h"
 #include "../hamurDefinitions.h"
 
 
@@ -9,23 +10,25 @@ namespace hamur
 {
     
 HamurObject::HamurObject(const string& name) 
-    :mName(name), mActive(true), mInteractive(false)
+    :mName(name), mVisible(true), mInteractive(true)
 {
     mPos.x = 0;
     mPos.y = 0;
     mPos.z = 0;
     mRotation = 0;
+    HAMURWORLD->AddObject(this);
     HAMURLOG->WriteLogln("Object created: " + mName);
 }
 
 HamurObject::HamurObject(const string& name, const string& spritePath)
-    :mName(name), mActive(true), mInteractive(false)
+    :mName(name), mVisible(true), mInteractive(true)
 {
     mPos.x = 0;
     mPos.y = 0;
     mPos.z = 0;
     mRotation = 0;
     SetSprite(spritePath);
+    HAMURWORLD->AddObject(this);
     HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
 }
 
@@ -53,7 +56,7 @@ void HamurObject::RotateRadian(float rotationRadian)
 string HamurObject::GetName() const             { return mName; }
 HamurVec3 HamurObject::GetPosition() const      { return mPos; }
 float HamurObject::GetRotation() const          { return mRotation; }
-bool HamurObject::IsActive() const              { return mActive; }
+bool HamurObject::IsActive() const              { return mVisible; }
 bool HamurObject::IsInteractive() const         { return mInteractive; }
 unsigned HamurObject::GetSpriteID() const       { return mSpriteID; }
 void HamurObject::SetName(const string& name)   { mName = name; }
@@ -78,7 +81,7 @@ void HamurObject::SetPosition(float x, float y, float z)
     mPos.z = z;
 }
 
-void HamurObject::SetActive(bool active)            { mActive = active; }
+void HamurObject::SetVisible(bool visible)          { mVisible = visible; }
 void HamurObject::SetInteraction(bool interactive)  { mInteractive = interactive; }
 
 void HamurObject::SetSprite(const string& path)

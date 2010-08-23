@@ -56,16 +56,6 @@ void MainState::Update()
 // DRAW
 void MainState::Draw() 
 {
-    using namespace hamur;
-    HamurWorld::GetInstance()->GetObject("Ground")->Draw();
-
-    map<string, HamurObject*>::iterator iter;
-
-    // Draw all objects
-    for (int i = 0; i < HAMURWORLD->GetWorldSize(); i++)
-    {
-        HAMURWORLD->GetObjectbyIndex(i)->Draw();
-    }
     
 }
 

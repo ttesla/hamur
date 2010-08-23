@@ -31,11 +31,11 @@ class HamurObject
 {
     public:
 
+        friend class HamurWorld;
+
         HamurObject(const string& name);
 
         HamurObject(const string& name, const string& spritePath);
-
-        ~HamurObject();
 
         /**
         * update function of the object. 
@@ -109,10 +109,10 @@ class HamurObject
         void SetPosition(float x, float y, float z = 0);
 
         /**
-        * Set if the object is active or not.
-        * @param active True or False
+        * Set if the object is visible or not.
+        * @param visible True or False
         */
-	    void SetActive(bool active);
+	    void SetVisible(bool visible);
 
         /**
         * Set if the object has interaction or not.
@@ -134,10 +134,13 @@ class HamurObject
         float mHeight;
 
     protected:
-	    string mName;      /**< Name of the object. */
+        
+        virtual ~HamurObject();
+    
+        string mName;      /**< Name of the object. */
 	    HamurVec3 mPos;    /**< Position of the object. */
         float mRotation;   /**< Rotation angle of the object */
-	    bool mActive;      /**< Object is active or not. */
+	    bool mVisible;      /**< Object is active or not. */
 	    bool mInteractive; /**< Object has interaction or not. */
         unsigned int mSpriteID; /**< Sprite ID of the game object. */
 
