@@ -34,7 +34,7 @@ class HamurStateMR : public Singleton<HamurStateMR>
         /**
         * Registers given state to the state manager.
         * If state is already registered, it will not be registered.
-        * @param _state Object of the state
+        * @param state Object of the state
         * @return True if register is successful else return False
         * @see RemoveState()
         */
@@ -42,7 +42,7 @@ class HamurStateMR : public Singleton<HamurStateMR>
 
         /**
         * Removes and deletes state from state manager.
-        * @param _stateName Name of the state which will be removed.
+        * @param stateName Name of the state which will be removed.
         * @return If state is removed successfully or not
         * @see RegisterState()
         */
