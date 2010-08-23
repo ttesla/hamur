@@ -33,28 +33,28 @@ bool HamurStateMR::Init()
 
 // Add state into "map" container with state name.
 // If state is already registered, it will not be registered.
-bool HamurStateMR::RegisterState(HamurState *_state)
+bool HamurStateMR::RegisterState(HamurState* state)
 {
 	// Look in the map if the state is already registered. If not found, then register.
-    if (HasState(_state->GetStateName()))
+    if (HasState(state->GetStateName()))
     {
         HAMURLOG->WriteLogln("Error!: Can't register state, state already exists: " 
-            + _state->GetStateName(), HamurLog::ALWAYS);
+            + state->GetStateName(), HamurLog::ALWAYS);
         return false;
     }
 
-	mStateList[_state->GetStateName()] = _state;
+	mStateList[state->GetStateName()] = state;
 
-    HAMURLOG->WriteLogln("State registered: " + _state->GetStateName());
+    HAMURLOG->WriteLogln("State registered: " + state->GetStateName());
     return true;
 }
 
 
 // Search through the "map" container and remove & delete state.
 // If it is successful, return true else false.
-bool HamurStateMR::DeleteState(const string &_stateName)
+bool HamurStateMR::DeleteState(const string& stateName)
 {
-	map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
+	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
 
 	if(iter != mStateList.end())
 	{
@@ -72,10 +72,10 @@ bool HamurStateMR::DeleteState(const string &_stateName)
 
 
 // Checks if the manager has the given state.
-bool HamurStateMR::HasState(const string &_stateName)
+bool HamurStateMR::HasState(const string& stateName)
 {
 	// Look in the map if the state exists.
-	map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
+	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
 
 	// If not found, return false.
 	if(iter == mStateList.end())
@@ -86,16 +86,16 @@ bool HamurStateMR::HasState(const string &_stateName)
 
 
 // Returns state with the given name. 
-HamurState* HamurStateMR::FindState(const string &_stateName)
+HamurState* HamurStateMR::FindState(const string& stateName)
 {
 	// Look in the map.
-	map<string, HamurState*>::iterator iter = mStateList.find(_stateName);
+	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
 
 	// If not found, return NULL.
 	if(iter == mStateList.end())
 	{
         HAMURLOG->WriteLogln("Error!: Can't find the given state: " 
-            + _stateName, HamurLog::ALWAYS);
+            + stateName, HamurLog::ALWAYS);
 		return NULL;
 	}
 
@@ -104,9 +104,9 @@ HamurState* HamurStateMR::FindState(const string &_stateName)
 
 
 // Changes the current state to the given state. 
-void HamurStateMR::ChangeState(const string &_stateName)
+void HamurStateMR::ChangeState(const string& stateName)
 {
-    if(HasState(_stateName))
+    if(HasState(stateName))
     {
         if(mCurrentState != NULL)
         {
@@ -114,13 +114,13 @@ void HamurStateMR::ChangeState(const string &_stateName)
             mPreviousState = mCurrentState;
         }
         
-	    mCurrentState = FindState(_stateName);
+	    mCurrentState = FindState(stateName);
 	    mCurrentState->Enter();
     }
     else
     {
         HAMURLOG->WriteLogln("Error!: Can't change current state. "
-                             "State does not exists: " + _stateName, 
+                             "State does not exists: " + stateName, 
                              HamurLog::ALWAYS);
     }
 }

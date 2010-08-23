@@ -38,13 +38,13 @@ class HamurObject
         ~HamurObject();
 
         /**
-        * Pure virtual update function of the object. 
+        * update function of the object. 
         * All update logic should be written here.
         */
         virtual void Update() {};
 
         /**
-        * Pure virtual draw function of the object. 
+        * draw function of the object. 
         * All drawings should be written here.
         */
         virtual void Draw();
