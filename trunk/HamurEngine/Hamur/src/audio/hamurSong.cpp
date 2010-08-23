@@ -13,10 +13,10 @@ HamurSong::HamurSong()
 
 
 // HamurSong constructor loads song
-HamurSong::HamurSong(const string& fileName, const string& songName) 
+HamurSong::HamurSong(const string& fileName, const string& songName)
 : mStrFileName(fileName), mStrSongName(songName)
 {
-	if(!LoadSong(fileName)) exit(1);
+	if(!LoadSong(fileName)) return;
 }
 
 
@@ -31,7 +31,7 @@ HamurSong::~HamurSong()
 bool HamurSong::LoadSong(const string& name)
 {
 	mMod = FMUSIC_LoadSong(name.c_str());
-	
+
 	if (!mMod)
 	{
 		string tempStr = FMOD_ErrorString(FSOUND_GetError());
@@ -59,7 +59,7 @@ bool HamurSong::PlaySong(bool loop)
 		FMUSIC_SetLooping(mMod, loop);
 		FMUSIC_PlaySong(mMod);	// plays song
 		return true;
-	}		
+	}
 }
 
 
@@ -75,7 +75,7 @@ bool HamurSong::StopSong()
 	{
 		FMUSIC_StopSong(mMod);	// stops song
 		return true;
-	}		
+	}
 }
 
 } // namespace hamur

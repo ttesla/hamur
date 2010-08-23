@@ -11,19 +11,19 @@ namespace hamur
 /**
 * Hamur Event Manager.
 * Singleton class that manages the event system.
-*/ 
+*/
 class HamurEvent : public Singleton<HamurEvent>
 {
 	public:
 
-        friend Singleton<HamurEvent>;
+        friend class Singleton<HamurEvent>;
 
         /**
         * Initialize Hamur Event
         * @return True if initialization is successfull, else return False
         */
         bool Init();
-		
+
         /**
         * Checks if given key is pressed or not.
         * @param keyName Name of the key defined by SDL.
@@ -36,7 +36,7 @@ class HamurEvent : public Singleton<HamurEvent>
         * @param button Name of the button defined by SDL.
         * @return Given button is pressed or not.
         */
-		bool IsMousePressed(int button) const; 
+		bool IsMousePressed(int button) const;
 
         /**
         * Checks if quit action performed or not.

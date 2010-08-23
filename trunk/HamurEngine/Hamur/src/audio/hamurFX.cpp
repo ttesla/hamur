@@ -13,10 +13,10 @@ HamurFX::HamurFX()
 
 
 // HamurFX constructor loads effect
-HamurFX::HamurFX(const string &fileName, const string &fxName) 
+HamurFX::HamurFX(const string &fileName, const string &fxName)
 : mStrFileName(fileName), mStrFxName(fxName)
 {
-	if(!LoadFX(fileName)) exit(1);
+	if(!LoadFX(fileName)) return;
 }
 
 
@@ -33,7 +33,7 @@ bool HamurFX::LoadFX(const std::string& name)
 	// FSOUND_UNMANAGED : Do not use FSOUND's sample manager.
 	// FSOUND_FREE : Selects an empty index for our effect. Do not use 0 here!
 	mEffect = FSOUND_Sample_Load(FSOUND_FREE, name.c_str(), FSOUND_LOOP_OFF, 0, 0);
-	
+
 	if (!mEffect)
 	{
 		string tempStr = FMOD_ErrorString(FSOUND_GetError());
@@ -58,7 +58,7 @@ bool HamurFX::PlayFX()
 	}
 	else
 	{
-		FSOUND_PlaySound(FSOUND_FREE, mEffect);	
+		FSOUND_PlaySound(FSOUND_FREE, mEffect);
 		return true;
 	}
 }

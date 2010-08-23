@@ -60,7 +60,7 @@ void Singleton<T>::Drop()
 }
 
 template<typename T>
-typename T* Singleton<T>::mSingleton = NULL;
+T* Singleton<T>::mSingleton = NULL;
 
 } // namespace hamur
 

@@ -18,16 +18,16 @@ namespace hamur
 {
 
 /**
- * Writes given text to console. 
+ * Writes given text to console.
  * Used as a "cout" wrapper
  */
 class HamurConsole
 {
 	public:
-        
-        // This can't use Singleton template because 
+
+        // This can't use Singleton template because
         // some operator overloadings makes some conflicts...
-        static HamurConsole& HamurConsole::GetInstance()
+        static HamurConsole& GetInstance()
         {
             static HamurConsole hamurConsole;
             return hamurConsole;
@@ -44,7 +44,7 @@ class HamurConsole
         HamurConsole& operator<<(HamurString &input);
         HamurConsole& operator<<(const HamurVec2 &input);
         HamurConsole& operator<<(const HamurVec3 &input);
-		
+
 	private:
         HamurConsole() {};
 };
@@ -67,25 +67,25 @@ inline HamurConsole& HamurConsole::operator<<(float input)
 {
     cout << input;
     return *this;
-} 
+}
 
 inline HamurConsole& HamurConsole::operator<<(double input)
 {
     cout << input;
     return *this;
-} 
+}
 
 inline HamurConsole& HamurConsole::operator<<(char input)
 {
     cout << input;
     return *this;
-} 
+}
 
 inline HamurConsole& HamurConsole::operator<<(const string &input)
 {
     cout << input;
     return *this;
-} 
+}
 
 inline HamurConsole& HamurConsole::operator<<(HamurObject &input)
 {
@@ -116,7 +116,7 @@ inline HamurConsole& HamurConsole::operator<<(const HamurVec3 &input)
     cout << input;
     return *this;
 }
-    
+
 } // namespace hamur
 
 #endif // HAMUR_CONSOLE_H
