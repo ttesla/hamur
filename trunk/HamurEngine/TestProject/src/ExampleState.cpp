@@ -4,19 +4,20 @@
 // Calling HamurState("Name") is a must!
 ExampleState::ExampleState() : HamurState("ExampleState")
 {
-    HAMURWORLD->AddObject(new HamurObject("Tahta"));
+   
 }
 
 ExampleState::~ExampleState()
 {
-
+ 
 }
 
 
 // ENTER
 void ExampleState::Enter() 
 {
-
+    HAMURWORLD->AddObject(new HamurObject("Tank", "data/Tank.png"));
+    HAMURWORLD->GetHamurObject("Tank")->SetPosition(0, 0);
 }
 
 
@@ -24,11 +25,13 @@ void ExampleState::Enter()
 void ExampleState::Update() 
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
-        HAMURENGINE->Stop();
+    {
+        HAMURSTATEMR->ChangeState("MainState");
+    }
 
     static bool keyPressed = false;
 
-    HAMURCONSOLE << "Yes Sir?" << HAMURWORLD->GetObject("Tahta") << "\n";
+   // HAMURCONSOLE << "Yes Sir?" << HAMURWORLD->GetObject("Tahta") << "\n";
 }
 
 
@@ -42,7 +45,7 @@ void ExampleState::Draw()
 // EXIT
 void ExampleState::Exit() 
 {
-
+    HAMURWORLD->DeleteObject("Tahta");
 }
 
 
