@@ -25,9 +25,9 @@ class HamurAuMR : public Singleton<HamurAuMR>
 {
     public:
 
-        friend Singleton<HamurAuMR>;
+        friend class Singleton<HamurAuMR>;
 
-		/** 
+		/**
 		* Default Initialization of Audio.
 		* Inits with 44100hz mixrate and 32 channels.
 		* @return If initialization successful or not
@@ -41,7 +41,7 @@ class HamurAuMR : public Singleton<HamurAuMR>
 		* @param maxsoftwarechannels Maximum number of SOFTWARE channels available.
 		* @param flags Controls some global or initialization time aspects of playback.
 		* @return If initialization successful or not
-		*/ 
+		*/
 		bool Init(int mixrate, int maxsoftwarechannels, unsigned int flags);
 
 		/**
@@ -104,7 +104,7 @@ class HamurAuMR : public Singleton<HamurAuMR>
         */
 		bool DeleteStream(const string& strStreamName);
 
-		
+
         /**
         * Plays effect according to given effect name.
         * @param strFxName Name of the effect.

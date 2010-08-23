@@ -16,10 +16,10 @@ namespace hamur
 class HamurEngine : public Singleton<HamurEngine>
 {
 public:
-    friend Singleton<HamurEngine>;
+    friend class Singleton<HamurEngine>;
 
-    /** 
-    * Initializes Hamur engine 
+    /**
+    * Initializes Hamur engine
     * @param applicationName The text written in the window bar.
     * @param screenWidth Width of the application window
     * @param screenHeight Height of the application window
@@ -31,7 +31,7 @@ public:
     void Run();
 
     /**
-    * Stops Hamur engine, exits from main loop. 
+    * Stops Hamur engine, exits from main loop.
     * @see Terminate()
     */
     void Stop();
@@ -45,7 +45,7 @@ public:
 
     /**< Shows mouse cursor on window */
     void EnableMouseCursor();
-    
+
     /**< Hides mouse cursor */
     void DisableMouseCursor();
 
@@ -61,7 +61,7 @@ private:
 
     /**< Shows status of engine, running or not */
     bool mRunEngine;
-           
+
 	};
 } // namespace hamur
 

@@ -18,13 +18,13 @@ namespace hamur
 /**
 * Hamur Font Manager.
 * Singleton class that manages the font system.
-*/ 
+*/
 class HamurFont : public Singleton<HamurFont>
 {
 	public:
 
-        friend Singleton<HamurFont>;
-        
+        friend class Singleton<HamurFont>;
+
         /**
         * Draw string to screen with bitmap fonts.
         * @param text Given text that written to the screen.
@@ -44,7 +44,7 @@ class HamurFont : public Singleton<HamurFont>
         * Hamur Font Constructor.
         * Loads surfaces and add textures to texture manager.
         * @see HamurTexMR::addTexture()
-        */ 
+        */
         HamurFont();
         ~HamurFont();
 

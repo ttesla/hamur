@@ -14,7 +14,7 @@ class HamurGP : public Singleton<HamurGP>
 {
 	public:
 
-        friend Singleton<HamurGP>;
+        friend class Singleton<HamurGP>;
 
         /**
         * Initialize Hamur Gameplay

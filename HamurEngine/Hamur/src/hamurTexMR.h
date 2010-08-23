@@ -20,13 +20,13 @@ namespace hamur
 class HamurTex;
 
 
-// Texture manager for Hamur. 
+// Texture manager for Hamur.
 // This manages all operations of the textures(blit, store, delete...)
 class HamurTexMR : public Singleton<HamurTexMR>
 {
 	public:
 
-        friend Singleton<HamurTexMR>;
+        friend class Singleton<HamurTexMR>;
 
         /**
         * Initialize Hamur Texture Manager

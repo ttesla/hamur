@@ -17,13 +17,13 @@ class HamurState;
 
 /**
 * Hamur State Manager
-* All states are registered and managed here. 
+* All states are registered and managed here.
 */
 class HamurStateMR : public Singleton<HamurStateMR>
 {
 	public:
 
-        friend Singleton<HamurStateMR>;
+        friend class Singleton<HamurStateMR>;
 
         /**
         * Initialize Hamur State Manager
@@ -56,14 +56,14 @@ class HamurStateMR : public Singleton<HamurStateMR>
 		bool HasState(const string& stateName);
 
         /**
-        * Returns state with the given name. 
+        * Returns state with the given name.
         * @param stateName Name of the state
         * @return State object, NULL if it is not found.
         */
 		HamurState* FindState(const string& stateName);
 
-		/** 
-        * Changes the current state to the given state. 
+		/**
+        * Changes the current state to the given state.
         * @param stateName Name of the state which will be changed to.
         */
 		void ChangeState(const string& stateName);
@@ -114,7 +114,7 @@ class HamurStateMR : public Singleton<HamurStateMR>
 	private:
 		map<string, HamurState*> mStateList; /**< Stores all states according to their names. */
 		HamurState* mCurrentState; /** Current state of the game. */
-		HamurState* mPreviousState; /**< Previous state of the game. */ 
+		HamurState* mPreviousState; /**< Previous state of the game. */
 };
 
 } // namespace hamur

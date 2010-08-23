@@ -16,16 +16,16 @@ using std::string;
 
 namespace hamur
 {
-    
+
 /**
 * Hamur GL Manager.
 * Singleton class that manages graphic system.
-*/ 
+*/
 class HamurGL : public Singleton<HamurGL>
 {
     public:
-        
-        friend Singleton<HamurGL>;
+
+        friend class Singleton<HamurGL>;
 
         /**
         * Initialization of SDL with OpenGL support
@@ -43,8 +43,8 @@ class HamurGL : public Singleton<HamurGL>
 	    bool InitGL();
 
 	    /**
-	    * Display some primitive openGL properties to stdout 
-	    */ 
+	    * Display some primitive openGL properties to stdout
+	    */
 	    void DisplayGLAttributes();
 
         /**
@@ -87,17 +87,17 @@ class HamurGL : public Singleton<HamurGL>
 
         HamurGL();
         ~HamurGL();
-    	
+
     private:
 
-	    int SCREEN_WIDTH;  /**<  Screen width */ 
+	    int SCREEN_WIDTH;  /**<  Screen width */
 	    int SCREEN_HEIGHT; /**<  Screen height */
 	    int SCREEN_BPP;	   /**<  Screen bits per pixel */
 
         /**
         * Sets openGL display attributes, color depth sizes, doublebuffer...
         * This function must be called after SDL_Init() and before SDL_SetVideoMode()
-        */ 
+        */
 	    void SetGLAttributes();
 };
 
