@@ -14,6 +14,7 @@ class HamurObject;
 class HamurVec2;
 class HamurVec3;
 
+// TODO: Make Hamur string competable with + as well and join with Boost str
 class HamurString
 {
     public:
