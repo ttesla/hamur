@@ -16,6 +16,6 @@ HamurColor HamurColor::WHITE(1, 1, 1);
 HamurColor HamurColor::YELLOW(1, 1, 0);
 HamurColor HamurColor::CYAN(0, 1, 1);
 HamurColor HamurColor::MAGENTA(1, 0, 1);
-HamurColor HamurColor::GREY(0.5, 0.5, 0.5);
+HamurColor HamurColor::GREY(0.5f, 0.5f, 0.5f);
 
 } // namespace hamur
