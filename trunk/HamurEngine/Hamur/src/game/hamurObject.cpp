@@ -59,7 +59,11 @@ float HamurObject::GetRotation() const          { return mRotation; }
 bool HamurObject::IsActive() const              { return mVisible; }
 bool HamurObject::IsInteractive() const         { return mInteractive; }
 unsigned HamurObject::GetSpriteID() const       { return mSpriteID; }
-void HamurObject::SetName(const string& name)   { mName = name; }
+float HamurObject::GetWidth() const             { return mWidth;}
+float HamurObject::GetHeight() const            { return mHeight;}
+void HamurObject::SetName(const string& name)   { mName   = name;  }
+void HamurObject::SetWidth(float width)         { mWidth  = width; }
+void HamurObject::SetHeight(float height)       { mHeight = height;}
 
 
 void HamurObject::SetPosition(const HamurVec3& pos)
@@ -89,39 +93,6 @@ void HamurObject::SetSprite(const string& path)
     mSpriteID = HAMURTEXMR->AddTexture(path);
 }
 
-b2Body* HamurObject::GetBody() const
-{
-    return mBody;
-}
 
-b2BodyDef HamurObject::GetBodyDef() const
-{
-    return mBodyDef;
-}
-
-void HamurObject::SetBodyDef(const b2BodyDef& bodyDef)
-{
-    mBodyDef = bodyDef;
-}
-
-b2PolygonShape HamurObject::GetPolygonShape() const
-{
-    return mBox;
-}
-
-void HamurObject::SetPolygonShape(const b2PolygonShape& box)
-{
-    mBox = box;
-}
-
-b2FixtureDef HamurObject::GetFixDef() const
-{
-    return mFixtureDef;
-}
-
-void HamurObject::SetFixDef(const b2FixtureDef& fixDef)
-{
-    mFixtureDef = fixDef;
-}
 
 } // namespace hamur

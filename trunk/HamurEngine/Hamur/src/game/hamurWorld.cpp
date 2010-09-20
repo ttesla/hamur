@@ -151,11 +151,12 @@ int HamurWorld::GetWorldSize() const
     return mObjectCount;
 }
 
-b2World* HamurWorld::Getb2World() const
+b2World* HamurWorld::GetPhysicWorld() const
 {
-    return mWorld;
+    return mPhysicWorld;
 }
 
+/*
 void HamurWorld::RunPhysicSimulation()
 {
     static bool keyPressed1 = false;
@@ -171,7 +172,6 @@ void HamurWorld::RunPhysicSimulation()
     //if(! HAMUREVENT->isKeyPressed(SDLK_DOWN))
         keyPressed1 = false;
 
-    /*
     b2Vec2 position1 = GetObject("Dynamic")->GetBody()->GetPosition();
 
     float32 angle1 = GetObject("Dynamic")->GetBody()->GetAngle();
@@ -201,7 +201,6 @@ void HamurWorld::RunPhysicSimulation()
 
     GetObject("Dynamic2")->SetPosition(position3.x*100, position3.y*100, 0);
     GetObject("Dynamic2")->RotateRadian(angle3);
-    */
     
 
     
@@ -218,12 +217,13 @@ void HamurWorld::RunPhysicSimulation()
         iter->second->RotateRadian(-tempAngle);
     }  
 }
+*/
 
 void HamurWorld::InitializePhysics()
 {
     mGravity.Set(0.0f, 0.40f);
     mDoSleep = true;
-    mWorld = new b2World(mGravity, mDoSleep);
+    mPhysicWorld = new b2World(mGravity, mDoSleep);
     mTimeStep = 1.0f / 60.0f;
     mVelocityIterations = 10;
     mPositionIterations = 10;

@@ -36,8 +36,8 @@ class HamurWorld : public Singleton<HamurWorld>
         HamurObject* GetHamurObject(const string& objectName) const;
         HamurObject* GetHamurObjectByIndex(int index) const;
         int GetWorldSize() const;
-        b2World* Getb2World() const;
-        void RunPhysicSimulation();
+        b2World* GetPhysicWorld() const;
+       // void RunPhysicSimulation();
 
         /**
         * Clear and delete all objects in the World. 
@@ -55,7 +55,7 @@ class HamurWorld : public Singleton<HamurWorld>
         // BOX2D Attributes
         b2Vec2 mGravity;
         bool mDoSleep;
-        b2World* mWorld;
+        b2World* mPhysicWorld;
         float mTimeStep;
         int mVelocityIterations;
         int mPositionIterations;

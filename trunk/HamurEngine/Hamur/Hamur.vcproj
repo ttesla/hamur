@@ -319,6 +319,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\game\hamurPhysics.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\game\hamurPhysics.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\game\hamurState.cpp"
 					>
 				</File>

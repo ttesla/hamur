@@ -8,9 +8,10 @@ GroundObject::GroundObject(const string &name):HamurObject(name)
     mPos.z = 0;
     mWidth = 796;
     mHeight = 98;
-    setPhysics();
+    //setPhysics();
 }
 
+/*
 void GroundObject::setPhysics()
 {
     b2BodyDef groundBodyDef;
@@ -26,7 +27,6 @@ void GroundObject::setPhysics()
     
     
 
-    /*
     b2Vec2 vertices[4];
     vertices[0].Set(0.0f, height / 100.0f);
     vertices[1].Set(width / 100.0f, height / 100.0f);
@@ -38,7 +38,6 @@ void GroundObject::setPhysics()
     b2PolygonShape groundBox;
     groundBox.Set(vertices, 4);
     setShape(groundBox);
-    */
     
 
     b2FixtureDef fixtureDef;
@@ -48,6 +47,7 @@ void GroundObject::setPhysics()
     mBody = HAMURWORLD->Getb2World()->CreateBody(&mBodyDef);
     mBody->CreateFixture(&fixtureDef);
 }
+*/
 
 void GroundObject::Draw()
 {
