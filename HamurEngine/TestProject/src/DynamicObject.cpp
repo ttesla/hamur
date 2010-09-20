@@ -6,9 +6,10 @@ DynamicObject::DynamicObject(const string &name, const HamurVec2& _pos):HamurObj
     mPos.y = _pos.y;
     mWidth = 100;
     mHeight = 5;
-    setPhysics();
+//    setPhysics();
 }
 
+/*
 void DynamicObject::setPhysics()
 {
     b2BodyDef bodyDef;
@@ -28,6 +29,7 @@ void DynamicObject::setPhysics()
 
     mBody->CreateFixture(&fixtureDef);
 }
+*/
 
 void DynamicObject::setColor(float _R, float _G, float _B)
 {

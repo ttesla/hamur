@@ -9,7 +9,7 @@ class GroundObject : public HamurObject
 {
     public:
         GroundObject(const string& name);
-        void setPhysics();
+        //void setPhysics();
         virtual void Draw();
 
     protected:

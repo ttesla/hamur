@@ -1,9 +1,9 @@
-#ifndef HAMUR_OBJECT
-#define HAMUR_OBJECT
+#ifndef HAMUROBJECT_H
+#define HAMUROBJECT_H
 
-#include "Box2D/Box2D.h"
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
+#include "hamurPhysics.h"
 
 #include <string>
 
@@ -16,12 +16,6 @@ namespace hamur
 // Forward declerations
 class HamurTexMR;
 
-enum bodyType
-{
-    StaticBody = 0,
-    KinematicBody,
-    DynamicBody,
-};
 
 /**
 * Hamur Object base class.
@@ -81,6 +75,10 @@ class HamurObject
 
         /** @return Sprite ID of the object */
         unsigned int GetSpriteID() const;
+
+        float GetWidth() const;
+
+        float GetHeight() const;
 	   
         /** 
         * Set name of the object. 
@@ -122,16 +120,17 @@ class HamurObject
 
         void SetSprite(const string& path);
 
-        b2Body* GetBody() const;
-        b2BodyDef GetBodyDef() const;
-        void SetBodyDef(const b2BodyDef& body);
-        b2PolygonShape GetPolygonShape() const;
-        void SetPolygonShape(const b2PolygonShape& box);
-        b2FixtureDef GetFixDef() const;
-        void SetFixDef(const b2FixtureDef& fixDef);
+        /**
+        * Set the width of the hamur object.
+        * @param width Width value of the object
+        */
+        void SetWidth(float width);
 
-        float mWidth;
-        float mHeight;
+        /**
+        * Set the height of the hamur object.
+        * @param height Height value of the object
+        */
+        void SetHeight(float height);
 
     protected:
         
@@ -140,16 +139,14 @@ class HamurObject
         string mName;      /**< Name of the object. */
 	    HamurVec3 mPos;    /**< Position of the object. */
         float mRotation;   /**< Rotation angle of the object */
-	    bool mVisible;      /**< Object is active or not. */
+	    bool mVisible;      /**< Object is visible or not. */
 	    bool mInteractive; /**< Object has interaction or not. */
         unsigned int mSpriteID; /**< Sprite ID of the game object. */
+        float mWidth;   /**< Width of the game object. */
+        float mHeight;  /**< Height of the game object. */
 
-        // Box2D Attributes
-        b2BodyDef mBodyDef;
-        b2Body* mBody;
-        b2PolygonShape mBox;
-        b2FixtureDef mFixtureDef;
-
+        // HamurObject Physic Component
+        HamurPhysics* mPhysicComponent;
      
     private:
         // Inner Attributes of Box2D

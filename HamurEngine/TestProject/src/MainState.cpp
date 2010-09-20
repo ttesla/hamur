@@ -47,7 +47,7 @@ void MainState::Update()
     if(HAMUREVENT->IsKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
 
     //HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
-    HAMURWORLD->RunPhysicSimulation();
+    //HAMURWORLD->RunPhysicSimulation();
    
    // HAMURCONSOLE << "Angle1:" << angle1 << "\n";
 }
