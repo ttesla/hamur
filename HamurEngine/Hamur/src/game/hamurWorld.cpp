@@ -203,7 +203,7 @@ void HamurWorld::RunPhysicSimulation()
     GetObject("Dynamic2")->RotateRadian(angle3);
     
 
-    
+   
     map<string, HamurObject*>::iterator iter;
     b2Vec2 tempVec;
     float tempAngle;

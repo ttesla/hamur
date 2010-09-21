@@ -4,6 +4,7 @@
 #include "../helper/hamurLog.h"
 #include "hamurWorld.h"
 #include "../hamurDefinitions.h"
+#include "../helper/hamurColor.h"
 
 
 namespace hamur

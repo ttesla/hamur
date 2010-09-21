@@ -1,5 +1,6 @@
 #ifndef HAMURCOLOR_H
 #define HAMURCOLOR_H
+#include <string>
 
 namespace hamur
 {
