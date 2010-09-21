@@ -136,16 +136,17 @@ void HamurTexMR::BlitTexture(unsigned int textureID, const HamurVec3& position, 
     // Restore matrix.
     glPushMatrix();
     
-    glTranslatef(openglPos.x + texture->GetScaledWidth()/2, 
-        openglPos.y - texture->GetScaledHeight()/2, openglPos.z);
+    glTranslatef(openglPos.x, openglPos.y, openglPos.z);
+    //glTranslatef(openglPos.x + texture->GetScaledWidth()/2, 
+    //    openglPos.y - texture->GetScaledHeight()/2, openglPos.z);
     glRotatef(rotation, 0, 0, 1.0f); 
-    glTranslatef(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
+    //glTranslatef(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
 
     glBegin(GL_QUADS);
-        glTexCoord2f(0.0f, 0.0f); glVertex3f(0, 0, 0);
-        glTexCoord2f(1.0f, 0.0f); glVertex3f(texture->GetScaledWidth(), 0, 0);
-        glTexCoord2f(1.0f, 1.0f); glVertex3f(texture->GetScaledWidth(), -texture->GetScaledHeight(), 0);
-        glTexCoord2f(0.0f, 1.0f); glVertex3f(0, -texture->GetScaledHeight(), 0); 
+        glTexCoord2f(0.0f, 0.0f); glVertex3f(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
+        glTexCoord2f(1.0f, 0.0f); glVertex3f(texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
+        glTexCoord2f(1.0f, 1.0f); glVertex3f(texture->GetScaledWidth()/2, -texture->GetScaledHeight()/2, 0);
+        glTexCoord2f(0.0f, 1.0f); glVertex3f(-texture->GetScaledWidth()/2, -texture->GetScaledHeight()/2, 0); 
     glEnd();
 
     glPopMatrix();

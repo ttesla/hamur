@@ -26,12 +26,15 @@ void ExampleState::Update()
 {
     if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
     {
+        HAMURENGINE->Stop();
+    }
+    else if(HAMUREVENT->IsKeyPressed(SDLK_SPACE))
+    {
         HAMURSTATEMR->ChangeState("MainState");
+        HAMURCONSOLE << "Changing state master\n";
     }
 
-    static bool keyPressed = false;
-
-   // HAMURCONSOLE << "Yes Sir?" << HAMURWORLD->GetObject("Tahta") << "\n";
+    HAMURWORLD->GetHamurObject("Tank")->RotateDegree(mAngle);
 }
 
 
@@ -45,6 +48,7 @@ void ExampleState::Draw()
 // EXIT
 void ExampleState::Exit() 
 {
+    HAMURWORLD->DeleteObject("Tank");
     HAMURWORLD->DeleteObject("Tahta");
 }
 
