@@ -27,6 +27,8 @@ class ExampleState : public HamurState
         
     private:
 
+        float mAngle;
+
        
 };
 
