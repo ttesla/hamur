@@ -3,7 +3,7 @@
 
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
-#include "hamurPhysics.h"
+//#include "hamurPhysics.h"
 
 #include <string>
 
@@ -146,7 +146,7 @@ class HamurObject
         float mHeight;  /**< Height of the game object. */
 
         // HamurObject Physic Component
-        HamurPhysics* mPhysicComponent;
+        //HamurPhysics* mPhysicComponent;
      
     private:
         // Inner Attributes of Box2D
