@@ -18,7 +18,9 @@ class HamurTex
 	public:
 
 		HamurTex(const string& filePath);
-		HamurTex(const SDL_Surface* newSurface);
+        HamurTex(const string& filePath, Uint8 red, Uint8 green, Uint8 blue);
+		HamurTex(SDL_Surface* newSurface);
+        HamurTex(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue);
 		~HamurTex();
 
 		// SETTERS & GETTERS
@@ -53,9 +55,27 @@ class HamurTex
 		float mCorX; /// X coordinate of the texture
 		float mCorY; /// Y coordinate of the texture
 		float mCorZ; /// Z coordinate of the texture
+        bool mHasColorKey; /// If texture image has color-key or not
+        Uint8 mRedKey;   /// Colorkey for RED
+        Uint8 mGreenKey; /// Colorkey for GREEN
+        Uint8 mBlueKey;  /// Colorkey for BLUE
 
-		bool LoadTexture(); /// Loads texture from image file
-		bool LoadTexture(const SDL_Surface* newSurface); /// Loads texture from SDL surface
+        // SDL color masks according to endianness (byte order) of the machine 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const static Uint32 mRedMask   = 0xff000000;
+        const static Uint32 mGreenMask = 0x00ff0000;
+        const static Uint32 mBlueMask  = 0x0000ff00;
+        const static Uint32 mAlphaMask = 0x000000ff;
+#else
+        const static Uint32 mRedMask   = 0x000000ff;
+        const static Uint32 mGreenMask = 0x0000ff00;
+        const static Uint32 mBlueMask  = 0x00ff0000;
+        const static Uint32 mAlphaMask = 0xff000000;
+#endif
+
+		bool LoadTextureFromFile(); /// Loads texture from image file
+		bool LoadTextureFromSurface(SDL_Surface* newSurface); /// Loads texture from SDL surface
+        void GenerateTexture(const SDL_Surface* surface, int mode);
 };
 
 } // namespace hamur

@@ -20,6 +20,9 @@ int main(int argc, char *argv[])
     if(HAMURENGINE->Init("Hamur II test - 2010", 800, 600) == false)
         return 1;
 
+    // Set debug mode for logging
+    HAMURLOG->SetDebugMode(true);
+
     HAMURENGINE->DisableMouseCursor();
 
     HAMURSTATEMR->RegisterState(new ExampleState());

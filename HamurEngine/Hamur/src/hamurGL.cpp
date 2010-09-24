@@ -81,13 +81,9 @@ bool HamurGL::InitGL()
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Really Nice Perspective Calculations
 	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); // Set viewport
 
-	// Alpha blending - Not working properly, use the other
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
-	//glEnable(GL_BLEND); 
-
 	// Alpha blending
-	glAlphaFunc(GL_GREATER, 0.9f); 
-	glEnable(GL_ALPHA_TEST);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
 
 	// Set projection
 	glMatrixMode(GL_PROJECTION);
