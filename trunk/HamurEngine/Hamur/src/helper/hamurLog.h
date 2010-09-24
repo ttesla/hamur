@@ -22,23 +22,23 @@ class HamurLog : public Singleton<HamurLog>
 		 HamurLog();
 		~HamurLog();
         
-        void WriteLog(const string &input, bool writeMode = DEBUG_ONLY); 
-        void WriteLog(int input,           bool writeMode = DEBUG_ONLY);
-        void WriteLog(unsigned int input,  bool writeMode = DEBUG_ONLY); 
-        void WriteLog(float input,         bool writeMode = DEBUG_ONLY);
-        void WriteLog(double input,        bool writeMode = DEBUG_ONLY);
-        void WriteLog(HamurObject &input,  bool writeMode = DEBUG_ONLY);
-        void WriteLog(HamurObject *input,  bool writeMode = DEBUG_ONLY);
-        void WriteLog(HamurString &input,  bool writeMode = DEBUG_ONLY);
+        void WriteLog(const string &input, bool writeMode = DEBUG); 
+        void WriteLog(int input,           bool writeMode = DEBUG);
+        void WriteLog(unsigned int input,  bool writeMode = DEBUG); 
+        void WriteLog(float input,         bool writeMode = DEBUG);
+        void WriteLog(double input,        bool writeMode = DEBUG);
+        void WriteLog(HamurObject &input,  bool writeMode = DEBUG);
+        void WriteLog(HamurObject *input,  bool writeMode = DEBUG);
+        void WriteLog(HamurString &input,  bool writeMode = DEBUG);
 
-        void WriteLogln(const string &input, bool writeMode = DEBUG_ONLY);
-        void WriteLogln(int input,           bool writeMode = DEBUG_ONLY);
-        void WriteLogln(unsigned int input,  bool writeMode = DEBUG_ONLY);
-        void WriteLogln(float input,         bool writeMode = DEBUG_ONLY);
-        void WriteLogln(double input,        bool writeMode = DEBUG_ONLY);
-        void WriteLogln(HamurObject &input,  bool writeMode = DEBUG_ONLY);
-        void WriteLogln(HamurObject *input,  bool writeMode = DEBUG_ONLY);
-        void WriteLogln(HamurString &input,  bool writeMode = DEBUG_ONLY);
+        void WriteLogln(const string &input, bool writeMode = DEBUG);
+        void WriteLogln(int input,           bool writeMode = DEBUG);
+        void WriteLogln(unsigned int input,  bool writeMode = DEBUG);
+        void WriteLogln(float input,         bool writeMode = DEBUG);
+        void WriteLogln(double input,        bool writeMode = DEBUG);
+        void WriteLogln(HamurObject &input,  bool writeMode = DEBUG);
+        void WriteLogln(HamurObject *input,  bool writeMode = DEBUG);
+        void WriteLogln(HamurString &input,  bool writeMode = DEBUG);
 
 		// Write initialization messages
 		void WriteInitLog(string log, bool writeMode = ALWAYS);
@@ -64,7 +64,7 @@ class HamurLog : public Singleton<HamurLog>
         const static bool ALWAYS = true;
 
         /**< Flag for function to write in Debug mode only. */
-        const static bool DEBUG_ONLY = false;
+        const static bool DEBUG = false;
 
 	protected:
 		

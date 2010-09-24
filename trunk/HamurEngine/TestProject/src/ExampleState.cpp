@@ -31,7 +31,8 @@ void ExampleState::Update()
     else if(HAMUREVENT->IsKeyPressed(SDLK_SPACE))
     {
         HAMURSTATEMR->ChangeState("MainState");
-        HAMURCONSOLE << "Changing state master\n";
+        return;
+        HAMURCONSOLE << "Changing state!";
     }
 
     HAMURWORLD->GetHamurObject("Tank")->RotateDegree(mAngle);

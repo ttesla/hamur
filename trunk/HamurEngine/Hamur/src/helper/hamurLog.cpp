@@ -191,9 +191,9 @@ void HamurLog::ClearLogFile()
 
 
 // Turn on-off debug mode
-void HamurLog::SetDebugMode(bool _mode)
+void HamurLog::SetDebugMode(bool mode)
 {
-    mDebugMode = _mode;
+    mDebugMode = mode;
 }
 
 } // namespace hamur

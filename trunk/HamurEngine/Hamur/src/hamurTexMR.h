@@ -37,7 +37,9 @@ class HamurTexMR : public Singleton<HamurTexMR>
 	    HamurTex* GetTexture(unsigned int textureID) const; //Get texture
 	    bool DeleteTexture(unsigned int textureID);   //Delete texture
 	    unsigned int AddTexture(const string& filePath); //Add texture from image file
-	    unsigned int AddTexture(const SDL_Surface* newSurface, const string &strName); //Add texture from SDL surface
+        unsigned int AddTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue); //Add texture from image file with colorkey
+	    unsigned int AddTexture(SDL_Surface* newSurface, const string &strName); //Add texture from SDL surface
+        unsigned int AddTexture(SDL_Surface* newSurface, const string &strName, Uint8 red, Uint8 green, Uint8 blue); //Add texture from SDL surface with colorkey
 	    void BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation = 0); // Blits image onto screen
         void BlitTexture(unsigned int textureID, float x, float y, float z, float rotation = 0); // Blits image onto screen
 

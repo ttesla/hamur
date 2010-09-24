@@ -57,6 +57,7 @@ bool HamurWorld::DeleteObject(const string& objectName)
         return true;
     }
 
+    HAMURLOG->WriteLogln("Error!: Can't delete object: " + objectName, HamurLog::ALWAYS);
     return false;
 }
 
