@@ -89,9 +89,16 @@ void HamurObject::SetPosition(float x, float y, float z)
 void HamurObject::SetVisible(bool visible)  { mVisible = visible; }
 void HamurObject::SetActive(bool active)    { mActive = active; }
 
+
 void HamurObject::SetSprite(const string& path)
 {
     mSpriteID = HAMURTEXMR->AddTexture(path);
+}
+
+
+void HamurObject::SetSprite(const string& path, int redKey, int greenKey, int blueKey)
+{
+    mSpriteID = HAMURTEXMR->AddTexture(path, redKey, greenKey, blueKey);
 }
 
 } // namespace hamur

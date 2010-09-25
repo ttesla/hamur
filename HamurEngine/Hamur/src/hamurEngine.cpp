@@ -68,11 +68,11 @@ void HamurEngine::Run()
         glLoadIdentity();
         glTranslatef(0, 0, -1.0f);
 
-        // Draw Hamur World
-        HAMURWORLD->DrawAllObjects();
-        
         // Update Hamur World
         HAMURWORLD->UpdateAllObjects();
+
+        // Draw Hamur World
+        HAMURWORLD->DrawAllObjects();
 
         // Run state machine
         HAMURSTATEMR->GetCurrentState()->Update();
