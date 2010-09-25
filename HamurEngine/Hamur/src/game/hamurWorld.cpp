@@ -83,8 +83,22 @@ void HamurWorld::DrawAllObjects()
     {
         if(iter->second)
         {
-            if(iter->second->mVisible)
+            if(iter->second->IsVisible())
                 iter->second->Draw();
+        }
+    }
+}
+
+void HamurWorld::UpdateAllObjects()
+{
+    map<string, HamurObject*>::iterator iter;
+
+    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
+    {
+        if(iter->second)
+        {
+            if(iter->second->IsActive())
+                iter->second->Update();
         }
     }
 }

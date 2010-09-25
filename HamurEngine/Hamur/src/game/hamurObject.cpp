@@ -11,7 +11,7 @@ namespace hamur
 {
     
 HamurObject::HamurObject(const string& name) 
-    :mName(name), mVisible(true), mInteractive(true)
+    :mName(name), mVisible(true), mActive(true)
 {
     mPos.x = 0;
     mPos.y = 0;
@@ -22,7 +22,7 @@ HamurObject::HamurObject(const string& name)
 }
 
 HamurObject::HamurObject(const string& name, const string& spritePath)
-    :mName(name), mVisible(true), mInteractive(true)
+    :mName(name), mVisible(true), mActive(true)
 {
     mPos.x = 0;
     mPos.y = 0;
@@ -57,8 +57,8 @@ void HamurObject::RotateRadian(float rotationRadian)
 string HamurObject::GetName() const             { return mName; }
 HamurVec3 HamurObject::GetPosition() const      { return mPos; }
 float HamurObject::GetRotation() const          { return mRotation; }
-bool HamurObject::IsActive() const              { return mVisible; }
-bool HamurObject::IsInteractive() const         { return mInteractive; }
+bool HamurObject::IsVisible() const             { return mVisible; }
+bool HamurObject::IsActive() const              { return mActive; }
 unsigned HamurObject::GetSpriteID() const       { return mSpriteID; }
 float HamurObject::GetWidth() const             { return mWidth;}
 float HamurObject::GetHeight() const            { return mHeight;}
@@ -86,14 +86,12 @@ void HamurObject::SetPosition(float x, float y, float z)
     mPos.z = z;
 }
 
-void HamurObject::SetVisible(bool visible)          { mVisible = visible; }
-void HamurObject::SetInteraction(bool interactive)  { mInteractive = interactive; }
+void HamurObject::SetVisible(bool visible)  { mVisible = visible; }
+void HamurObject::SetActive(bool active)    { mActive = active; }
 
 void HamurObject::SetSprite(const string& path)
 {
     mSpriteID = HAMURTEXMR->AddTexture(path);
 }
-
-
 
 } // namespace hamur
