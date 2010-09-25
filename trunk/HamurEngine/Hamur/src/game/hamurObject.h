@@ -31,6 +31,7 @@ class HamurObject
 
         HamurObject(const string& name, const string& spritePath);
 
+
         /**
         * update function of the object. 
         * All update logic should be written here.
@@ -118,7 +119,20 @@ class HamurObject
         */
 	    void SetActive(bool active);
 
+        /**
+        * Set object's sprite with the given image path
+        * @param path Path of the texture file
+        */
         void SetSprite(const string& path);
+
+        /**
+        * Set object's sprite with the given image and colorkey
+        * @param path Path of the texture file
+        * @param redKey
+        * @param greenKey
+        * @param blueKey
+        */
+        void SetSprite(const string& path, int redKey, int greenKey, int blueKey);
 
         /**
         * Set the width of the hamur object.

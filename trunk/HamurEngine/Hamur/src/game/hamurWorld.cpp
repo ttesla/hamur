@@ -89,6 +89,7 @@ void HamurWorld::DrawAllObjects()
     }
 }
 
+
 void HamurWorld::UpdateAllObjects()
 {
     map<string, HamurObject*>::iterator iter;
