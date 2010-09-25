@@ -30,12 +30,12 @@ void ExampleState::Update()
     }
     else if(HAMUREVENT->IsKeyPressed(SDLK_SPACE))
     {
-        HAMURSTATEMR->ChangeState("MainState");
-        return;
-        HAMURCONSOLE << "Changing state!";
+        HAMURCONSOLE << "Space'e bastin!!" << HamurConsole::Endl();
+        HAMURCONSOLE << "Time:" << HAMURTIMER->GetTimeInSeconds() << HamurConsole::Endl();
     }
 
     HAMURWORLD->GetHamurObject("Tank")->RotateDegree(mAngle);
+    HAMURCONSOLE << HAMURTIMER->DeltaTime() << "\n";
 }
 
 

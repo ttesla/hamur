@@ -4,6 +4,7 @@
 #include "hamurTexMR.h"
 #include "hamurGP.h"
 #include "hamurFont.h"
+#include "hamurTimer.h"
 
 #include "helper/hamurConsole.h"
 #include "helper/hamurLog.h"
@@ -45,6 +46,10 @@ bool HamurEngine::Init(const string& applicationName, int screenWidth, int scree
     if(!HAMURWORLD->Init())     return false; // Object manager - World
     if(!HAMURSTATEMR->Init())   return false; // State Manager
     if(!HAMUREVENT->Init())     return false; // Event handler
+    if(!HAMURTIMER->Init())     return false; // Timer handler
+
+    // Reset frame count
+    mFrameCount = 0;
 
     HAMURLOG->WriteInitLog("HamurEngine");
     HAMURLOG->WriteLogln("", HamurLog::ALWAYS);
@@ -60,6 +65,8 @@ void HamurEngine::Run()
 
     while(mRunEngine)
     {
+        float frameStartTime = HAMURTIMER->GetTimeInSeconds();
+
         // Handle all events
         HAMUREVENT->HandleEvents();
 
@@ -68,12 +75,10 @@ void HamurEngine::Run()
         glLoadIdentity();
         glTranslatef(0, 0, -1.0f);
 
-        // Update Hamur World
+        // Update and Draw Hamur World
         HAMURWORLD->UpdateAllObjects();
-
-        // Draw Hamur World
         HAMURWORLD->DrawAllObjects();
-
+        
         // Run state machine
         HAMURSTATEMR->GetCurrentState()->Update();
         HAMURSTATEMR->GetCurrentState()->Draw();
@@ -83,7 +88,11 @@ void HamurEngine::Run()
             mRunEngine = false;
 
         //Update screen
-        SDL_GL_SwapBuffers();   
+        SDL_GL_SwapBuffers();
+
+        // Increase frame count & Set delta time
+        mFrameCount++;
+        HAMURTIMER->SetDeltaTime(HAMURTIMER->GetTimeInSeconds() - frameStartTime);
     }
 }
 
@@ -125,6 +134,13 @@ void HamurEngine::EnableMouseCursor()
 void HamurEngine::DisableMouseCursor()
 {
     SDL_ShowCursor(SDL_DISABLE);
+}
+
+
+// Get Engine Frame count
+int HamurEngine::GetFrameCount()
+{
+    return mFrameCount;
 }
 
 } // namespace hamur

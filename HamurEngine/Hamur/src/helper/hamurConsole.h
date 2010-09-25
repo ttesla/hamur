@@ -26,7 +26,7 @@ class HamurConsole
 	public:
 
         // This can't use Singleton template because
-        // some operator overloadings makes some conflicts...
+        // some operator overloading makes some conflicts...
         static HamurConsole& GetInstance()
         {
             static HamurConsole hamurConsole;
@@ -45,11 +45,13 @@ class HamurConsole
         HamurConsole& operator<<(const HamurVec2 &input);
         HamurConsole& operator<<(const HamurVec3 &input);
 
+        static string Endl();
+
 	private:
         HamurConsole() {};
 };
 
-// Function Definitions //
+// Other Function Definitions //
 
 inline HamurConsole& HamurConsole::operator<<(int input)
 {
@@ -115,6 +117,13 @@ inline HamurConsole& HamurConsole::operator<<(const HamurVec3 &input)
 {
     cout << input;
     return *this;
+}
+
+inline string HamurConsole::Endl()
+{
+    string tempStr = "";
+    cout << endl;
+    return tempStr;
 }
 
 } // namespace hamur

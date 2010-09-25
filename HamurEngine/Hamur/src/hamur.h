@@ -9,6 +9,7 @@
 #include "hamurTexMR.h"
 #include "hamurGP.h"
 #include "hamurFont.h"
+#include "hamurTimer.h"
 #include "hamurEngine.h"
 
 #include "helper/hamurConsole.h"
