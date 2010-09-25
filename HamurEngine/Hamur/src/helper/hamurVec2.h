@@ -36,11 +36,14 @@ public:
 	/** Returns the squared length of the vector. */
 	float GetSquaredLength () const { return (x*x + y*y); }
 
-	/** Returns the vector with the signs of all coordinates flipped. */
-	const HamurVec2 operator- () const{ return HamurVec2(-x, -y); }
+    /** Sets the vector elements to zero*/
+    void SetZero() { x = 0.0f; y = 0.0f;}
 
 	/** Flips the signs of all coordinates. */
 	void Flip() { x=-x; y=-y; }
+
+    /** Returns the vector with the signs of all coordinates flipped. */
+    const HamurVec2 operator- () const{ return HamurVec2(-x, -y); }
 
 	/** Subtracts \a vec from the vector. */
 	const HamurVec2 operator-(const HamurVec2 &vec) const { return HamurVec2 (x-vec.x, y-vec.y); }
