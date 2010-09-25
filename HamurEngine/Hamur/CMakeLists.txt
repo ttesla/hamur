@@ -69,6 +69,8 @@ src/hamurTex.cpp
 src/hamurTex.h
 src/hamurTexMR.cpp
 src/hamurTexMR.h
+src/hamurTimer.h
+src/hamurTimer.cpp
 )
 
 # Hamur ALL - combine all sources
