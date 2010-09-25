@@ -49,6 +49,9 @@ public:
     /**< Hides mouse cursor */
     void DisableMouseCursor();
 
+    /**< Get Engine frame count. Every successfull engine loop increases count by 1 */ 
+    int GetFrameCount();
+
 protected:
 
     /**< Constructor */
@@ -61,6 +64,9 @@ private:
 
     /**< Shows status of engine, running or not */
     bool mRunEngine;
+
+    /**< Engine frame count, every successfull engine loop increases count by 1 */
+    int mFrameCount;
 
 	};
 } // namespace hamur

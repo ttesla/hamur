@@ -12,6 +12,7 @@
 #define HAMURCONSOLE HamurConsole::GetInstance()
 #define HAMURWORLD HamurWorld::GetInstance()
 #define HAMURSTATEMR HamurStateMR::GetInstance()
+#define HAMURTIMER HamurTimer::GetInstance()
 #define HAMURENGINE HamurEngine::GetInstance()
 
 #endif // HAMURHEADER_H

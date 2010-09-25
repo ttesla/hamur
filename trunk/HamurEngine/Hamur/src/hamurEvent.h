@@ -20,7 +20,7 @@ class HamurEvent : public Singleton<HamurEvent>
 
         /**
         * Initialize Hamur Event
-        * @return True if initialization is successfull, else return False
+        * @return True if initialization is successful, else return False
         */
         bool Init();
 

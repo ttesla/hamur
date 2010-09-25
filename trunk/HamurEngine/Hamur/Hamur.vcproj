@@ -271,6 +271,14 @@
 				RelativePath=".\src\hamurTexMR.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\hamurTimer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\hamurTimer.h"
+				>
+			</File>
 			<Filter
 				Name="Audio"
 				>
