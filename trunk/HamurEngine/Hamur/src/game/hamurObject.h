@@ -68,10 +68,10 @@ class HamurObject
         float GetRotation() const;
         
         /** @return If the object active or not */
-	    bool IsActive() const;
+	    bool IsVisible() const;
 
         /** @return If the object has interaction or not */
-	    bool IsInteractive() const;
+	    bool IsActive() const;
 
         /** @return Sprite ID of the object */
         unsigned int GetSpriteID() const;
@@ -113,10 +113,10 @@ class HamurObject
 	    void SetVisible(bool visible);
 
         /**
-        * Set if the object has interaction or not.
-        * @param interactive True or False
+        * Set if the object is active or not.
+        * @param active True or False
         */
-	    void SetInteraction(bool interactive);
+	    void SetActive(bool active);
 
         void SetSprite(const string& path);
 
@@ -140,7 +140,7 @@ class HamurObject
 	    HamurVec3 mPos;    /**< Position of the object. */
         float mRotation;   /**< Rotation angle of the object */
 	    bool mVisible;      /**< Object is visible or not. */
-	    bool mInteractive; /**< Object has interaction or not. */
+	    bool mActive;       /**< Object is active or not. */
         unsigned int mSpriteID; /**< Sprite ID of the game object. */
         float mWidth;   /**< Width of the game object. */
         float mHeight;  /**< Height of the game object. */
@@ -155,8 +155,7 @@ class HamurObject
 /** Writes the Object to the stream. (pointer version) */
 inline std::ostream &operator<<(std::ostream& os, HamurObject* object)
 {
-    os << object->GetName() << ", " << object->GetPosition() << " Active:" << object->IsActive() << " Inter.:" 
-       << object->IsInteractive() << " SpriteID:" << object->GetSpriteID();
+    os << object->GetName() << ", " << object->GetPosition() << " Active:" << object->IsActive() << " SpriteID:" << object->GetSpriteID();
     
     return os;
 }
@@ -164,8 +163,8 @@ inline std::ostream &operator<<(std::ostream& os, HamurObject* object)
 /** Writes the Object to the stream. (reference version) */
 inline std::ostream &operator<<(std::ostream& os, HamurObject& object)
 {
-    os << object.GetName() << ", " << object.GetPosition() << " Active:" << object.IsActive() << " Inter.:" 
-        << object.IsInteractive() << " SpriteID:" << object.GetSpriteID();
+    os << object.GetName() << ", " << object.GetPosition() << " Active:" << object.IsActive() 
+        << " SpriteID:" << object.GetSpriteID();
 
     return os;
 }

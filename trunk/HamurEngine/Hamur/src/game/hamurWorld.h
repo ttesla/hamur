@@ -32,6 +32,7 @@ class HamurWorld : public Singleton<HamurWorld>
         bool DeleteObject(const string& objectName);
         bool HasObject(const string& objectName) const;
         void DrawAllObjects();
+        void UpdateAllObjects();
 
         HamurObject* GetHamurObject(const string& objectName) const;
         HamurObject* GetHamurObjectByIndex(int index) const;

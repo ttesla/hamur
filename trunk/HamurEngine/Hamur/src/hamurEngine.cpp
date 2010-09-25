@@ -70,6 +70,9 @@ void HamurEngine::Run()
 
         // Draw Hamur World
         HAMURWORLD->DrawAllObjects();
+        
+        // Update Hamur World
+        HAMURWORLD->UpdateAllObjects();
 
         // Run state machine
         HAMURSTATEMR->GetCurrentState()->Update();
