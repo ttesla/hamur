@@ -1,6 +1,7 @@
 #include "hamurEvent.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
+#include "helper/hamurConsole.h"
 
 
 namespace hamur
@@ -24,26 +25,52 @@ HamurEvent::~HamurEvent()
 bool HamurEvent::Init()
 {
     mQuit = false;
+    mKeyPressed = -1;
     HAMURLOG->WriteInitLog("HamurEvent");
     return true;
 }
 
 
-// Check keystate to see given key is pressed or not
-bool HamurEvent::IsKeyPressed(int keyName) const
+// Check keyState to see given key is down or not
+bool HamurEvent::IsKeyDown(Keyboard keyState) const
 {
-	if(SDL_GetKeyState(NULL)[keyName])
-		return true; // given key is pressed
+	if(SDL_GetKeyState(NULL)[keyState])
+		return true; // given key is down
 	
 	else 
-		return false; // given key is not pressed
+		return false; // given key is not down
+}
+
+// Check keyState to see given key is pressed or not
+bool HamurEvent::IsKeyPressed(Keyboard keyState) 
+{
+    if(mKeyPressed == keyState)
+    {
+        mKeyPressed = -1;
+        return true; // given key is pressed
+    }
+
+    else 
+        return false; // given key is not pressed
+}
+
+bool HamurEvent::IsMousePressed(Mouse mouseState)
+{
+    if(mMousePressed == mouseState)
+    {
+        mMousePressed = -1;
+        return true; // given button is pressed
+    }
+
+    else 
+        return false; // given button is not pressed
 }
 
 
 // Check given mouse button pressed or not. 
-bool HamurEvent::IsMousePressed(int button) const
+bool HamurEvent::IsMouseDown(Mouse mouseState) const
 {
-	if(SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(button))
+	if(SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(mouseState))
 		return true;
 	
 	else
@@ -88,6 +115,16 @@ void HamurEvent::HandleEvents()
 			mMouseX = mEvents.motion.x;
 			mMouseY = mEvents.motion.y;
 		}
+
+        else if(mEvents.type == SDL_KEYDOWN)
+        {
+            mKeyPressed = mEvents.key.keysym.sym;
+        }
+
+        else if(mEvents.type == SDL_MOUSEBUTTONDOWN)
+        {
+            mMousePressed = mEvents.button.button;
+        }
 	}
 }
 

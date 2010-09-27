@@ -24,11 +24,11 @@ void ExampleState::Enter()
 // UPDATE
 void ExampleState::Update() 
 {
-    if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
+    if(HAMUREVENT->IsKeyDown(Keyboard::Escape)) 
     {
         HAMURENGINE->Stop();
     }
-    else if(HAMUREVENT->IsKeyPressed(SDLK_SPACE))
+    else if(HAMUREVENT->IsKeyPressed(Keyboard::Escape))
     {
         HAMURCONSOLE << "Space'e bastin!!" << HamurConsole::Endl();
         HAMURCONSOLE << "Time:" << HAMURTIMER->GetTimeInSeconds() << HamurConsole::Endl();

@@ -30,26 +30,17 @@ void MainState::Enter()
 // UPDATE
 void MainState::Update() 
 {
-    if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
+    if(HAMUREVENT->IsKeyPressed(Keyboard::Escape)) 
         HAMURENGINE->Stop();
 
-    static bool keyPressed = false;
+    if(HAMUREVENT->IsMouseDown(Mouse::MiddleButton)) 
+        HAMURCONSOLE << "mouse a basili tuttum \n";
 
-    if(HAMUREVENT->IsKeyPressed(SDLK_UP) && !keyPressed)
-    {
-        spawnObjects();
-        keyPressed = true;
-    }
+    if(HAMUREVENT->IsMousePressed(Mouse::LeftButton))
+        HAMURCONSOLE << "mouse a bastim \n";
 
-    if(! HAMUREVENT->IsKeyPressed(SDLK_UP))
-        keyPressed = false;
-
-    if(HAMUREVENT->IsKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
-
-    //HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
-    //HAMURWORLD->RunPhysicSimulation();
-   
-   // HAMURCONSOLE << "Angle1:" << angle1 << "\n";
+    if(HAMUREVENT->IsKeyPressed(Keyboard::KeyW))
+        HAMURCONSOLE << "W a bastim";
 }
 
 

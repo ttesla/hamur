@@ -51,17 +51,5 @@ void GroundObject::setPhysics()
 
 void GroundObject::Draw()
 {
-
-    /*
-    HAMURCONSOLE << "Vertice1: " << mBox.GetVertex(0).x << "," << mBox.GetVertex(0).y << "\n"
-        << "Vertice2: " << mBox.GetVertex(1).x << "," << mBox.GetVertex(1).y << "\n"
-        << "Vertice3: " << mBox.GetVertex(2).x << "," << mBox.GetVertex(2).y << "\n"
-        << "Vertice4: " << mBox.GetVertex(3).x << "," << mBox.GetVertex(3).y << "\n\n\n";
-
-    HAMURCONSOLE << "POS: " << pos << "\n";
-    */
-
-    //HamurVec3 temp(body->GetPosition().x, body->GetPosition().y, 0.0f);
-    //HAMURCONSOLE << "BODY POS: " << temp << "\n";
     HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
 }

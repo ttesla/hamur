@@ -31,14 +31,6 @@ void DynamicObject::setPhysics()
 }
 */
 
-void DynamicObject::setColor(float _R, float _G, float _B)
-{
-    color.R = _R;
-    color.G = _G;
-    color.B = _B;
-}
-
-
 void DynamicObject::Draw()
 {
     HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor::GREEN, mRotation);
