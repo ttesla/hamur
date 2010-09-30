@@ -3,6 +3,7 @@
 
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
+#include "../helper/hamurColor.h"
 //#include "hamurPhysics.h"
 
 #include <string>
@@ -31,18 +32,22 @@ class HamurObject
 
         HamurObject(const string& name, const string& spritePath);
 
+        HamurObject(const string& name, const string& spritePath, const HamurColorRGB& colorkey);
+
 
         /**
         * update function of the object. 
         * All update logic should be written here.
+        * @param deltaTime Delta time is passed as parameter by the engine
         */
-        virtual void Update() {};
+        virtual void Update(float deltaTime) {};
 
         /**
         * draw function of the object. 
         * All drawings should be written here.
+        * @param deltaTime Delta time is passed as parameter by the engine
         */
-        virtual void Draw();
+        virtual void Draw(float deltaTime);
 
         /**
         * Set rotation angle of the object
@@ -124,6 +129,13 @@ class HamurObject
         * @param path Path of the texture file
         */
         void SetSprite(const string& path);
+
+        /**
+        * Set object's sprite with the given image and colorkey
+        * @param path Path of the texture file
+        * @param colorkey Colorkey of the image, colorkeyed pixels will be fully transparent
+        */
+        void SetSprite(const string& path, const HamurColorRGB& colorkey);
 
         /**
         * Set object's sprite with the given image and colorkey

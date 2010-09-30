@@ -2,6 +2,7 @@
 #define HAMURCOLOR_H
 #include <string>
 
+
 namespace hamur
 {
 
@@ -27,6 +28,31 @@ class HamurColor
         float R;
         float G;
         float B;
+};
+
+class HamurColorRGB
+{
+public:
+
+    HamurColorRGB() {};
+
+    // Red, Green, Blue color values.
+    HamurColorRGB(int R, int G, int B);
+
+    static HamurColorRGB RED;
+    static HamurColorRGB GREEN;
+    static HamurColorRGB BLUE;
+    static HamurColorRGB BLACK;
+    static HamurColorRGB WHITE;
+    static HamurColorRGB YELLOW;
+    static HamurColorRGB CYAN;
+    static HamurColorRGB MAGENTA;
+    static HamurColorRGB GREY;
+    static HamurColorRGB COLORKEY; /**< Default colorkey of Hamur Engine (255, 0, 255) */
+
+    int R;
+    int G;
+    int B;
 };
 
 } // namespace hamur

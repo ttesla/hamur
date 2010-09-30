@@ -16,31 +16,30 @@ ExampleState::~ExampleState()
 // ENTER
 void ExampleState::Enter() 
 {
-    HAMURWORLD->AddObject(new HamurObject("Tank", "data/Tank.png"));
-    HAMURWORLD->GetHamurObject("Tank")->SetPosition(0, 0);
+    HAMURWORLD->AddObject(new HamurObject("Tank", "data/Tank.png", HamurColorRGB::COLORKEY));
+    HAMURWORLD->GetHamurObject("Tank")->SetPosition(100, 100);
+    mAngle = 0;
+
 }
 
 
 // UPDATE
-void ExampleState::Update() 
+void ExampleState::Update(float deltaTime) 
 {
-    if(HAMUREVENT->IsKeyDown(Keyboard::Escape)) 
+    if(HAMUREVENT->IsKeyDown(Keys::Escape)) 
     {
         HAMURENGINE->Stop();
     }
-    else if(HAMUREVENT->IsKeyPressed(Keyboard::Escape))
-    {
-        HAMURCONSOLE << "Space'e bastin!!" << HamurConsole::Endl();
-        HAMURCONSOLE << "Time:" << HAMURTIMER->GetTimeInSeconds() << HamurConsole::Endl();
-    }
-
+    
+    mAngle += 100*deltaTime;
     HAMURWORLD->GetHamurObject("Tank")->RotateDegree(mAngle);
+    
     HAMURCONSOLE << HAMURTIMER->DeltaTime() << "\n";
 }
 
 
 // DRAW
-void ExampleState::Draw() 
+void ExampleState::Draw(float deltaTime) 
 {
  
 }
@@ -50,7 +49,6 @@ void ExampleState::Draw()
 void ExampleState::Exit() 
 {
     HAMURWORLD->DeleteObject("Tank");
-    HAMURWORLD->DeleteObject("Tahta");
 }
 
 

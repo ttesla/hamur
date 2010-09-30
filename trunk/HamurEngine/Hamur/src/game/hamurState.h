@@ -36,18 +36,20 @@ class HamurState
         /**
         * Pure virtual update function of the state. 
         * All update logic should be written here, 
-        * and its called by the State Manager. 
+        * and its called by the State Manager.
+        * @param deltaTime Delta time is passed as parameter by the engine
         * @see HamurStateManager
         */
-        virtual void Update() = 0;
+        virtual void Update(float deltaTime) = 0;
 
         /**
         * Pure virtual draw function of the state. 
         * All drawings should be written here.
         * and its called by the State Manager
+        * @param deltaTime Delta time is passed as parameter by the engine
         * @see HamurStateManager
         */
-        virtual void Draw() = 0;
+        virtual void Draw(float deltaTime) = 0;
 
         /**
         * Pure virtual Exit function of the state. 

@@ -75,22 +75,7 @@ bool HamurWorld::HasObject(const string& name) const
 }
 
 
-void HamurWorld::DrawAllObjects()
-{
-    map<string, HamurObject*>::iterator iter;
-
-    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
-    {
-        if(iter->second)
-        {
-            if(iter->second->IsVisible())
-                iter->second->Draw();
-        }
-    }
-}
-
-
-void HamurWorld::UpdateAllObjects()
+void HamurWorld::UpdateAllObjects(float deltaTime)
 {
     map<string, HamurObject*>::iterator iter;
 
@@ -99,11 +84,25 @@ void HamurWorld::UpdateAllObjects()
         if(iter->second)
         {
             if(iter->second->IsActive())
-                iter->second->Update();
+                iter->second->Update(deltaTime);
         }
     }
 }
 
+
+void HamurWorld::DrawAllObjects(float deltaTime)
+{
+    map<string, HamurObject*>::iterator iter;
+
+    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
+    {
+        if(iter->second)
+        {
+            if(iter->second->IsVisible())
+                iter->second->Draw(deltaTime);
+        }
+    }
+}
 
 
 HamurObject* HamurWorld::GetHamurObject(const string& objectName) const

@@ -18,9 +18,11 @@ public:
 	float y;
 	float z;
 
-	HamurVec3() {}
-	HamurVec3(float xc, float yc, float zc) : x(xc), y(yc), z(zc) {}
-    ~HamurVec3() {}
+	HamurVec3() : x(0), y(0), z(0) { }
+
+	HamurVec3(float xc, float yc, float zc) : x(xc), y(yc), z(zc)  { }
+
+    ~HamurVec3() { }
 
 	/** Normalizes the vector to length 1. */
 	void Normalize ()

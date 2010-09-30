@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     HAMURSTATEMR->RegisterState(new ExampleState());
     HAMURSTATEMR->RegisterState(new MainState());
-    HAMURSTATEMR->ChangeState("MainState");
+    HAMURSTATEMR->ChangeState("ExampleState");
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 

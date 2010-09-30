@@ -19,9 +19,11 @@ public:
 	float x;
 	float y;
 
-	HamurVec2() {}
-	HamurVec2(float xc, float yc) : x(xc), y(yc){}
-    ~HamurVec2() {}
+	HamurVec2() : x(0), y(0)  { }
+
+	HamurVec2(float xc, float yc) : x(xc), y(yc) { }
+    
+    ~HamurVec2() { }
 
 	/** Normalizes the vector to length 1. */
 	void Normalize ()
@@ -58,7 +60,7 @@ public:
 	const HamurVec2 operator/(float fact) const { float xfact = 1.0f/fact; return HamurVec2 (x*xfact, y*xfact); }
 
 	/** Scales the vector by \a fact. */
-	HamurVec2 &operator*=(float fact){ x*=fact; y*=fact; return *this; }
+	HamurVec2& operator*=(float fact){ x*=fact; y*=fact; return *this; }
 
 	/** Returns the dot product of \a v1 and \a v2.*/
 	inline float DotProduct(const HamurVec2 &v1, const HamurVec2 &v2)
