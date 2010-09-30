@@ -23,29 +23,29 @@ void MainState::Enter()
 {
     HamurVec2 pos2(480, 150);
 
-    HAMURWORLD->AddObject(new GroundObject("Ground"));
+   // HAMURWORLD->AddObject(new GroundObject("Ground"));
 }
 
 
 // UPDATE
-void MainState::Update() 
+void MainState::Update(float deltaTime) 
 {
-    if(HAMUREVENT->IsKeyPressed(Keyboard::Escape)) 
+    if(HAMUREVENT->IsKeyPressed(Keys::Escape)) 
         HAMURENGINE->Stop();
 
-    if(HAMUREVENT->IsMouseDown(Mouse::MiddleButton)) 
+    if(HAMUREVENT->IsMouseDown(Keys::MiddleButton)) 
         HAMURCONSOLE << "mouse a basili tuttum \n";
 
-    if(HAMUREVENT->IsMousePressed(Mouse::LeftButton))
-        HAMURCONSOLE << "mouse a bastim \n";
+    if(HAMUREVENT->IsMousePressed(Keys::LeftButton))
+        HAMURCONSOLE << "mouse a bastim" << HamurConsole::Endl();
 
-    if(HAMUREVENT->IsKeyPressed(Keyboard::KeyW))
-        HAMURCONSOLE << "W a bastim";
+    if(HAMUREVENT->IsKeyPressed(Keys::KeyW))
+        HAMURCONSOLE << "W a bastim" << HamurConsole::Endl();;
 }
 
 
 // DRAW
-void MainState::Draw() 
+void MainState::Draw(float deltaTime) 
 {
     
 }

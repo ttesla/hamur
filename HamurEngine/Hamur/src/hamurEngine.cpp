@@ -66,6 +66,7 @@ void HamurEngine::Run()
     while(mRunEngine)
     {
         float frameStartTime = HAMURTIMER->GetTimeInSeconds();
+        float deltaTime = HAMURTIMER->DeltaTime();
 
         // Handle all events
         HAMUREVENT->HandleEvents();
@@ -73,15 +74,15 @@ void HamurEngine::Run()
         //Clear the screen & reset identity matrix
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();
-        glTranslatef(0, 0, -1.0f);
-
-        // Update and Draw Hamur World
-        HAMURWORLD->UpdateAllObjects();
-        HAMURWORLD->DrawAllObjects();
+        glTranslatef(0, 0, -1.0f); 
         
-        // Run state machine
-        HAMURSTATEMR->GetCurrentState()->Update();
-        HAMURSTATEMR->GetCurrentState()->Draw();
+        // Updates...
+        HAMURSTATEMR->GetCurrentState()->Update(deltaTime); // Update state first
+        HAMURWORLD->UpdateAllObjects(deltaTime);            // Update all objects
+        
+        // Drawings...
+        HAMURSTATEMR->GetCurrentState()->Draw(deltaTime);   // Draw state first
+        HAMURWORLD->DrawAllObjects(deltaTime);              // Draw all objects
 
         // Check if game window closed by user
         if(HAMUREVENT->IsQuitPerformed()) 

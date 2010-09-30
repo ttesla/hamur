@@ -21,6 +21,7 @@ HamurObject::HamurObject(const string& name)
     HAMURLOG->WriteLogln("Object created: " + mName);
 }
 
+
 HamurObject::HamurObject(const string& name, const string& spritePath)
     :mName(name), mVisible(true), mActive(true)
 {
@@ -33,12 +34,26 @@ HamurObject::HamurObject(const string& name, const string& spritePath)
     HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
 }
 
+
+HamurObject::HamurObject(const string& name, const string& spritePath, const HamurColorRGB& colorkey)
+    :mName(name), mVisible(true), mActive(true)
+{
+    mPos.x = 0;
+    mPos.y = 0;
+    mPos.z = 0;
+    mRotation = 0;
+    SetSprite(spritePath, colorkey);
+    HAMURWORLD->AddObject(this);
+    HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
+}
+
+
 HamurObject::~HamurObject()
 {
     HAMURLOG->WriteLogln("Object deleted: " + mName);
 }
 
-void HamurObject::Draw()
+void HamurObject::Draw(float deltaTime)
 {
     HAMURTEXMR->BlitTexture(mSpriteID, mPos, mRotation);
 }
@@ -93,6 +108,12 @@ void HamurObject::SetActive(bool active)    { mActive = active; }
 void HamurObject::SetSprite(const string& path)
 {
     mSpriteID = HAMURTEXMR->AddTexture(path);
+}
+
+
+void HamurObject::SetSprite(const string& path, const HamurColorRGB& colorkey)
+{
+     mSpriteID = HAMURTEXMR->AddTexture(path, colorkey.R, colorkey.G, colorkey.B);
 }
 
 
