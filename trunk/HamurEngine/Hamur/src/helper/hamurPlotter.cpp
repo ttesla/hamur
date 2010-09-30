@@ -2,8 +2,8 @@
 
 #include "hamurVec2.h"
 #include "hamurVec3.h"
-#include "../hamurGL.h"
-#include "../hamurTexMR.h"
+#include "../hamurOpenGL.h"
+#include "../hamurTextureManager.h"
 #include "hamurConsole.h"
 #include "../hamurDefinitions.h"
 #include "hamurColor.h"

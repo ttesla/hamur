@@ -1,5 +1,5 @@
-#include "hamurGL.h"
-#include "hamurTex.h"
+#include "hamurOpenGL.h"
+#include "hamurTexture.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 
@@ -8,22 +8,22 @@
 namespace hamur
 {
 
-// HamurGL constructor
-HamurGL::HamurGL()
+// HamurOpenGL constructor
+HamurOpenGL::HamurOpenGL()
 {
 
 }
 
 
-// HamurGL destructor
-HamurGL::~HamurGL()
+// HamurOpenGL destructor
+HamurOpenGL::~HamurOpenGL()
 {
     SDL_Quit();
-    HAMURLOG->WriteTerminateLog("HamurGL");
+    HAMURLOG->WriteTerminateLog("HamurOpenGL");
 }
 
 // Initialize SDL with OpenGL support
-bool HamurGL::InitSDL(const string& caption, int width, int height, int bpp, Uint32 flags)
+bool HamurOpenGL::InitSDL(const string& caption, int width, int height, int bpp, Uint32 flags)
 {
 	SCREEN_WIDTH = width;
 	SCREEN_HEIGHT = height;
@@ -70,7 +70,7 @@ bool HamurGL::InitSDL(const string& caption, int width, int height, int bpp, Uin
 
 
 // Initialize OpenGL and set OpenGL attributes
-bool HamurGL::InitGL()
+bool HamurOpenGL::InitGL()
 {	
 	glEnable(GL_TEXTURE_2D);				// Enable 2D textures
 	glShadeModel(GL_SMOOTH);				// Enable smooth shading
@@ -111,7 +111,7 @@ bool HamurGL::InitGL()
 
 
 // Display some primitive openGL properties to stdout
-void HamurGL::DisplayGLAttributes()
+void HamurOpenGL::DisplayGLAttributes()
 {
     int red, green, blue, alpha, buffer, dbuff, depth;
 
@@ -130,18 +130,18 @@ void HamurGL::DisplayGLAttributes()
 
 
 // GETTERS & SETTERS
-int HamurGL::GetScreenWidth() const	    { return SCREEN_WIDTH;  }
-int HamurGL::GetScreenHeight() const    { return SCREEN_HEIGHT; }
-int HamurGL::GetScreenBpp() const       { return SCREEN_BPP;    }
+int HamurOpenGL::GetScreenWidth() const	    { return SCREEN_WIDTH;  }
+int HamurOpenGL::GetScreenHeight() const    { return SCREEN_HEIGHT; }
+int HamurOpenGL::GetScreenBpp() const       { return SCREEN_BPP;    }
 
-void HamurGL::SetScreenWidth(int width)     { SCREEN_WIDTH = width;     }
-void HamurGL::SetScreenHeight(int height)   { SCREEN_HEIGHT = height;   }
-void HamurGL::SetScreenBpp(int bpp)         { SCREEN_BPP = bpp;         }
+void HamurOpenGL::SetScreenWidth(int width)     { SCREEN_WIDTH = width;     }
+void HamurOpenGL::SetScreenHeight(int height)   { SCREEN_HEIGHT = height;   }
+void HamurOpenGL::SetScreenBpp(int bpp)         { SCREEN_BPP = bpp;         }
 
 
 // Set GL display attributes, 
 // it must be called after SDL_Init() and before SDL_SetVideoMode()
-void HamurGL::SetGLAttributes()
+void HamurOpenGL::SetGLAttributes()
 {
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);	// 5 is the minimum value 
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);	// openGL will try to set 

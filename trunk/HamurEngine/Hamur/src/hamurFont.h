@@ -1,8 +1,8 @@
 #ifndef HAMURFONT_H
 #define HAMURFONT_H
 
-#include "hamurTexMR.h"
-#include "hamurGL.h"
+#include "hamurTextureManager.h"
+#include "hamurOpenGL.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 #include "hamurSingleton.h"

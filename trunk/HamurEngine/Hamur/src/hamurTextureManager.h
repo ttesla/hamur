@@ -17,16 +17,16 @@ namespace hamur
 {
 
 // Forward declerations
-class HamurTex;
+class HamurTexture;
 
 
 // Texture manager for Hamur.
 // This manages all operations of the textures(blit, store, delete...)
-class HamurTexMR : public Singleton<HamurTexMR>
+class HamurTextureManager : public Singleton<HamurTextureManager>
 {
 	public:
 
-        friend class Singleton<HamurTexMR>;
+        friend class Singleton<HamurTextureManager>;
 
         /**
         * Initialize Hamur Texture Manager
@@ -34,7 +34,7 @@ class HamurTexMR : public Singleton<HamurTexMR>
         */
         bool Init();
 
-	    HamurTex* GetTexture(unsigned int textureID) const; //Get texture
+	    HamurTexture* GetTexture(unsigned int textureID) const; //Get texture
 	    bool DeleteTexture(unsigned int textureID);   //Delete texture
 	    unsigned int AddTexture(const string& filePath); //Add texture from image file
         unsigned int AddTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue); //Add texture from image file with colorkey
@@ -56,12 +56,12 @@ class HamurTexMR : public Singleton<HamurTexMR>
 
 	protected:
 
-        HamurTexMR();
-        ~HamurTexMR();
+        HamurTextureManager();
+        ~HamurTextureManager();
 
 	private:
 
-		map<unsigned int, HamurTex*> mTextureMap; //Store textures according to their unique texture ID
+		map<unsigned int, HamurTexture*> mTextureMap; //Store textures according to their unique texture ID
 
         const float mDepthShift; /**< Default shift value to keep textures in visible area. Z = -1.0f */
         float mOpenglX;
@@ -73,7 +73,7 @@ class HamurTexMR : public Singleton<HamurTexMR>
 
 
 /**< Translates world coordinate to openGL coordinates */
-inline HamurVec3 HamurTexMR::WorldToGL(float x, float y, float z) const
+inline HamurVec3 HamurTextureManager::WorldToGL(float x, float y, float z) const
 {
     HamurVec3 GLcoord;
     GLcoord.x = -mOpenglX + (x / mPixRatioX);
@@ -85,7 +85,7 @@ inline HamurVec3 HamurTexMR::WorldToGL(float x, float y, float z) const
 
 
 /**< Translates world coordinate to openGL coordinates */
-inline HamurVec3 HamurTexMR::WorldToGL(const HamurVec3 &vec3) const
+inline HamurVec3 HamurTextureManager::WorldToGL(const HamurVec3 &vec3) const
 {
     HamurVec3 GLcoord;
     GLcoord.x = -mOpenglX + (vec3.x / mPixRatioX);
@@ -97,7 +97,7 @@ inline HamurVec3 HamurTexMR::WorldToGL(const HamurVec3 &vec3) const
 
 
 /**< Translates world coordinate to openGL coordinates */
-inline HamurVec2 HamurTexMR::WorldToGL(float x, float y) const
+inline HamurVec2 HamurTextureManager::WorldToGL(float x, float y) const
 {
     HamurVec2 GLcoord;
     GLcoord.x = -mOpenglX + (x / mPixRatioX);
@@ -108,7 +108,7 @@ inline HamurVec2 HamurTexMR::WorldToGL(float x, float y) const
 
 
 /**< Translates world coordinate to openGL coordinates */
-inline HamurVec2 HamurTexMR::WorldToGL(const HamurVec2 &vec2) const
+inline HamurVec2 HamurTextureManager::WorldToGL(const HamurVec2 &vec2) const
 {
     HamurVec2 GLcoord;
     GLcoord.x = -mOpenglX + (vec2.x / mPixRatioX);

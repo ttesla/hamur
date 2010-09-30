@@ -1,16 +1,16 @@
 #include "hamurEngine.h"
-#include "hamurGL.h"
+#include "hamurOpenGL.h"
 #include "hamurEvent.h"
-#include "hamurTexMR.h"
+#include "hamurTextureManager.h"
 #include "hamurGP.h"
 #include "hamurFont.h"
 #include "hamurTimer.h"
 
 #include "helper/hamurConsole.h"
 #include "helper/hamurLog.h"
-#include "audio/hamurAuMR.h"
+#include "audio/hamurAudioManager.h"
 #include "game/hamurWorld.h"
-#include "game/hamurStateMR.h"
+#include "game/hamurStateManager.h"
 #include "game/hamurState.h"
 
 #include "hamurDefinitions.h"
@@ -43,8 +43,8 @@ bool HamurEngine::Init(const string& applicationName, int screenWidth, int scree
     if(!HAMURGL->InitGL())      return false; // OpenGL
     if(!HAMURTEXMR->Init())     return false; // Texture Manager
     if(!HAMURAUMR->Init())      return false; // Audio Manager
-    if(!HAMURWORLD->Init())     return false; // Object manager - World
     if(!HAMURSTATEMR->Init())   return false; // State Manager
+    if(!HAMURWORLD->Init())     return false; // Object manager - World
     if(!HAMUREVENT->Init())     return false; // Event handler
     if(!HAMURTIMER->Init())     return false; // Timer handler
 

@@ -13,15 +13,15 @@ using std::string;
 namespace hamur
 {
 
-class HamurTex
+class HamurTexture
 {
 	public:
 
-		HamurTex(const string& filePath);
-        HamurTex(const string& filePath, Uint8 red, Uint8 green, Uint8 blue);
-		HamurTex(SDL_Surface* newSurface);
-        HamurTex(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue);
-		~HamurTex();
+		HamurTexture(const string& filePath);
+        HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue);
+		HamurTexture(SDL_Surface* newSurface);
+        HamurTexture(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue);
+		~HamurTexture();
 
 		// SETTERS & GETTERS
 		int GetGLtextureID() const;

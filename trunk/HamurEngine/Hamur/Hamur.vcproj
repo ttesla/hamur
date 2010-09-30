@@ -236,14 +236,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurGL.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\hamurGL.h"
-				>
-			</File>
-			<File
 				RelativePath=".\src\hamurGP.cpp"
 				>
 			</File>
@@ -252,23 +244,31 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\hamurOpenGL.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\hamurOpenGL.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\hamurSingleton.h"
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurTex.cpp"
+				RelativePath=".\src\hamurTexture.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurTex.h"
+				RelativePath=".\src\hamurTexture.h"
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurTexMR.cpp"
+				RelativePath=".\src\hamurTextureManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\hamurTexMR.h"
+				RelativePath=".\src\hamurTextureManager.h"
 				>
 			</File>
 			<File
@@ -283,11 +283,11 @@
 				Name="Audio"
 				>
 				<File
-					RelativePath=".\src\Audio\hamurAuMR.cpp"
+					RelativePath=".\src\audio\hamurAudioManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\Audio\hamurAuMR.h"
+					RelativePath=".\src\audio\hamurAudioManager.h"
 					>
 				</File>
 				<File
@@ -335,11 +335,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\game\hamurStateMR.cpp"
+					RelativePath=".\src\game\hamurStateManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\game\hamurStateMR.h"
+					RelativePath=".\src\game\hamurStateManager.h"
 					>
 				</File>
 				<File

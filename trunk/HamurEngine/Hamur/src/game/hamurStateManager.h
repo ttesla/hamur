@@ -19,11 +19,11 @@ class HamurState;
 * Hamur State Manager
 * All states are registered and managed here.
 */
-class HamurStateMR : public Singleton<HamurStateMR>
+class HamurStateManager : public Singleton<HamurStateManager>
 {
 	public:
 
-        friend class Singleton<HamurStateMR>;
+        friend class Singleton<HamurStateManager>;
 
         /**
         * Initialize Hamur State Manager
@@ -103,13 +103,13 @@ class HamurStateMR : public Singleton<HamurStateMR>
 
 	protected:
 
-        HamurStateMR();
+        HamurStateManager();
 
         /**
         * Destructor of Hamur State Manager.
         * Destroys all registered states.
         */
-        ~HamurStateMR();
+        ~HamurStateManager();
 
 	private:
 		map<string, HamurState*> mStateList; /**< Stores all states according to their names. */

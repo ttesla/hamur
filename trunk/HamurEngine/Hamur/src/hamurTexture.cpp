@@ -1,5 +1,5 @@
-#include "hamurTex.h"
-#include "hamurGL.h"
+#include "hamurTexture.h"
+#include "hamurOpenGL.h"
 
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
@@ -8,13 +8,13 @@
 namespace hamur
 {
 
-HamurTex::HamurTex(const string& filePath) : mFilePath(filePath), mHasColorKey(false)
+HamurTexture::HamurTexture(const string& filePath) : mFilePath(filePath), mHasColorKey(false)
 {
 	if(!LoadTextureFromFile()) exit(1);
 }
 
 
-HamurTex::HamurTex(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) : mFilePath(filePath), mHasColorKey(true)
+HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) : mFilePath(filePath), mHasColorKey(true)
 {
     mRedKey   = red;
     mGreenKey = green;
@@ -24,12 +24,12 @@ HamurTex::HamurTex(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) :
 }
 
 
-HamurTex::HamurTex(SDL_Surface* newSurface) : mHasColorKey(false)
+HamurTexture::HamurTexture(SDL_Surface* newSurface) : mHasColorKey(false)
 {
 	if(!LoadTextureFromSurface(newSurface)) exit(1);
 }
 
-HamurTex::HamurTex(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) : mHasColorKey(true)
+HamurTexture::HamurTexture(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) : mHasColorKey(true)
 {
     mRedKey   = red;
     mGreenKey = green;
@@ -39,14 +39,14 @@ HamurTex::HamurTex(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) 
 }
 
 
-HamurTex::~HamurTex()
+HamurTexture::~HamurTexture()
 {
     HAMURLOG->WriteLogln("Texture deleted: " + mFilePath);
 }
 
 
 // Loads texture from "Image file" and registers it to openGL's texture array. 
-bool HamurTex::LoadTextureFromFile()
+bool HamurTexture::LoadTextureFromFile()
 {
     SDL_Surface* tempSurface = NULL;
 	SDL_Surface* finalSurface = NULL;
@@ -100,7 +100,7 @@ bool HamurTex::LoadTextureFromFile()
 
 
 // Loads texture from "SDL surface" and registers it to openGL's texture array. 
-bool HamurTex::LoadTextureFromSurface(SDL_Surface* surface)
+bool HamurTexture::LoadTextureFromSurface(SDL_Surface* surface)
 {
     SDL_Surface* finalSurface = NULL;
 	int mode = 0; // Texture mode RGB, RGBA 
@@ -142,7 +142,7 @@ bool HamurTex::LoadTextureFromSurface(SDL_Surface* surface)
 
 
 // Generate opengl texture from given surface
-void HamurTex::GenerateTexture(const SDL_Surface* surface, int mode)
+void HamurTexture::GenerateTexture(const SDL_Surface* surface, int mode)
 {
     // Create & bind the texture 
     glGenTextures(1, &mTextureID[0]);
@@ -167,22 +167,22 @@ void HamurTex::GenerateTexture(const SDL_Surface* surface, int mode)
 
 
 // GETTERS & SETTERS 
-int HamurTex::GetGLtextureID() const	    { return mTextureID[0];	}
-int HamurTex::GetWidth() const              { return mTextureWidth;  }
-int HamurTex::GetHeight() const             { return mTextureHeight; }
-float HamurTex::GetScaledWidth() const      { return mScaledWidth;	}
-float HamurTex::GetScaledHeight() const     { return mScaledHeight;	}
-string HamurTex::GetFilePath() const        { return mFilePath;	}
-float HamurTex::GetCorX() const { return mCorX; }
-float HamurTex::GetCorY() const { return mCorY; }
-float HamurTex::GetCorZ() const { return mCorZ; }
+int HamurTexture::GetGLtextureID() const	    { return mTextureID[0];	}
+int HamurTexture::GetWidth() const              { return mTextureWidth;  }
+int HamurTexture::GetHeight() const             { return mTextureHeight; }
+float HamurTexture::GetScaledWidth() const      { return mScaledWidth;	}
+float HamurTexture::GetScaledHeight() const     { return mScaledHeight;	}
+string HamurTexture::GetFilePath() const        { return mFilePath;	}
+float HamurTexture::GetCorX() const { return mCorX; }
+float HamurTexture::GetCorY() const { return mCorY; }
+float HamurTexture::GetCorZ() const { return mCorZ; }
 
-void HamurTex::SetCorX(float x) { mCorX = x; }
-void HamurTex::SetCorY(float y) { mCorY = y; }
-void HamurTex::setCorZ(float z) { mCorZ = z; }
-void HamurTex::SetScaledWidth(float sw)  { mScaledWidth  = sw; }
-void HamurTex::SetScaledHeight(float sh) { mScaledHeight = sh; }
-void HamurTex::SetAllCoord(float x, float y, float z)
+void HamurTexture::SetCorX(float x) { mCorX = x; }
+void HamurTexture::SetCorY(float y) { mCorY = y; }
+void HamurTexture::setCorZ(float z) { mCorZ = z; }
+void HamurTexture::SetScaledWidth(float sw)  { mScaledWidth  = sw; }
+void HamurTexture::SetScaledHeight(float sh) { mScaledHeight = sh; }
+void HamurTexture::SetAllCoord(float x, float y, float z)
 {
 	mCorX = x;
 	mCorY = y;
