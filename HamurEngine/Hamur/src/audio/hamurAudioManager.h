@@ -21,11 +21,11 @@ class HamurStream;
 * Hamur Audio Manager.
 * Singleton class that manages the audio system.
 */
-class HamurAuMR : public Singleton<HamurAuMR>
+class HamurAudioManager : public Singleton<HamurAudioManager>
 {
     public:
 
-        friend class Singleton<HamurAuMR>;
+        friend class Singleton<HamurAudioManager>;
 
 		/**
 		* Default Initialization of Audio.
@@ -131,12 +131,12 @@ class HamurAuMR : public Singleton<HamurAuMR>
 
 	protected:
 
-        HamurAuMR();
+        HamurAudioManager();
 
         /**
         * Deletes all Audios in the map container.
         */
-        ~HamurAuMR();
+        ~HamurAudioManager();
 
 	private:
 		map<string, HamurFX*> mFxMap;         /**< Store FXs according to their  names. */

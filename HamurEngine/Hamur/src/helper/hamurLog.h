@@ -73,6 +73,8 @@ class HamurLog : public Singleton<HamurLog>
         HamurFile mLogFile;
         const string mLogFileName;
         bool mDebugMode;
+
+        const int initLogLength; /**< Length of: ".....OK!" string in the log file */
 };
     
 } // namespace hamur

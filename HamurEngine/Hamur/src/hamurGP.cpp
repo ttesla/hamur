@@ -1,6 +1,6 @@
 #include "hamurGP.h"
-#include "hamurTexMR.h"
-#include "hamurTex.h"
+#include "hamurTextureManager.h"
+#include "hamurTexture.h"
 #include "helper/hamurLog.h"
 #include "hamurDefinitions.h"
 
@@ -29,7 +29,7 @@ bool HamurGP::Init()
 
 
 // Checks rectangular collision of 2 textures with their texture data
-bool HamurGP::CheckCollision2D(HamurTex* firstTex, HamurTex* secondTex)
+bool HamurGP::CheckCollision2D(HamurTexture* firstTex, HamurTexture* secondTex)
 {
 	// Calculate the sides of first texture
 	float leftA   = firstTex->GetCorX();

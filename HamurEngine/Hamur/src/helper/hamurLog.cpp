@@ -4,7 +4,7 @@ namespace hamur
 {
 
 // HamurLog constructor
-HamurLog::HamurLog() : mLogFileName("hamur.log") , mDebugMode(true)
+HamurLog::HamurLog() : mLogFileName("hamur.log") , mDebugMode(true), initLogLength(28)
 {
     // Open for writing and append
     mLogFile.OpenForWrite(mLogFileName);
@@ -149,7 +149,7 @@ void HamurLog::WriteInitLog(string log, bool writeMode)
 {
     if(mDebugMode || writeMode)
     {
-	    int dotsToAdd = 15 - log.length();
+	    int dotsToAdd = initLogLength - log.length();
 
 	    for(int i = 0; i < dotsToAdd; i++)
 		    log.append(".");
@@ -166,7 +166,7 @@ void HamurLog::WriteTerminateLog(string log, bool writeMode)
 {
     if(mDebugMode || writeMode)
     {
-        int dotsToAdd = 15 - log.length();
+        int dotsToAdd = initLogLength - log.length();
 
         for(int i = 0; i < dotsToAdd; i++)
             log.append(".");

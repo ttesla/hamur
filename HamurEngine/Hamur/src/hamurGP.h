@@ -8,7 +8,7 @@ namespace hamur
 {
 
 // Forward declarations
-class HamurTex;
+class HamurTexture;
 
 class HamurGP : public Singleton<HamurGP>
 {
@@ -27,7 +27,7 @@ class HamurGP : public Singleton<HamurGP>
         * @param secondTex HamurTexture pointer of second texture.
         * @return If two textures collide or not
         */
-		bool CheckCollision2D(HamurTex* firstTex, HamurTex* secondTex);
+		bool CheckCollision2D(HamurTexture* firstTex, HamurTexture* secondTex);
 
 	protected:
 

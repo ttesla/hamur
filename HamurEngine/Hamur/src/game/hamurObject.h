@@ -15,7 +15,7 @@ namespace hamur
 {
 
 // Forward declerations
-class HamurTexMR;
+class HamurTextureManager;
 
 
 /**

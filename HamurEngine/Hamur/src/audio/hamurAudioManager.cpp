@@ -1,4 +1,4 @@
-#include "hamurAuMR.h"
+#include "hamurAudioManager.h"
 #include "hamurFX.h"
 #include "hamurStream.h"
 #include "hamurSong.h"
@@ -11,14 +11,14 @@
 namespace hamur
 {
 
-HamurAuMR::HamurAuMR()
+HamurAudioManager::HamurAudioManager()
 {
 
 }
 
 
 // Deletes all Audios in the map container
-HamurAuMR::~HamurAuMR()
+HamurAudioManager::~HamurAudioManager()
 {
     // Delete all
 	ClearAll();
@@ -30,19 +30,19 @@ HamurAuMR::~HamurAuMR()
 	// CD Tracks are stopped.
 	FSOUND_Close();
 
-    HAMURLOG->WriteTerminateLog("HamurAudio");
+    HAMURLOG->WriteTerminateLog("HamurAudioManager");
 }
 
 
 // Default Initialization of Audio
-bool HamurAuMR::Init()
+bool HamurAudioManager::Init()
 {
 	return Init(44100, 32, 0);
 }
 
 
 // Initialization of Audio
-bool HamurAuMR::Init(int mixrate, int maxsoftwarechannels, unsigned int flags)
+bool HamurAudioManager::Init(int mixrate, int maxsoftwarechannels, unsigned int flags)
 {
 	if(!FSOUND_Init(mixrate, maxsoftwarechannels, flags))
 	{
@@ -51,14 +51,14 @@ bool HamurAuMR::Init(int mixrate, int maxsoftwarechannels, unsigned int flags)
 	}
 	else
 	{
-		HAMURLOG->WriteInitLog("HamurAudio");
+		HAMURLOG->WriteInitLog("HamurAudioManager");
 		return true;
 	}
 }
 
 
 // Get FX from "map" container according to given FX name
-HamurFX* HamurAuMR::GetFX(const string& strFxName) const
+HamurFX* HamurAudioManager::GetFX(const string& strFxName) const
 {
 	//Look in the map if the FX is already loaded.
     map<string, HamurFX*>::const_iterator iter = mFxMap.find(strFxName);
@@ -72,7 +72,7 @@ HamurFX* HamurAuMR::GetFX(const string& strFxName) const
 
 
 // Get Song from "map" container according to given Song name
-HamurSong* HamurAuMR::GetSong(const string& strSongName) const
+HamurSong* HamurAudioManager::GetSong(const string& strSongName) const
 {
 	//Look in the map if the Song is already loaded.
     map<string, HamurSong*>::const_iterator iter = mSongMap.find(strSongName);
@@ -86,7 +86,7 @@ HamurSong* HamurAuMR::GetSong(const string& strSongName) const
 
 
 // Get Stream from "map" container according to given Stream name
-HamurStream* HamurAuMR::GetStream(const string& strStreamName) const
+HamurStream* HamurAudioManager::GetStream(const string& strStreamName) const
 {
 	//Look in the map if the Stream is already loaded.
 	map<string, HamurStream*>::const_iterator iter = mStreamMap.find(strStreamName);
@@ -101,7 +101,7 @@ HamurStream* HamurAuMR::GetStream(const string& strStreamName) const
 
 // Add FX into "map" container with FX name index.
 // If the FX is already loaded, it doesn't add another copy
-void HamurAuMR::AddFX(const string& strFxName, const string& strFileName)
+void HamurAudioManager::AddFX(const string& strFxName, const string& strFileName)
 {
 	// Look in the map if the FX is already loaded.
 	map<string, HamurFX*>::iterator iter = mFxMap.find(strFxName);
@@ -116,7 +116,7 @@ void HamurAuMR::AddFX(const string& strFxName, const string& strFileName)
 
 // Add Song into "map" container with Song name index.
 // If the Song is already loaded, it doesn't add another copy
-void HamurAuMR::AddSong(const string& strSongName, const string& strFileName)
+void HamurAudioManager::AddSong(const string& strSongName, const string& strFileName)
 {
 	// Look in the map if the FX is already loaded.
 	map<string, HamurSong*>::iterator iter = mSongMap.find(strSongName);
@@ -131,7 +131,7 @@ void HamurAuMR::AddSong(const string& strSongName, const string& strFileName)
 
 // Add Stream into "map" container with Stream name index.
 // If the Stream is already loaded, it doesn't add another copy
-void HamurAuMR::AddStream(const string& strStreamName, const string& strFileName)
+void HamurAudioManager::AddStream(const string& strStreamName, const string& strFileName)
 {
 	// Look in the map if the Stream is already loaded.
 	map<string, HamurStream*>::iterator iter = mStreamMap.find(strStreamName);
@@ -145,7 +145,7 @@ void HamurAuMR::AddStream(const string& strStreamName, const string& strFileName
 
 
 // Deletes FX according to given FX name. 
-bool HamurAuMR::DeleteFX(const string& strFxName)
+bool HamurAudioManager::DeleteFX(const string& strFxName)
 {
 	// Get FX from the map
 	bool bFound = false;
@@ -167,7 +167,7 @@ bool HamurAuMR::DeleteFX(const string& strFxName)
 
 
 // Deletes Song according to given Song name. 
-bool HamurAuMR::DeleteSong(const string& strSongName)
+bool HamurAudioManager::DeleteSong(const string& strSongName)
 {
 	// Get Song from the map
 	bool bFound = false;
@@ -191,7 +191,7 @@ bool HamurAuMR::DeleteSong(const string& strSongName)
 
 
 // Deletes Stream according to given Stream name. 
-bool HamurAuMR::DeleteStream(const string& strStreamName)
+bool HamurAudioManager::DeleteStream(const string& strStreamName)
 {
 	// Get Stream from the map
 	bool bFound = false;
@@ -216,26 +216,26 @@ bool HamurAuMR::DeleteStream(const string& strStreamName)
 
 
 // Play FX
-void HamurAuMR::PlayFX(const string& strFxName)
+void HamurAudioManager::PlayFX(const string& strFxName)
 {
 	GetFX(strFxName)->PlayFX();
 }
 
 // Play Song
-void HamurAuMR::PlaySong(const string& strSongName, bool loop)
+void HamurAudioManager::PlaySong(const string& strSongName, bool loop)
 {
 	GetSong(strSongName)->PlaySong(loop);
 }
 
 // Play Stream
-void HamurAuMR::PlayStream(const string& strStreamName)
+void HamurAudioManager::PlayStream(const string& strStreamName)
 {
 	GetStream(strStreamName)->PlayStream();
 }
 
 
 // Clear and delete all objects in Audio Manager
-void HamurAuMR::ClearAll()
+void HamurAudioManager::ClearAll()
 {
     map<string, HamurFX*>::iterator iterFX;
     map<string, HamurSong*>::iterator iterSong;

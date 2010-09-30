@@ -18,14 +18,14 @@ namespace hamur
 {
 
 /**
-* Hamur GL Manager.
+* Hamur OpenGL Manager.
 * Singleton class that manages graphic system.
 */
-class HamurGL : public Singleton<HamurGL>
+class HamurOpenGL : public Singleton<HamurOpenGL>
 {
     public:
 
-        friend class Singleton<HamurGL>;
+        friend class Singleton<HamurOpenGL>;
 
         /**
         * Initialization of SDL with OpenGL support
@@ -85,8 +85,8 @@ class HamurGL : public Singleton<HamurGL>
 
     protected:
 
-        HamurGL();
-        ~HamurGL();
+        HamurOpenGL();
+        ~HamurOpenGL();
 
     private:
 

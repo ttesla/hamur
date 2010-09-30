@@ -10,8 +10,8 @@ include_directories (${HamurEngine_SOURCE_DIR}/Hamur/libraries/sdl/include) # SD
 
 # Hamur Audio
 set(HAMUR_AUDIO_SRC     
-src/audio/hamurAuMR.cpp
-src/audio/hamurAuMR.h
+src/audio/hamurAudioManager.cpp
+src/audio/hamurAudioManager.h
 src/audio/hamurFX.cpp
 src/audio/hamurFX.h
 src/audio/hamurSong.cpp
@@ -25,8 +25,8 @@ src/game/hamurObject.cpp
 src/game/hamurObject.h
 src/game/hamurState.cpp
 src/game/hamurState.h
-src/game/hamurStateMR.cpp
-src/game/hamurStateMR.h
+src/game/hamurStateManager.cpp
+src/game/hamurStateManager.h
 src/game/hamurWorld.cpp
 src/game/hamurWorld.h
 )
@@ -60,15 +60,15 @@ src/hamurEvent.cpp
 src/hamurEvent.h
 src/hamurFont.cpp
 src/hamurFont.h
-src/hamurGL.cpp
-src/hamurGL.h
+src/hamurOpenGL.cpp
+src/hamurOpenGL.h
 src/hamurGP.cpp
 src/hamurGP.h
 src/hamurSingleton.h
-src/hamurTex.cpp
-src/hamurTex.h
-src/hamurTexMR.cpp
-src/hamurTexMR.h
+src/hamurTexture.cpp
+src/hamurTexture.h
+src/hamurTextureManager.cpp
+src/hamurTextureManager.h
 src/hamurTimer.h
 src/hamurTimer.cpp
 )

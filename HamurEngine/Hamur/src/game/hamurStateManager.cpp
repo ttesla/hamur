@@ -1,4 +1,4 @@
-#include "hamurStateMR.h"
+#include "hamurStateManager.h"
 #include "hamurState.h"
 #include "../helper/hamurLog.h"
 #include "../hamurDefinitions.h"
@@ -7,25 +7,25 @@
 namespace hamur
 {
 
-HamurStateMR::HamurStateMR()
+HamurStateManager::HamurStateManager()
 {
     // empty
 }
 
 
-HamurStateMR::~HamurStateMR()
+HamurStateManager::~HamurStateManager()
 {
     ClearAll();
-    HAMURLOG->WriteTerminateLog("HamurStateMR");
+    HAMURLOG->WriteTerminateLog("HamurStateManager");
 }
 
 
 // Init Hamur State Manager
-bool HamurStateMR::Init()
+bool HamurStateManager::Init()
 {
     mCurrentState = NULL;
     mPreviousState = NULL;
-    HAMURLOG->WriteInitLog("HamurStateMR");
+    HAMURLOG->WriteInitLog("HamurStateManager");
 
     return true; // We dont have much choice here :)
 }
@@ -33,7 +33,7 @@ bool HamurStateMR::Init()
 
 // Add state into "map" container with state name.
 // If state is already registered, it will not be registered.
-bool HamurStateMR::RegisterState(HamurState* state)
+bool HamurStateManager::RegisterState(HamurState* state)
 {
 	// Look in the map if the state is already registered. If not found, then register.
     if (HasState(state->GetStateName()))
@@ -52,7 +52,7 @@ bool HamurStateMR::RegisterState(HamurState* state)
 
 // Search through the "map" container and remove & delete state.
 // If it is successful, return true else false.
-bool HamurStateMR::DeleteState(const string& stateName)
+bool HamurStateManager::DeleteState(const string& stateName)
 {
 	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
 
@@ -72,7 +72,7 @@ bool HamurStateMR::DeleteState(const string& stateName)
 
 
 // Checks if the manager has the given state.
-bool HamurStateMR::HasState(const string& stateName)
+bool HamurStateManager::HasState(const string& stateName)
 {
 	// Look in the map if the state exists.
 	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
@@ -86,7 +86,7 @@ bool HamurStateMR::HasState(const string& stateName)
 
 
 // Returns state with the given name. 
-HamurState* HamurStateMR::FindState(const string& stateName)
+HamurState* HamurStateManager::FindState(const string& stateName)
 {
 	// Look in the map.
 	map<string, HamurState*>::iterator iter = mStateList.find(stateName);
@@ -104,7 +104,7 @@ HamurState* HamurStateMR::FindState(const string& stateName)
 
 
 // Changes the current state to the given state. 
-void HamurStateMR::ChangeState(const string& stateName)
+void HamurStateManager::ChangeState(const string& stateName)
 {
     if(HasState(stateName))
     {
@@ -127,7 +127,7 @@ void HamurStateMR::ChangeState(const string& stateName)
 
 
 // Checks if Current State available. If so returns it.
-HamurState* HamurStateMR::GetCurrentState()
+HamurState* HamurStateManager::GetCurrentState()
 {
 	if(mCurrentState == NULL)
 	{
@@ -141,7 +141,7 @@ HamurState* HamurStateMR::GetCurrentState()
 
 
 // Checks if Current State available. If so returns its name.
-string HamurStateMR::GetCurrentStateName()
+string HamurStateManager::GetCurrentStateName()
 {
 	if(mCurrentState == NULL)
 	{
@@ -155,7 +155,7 @@ string HamurStateMR::GetCurrentStateName()
 
 
 // Checks if Previous State available. If so returns its name.
-string HamurStateMR::GetPreviousStateName()
+string HamurStateManager::GetPreviousStateName()
 {
 	if(mPreviousState == NULL)
 	{
@@ -170,7 +170,7 @@ string HamurStateMR::GetPreviousStateName()
 
 
 // Delete all state objects in the State Manager
-void HamurStateMR::ClearAll()
+void HamurStateManager::ClearAll()
 {
     map<string, HamurState*>::iterator iter;
 

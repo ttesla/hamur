@@ -2,16 +2,16 @@
 #define HAMURHEADER_H
 
 // HAMUR LIBRARY USER FRIENDLY DEFINITIONS
-#define HAMURGL	HamurGL::GetInstance()
+#define HAMURGL	HamurOpenGL::GetInstance()
 #define HAMURGP HamurGP::GetInstance()
-#define HAMURTEXMR HamurTexMR::GetInstance()
+#define HAMURTEXMR HamurTextureManager::GetInstance()
 #define HAMUREVENT HamurEvent::GetInstance()
-#define HAMURAUMR HamurAuMR::GetInstance()
+#define HAMURAUMR HamurAudioManager::GetInstance()
 #define HAMURFONT HamurFont::GetInstance()
 #define HAMURLOG HamurLog::GetInstance()
 #define HAMURCONSOLE HamurConsole::GetInstance()
 #define HAMURWORLD HamurWorld::GetInstance()
-#define HAMURSTATEMR HamurStateMR::GetInstance()
+#define HAMURSTATEMR HamurStateManager::GetInstance()
 #define HAMURTIMER HamurTimer::GetInstance()
 #define HAMURENGINE HamurEngine::GetInstance()
 

@@ -1,5 +1,5 @@
 #include "hamurObject.h"
-#include "../hamurTexMR.h"
+#include "../hamurTextureManager.h"
 #include "../helper/hamurMath.h"
 #include "../helper/hamurLog.h"
 #include "hamurWorld.h"
