@@ -9,8 +9,9 @@
 */
 
 //#include "hamur.h"
-#include "ExampleState.h"
-#include "MainState.h"
+//#include "ExampleState.h"
+//#include "MainState.h"
+#include "../IngameState.h"
 
 using namespace hamur;
 
@@ -25,9 +26,11 @@ int main(int argc, char *argv[])
 
     HAMURENGINE->DisableMouseCursor();
 
-    HAMURSTATEMR->RegisterState(new ExampleState());
-    HAMURSTATEMR->RegisterState(new MainState());
-    HAMURSTATEMR->ChangeState("ExampleState");
+    //HAMURSTATEMR->RegisterState(new ExampleState());
+    //HAMURSTATEMR->RegisterState(new MainState());
+    //HAMURSTATEMR->ChangeState("ExampleState");
+	HAMURSTATEMR->RegisterState(new IngameState());
+	HAMURSTATEMR->ChangeState("IngameState");
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 
