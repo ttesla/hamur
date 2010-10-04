@@ -176,6 +176,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Bullet.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\DynamicObject.cpp"
 				>
 			</File>
@@ -188,11 +192,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\IngameState.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\MainState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Teeth.cpp"
 				>
 			</File>
 		</Filter>
@@ -201,6 +213,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\Bullet.h"
+				>
+			</File>
 			<File
 				RelativePath=".\src\DynamicObject.h"
 				>
@@ -214,7 +230,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\IngameState.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\MainState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Teeth.h"
 				>
 			</File>
 		</Filter>
