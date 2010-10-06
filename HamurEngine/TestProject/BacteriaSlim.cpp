@@ -46,13 +46,13 @@ void Bacteria::setPhysics()
 }
 */
 
-void BacteriaSlim::Draw()
+void BacteriaSlim::Draw(float deltaTime)
 {
 	// Draw yellow circles
 	HamurPlotter::DrawSolidCircle(mPos.x, mPos.y, mWidth, HamurColor::BLUE);
 }
 
-void BacteriaSlim::Update()
+void BacteriaSlim::Update(float deltaTime)
 {
 	mPos.x += movementDirection.x * SPEEDCOEF;
 	mPos.y += movementDirection.y * SPEEDCOEF;

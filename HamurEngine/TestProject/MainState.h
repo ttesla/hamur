@@ -19,8 +19,8 @@ class MainState : public HamurState
 
         // Virtual function implementations comes from HamurState
         void Enter();
-        void Update();      
-        void Draw();
+        void Update(float deltaTime);      
+        void Draw(float deltaTime);
         void Exit();
         
 	protected:

@@ -16,22 +16,22 @@ Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition):HamurObjec
 	if(dice == 0)
 	{
 		mPos.x = 0; 
-		mPos.y = (int)rand() % (int)HamurGL::GetInstance()->GetScreenHeight();
+		mPos.y = (int)rand() % (int)HamurOpenGL::GetInstance()->GetScreenHeight();
 	}
 	else if(dice == 1)
 	{
-		mPos.x = (int)rand() % (int)HamurGL::GetInstance()->GetScreenWidth(); 
+		mPos.x = (int)rand() % (int)HamurOpenGL::GetInstance()->GetScreenWidth(); 
 		mPos.y = 0;
 	}
 	else if(dice == 2)
 	{
-		mPos.x = (int)rand() % (int)HamurGL::GetInstance()->GetScreenWidth(); 
-		mPos.y = HamurGL::GetInstance()->GetScreenHeight();
+		mPos.x = (int)rand() % (int)HamurOpenGL::GetInstance()->GetScreenWidth(); 
+		mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight();
 	}
 	else if(dice == 3)
 	{
-		mPos.x = HamurGL::GetInstance()->GetScreenWidth(); 
-		mPos.y = (int)rand() % (int)HamurGL::GetInstance()->GetScreenHeight();
+		mPos.x = HamurOpenGL::GetInstance()->GetScreenWidth(); 
+		mPos.y = (int)rand() % (int)HamurOpenGL::GetInstance()->GetScreenHeight();
 	}
 
 	mPos.z = 0;

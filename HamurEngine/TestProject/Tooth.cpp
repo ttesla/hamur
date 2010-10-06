@@ -20,12 +20,12 @@ void Tooth::SetPosition(float x, float y)
 	mPos.y = y;
 }
 
-void Tooth::Draw()
+void Tooth::Draw(float deltaTime)
 {
 	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::WHITE);
 }
 
-void Tooth::Update()
+void Tooth::Update(float deltaTime)
 {
 
 }

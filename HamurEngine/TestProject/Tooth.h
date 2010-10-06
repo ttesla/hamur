@@ -8,8 +8,8 @@ class Tooth : public HamurObject
 {
     public:
         Tooth(const string& name);
-        virtual void Draw();
-		virtual void Update();
+        virtual void Draw(float deltaTime);
+		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
 		void SetLife(float pLife){mLife = pLife;}

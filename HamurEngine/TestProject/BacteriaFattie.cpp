@@ -46,13 +46,13 @@ void Bacteria::setPhysics()
 }
 */
 
-void BacteriaFattie::Draw()
+void BacteriaFattie::Draw(float deltaTime)
 {
 	// Draw yellow circles
 	HamurPlotter::DrawSolidCircle(mPos.x, mPos.y, mWidth, HamurColor::GREEN);
 }
 
-void BacteriaFattie::Update()
+void BacteriaFattie::Update(float deltaTime)
 {
 	mPos.x += movementDirection.x * SPEEDCOEF;
 	mPos.y += movementDirection.y * SPEEDCOEF;

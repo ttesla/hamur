@@ -17,8 +17,8 @@ Base::Base(const string &name, IngameState *state):HamurObject(name), killedEnem
     mWidth = 20;
     mHeight = 20;
 
-	mPos.x = HamurGL::GetInstance()->GetScreenWidth() / 2 - mWidth / 2; 
-	mPos.y = HamurGL::GetInstance()->GetScreenHeight() / 2 - mHeight / 2;
+	mPos.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2 - mWidth / 2; 
+	mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - mHeight / 2;
 	mPos.z = 0;
 
     //setPhysics();
@@ -60,7 +60,7 @@ void Base::setPhysics()
 }
 */
 
-void Base::Draw()
+void Base::Draw(float deltaTime)
 {
     /*
     HAMURCONSOLE << "Vertice1: " << mBox.GetVertex(0).x << "," << mBox.GetVertex(0).y << "\n"
@@ -77,7 +77,7 @@ void Base::Draw()
     HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
 }
 
-void Base::Update()
+void Base::Update(float deltaTime)
 {
 	//There is no movement for the base...
 	if(update)

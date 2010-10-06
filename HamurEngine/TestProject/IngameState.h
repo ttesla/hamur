@@ -28,8 +28,8 @@ public:
 
 
 	void Enter();
-	void Update();
-	void Draw();
+	void Update(float deltaTime);
+	void Draw(float deltaTime);
 	void Exit();
 
 
