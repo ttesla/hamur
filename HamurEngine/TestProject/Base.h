@@ -9,6 +9,7 @@ using namespace hamur;
 class IngameState;
 class Bacteria;
 
+//Tower which is in the middle of tooth. Controled by player and can fire
 class Base : public HamurObject
 {
     public:

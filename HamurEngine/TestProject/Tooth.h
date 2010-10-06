@@ -4,6 +4,7 @@
 #include "hamur.h"
 using namespace hamur;
 
+//Holds the life and shield points of tooth.
 class Tooth : public HamurObject
 {
     public:
