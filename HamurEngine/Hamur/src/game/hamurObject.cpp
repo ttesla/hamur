@@ -9,7 +9,7 @@
 
 namespace hamur
 {
-    
+
 HamurObject::HamurObject(const string& name) 
     :mName(name), mVisible(true), mActive(true)
 {

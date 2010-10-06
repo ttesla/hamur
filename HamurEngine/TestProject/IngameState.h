@@ -7,7 +7,6 @@
 #include "BacteriaStrayer.h"
 #include "BacteriaShooter.h"
 #include "BacteriaSlim.h"
-#include "Base.h"
 #include "hamurDefinitions.h"
 #include "Tooth.h"
 #include <list>
@@ -16,6 +15,7 @@ using namespace hamur;
 using namespace std;
 
 class Bacteria;
+class Base;
 
 #define MAXBACT 16
 #define MAXTEETH 16
@@ -47,4 +47,5 @@ private:
 	Tooth **allocatedTeeth;
 	int mPrevTickCount;
 	int spawnedEnemyCount;
+	Base *base;
 };
