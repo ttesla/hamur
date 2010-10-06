@@ -49,7 +49,7 @@ void GroundObject::setPhysics()
 }
 */
 
-void GroundObject::Draw()
+void GroundObject::Draw(float deltaTime)
 {
 
     /*

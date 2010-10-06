@@ -12,7 +12,7 @@ Bullet::Bullet( string name, hamur::HamurVec3 pos, hamur::HamurObject *target, I
 	mSpeed = 0.3;
 }
 
-void Bullet::Update()
+void Bullet::Update(float deltaTime)
 {
 	movementDir = target->GetPosition() - mPos;
 	movementDir.Normalize();
@@ -38,7 +38,7 @@ void Bullet::Update()
 	//TODO: Control the position of bullet to see if it' s out of the screen
 }
 
-void Bullet::Draw()
+void Bullet::Draw(float deltaTime)
 {
 	hamur::HamurPlotter::DrawCircle(mPos, 3, hamur::HamurColor::WHITE);
 }

@@ -12,8 +12,8 @@ class BacteriaFattie : public Bacteria
 {
     public:
 		BacteriaFattie(const string& name, hamur::HamurVec3 basePos);
-        virtual void Draw();	
-		virtual void Update();
+        virtual void Draw(float deltaTime);	
+		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
 	private:

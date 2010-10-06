@@ -13,12 +13,11 @@ class Bacteria : public HamurObject
 {
     public:
 		Bacteria(const string& name, hamur::HamurVec3 basePos);
-        virtual void Draw()=0;
-		virtual void Update()=0;
+		virtual void Draw(float deltaTime){};
+		virtual void Update(float deltaTime){};
 		//void setPhysics(); We are not using physics at the moment...
 
 		bool IsActive(){return mActive;}
-		void SetActive(bool isActive){mActive = isActive;}
 
 		float GetLife(){return mLife;}
 		float GetShield(){return mShield;}
@@ -29,7 +28,6 @@ class Bacteria : public HamurObject
 	protected:
 		HamurVec3 mBasePosition;
 		HamurVec3 movementDirection;
-		bool mActive;
 		float mLife;
 		float mShield;
 };

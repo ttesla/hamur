@@ -79,12 +79,13 @@ void IngameState::Enter()
 			allocatedBacterias[i] = new BacteriaStrayer(indexStr + str.GetString(), base->GetPosition());
 		}
 
+		allocatedBacterias[i]->SetActive(false);
 		//activeObjList.push_front(allocatedBacterias[i]);
 		base->GetEnemiesList()->push_back(allocatedBacterias[i]);
 	}
 }
 
-void IngameState::Update()
+void IngameState::Update(float deltaTime)
 {
 	//Time interval can be changed due to level difficulty. It' s the time interval between 
 	//bacteria spawn
@@ -97,11 +98,11 @@ void IngameState::Update()
 	}
 
 	//Iterating through the objects active in that state and update
-	list<HamurObject *>::iterator Iter;
-	for(Iter = activeObjList.begin(); Iter != activeObjList.end(); ++Iter)
-	{
-		(*Iter)->Update();
-	}
+	//list<HamurObject *>::iterator Iter;
+	//for(Iter = activeObjList.begin(); Iter != activeObjList.end(); ++Iter)
+	//{
+	//	(*Iter)->Update(float deltaTime);
+	//}
 
 	if(killObj1 != NULL)
 	{
@@ -118,7 +119,7 @@ void IngameState::Update()
 
 }
 
-void IngameState::Draw()
+void IngameState::Draw(float deltaTime)
 {
 
 }

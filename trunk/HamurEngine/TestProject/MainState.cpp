@@ -28,23 +28,23 @@ void MainState::Enter()
 
 
 // UPDATE
-void MainState::Update() 
+void MainState::Update(float deltaTime) 
 {
-    if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
-        HAMURENGINE->Stop();
+    //if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
+    //    HAMURENGINE->Stop();
 
-    static bool keyPressed = false;
+    //static bool keyPressed = false;
 
-    if(HAMUREVENT->IsKeyPressed(SDLK_UP) && !keyPressed)
-    {
-        spawnObjects();
-        keyPressed = true;
-    }
+    //if(HAMUREVENT->IsKeyPressed(SDLK_UP) && !keyPressed)
+    //{
+    //    spawnObjects();
+    //    keyPressed = true;
+    //}
 
-    if(! HAMUREVENT->IsKeyPressed(SDLK_UP))
-        keyPressed = false;
+    //if(! HAMUREVENT->IsKeyPressed(SDLK_UP))
+    //    keyPressed = false;
 
-    if(HAMUREVENT->IsKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
+    //if(HAMUREVENT->IsKeyPressed(SDLK_DOWN))	    angle1 -= 0.5f;
 
     //HAMURWORLD->getObject("Balik")->rotateDegree(-angle1*10);
     //HAMURWORLD->RunPhysicSimulation();
@@ -54,7 +54,7 @@ void MainState::Update()
 
 
 // DRAW
-void MainState::Draw() 
+void MainState::Draw(float deltaTime) 
 {
     
 }

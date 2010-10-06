@@ -39,7 +39,7 @@ void DynamicObject::setColor(float _R, float _G, float _B)
 }
 
 
-void DynamicObject::Draw()
+void DynamicObject::Draw(float deltaTime)
 {
     HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor::GREEN, mRotation);
 }

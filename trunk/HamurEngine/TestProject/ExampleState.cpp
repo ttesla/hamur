@@ -22,21 +22,21 @@ void ExampleState::Enter()
 
 
 // UPDATE
-void ExampleState::Update() 
+void ExampleState::Update(float deltaTime) 
 {
-    if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
-    {
-        HAMURSTATEMR->ChangeState("MainState");
-    }
+    //if(HAMUREVENT->IsKeyPressed(SDLK_ESCAPE)) 
+    //{
+    //    HAMURSTATEMR->ChangeState("MainState");
+    //}
 
-    static bool keyPressed = false;
+    //static bool keyPressed = false;
 
    // HAMURCONSOLE << "Yes Sir?" << HAMURWORLD->GetObject("Tahta") << "\n";
 }
 
 
 // DRAW
-void ExampleState::Draw() 
+void ExampleState::Draw(float deltaTime) 
 {
  
 }

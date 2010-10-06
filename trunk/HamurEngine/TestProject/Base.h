@@ -13,8 +13,8 @@ class Base : public HamurObject
 {
     public:
         Base(const string& name, IngameState *state);
-        virtual void Draw();
-		virtual void Update();
+        virtual void Draw(float deltaTime);
+		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
 		std::vector<Bacteria *> *GetEnemiesList(){return &enemies;}

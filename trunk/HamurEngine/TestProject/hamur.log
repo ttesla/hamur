@@ -1,13 +1,14 @@
 Initializing Hamur Engine...
 Error!: Can't load icon: hamurIcon.bmp
-SDL............OK!
-OpenGL.........OK!
-HamurTexMR.....OK!
-HamurAudio.....OK!
-HamurWorld.....OK!
-HamurStateMR...OK!
-HamurEvent.....OK!
-HamurEngine....OK!
+SDL.........................OK!
+OpenGL......................OK!
+HamurTextureManager.........OK!
+HamurAudioManager...........OK!
+HamurStateManager...........OK!
+HamurWorld..................OK!
+HamurEvent..................OK!
+HamurTimer..................OK!
+HamurEngine.................OK!
 
 State registered: IngameState
 Object created: Base
@@ -46,20 +47,24 @@ Object created: Bacteria15
 Object created: 18
 Object deleted: Bacteria0
 Object deleted: 18
+Object created: 18
+Object deleted: Bacteria1
+Object deleted: 18
+Object created: 18
+Object deleted: Bacteria2
+Object deleted: 18
 
 Terminating Hamur Engine...
 All textures deleted.
-HamurTexMR.....terminated!
+HamurTextureManager.........terminated!
 All audio objects deleted.
-HamurAudio.....terminated!
-Object deleted: Bacteria1
+HamurAudioManager...........terminated!
 Object deleted: Bacteria10
 Object deleted: Bacteria11
 Object deleted: Bacteria12
 Object deleted: Bacteria13
 Object deleted: Bacteria14
 Object deleted: Bacteria15
-Object deleted: Bacteria2
 Object deleted: Bacteria3
 Object deleted: Bacteria4
 Object deleted: Bacteria5
@@ -85,10 +90,10 @@ Object deleted: Tooth7
 Object deleted: Tooth8
 Object deleted: Tooth9
 All world objects deleted.
-HamurWorld.....terminated!
+HamurWorld..................terminated!
 State deleted: IngameState
 All state objects deleted.
-HamurStateMR...terminated!
-HamurEvent.....terminated!
-HamurGL........terminated!
-HamurEngine....terminated!
+HamurStateManager...........terminated!
+HamurEvent..................terminated!
+HamurOpenGL.................terminated!
+HamurEngine.................terminated!

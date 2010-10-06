@@ -12,7 +12,7 @@ class DynamicObject : public HamurObject
 
     //void setPhysics();
     void setColor(float x, float y, float z);
-    virtual void Draw();
+    virtual void Draw(float deltaTime);
 
     protected:
 
