@@ -1,0 +1,94 @@
+Initializing Hamur Engine...
+Error!: Can't load icon: hamurIcon.bmp
+SDL............OK!
+OpenGL.........OK!
+HamurTexMR.....OK!
+HamurAudio.....OK!
+HamurWorld.....OK!
+HamurStateMR...OK!
+HamurEvent.....OK!
+HamurEngine....OK!
+
+State registered: IngameState
+Object created: Base
+Object created: Tooth0
+Object created: Tooth1
+Object created: Tooth2
+Object created: Tooth3
+Object created: Tooth4
+Object created: Tooth5
+Object created: Tooth6
+Object created: Tooth7
+Object created: Tooth8
+Object created: Tooth9
+Object created: Tooth10
+Object created: Tooth11
+Object created: Tooth12
+Object created: Tooth13
+Object created: Tooth14
+Object created: Tooth15
+Object created: Bacteria0
+Object created: Bacteria1
+Object created: Bacteria2
+Object created: Bacteria3
+Object created: Bacteria4
+Object created: Bacteria5
+Object created: Bacteria6
+Object created: Bacteria7
+Object created: Bacteria8
+Object created: Bacteria9
+Object created: Bacteria10
+Object created: Bacteria11
+Object created: Bacteria12
+Object created: Bacteria13
+Object created: Bacteria14
+Object created: Bacteria15
+Object created: 18
+Object deleted: Bacteria0
+Object deleted: 18
+
+Terminating Hamur Engine...
+All textures deleted.
+HamurTexMR.....terminated!
+All audio objects deleted.
+HamurAudio.....terminated!
+Object deleted: Bacteria1
+Object deleted: Bacteria10
+Object deleted: Bacteria11
+Object deleted: Bacteria12
+Object deleted: Bacteria13
+Object deleted: Bacteria14
+Object deleted: Bacteria15
+Object deleted: Bacteria2
+Object deleted: Bacteria3
+Object deleted: Bacteria4
+Object deleted: Bacteria5
+Object deleted: Bacteria6
+Object deleted: Bacteria7
+Object deleted: Bacteria8
+Object deleted: Bacteria9
+Object deleted: Base
+Object deleted: Tooth0
+Object deleted: Tooth1
+Object deleted: Tooth10
+Object deleted: Tooth11
+Object deleted: Tooth12
+Object deleted: Tooth13
+Object deleted: Tooth14
+Object deleted: Tooth15
+Object deleted: Tooth2
+Object deleted: Tooth3
+Object deleted: Tooth4
+Object deleted: Tooth5
+Object deleted: Tooth6
+Object deleted: Tooth7
+Object deleted: Tooth8
+Object deleted: Tooth9
+All world objects deleted.
+HamurWorld.....terminated!
+State deleted: IngameState
+All state objects deleted.
+HamurStateMR...terminated!
+HamurEvent.....terminated!
+HamurGL........terminated!
+HamurEngine....terminated!

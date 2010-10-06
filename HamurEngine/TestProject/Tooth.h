@@ -1,0 +1,28 @@
+#ifndef TOOTH_H
+#define TOOTH_H
+
+#include "hamur.h"
+using namespace hamur;
+
+class Tooth : public HamurObject
+{
+    public:
+        Tooth(const string& name);
+        virtual void Draw();
+		virtual void Update();
+		//void setPhysics(); We are not using physics at the moment...
+
+		void SetLife(float pLife){mLife = pLife;}
+		void SetShield(float pShield){mShield = pShield;}
+		float GetLife(){return mLife;}
+		float GetShield(){return mShield;}
+
+		void SetPosition(float x, float y);
+
+	private:
+		float mLife;
+		float mShield;
+};
+
+#endif
+
