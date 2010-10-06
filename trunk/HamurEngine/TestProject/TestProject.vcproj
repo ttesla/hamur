@@ -176,30 +176,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Bacteria.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaFattie.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaNorm.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaShooter.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaSlim.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaStrayer.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Base.cpp"
 				>
 			</File>
@@ -243,36 +219,40 @@
 				RelativePath=".\Wave.cpp"
 				>
 			</File>
+			<Filter
+				Name="Bacterias"
+				>
+				<File
+					RelativePath=".\Bacteria.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaFattie.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaNorm.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaShooter.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaSlim.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaStrayer.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\Bacteria.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaFattie.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaNorm.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaShooter.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaSlim.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BacteriaStrayer.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Base.h"
 				>
@@ -313,6 +293,34 @@
 				RelativePath=".\Wave.h"
 				>
 			</File>
+			<Filter
+				Name="Bacterias"
+				>
+				<File
+					RelativePath=".\Bacteria.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaFattie.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaNorm.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaShooter.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaSlim.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BacteriaStrayer.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
