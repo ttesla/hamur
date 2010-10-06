@@ -176,19 +176,47 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Bullet.cpp"
+				RelativePath=".\Bacteria.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\DynamicObject.cpp"
+				RelativePath=".\BacteriaFattie.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\ExampleState.cpp"
+				RelativePath=".\BacteriaNorm.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\GroundObject.cpp"
+				RelativePath=".\BacteriaShooter.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BacteriaSlim.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BacteriaStrayer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DefendingBullet.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DynamicObject.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ExampleState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\GroundObject.cpp"
 				>
 			</File>
 			<File
@@ -196,15 +224,23 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\main.cpp"
+				RelativePath=".\Level.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\MainState.cpp"
+				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Teeth.cpp"
+				RelativePath=".\MainState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Tooth.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Wave.cpp"
 				>
 			</File>
 		</Filter>
@@ -214,19 +250,47 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Bullet.h"
+				RelativePath=".\Bacteria.h"
 				>
 			</File>
 			<File
-				RelativePath=".\src\DynamicObject.h"
+				RelativePath=".\BacteriaFattie.h"
 				>
 			</File>
 			<File
-				RelativePath=".\src\ExampleState.h"
+				RelativePath=".\BacteriaNorm.h"
 				>
 			</File>
 			<File
-				RelativePath=".\src\GroundObject.h"
+				RelativePath=".\BacteriaShooter.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BacteriaSlim.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BacteriaStrayer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DefendingBullet.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DynamicObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ExampleState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\GroundObject.h"
 				>
 			</File>
 			<File
@@ -234,11 +298,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\MainState.h"
+				RelativePath=".\Level.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Teeth.h"
+				RelativePath=".\MainState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Tooth.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Wave.h"
 				>
 			</File>
 		</Filter>
@@ -248,6 +320,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\ClassDiagram1.cd"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
