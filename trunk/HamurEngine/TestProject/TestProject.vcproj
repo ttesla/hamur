@@ -180,10 +180,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DefendingBullet.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\DynamicObject.cpp"
 				>
 			</File>
@@ -247,6 +243,26 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Bullets"
+				>
+				<File
+					RelativePath=".\Bullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\FlossingBullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ToothPasteBullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\WaterBullet.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -255,10 +271,6 @@
 			>
 			<File
 				RelativePath=".\Base.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DefendingBullet.h"
 				>
 			</File>
 			<File
@@ -318,6 +330,26 @@
 				</File>
 				<File
 					RelativePath=".\BacteriaStrayer.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Bullets"
+				>
+				<File
+					RelativePath=".\Bullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\FlossingBullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ToothPasteBullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\WaterBullet.h"
 					>
 				</File>
 			</Filter>

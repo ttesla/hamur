@@ -13,15 +13,15 @@ class Bacteria;
 class Base : public HamurObject
 {
     public:
-        Base(const string& name, IngameState *state);
+        Base(const string& name);
         virtual void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
+		void Fire(const hamur::HamurVec3 &targetPos);
 		//void setPhysics(); We are not using physics at the moment...
 
 		std::vector<Bacteria *> *GetEnemiesList(){return &enemies;}
 
 private:
-	IngameState *state;
 	std::vector<Bacteria *> enemies;
 	int killedEnemyCount;
 	bool update;

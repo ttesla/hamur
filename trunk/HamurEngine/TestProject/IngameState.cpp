@@ -1,5 +1,6 @@
 #include "IngameState.h"
 #include "Math.h"
+#include "Base.h"
 
 using namespace hamur;
 
@@ -21,7 +22,7 @@ void IngameState::Enter()
 	/**************
 	*	BASE	**
 	***************/
-	Base* base = new Base("Base", this);
+	base = new Base("Base");
 	activeObjList.push_front(base);
 	
 	/**************
@@ -97,12 +98,13 @@ void IngameState::Update(float deltaTime)
 		spawnedEnemyCount++;
 	}
 
-	//Iterating through the objects active in that state and update
-	//list<HamurObject *>::iterator Iter;
-	//for(Iter = activeObjList.begin(); Iter != activeObjList.end(); ++Iter)
-	//{
-	//	(*Iter)->Update(float deltaTime);
-	//}
+	
+	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
+	{
+		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
+	}
+
+
 
 	if(killObj1 != NULL)
 	{

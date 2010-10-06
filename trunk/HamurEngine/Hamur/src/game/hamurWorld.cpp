@@ -4,7 +4,7 @@
 #include "../helper/hamurMath.h"
 #include "../hamurEvent.h"
 #include "../hamurDefinitions.h"
-
+#include "../helper/hamurString.h"
 
 namespace hamur
 {
@@ -33,7 +33,14 @@ bool HamurWorld::AddObject(HamurObject* newObject)
 {
     // Look in the map if the object is already added. If not found, then add.
     if(HasObject(newObject->GetName()))
-        return false;
+	{
+		HamurString str;
+		str << (int)mWorldObjects.size();
+		string newName = newObject->GetName() + str.GetString();
+		HAMURLOG->WriteLogln("Object name used: " + newObject->GetName());
+		HAMURLOG->WriteLogln("Object " + newObject->GetName() + "'s name has been changed to by engine: " + newName);
+		newObject->SetName(newName);
+	}
 
     mWorldObjects[newObject->GetName()] = newObject;
     mObjectCount++;

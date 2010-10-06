@@ -1,5 +1,5 @@
 #include "Base.h"
-#include "DefendingBullet.h"
+#include "ToothPasteBullet.h"
 #include "IngameState.h"
 #include "Bacteria.h"
 
@@ -8,10 +8,9 @@
 #include <iostream>
 using namespace std;
 
-Base::Base(const string &name, IngameState *state):HamurObject(name), killedEnemyCount(0)
+Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 {
 	update = true;
-	this->state = state;
 
 	// Don't know at the moment, we'll have to try width & height
     mWidth = 20;
@@ -80,19 +79,26 @@ void Base::Draw(float deltaTime)
 void Base::Update(float deltaTime)
 {
 	//There is no movement for the base...
-	if(update)
-	{
-		hamur::HamurString str;
-		str << (int)state->GetActiveObjList()->size();
-		if(enemies.size() > 0 && enemies[killedEnemyCount]->IsActive())
-		{
-			Bullet *b = new Bullet(str.GetString(), mPos, enemies[killedEnemyCount++], state);
-			state->GetActiveObjList()->push_front(b);
-		}
+	//if(update)
+	//{
+	//	hamur::HamurString str;
+	//	str << (int)state->GetActiveObjList()->size();
+	//	if(enemies.size() > 0 && enemies[killedEnemyCount]->IsActive())
+	//	{
+	//		Bullet *b = new ToothPasteBullet(str.GetString(), mPos, 
+	//			enemies[killedEnemyCount]->GetPosition(), 1);
+	//		//state->GetActiveObjList()->push_front(b);
+	//	}
 
-		if(killedEnemyCount == enemies.size())
-			update = false;
-	}
+	//	if(killedEnemyCount == enemies.size())
+	//		update = false;
+	//}
 
 
+}
+
+void Base::Fire(const HamurVec3 &targetPos)
+{
+	Bullet *b = new ToothPasteBullet("ToothPasteBullet", mPos, 
+		targetPos, 1);
 }
