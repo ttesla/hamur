@@ -5,7 +5,7 @@ using namespace std;
 
 #define SPEEDCOEF 0.01;
  
-Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition):HamurObject(name), mBasePosition(basePosition)
+Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition, const float &speed):HamurObject(name), mBasePosition(basePosition), mSpeed(speed)
 {
 	mActive = false;
 
@@ -46,6 +46,11 @@ Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition):HamurObjec
     //setPhysics();
 }
 
+void Bacteria::Update( float deltaTime )
+{
+	mPos.x += movementDirection.x * mSpeed * deltaTime;
+	mPos.y += movementDirection.y * mSpeed * deltaTime;
+}
 /* Not using it at the moment...
 
 void Bacteria::setPhysics()

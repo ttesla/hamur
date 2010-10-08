@@ -61,23 +61,23 @@ void IngameState::Enter()
 		// We are going te allocate some different type bacterias
 		if (i < MAXBACT / 5)
 		{
-			allocatedBacterias[i] = new BacteriaNorm(indexStr + str.GetString(), base->GetPosition());
+			allocatedBacterias[i] = new BacteriaNorm(indexStr + str.GetString(), base->GetPosition(), 50);
 		}
 		else if (i < 2*MAXBACT / 5)
 		{
-			allocatedBacterias[i] = new BacteriaFattie(indexStr + str.GetString(), base->GetPosition());
+			allocatedBacterias[i] = new BacteriaFattie(indexStr + str.GetString(), base->GetPosition(), 50);
 		}
 		else if (i < 3*MAXBACT / 5)
 		{
-			allocatedBacterias[i] = new BacteriaSlim(indexStr + str.GetString(), base->GetPosition());
+			allocatedBacterias[i] = new BacteriaSlim(indexStr + str.GetString(), base->GetPosition(), 50);
 		}
 		else if (i < 4*MAXBACT / 5)
 		{
-			allocatedBacterias[i] = new BacteriaShooter(indexStr + str.GetString(), base->GetPosition());
+			allocatedBacterias[i] = new BacteriaShooter(indexStr + str.GetString(), base->GetPosition(), 50);
 		}
 		else
 		{
-			allocatedBacterias[i] = new BacteriaStrayer(indexStr + str.GetString(), base->GetPosition());
+			allocatedBacterias[i] = new BacteriaStrayer(indexStr + str.GetString(), base->GetPosition(), 50);
 		}
 
 		allocatedBacterias[i]->SetActive(false);

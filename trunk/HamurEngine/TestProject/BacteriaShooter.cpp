@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
  
-BacteriaShooter::BacteriaShooter(const string &name, hamur::HamurVec3 basePosition):Bacteria(name, basePosition)
+BacteriaShooter::BacteriaShooter(const string &name, hamur::HamurVec3 basePosition, const float &speed):Bacteria(name, basePosition, speed)
 {
 	// We set Life and Shield for Norms
 	this->SetLife(2.0); // Example values at the moment
@@ -55,6 +55,6 @@ void BacteriaShooter::Draw(float deltaTime)
 
 void BacteriaShooter::Update(float deltaTime)
 {
-	mPos.x += movementDirection.x * SPEEDCOEF;
-	mPos.y += movementDirection.y * SPEEDCOEF;
+	Bacteria::Update(deltaTime);
+
 }

@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
  
-BacteriaStrayer::BacteriaStrayer(const string &name, hamur::HamurVec3 basePosition):Bacteria(name, basePosition)
+BacteriaStrayer::BacteriaStrayer(const string &name, hamur::HamurVec3 basePosition, const float &speed):Bacteria(name, basePosition, speed)
 {
 	// We set Life and Shield for Norms
 	this->SetLife(2.0); // Example values at the moment
@@ -54,6 +54,6 @@ void BacteriaStrayer::Draw(float deltaTime)
 
 void BacteriaStrayer::Update(float deltaTime)
 {
-	mPos.x += movementDirection.x * SPEEDCOEF;
-	mPos.y += movementDirection.y * SPEEDCOEF;
+	Bacteria::Update(deltaTime);
+
 }
