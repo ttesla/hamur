@@ -100,5 +100,5 @@ void Base::Update(float deltaTime)
 void Base::Fire(const HamurVec3 &targetPos)
 {
 	Bullet *b = new ToothPasteBullet("ToothPasteBullet", mPos, 
-		targetPos, 1);
+		targetPos, 300);
 }

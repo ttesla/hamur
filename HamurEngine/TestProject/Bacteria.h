@@ -12,9 +12,9 @@ using namespace hamur;
 class Bacteria : public HamurObject
 {
     public:
-		Bacteria(const string& name, hamur::HamurVec3 basePos);
+		Bacteria(const string& name, hamur::HamurVec3 basePos, const float &speed);
 		virtual void Draw(float deltaTime){};
-		virtual void Update(float deltaTime){};
+		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
 		bool IsActive(){return mActive;}
@@ -30,6 +30,7 @@ class Bacteria : public HamurObject
 		HamurVec3 movementDirection;
 		float mLife;
 		float mShield;
+		float mSpeed;
 };
 
 #endif

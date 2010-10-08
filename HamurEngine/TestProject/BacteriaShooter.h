@@ -11,7 +11,7 @@ using namespace hamur;
 class BacteriaShooter : public Bacteria
 {
     public:
-		BacteriaShooter(const string& name, hamur::HamurVec3 basePos);
+		BacteriaShooter(const string& name, hamur::HamurVec3 basePos, const float &speed);
         virtual void Draw(float deltaTime);	
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
