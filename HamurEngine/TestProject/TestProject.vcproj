@@ -274,6 +274,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Collision.h"
+				>
+			</File>
+			<File
 				RelativePath=".\DynamicObject.h"
 				>
 			</File>

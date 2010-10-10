@@ -1,12 +1,6 @@
 #pragma once
 
 #include "hamur.h"
-#include "Bacteria.h"
-#include "BacteriaNorm.h"
-#include "BacteriaFattie.h"
-#include "BacteriaStrayer.h"
-#include "BacteriaShooter.h"
-#include "BacteriaSlim.h"
 #include "hamurDefinitions.h"
 #include "Tooth.h"
 #include <list>

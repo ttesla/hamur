@@ -8,6 +8,7 @@ using namespace hamur;
 
 class IngameState;
 class Bacteria;
+class Bullet;
 
 //Tower which is in the middle of tooth. Controled by player and can fire
 class Base : public HamurObject
@@ -23,6 +24,7 @@ class Base : public HamurObject
 
 private:
 	std::vector<Bacteria *> enemies;
+	std::vector<Bullet *> mBullets;
 	int killedEnemyCount;
 	bool update;
 };

@@ -6,6 +6,7 @@
 
 #include <map>
 #include <string>
+#include <list>
 
 using std::map;
 using std::string;
@@ -52,6 +53,7 @@ class HamurWorld : public Singleton<HamurWorld>
     private:
         void InitializePhysics();
         map<string, HamurObject*> mWorldObjects;
+		std::list<string> mDeleteList;
         int mObjectCount;
         // BOX2D Attributes
         b2Vec2 mGravity;

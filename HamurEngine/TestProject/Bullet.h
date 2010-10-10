@@ -12,6 +12,8 @@ public:
 	virtual void Draw(float deltaTime){};
 	virtual void Explode(){};
 
+	void SetTarget(const hamur::HamurVec3 &target);
+
 private:
 	hamur::HamurVec3 mMovementDir;
 	float mSpeed;
