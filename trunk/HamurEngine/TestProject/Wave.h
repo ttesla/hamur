@@ -2,27 +2,37 @@
 #define WAVE_H
 
 #include "hamur.h"
-using namespace hamur;
+#include "Bacteria.h"
+#include <list>
 
-#define MAXLEVEL 5
-
-class Wave
+class Wave : public hamur::HamurObject
 {
     public:
-        Wave(const string& name, int level);
-		virtual void Start();
+		static Wave *GetActiveWave() {if(mActiveWave != NULL)return mActiveWave;}
 
-		int GetLevel(){return mLevel;}
-		void SetLevel(int level){if (level < MAXLEVEL && level > 0) mLevel = level; else exit(-1);}
+		Wave(const string& name, const hamur::HamurVec3 &basePos, int fattieCount, int normCount, int shooterCount, int slimCount, 
+			int strayerCount);
+
+		void Update(float deltaTime);
+		void Draw(float deltaTime){};
+
+		void StartWave();
+
+		inline std::list<Bacteria *> GetBacteriaList() {return mBacteriaList;}
+		inline std::list<Bacteria *> *GetSpawnedBacterias() {return &mSpawnedBacterias;}
 
 	private:
-		string mName;
-		// Level of difficulty of each wave
-		int mLevel;
-		/**
-		* It is needed to erase the enemies from game state and bring them to each Wave of each Level
-		//HamurObject** enemies; 
-		*/
+		static Wave *mActiveWave;
+
+		std::list<Bacteria *> mBacteriaList;
+		std::list<Bacteria *> mSpawnedBacterias;
+		bool mStarted;
+		float mTimeCounter;
+		//int mFattieCount;
+		//int mNormCount;
+		//int mShooterCount;
+		//int mSlimCount;
+		//int mStrayerCount;
 };
 
 #endif

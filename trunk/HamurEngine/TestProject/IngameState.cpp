@@ -1,6 +1,7 @@
 #include "IngameState.h"
 #include "Math.h"
 #include "Base.h"
+#include "Wave.h"
 
 using namespace hamur;
 
@@ -51,6 +52,7 @@ void IngameState::Enter()
 	******************/
 	//We' re allocating all the enemies at the beginning of state for performance stuff:D
 	//When the time comes, they will start to get update callback
+/*
 	allocatedBacterias = new Bacteria*[MAXBACT];
 
 	for(int i = 0; i < MAXBACT; i++)
@@ -83,20 +85,26 @@ void IngameState::Enter()
 		allocatedBacterias[i]->SetActive(false);
 		//activeObjList.push_front(allocatedBacterias[i]);
 		base->GetEnemiesList()->push_back(allocatedBacterias[i]);
-	}
+	}*/
+
+
+	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);
+	w->StartWave();
 }
 
 void IngameState::Update(float deltaTime)
 {
 	//Time interval can be changed due to level difficulty. It' s the time interval between 
 	//bacteria spawn
+/*
 	if((SDL_GetTicks() - mPrevTickCount) >= 4000)
 	{
 		mPrevTickCount = SDL_GetTicks();
 		activeObjList.push_front(allocatedBacterias[spawnedEnemyCount]);
 		allocatedBacterias[spawnedEnemyCount]->SetActive(true);
 		spawnedEnemyCount++;
-	}
+	}*/
+
 
 	
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
@@ -104,20 +112,23 @@ void IngameState::Update(float deltaTime)
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
 	}
 
-
-
-	if(killObj1 != NULL)
+	if(HAMUREVENT->IsKeyPressed(Keys::Escape))
 	{
-		activeObjList.remove(killObj1);
-		HAMURWORLD->DeleteObject(killObj1->GetName());
-		killObj1 = NULL;
+		HAMURENGINE->Stop();
 	}
-	if(killObj2 != NULL)
-	{
-		activeObjList.remove(killObj2);
-		HAMURWORLD->DeleteObject(killObj2->GetName());
-		killObj2 = NULL;
-	}
+
+	//if(killObj1 != NULL)
+	//{
+	//	activeObjList.remove(killObj1);
+	//	HAMURWORLD->DeleteObject(killObj1->GetName());
+	//	killObj1 = NULL;
+	//}
+	//if(killObj2 != NULL)
+	//{
+	//	activeObjList.remove(killObj2);
+	//	HAMURWORLD->DeleteObject(killObj2->GetName());
+	//	killObj2 = NULL;
+	//}
 
 }
 

@@ -34,12 +34,13 @@ bool HamurWorld::AddObject(HamurObject* newObject)
     // Look in the map if the object is already added. If not found, then add.
     if(HasObject(newObject->GetName()))
 	{
-		HamurString str;
+		/*HamurString str;
 		str << (int)mWorldObjects.size();
 		string newName = newObject->GetName() + str.GetString();
 		HAMURLOG->WriteLogln("Object name used: " + newObject->GetName());
 		HAMURLOG->WriteLogln("Object " + newObject->GetName() + "'s name has been changed to by engine: " + newName);
-		newObject->SetName(newName);
+		newObject->SetName(newName);*/
+		return false;
 	}
 
     mWorldObjects[newObject->GetName()] = newObject;
@@ -57,9 +58,12 @@ bool HamurWorld::DeleteObject(const string& objectName)
     if(iter != mWorldObjects.end())
     {
         if(iter->second)
+		{
+			mDeleteList.push_back(iter->second->GetName());
             delete iter->second;
+		}
 
-        mWorldObjects.erase(iter);
+        //mWorldObjects.erase(iter);
         mObjectCount--;
         return true;
     }
@@ -94,6 +98,19 @@ void HamurWorld::UpdateAllObjects(float deltaTime)
                 iter->second->Update(deltaTime);
         }
     }
+
+	if(!mDeleteList.empty())
+	{
+		using namespace std;
+
+		list<string>::iterator delIter;
+		for(delIter = mDeleteList.begin(); delIter != mDeleteList.end(); delIter++)
+		{
+			mWorldObjects.erase(mWorldObjects.find((*delIter)));
+		}
+
+		mDeleteList.clear();
+	}
 }
 
 

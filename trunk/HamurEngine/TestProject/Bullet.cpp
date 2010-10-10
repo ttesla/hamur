@@ -18,3 +18,9 @@ void Bullet::Update( float deltaTime )
 
 	//TODO:Some collision calculations must be done to see if the bullet hit something
 }
+
+void Bullet::SetTarget(const HamurVec3 &target)
+{
+	mMovementDir = target - mPos;
+	mMovementDir.Normalize();
+}
