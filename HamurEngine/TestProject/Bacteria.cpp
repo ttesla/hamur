@@ -51,6 +51,19 @@ void Bacteria::Update( float deltaTime )
 	mPos.x += movementDirection.x * mSpeed * deltaTime;
 	mPos.y += movementDirection.y * mSpeed * deltaTime;
 }
+
+bool Bacteria::DecreaseLife(int bulletPower)
+{
+	mLife -= bulletPower * 0.5;
+	
+	if (mLife <= 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 /* Not using it at the moment...
 
 void Bacteria::setPhysics()

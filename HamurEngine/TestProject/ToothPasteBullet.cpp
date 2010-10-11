@@ -3,24 +3,30 @@
 #include "Collision.h"
 
 using namespace hamur;
+using namespace std;
 
 void ToothPasteBullet::Update(float deltaTime)
 {
-	using namespace std;
-
 	//Get enemies from wave and look if they are colliding with this
-	std::list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
+	list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
 	if(!bacterias->empty())
 	{
-		std::list<Bacteria *>::iterator Iter;
+		list<Bacteria *>::iterator Iter;
 		for(Iter = bacterias->begin(); Iter != bacterias->end(); ++Iter)
 		{
 			if(Collision::RectsIntersectWith(this, (*Iter)))
 			{
+				// We decrease the life of the bacteria according to the power of the bullet
+				bool killed = (*Iter)->DecreaseLife(mPower);
+	
+				if (killed)
+				{
+					HAMURWORLD->DeleteObject((*Iter)->GetName());
+					HAMURCONSOLE << "Objeler silindi\n";
+					bacterias->erase(Iter);
+				}
 				HAMURWORLD->DeleteObject(this->GetName());
-				HAMURWORLD->DeleteObject((*Iter)->GetName());
-				HAMURCONSOLE << "Objeler silindi\n";
-				bacterias->erase(Iter);
+
 				return;
 			}
 		}

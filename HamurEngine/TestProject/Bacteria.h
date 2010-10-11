@@ -25,6 +25,9 @@ class Bacteria : public HamurObject
 		void SetShield(float pShield){mShield = pShield;}
 		HamurVec3 GetMovementDirection(){return movementDirection;}
 
+		// returns true: bacteria killed, false otherwise
+		bool DecreaseLife (int bulletPower);
+
 	protected:
 		HamurVec3 mBasePosition;
 		HamurVec3 movementDirection;

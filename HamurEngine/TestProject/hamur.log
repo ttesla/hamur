@@ -108,6 +108,24 @@ Object created: SlimBact11
 Object created: StrayerBact12
 Object created: StrayerBact13
 Object created: StrayerBact14
+Object deleted: ToothPasteBullet0
+Object deleted: ToothPasteBullet1
+Object deleted: ToothPasteBullet2
+Object deleted: FattieBact0
+Object deleted: ToothPasteBullet3
+Object deleted: ToothPasteBullet4
+Object deleted: ToothPasteBullet5
+Object deleted: ToothPasteBullet6
+Object deleted: FattieBact1
+Object deleted: ToothPasteBullet7
+Object deleted: ToothPasteBullet8
+Object deleted: ToothPasteBullet9
+Object deleted: ToothPasteBullet10
+Object deleted: FattieBact2
+Object deleted: ToothPasteBullet11
+Object deleted: ToothPasteBullet13
+Object deleted: NormBact3
+Object deleted: ToothPasteBullet12
 
 Terminating Hamur Engine...
 All textures deleted.
@@ -115,10 +133,6 @@ HamurTextureManager.........terminated!
 All audio objects deleted.
 HamurAudioManager...........terminated!
 Object deleted: Base
-Object deleted: FattieBact0
-Object deleted: FattieBact1
-Object deleted: FattieBact2
-Object deleted: NormBact3
 Object deleted: NormBact4
 Object deleted: NormBact5
 Object deleted: ShooterBact6
@@ -146,19 +160,12 @@ Object deleted: Tooth6
 Object deleted: Tooth7
 Object deleted: Tooth8
 Object deleted: Tooth9
-Object deleted: ToothPasteBullet0
-Object deleted: ToothPasteBullet1
-Object deleted: ToothPasteBullet10
-Object deleted: ToothPasteBullet11
-Object deleted: ToothPasteBullet12
-Object deleted: ToothPasteBullet13
 Object deleted: ToothPasteBullet14
 Object deleted: ToothPasteBullet15
 Object deleted: ToothPasteBullet16
 Object deleted: ToothPasteBullet17
 Object deleted: ToothPasteBullet18
 Object deleted: ToothPasteBullet19
-Object deleted: ToothPasteBullet2
 Object deleted: ToothPasteBullet20
 Object deleted: ToothPasteBullet21
 Object deleted: ToothPasteBullet22
@@ -169,7 +176,6 @@ Object deleted: ToothPasteBullet26
 Object deleted: ToothPasteBullet27
 Object deleted: ToothPasteBullet28
 Object deleted: ToothPasteBullet29
-Object deleted: ToothPasteBullet3
 Object deleted: ToothPasteBullet30
 Object deleted: ToothPasteBullet31
 Object deleted: ToothPasteBullet32
@@ -180,7 +186,6 @@ Object deleted: ToothPasteBullet36
 Object deleted: ToothPasteBullet37
 Object deleted: ToothPasteBullet38
 Object deleted: ToothPasteBullet39
-Object deleted: ToothPasteBullet4
 Object deleted: ToothPasteBullet40
 Object deleted: ToothPasteBullet41
 Object deleted: ToothPasteBullet42
@@ -191,7 +196,6 @@ Object deleted: ToothPasteBullet46
 Object deleted: ToothPasteBullet47
 Object deleted: ToothPasteBullet48
 Object deleted: ToothPasteBullet49
-Object deleted: ToothPasteBullet5
 Object deleted: ToothPasteBullet50
 Object deleted: ToothPasteBullet51
 Object deleted: ToothPasteBullet52
@@ -202,14 +206,10 @@ Object deleted: ToothPasteBullet56
 Object deleted: ToothPasteBullet57
 Object deleted: ToothPasteBullet58
 Object deleted: ToothPasteBullet59
-Object deleted: ToothPasteBullet6
 Object deleted: ToothPasteBullet60
 Object deleted: ToothPasteBullet61
 Object deleted: ToothPasteBullet62
 Object deleted: ToothPasteBullet63
-Object deleted: ToothPasteBullet7
-Object deleted: ToothPasteBullet8
-Object deleted: ToothPasteBullet9
 Object deleted: Wave
 All world objects deleted.
 HamurWorld..................terminated!
