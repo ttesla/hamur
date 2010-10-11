@@ -8,6 +8,7 @@ BacteriaFattie::BacteriaFattie(const string &name, hamur::HamurVec3 basePosition
 	// We set Life and Shield for Norms
 	this->SetLife(5.0); // Example values at the moment
 	this->SetShield(3.0); 
+	this->mWidth = 30.0;
 }
 
 /* Not using it at the moment...

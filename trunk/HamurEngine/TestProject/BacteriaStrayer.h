@@ -15,7 +15,11 @@ class BacteriaStrayer : public Bacteria
         virtual void Draw(float deltaTime);	
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
+
 	private:
+		int mPrevTickCount;
+		int mMovementRange;
+		int mSideMovFactor;
 };
 
 #endif

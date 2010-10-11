@@ -8,6 +8,7 @@ BacteriaSlim::BacteriaSlim(const string &name, hamur::HamurVec3 basePosition, co
 	// We set Life and Shield for Norms
 	this->SetLife(1.0); // Example values at the moment
 	this->SetShield(3.0); 
+	this->mWidth = 10.0;
 }
 
 /* Not using it at the moment...

@@ -87,7 +87,6 @@ void IngameState::Enter()
 		base->GetEnemiesList()->push_back(allocatedBacterias[i]);
 	}*/
 
-
 	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);
 	w->StartWave();
 }
