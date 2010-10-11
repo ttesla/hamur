@@ -8,6 +8,9 @@ BacteriaStrayer::BacteriaStrayer(const string &name, hamur::HamurVec3 basePositi
 	// We set Life and Shield for Norms
 	this->SetLife(2.0); // Example values at the moment
 	this->SetShield(3.0); 
+	this->mPrevTickCount = (double)SDL_GetTicks();
+	this->mMovementRange = 500;
+	this->mSideMovFactor = 50;
 }
 
 /* Not using it at the moment...
@@ -54,6 +57,19 @@ void BacteriaStrayer::Draw(float deltaTime)
 
 void BacteriaStrayer::Update(float deltaTime)
 {
-	Bacteria::Update(deltaTime);
+	if (SDL_GetTicks() - mPrevTickCount <= mMovementRange)
+	{	
+		if (movementDirection.y > 0.9 || movementDirection.y < -0.9)
+		{
+			mPos.x += sin(((double)mPrevTickCount - (movementDirection.x)) / this->mSideMovFactor);	
+		}
+		else
+		{
+			mPos.y += sin(((double)mPrevTickCount - (movementDirection.x)) / this->mSideMovFactor);	
+		}
+	}
+	else
+		mPrevTickCount = SDL_GetTicks();
 
+	Bacteria::Update(deltaTime);
 }

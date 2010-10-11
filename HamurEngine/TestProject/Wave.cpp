@@ -25,27 +25,27 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 
 		if(fattieCount > 0)
 		{
-			b = new BacteriaFattie("FattieBact" + str.GetString(), basePos, 50);
+			b = new BacteriaFattie("FattieBact" + str.GetString(), basePos, 20);
 			fattieCount--;
 		}
 		else if(normCount > 0)
 		{
-			b = new BacteriaNorm("NormBact" + str.GetString(), basePos, 50);
+			b = new BacteriaNorm("NormBact" + str.GetString(), basePos, 40);
 			normCount--;
 		}
 		else if(shooterCount > 0)
 		{
-			b = new BacteriaShooter("ShooterBact" + str.GetString(), basePos, 50);
+			b = new BacteriaShooter("ShooterBact" + str.GetString(), basePos, 40);
 			shooterCount--;
 		}
 		else if(slimCount > 0)
 		{
-			b = new BacteriaSlim("SlimBact" + str.GetString(), basePos, 50);
+			b = new BacteriaSlim("SlimBact" + str.GetString(), basePos, 70);
 			slimCount--;
 		}
 		else if(strayerCount > 0)
 		{
-			b = new BacteriaStrayer("StrayerBact" + str.GetString(), basePos, 50);
+			b = new BacteriaStrayer("StrayerBact" + str.GetString(), basePos, 30);
 			strayerCount--;
 		}
 
