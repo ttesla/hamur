@@ -28,7 +28,7 @@ void IngameState::Enter()
 	/**************
 	*	TEETH	**
 	***************/
-	allocatedTeeth = new Tooth*[MAXTEETH];
+	//allocatedTeeth = new Tooth*[MAXTEETH];
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
 	xBase = base->GetPosition().x;
@@ -41,10 +41,12 @@ void IngameState::Enter()
 		string indexStr = "Tooth";
 		HamurString str;
 		str << i;
-		allocatedTeeth[i] = new Tooth(indexStr + str.GetString());
-		allocatedTeeth[i]->SetPosition((xBase-xInc)*cos(i*a) + xBase, (yBase-yInc)*sin(i*a) + yBase);
+		Tooth *t = new Tooth(indexStr + str.GetString());
+		t->SetPosition((xBase-xInc)*cos(i*a) + xBase, (yBase-yInc)*sin(i*a) + yBase);
+		allocatedTeeth.push_back(t);
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
+	Tooth::SetTeeth(&allocatedTeeth);
 
 
 	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);

@@ -27,6 +27,7 @@ class Bacteria : public HamurObject
 
 		// returns true: bacteria killed, false otherwise
 		bool DecreaseLife (int bulletPower);
+		bool IsAttacking2Tooth(float deltaTime);
 
 	protected:
 		HamurVec3 mBasePosition;
@@ -34,6 +35,7 @@ class Bacteria : public HamurObject
 		float mLife;
 		float mShield;
 		float mSpeed;
+		float mDamage;
 };
 
 #endif

@@ -12,14 +12,13 @@ mCooldown(cooldown)
 void Brush::Update( float deltaTime )
 {
 	//Calculating cooldown time
-	if(!mIsUsable)
+	if(!mIsUsable && mUsedTimes < 2)
 	{
 		mRemainingCooldown -= deltaTime;
 
 		if(mRemainingCooldown <= 0)
 			mIsUsable = true;
 	}
-
 }
 
 void Brush::Explode()
@@ -31,9 +30,10 @@ void Brush::Explode()
 		Tooth *t = (Tooth *)HAMURWORLD->GetHamurObject("Tooth" + str.GetString());
 
 		//TODO:Value of shield increase must be set
-		t->SetShield(t->GetShield() + 3);
+		t->SetShield(1000);
 	}
 
 	mRemainingCooldown = mCooldown;
 	mIsUsable = false;
+	mUsedTimes++;
 }
