@@ -247,6 +247,10 @@
 				Name="Bullets"
 				>
 				<File
+					RelativePath=".\Brush.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Bullet.cpp"
 					>
 				</File>
@@ -340,6 +344,10 @@
 			<Filter
 				Name="Bullets"
 				>
+				<File
+					RelativePath=".\Brush.h"
+					>
+				</File>
 				<File
 					RelativePath=".\Bullet.h"
 					>

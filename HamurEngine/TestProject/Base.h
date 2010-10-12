@@ -22,11 +22,11 @@ class Base : public HamurObject
 
 		std::vector<Bacteria *> *GetEnemiesList(){return &enemies;}
 
-private:
-	std::vector<Bacteria *> enemies;
-	std::vector<Bullet *> mBullets;
-	int killedEnemyCount;
-	bool update;
+	private:
+		std::vector<Bacteria *> enemies;
+		std::vector<Bullet *> mBullets;
+		int killedEnemyCount;
+		bool update;
 };
 
 #endif

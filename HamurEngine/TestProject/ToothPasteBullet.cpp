@@ -16,17 +16,9 @@ void ToothPasteBullet::Update(float deltaTime)
 		{
 			if(Collision::RectsIntersectWith(this, (*Iter)))
 			{
-				// We decrease the life of the bacteria according to the power of the bullet
-				bool killed = (*Iter)->DecreaseLife(mPower);
-	
-				if (killed)
-				{
-					HAMURWORLD->DeleteObject((*Iter)->GetName());
-					HAMURCONSOLE << "Objeler silindi\n";
-					bacterias->erase(Iter);
-				}
-				HAMURWORLD->DeleteObject(this->GetName());
-
+				ResetBullet();		
+				HAMURWORLD->DeleteObject((*Iter)->GetName());
+				bacterias->erase(Iter);
 				return;
 			}
 		}
@@ -39,6 +31,7 @@ void ToothPasteBullet::Update(float deltaTime)
 	{
 		this->SetVisible(false);
 		this->SetActive(false);
+		ResetBullet();
 	}
 }
 
@@ -50,4 +43,12 @@ void ToothPasteBullet::Draw(float deltaTime)
 void ToothPasteBullet::Explode()
 {
 	
+}
+
+void ToothPasteBullet::ResetBullet()
+{
+	this->SetVisible(false);
+	this->SetActive(false);
+
+	mPos = startingPosition;
 }
