@@ -17,4 +17,5 @@ private:
 	float mCooldownTime;
 	float mRemainingCooldown;
 	bool mIsUsable;
+
 };

@@ -43,7 +43,7 @@ bool HamurWorld::AddObject(HamurObject* newObject)
 		return false;
 	}
 
-    mWorldObjects[newObject->GetName()] = newObject;
+    mWorldObjects.insert()
     mObjectCount++;
     return true;
 }

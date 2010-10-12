@@ -17,5 +17,5 @@ public:
 protected:
 	hamur::HamurVec3 mMovementDir;
 	float mSpeed;
-	int mPower;
+	float mDamage;
 };

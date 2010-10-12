@@ -27,16 +27,12 @@ public:
 	void Exit();
 
 
-	inline list<HamurObject *> *GetActiveObjList(){return &activeObjList;}
 
 
 	//When the bacteria shot, this pointers are set by bullet object.
 	//Very creepy from the point of software engineering, isn' t it:D:D
-	HamurObject *killObj1;
-	HamurObject *killObj2;
 
 private:
-	list<HamurObject *> activeObjList;
 	Bacteria **allocatedBacterias;
 	Tooth **allocatedTeeth;
 	int mPrevTickCount;

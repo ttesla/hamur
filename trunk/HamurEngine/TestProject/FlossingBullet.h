@@ -5,7 +5,7 @@ class FlossingBullet : public Bullet
 {
 public:
 	FlossingBullet(const string &name, const hamur::HamurVec3 &startingPos, const hamur::HamurVec3 &targetPos, const float &speed) :
-	  Bullet(name, startingPos, targetPos, speed)
+	  Bullet(name, startingPos, targetPos, speed), targetPosition(targetPos), startingPosition(startingPos)
 	  {
 		  mWidth = 5;
 		  mHeight = 5;
@@ -16,4 +16,6 @@ public:
 	void Explode();
 protected:
 private:
+	hamur::HamurVec3 targetPosition;
+	hamur::HamurVec3 startingPosition;
 };

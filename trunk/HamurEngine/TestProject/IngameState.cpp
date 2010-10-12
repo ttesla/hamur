@@ -87,6 +87,7 @@ void IngameState::Enter()
 		base->GetEnemiesList()->push_back(allocatedBacterias[i]);
 	}*/
 
+
 	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);
 	w->StartWave();
 }
@@ -103,8 +104,6 @@ void IngameState::Update(float deltaTime)
 		allocatedBacterias[spawnedEnemyCount]->SetActive(true);
 		spawnedEnemyCount++;
 	}*/
-
-
 	
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
@@ -128,7 +127,6 @@ void IngameState::Update(float deltaTime)
 	//	HAMURWORLD->DeleteObject(killObj2->GetName());
 	//	killObj2 = NULL;
 	//}
-
 }
 
 void IngameState::Draw(float deltaTime)
