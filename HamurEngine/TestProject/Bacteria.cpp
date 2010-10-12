@@ -64,7 +64,7 @@ void Bacteria::Update( float deltaTime )
 
 bool Bacteria::DecreaseLife(int bulletPower)
 {
-	mLife -= bulletPower * 0.5;
+	mLife -= bulletPower;
 	
 	if (mLife <= 0)
 	{
