@@ -2,6 +2,7 @@
 #include "Math.h"
 #include "Base.h"
 #include "Wave.h"
+#include "Button.h"
 
 using namespace hamur;
 
@@ -48,9 +49,22 @@ void IngameState::Enter()
 	}
 	Tooth::SetTeeth(&allocatedTeeth);
 
-
+	/**************
+	*	WAVE	**
+	***************/
 	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);
 	w->StartWave();
+
+
+	/**************
+	*	BUTTONS	**
+	**************/
+	GUIElement *button1 = new Button("Button1");
+	button1->SetHeight(40.0);
+	button1->SetWidth(80.0);
+	button1->SetPosition(100, 100);
+	//button1->SetSprite("../WorkingDir/button.bmp", 200, 100, 20);
+
 }
 
 void IngameState::Update(float deltaTime)

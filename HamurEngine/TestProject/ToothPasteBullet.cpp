@@ -26,7 +26,7 @@ void ToothPasteBullet::Update(float deltaTime)
 			}
 		}
 	}
-
+	
 	Bullet::Update(deltaTime);
 
 	if(mPos.x < -5 || mPos.y < -5 || mPos.x > HamurOpenGL::GetInstance()->GetScreenWidth() + 5 || 

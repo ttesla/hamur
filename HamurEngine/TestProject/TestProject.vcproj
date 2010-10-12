@@ -267,6 +267,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="GUI"
+				>
+				<File
+					RelativePath=".\Button.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\GUIElement.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -362,6 +374,18 @@
 				</File>
 				<File
 					RelativePath=".\WaterBullet.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="GUI"
+				>
+				<File
+					RelativePath=".\Button.h"
+					>
+				</File>
+				<File
+					RelativePath=".\GUIElement.h"
 					>
 				</File>
 			</Filter>
