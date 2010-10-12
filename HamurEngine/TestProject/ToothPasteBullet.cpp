@@ -17,8 +17,11 @@ void ToothPasteBullet::Update(float deltaTime)
 			if(Collision::RectsIntersectWith(this, (*Iter)))
 			{
 				ResetBullet();		
-				HAMURWORLD->DeleteObject((*Iter)->GetName());
-				bacterias->erase(Iter);
+				if((*Iter)->DecreaseLife(1))
+				{
+					HAMURWORLD->DeleteObject((*Iter)->GetName());
+					bacterias->erase(Iter);
+				}
 				return;
 			}
 		}
