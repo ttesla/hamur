@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+list<Tooth *> *Tooth::teeth = NULL;
+
 Tooth::Tooth(const string &name):HamurObject(name)
 {
     mWidth = 20;
@@ -12,6 +14,9 @@ Tooth::Tooth(const string &name):HamurObject(name)
 	mPos.z = 0;
 
     //setPhysics();
+
+	mLife = 1000;
+	mShield = 1000;
 }
 
 void Tooth::SetPosition(float x, float y)
@@ -22,10 +27,13 @@ void Tooth::SetPosition(float x, float y)
 
 void Tooth::Draw(float deltaTime)
 {
-	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::WHITE);
+	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor(mLife / 1000, mLife / 1000, mLife / 1000));
+
+	HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor(0, 0, mShield / 1000));
 }
 
 void Tooth::Update(float deltaTime)
 {
-
+	if(mLife <= 0)
+		HAMURWORLD->DeleteObject(this->GetName());
 }

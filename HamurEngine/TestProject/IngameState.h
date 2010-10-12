@@ -34,7 +34,7 @@ public:
 
 private:
 	Bacteria **allocatedBacterias;
-	Tooth **allocatedTeeth;
+	std::list<Tooth *> allocatedTeeth;
 	int mPrevTickCount;
 	int spawnedEnemyCount;
 	Base *base;

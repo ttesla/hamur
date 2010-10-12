@@ -1,6 +1,8 @@
 #include "Bacteria.h"
 #include <cstdlib> 
 #include <ctime> 
+#include "Tooth.h"
+#include "Collision.h"
 using namespace std;
 
 #define SPEEDCOEF 0.01;
@@ -43,13 +45,21 @@ Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition, const floa
 	// Don't know at the moment, we'll have to try width & height
     mWidth = 20;
     mHeight = 20;
-    //setPhysics();
+
+	mDamage = 1;
 }
+
 
 void Bacteria::Update( float deltaTime )
 {
+	if(IsAttacking2Tooth(deltaTime))
+		return;
+	
 	mPos.x += movementDirection.x * mSpeed * deltaTime;
 	mPos.y += movementDirection.y * mSpeed * deltaTime;
+
+	
+
 }
 
 bool Bacteria::DecreaseLife(int bulletPower)
@@ -64,6 +74,28 @@ bool Bacteria::DecreaseLife(int bulletPower)
 	return false;
 }
 
+bool Bacteria::IsAttacking2Tooth(float deltaTime)
+{
+	std::list<Tooth *> teeth = Tooth::GetTeeth();
+	std::list<Tooth *>::iterator Iter;
+
+	for(Iter = teeth.begin(); Iter != teeth.end(); Iter++)
+	{
+		if(Collision::RectsIntersectWith(this, (*Iter)))
+		{
+			if((*Iter)->GetShield() > 0)
+			{
+				(*Iter)->SetShield((*Iter)->GetShield() - deltaTime * 90);
+			}
+			else
+				(*Iter)->SetLife((*Iter)->GetLife() - deltaTime * 90);
+
+			return true;
+		}
+	}
+
+	return false;
+}
 /* Not using it at the moment...
 
 void Bacteria::setPhysics()

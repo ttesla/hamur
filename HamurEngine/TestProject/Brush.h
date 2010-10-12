@@ -16,7 +16,7 @@ public:
 	inline bool IsUsable(){return mIsUsable;}
 
 private:
-
+	int mUsedTimes;
 	float mCooldown;
 	float mRemainingCooldown;
 	bool mIsUsable;
