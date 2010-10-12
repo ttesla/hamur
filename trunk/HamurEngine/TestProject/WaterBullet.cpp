@@ -30,7 +30,6 @@ void WaterBullet::Explode()
 
 	for(Iter = bacterias->begin(); Iter != bacterias->end(); Iter++)
 	{
-		//TODO:Value of damage must be set
 		(*Iter)->SetLife((*Iter)->GetLife() - 1);
 	}
 

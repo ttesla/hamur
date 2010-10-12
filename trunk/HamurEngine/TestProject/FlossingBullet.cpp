@@ -42,7 +42,7 @@ void FlossingBullet::Explode()
 			if(distance.GetLength() < 10)
 			{
 				//TODO:Set damage
-				(*Iter)->SetLife((*Iter)->GetLife() - 3);
+				(*Iter)->SetLife((*Iter)->GetLife() - 10);
 			}
 		}
 	}

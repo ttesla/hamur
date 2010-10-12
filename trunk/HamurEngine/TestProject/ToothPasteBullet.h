@@ -10,7 +10,6 @@ public:
 		mWidth = 3;
 		mHeight = 3;
 		// This needs to be checked with Victor GDD
-		mPower = 3;
 	}
 
 	void Update(float deltaTime);
