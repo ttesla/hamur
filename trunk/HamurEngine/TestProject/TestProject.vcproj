@@ -188,6 +188,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Food.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\GroundObject.cpp"
 				>
 			</File>
@@ -205,6 +209,10 @@
 			</File>
 			<File
 				RelativePath=".\MainState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Selection.cpp"
 				>
 			</File>
 			<File
@@ -302,6 +310,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Food.h"
+				>
+			</File>
+			<File
 				RelativePath=".\GroundObject.h"
 				>
 			</File>
@@ -315,6 +327,10 @@
 			</File>
 			<File
 				RelativePath=".\MainState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Selection.h"
 				>
 			</File>
 			<File
