@@ -60,6 +60,15 @@ bool HamurOpenGL::InitSDL(const string& caption, int width, int height, int bpp,
         HAMURLOG->WriteLogln("Error!: Can't set video mode", HamurLog::ALWAYS); 
 		return false;
 	}
+
+    //Initialize SDL_ttf
+    if( TTF_Init() == -1 )
+    {
+        HAMURLOG->WriteLog("Error!: Can't initialize SDL_ttf :", HamurLog::ALWAYS);
+        string errorStr = TTF_GetError();
+        HAMURLOG->WriteLogln(errorStr, HamurLog::ALWAYS);
+        return false;
+    }
     
 	// Set caption
 	SDL_WM_SetCaption(caption.c_str(), "Hamur Engine");
