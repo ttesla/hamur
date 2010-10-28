@@ -3,6 +3,8 @@
 #include "Base.h"
 #include "Wave.h"
 #include "Button.h"
+#include "Level.h"
+#include "WaveDataReader.h"
 
 using namespace hamur;
 
@@ -24,7 +26,6 @@ void IngameState::Enter()
 	*	BASE	**
 	***************/
 	base = new Base("Base");
-	//activeObjList.push_front(base);
 	
 	/**************
 	*	TEETH	**
@@ -52,9 +53,10 @@ void IngameState::Enter()
 	/**************
 	*	WAVE	**
 	***************/
-	Wave *w = new Wave("Wave", base->GetPosition(), 3, 3, 3, 3, 3);
-	w->StartWave();
+	WaveDataReader dataReader("Waves.xml");
 
+	Level *l = new Level("level");
+	l->Start();
 
 	/**************
 	*	BUTTONS	**

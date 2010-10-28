@@ -7,13 +7,16 @@ public:
 	FlossingBullet(const string &name, const hamur::HamurVec3 &startingPos, const hamur::HamurVec3 &targetPos, const float &speed) :
 	  Bullet(name, startingPos, targetPos, speed), targetPosition(targetPos), startingPosition(startingPos)
 	  {
-		  mWidth = 5;
-		  mHeight = 5;
+			mBulletType = BulletTypes::FlossingBulletType;
+
+			mWidth = 5;
+			mHeight = 5;
 	  }
 
 	void Update(float deltaTime);
 	void Draw(float deltaTime);
 	void Explode();
+
 protected:
 private:
 	hamur::HamurVec3 targetPosition;

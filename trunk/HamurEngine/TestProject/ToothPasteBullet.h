@@ -7,6 +7,8 @@ public:
 	ToothPasteBullet(const string &name, const hamur::HamurVec3 &startingPos, 
 		const hamur::HamurVec3 targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
 	{
+		mBulletType = BulletTypes::ToothPasteBulletType;
+
 		mWidth = 3;
 		mHeight = 3;
 		// This needs to be checked with Victor GDD
