@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../Hamur/libraries;../Hamur/src"
+				AdditionalIncludeDirectories="../Hamur/libraries;../Hamur/src;../tinyxml"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -60,8 +60,8 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/NODEFAULTLIB:msvcrt.lib"
-				AdditionalDependencies="Hamur.lib"
-				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Debug"
+				AdditionalDependencies="Hamur.lib tinyxmld.lib"
+				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Debug;../tinyxml/Debug"
 				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
@@ -136,8 +136,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Hamur.lib"
-				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release"
+				AdditionalDependencies="Hamur.lib tinyxml_STL.lib"
+				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release;../tinyxml/Debug_STL"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -221,6 +221,10 @@
 			</File>
 			<File
 				RelativePath=".\Wave.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\WaveDataReader.cpp"
 				>
 			</File>
 			<Filter
@@ -339,6 +343,10 @@
 			</File>
 			<File
 				RelativePath=".\Wave.h"
+				>
+			</File>
+			<File
+				RelativePath=".\WaveDataReader.h"
 				>
 			</File>
 			<Filter

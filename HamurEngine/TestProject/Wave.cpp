@@ -5,15 +5,16 @@
 #include "BacteriaShooter.h"
 #include "BacteriaSlim.h"
 
-
 using namespace std;
 using namespace hamur; 
 
 Wave *Wave::mActiveWave = NULL;
+list<Wave *> *Wave::mCreatedWaves = NULL;
 
 Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int normCount, int shooterCount, 
 		   int slimCount, int strayerCount ) : HamurObject(name), mTimeCounter(0)
 {
+	mCreatedWaves = new list<Wave *>;
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
 
 	for(int i = 0; i < totalBactCount; i++)
@@ -56,12 +57,15 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 			mBacteriaList.push_back(b);
 		}
 	}
+
+	mCreatedWaves->push_back(this);
 }
 
 void Wave::StartWave()
 {
 	Wave::mActiveWave = this;
 	mStarted = true;
+	mIsWaveFinished = false;
 }
 
 void Wave::Update( float deltaTime )
@@ -87,7 +91,8 @@ void Wave::Update( float deltaTime )
 				mBacteriaList.erase(Iter);
 				mTimeCounter = SDL_GetTicks();
 			}
+			else
+				mIsWaveFinished = true;
 		}
-
 	}
 }

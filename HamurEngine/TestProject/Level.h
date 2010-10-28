@@ -2,21 +2,27 @@
 #define LEVEL_H
 #include "Wave.h"
 #include "hamur.h"
+#include <vector>
 using namespace hamur;
 
-#define MAXWAVES 6
-#define MAXLEVEL 5
+class Brush;
 
-class Level
+class Level : HamurObject
 {
     public:
-        Level(const string& name, int number);
+        Level(const string& name);
+
+		void Update(float deltaTime);
+		void Draw(float deltaTime){}
+
 		void Start();
+		void AddWave(Wave *w);
+		void StartNextWave();
 
 	private:
-		string mName;
-		int mNumber;
-		Wave* waves;
+		std::vector<Wave *> mWaves;
+		Wave *mActiveWave;
+		Brush *mBrush;
 };
 
 #endif

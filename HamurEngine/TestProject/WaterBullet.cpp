@@ -23,17 +23,19 @@ void WaterBullet::Draw( float deltaTime )
 
 void WaterBullet::Explode()
 {
-
-	//Get enemies from wave and damage all
-	std::list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
-	std::list<Bacteria *>::iterator Iter;
-
-	for(Iter = bacterias->begin(); Iter != bacterias->end(); Iter++)
+	if (mIsUsable)
 	{
-		(*Iter)->SetLife((*Iter)->GetLife() - 1);
+		//Get enemies from wave and damage all
+		std::list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
+		std::list<Bacteria *>::iterator Iter;
+	
+		for(Iter = bacterias->begin(); Iter != bacterias->end(); Iter++)
+		{
+			(*Iter)->SetLife((*Iter)->GetLife() - 1);
+		}
+	
+	
+		mRemainingCooldown = mCooldownTime;
+		mIsUsable = false;
 	}
-
-
-	mRemainingCooldown = mCooldownTime;
-	mIsUsable = false;
 }

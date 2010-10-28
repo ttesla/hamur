@@ -1,8 +1,10 @@
 #include "Base.h"
+//#include "Bullet.h"
 #include "ToothPasteBullet.h"
+#include "FlossingBullet.h"
 #include "IngameState.h"
 #include "Bacteria.h"
-#include "Bullet.h"
+#include "WaterBullet.h"
 
 //#include <cstdlib> 
 //#include <ctime> 
@@ -18,7 +20,7 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 	mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - mHeight / 2;
 	mPos.z = 0;
 
-	//TODO:Instantiate some flossingBullet
+	//ToothpasteBullet
 	for(int i = 0; i < 64; i++)
 	{
 		HamurString str;
@@ -31,6 +33,23 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 
 		mBullets.push_back(b);
 	}
+
+	//FlossingBullet
+	for(int i = 0; i < 16; i++)
+	{
+		HamurString str;
+		str << i;
+		Bullet *b = new FlossingBullet("FlossingBullet" + str.GetString(), mPos, 
+			HamurVec3(0, 0, 0), 150);
+
+		b->SetVisible(false);
+		b->SetActive(false);
+
+		mBullets.push_back(b);
+	}
+
+	//WaterBullet. Because of having cooldown and can be used once per time, one instance is enough
+	mWater = new WaterBullet("WaterBullet", 5);
 }
 
 
@@ -54,7 +73,8 @@ void Base::Fire(const HamurVec3 &targetPos)
 
 	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
 	{
-		if(!(*Iter)->IsActive() && !(*Iter)->IsVisible())
+		if(!(*Iter)->IsActive() && !(*Iter)->IsVisible() && 
+			(*Iter)->GetBulletType() == mSelectedWeaponType )
 		{
 			(*Iter)->SetPosition(mPos);
 			(*Iter)->SetTarget(targetPos);
@@ -63,4 +83,9 @@ void Base::Fire(const HamurVec3 &targetPos)
 			break;
 		}
 	}
+}
+
+void Base::UseWater()
+{
+	mWater->Explode();
 }

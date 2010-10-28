@@ -7,18 +7,19 @@ using namespace hamur;
 Brush::Brush( const string &name, const float &cooldown) : Bullet(name, HamurVec3(0, 0, 0), HamurVec3(0, 0, 0), 0),
 mCooldown(cooldown)
 {
+	mBulletType = BulletTypes::BrushBulletType;
 }
 
 void Brush::Update( float deltaTime )
 {
 	//Calculating cooldown time
-	if(!mIsUsable && mUsedTimes < 2)
-	{
-		mRemainingCooldown -= deltaTime;
+	//if(!mIsUsable && mUsedTimes < 2)
+	//{
+	//	mRemainingCooldown -= deltaTime;
 
-		if(mRemainingCooldown <= 0)
-			mIsUsable = true;
-	}
+	//	if(mRemainingCooldown <= 0)
+	//		mIsUsable = true;
+	//}
 }
 
 void Brush::Explode()
@@ -33,7 +34,7 @@ void Brush::Explode()
 		t->SetShield(1000);
 	}
 
-	mRemainingCooldown = mCooldown;
-	mIsUsable = false;
-	mUsedTimes++;
+	//mRemainingCooldown = mCooldown;
+	//mIsUsable = false;
+	//mUsedTimes++;
 }
