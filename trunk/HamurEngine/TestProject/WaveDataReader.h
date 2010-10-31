@@ -9,7 +9,8 @@ public:
 	WaveDataReader(char *fileName);
 	~WaveDataReader();
 
-	void CreateWavesFromData(TiXmlDocument doc);
 
 private:
+	void CreateWavesFromData(TiXmlDocument doc);
+
 };
