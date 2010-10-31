@@ -28,7 +28,6 @@ void WaveDataReader::CreateWavesFromData(TiXmlDocument doc)
 		TiXmlElement *bacterias = 0;//(TiXmlElement *)waves->FirstChild();
 		while(bacterias = (TiXmlElement *)waves->IterateChildren(bacterias))
 		{
-			HAMURCONSOLE << bacterias->Value();
 			if(string(bacterias->Value()) == "BacteriaFattie")
 			{
 				fattieCount = atoi(bacterias->Attribute("Count"));
@@ -51,7 +50,7 @@ void WaveDataReader::CreateWavesFromData(TiXmlDocument doc)
 			}
 		}
 
-		Wave *w = new Wave(waves->Attribute("Name"), hamur::HamurVec3(0, 0, 0), fattieCount, normCount,
+		Wave *w = new Wave(waves->Attribute("Name"), HAMURWORLD->GetHamurObject("Base")->GetPosition(), fattieCount, normCount,
 			shooterCount, slimCount, strayerCount);
 	}
 }

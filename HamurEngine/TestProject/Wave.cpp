@@ -12,7 +12,7 @@ Wave *Wave::mActiveWave = NULL;
 list<Wave *> *Wave::mCreatedWaves = NULL;
 
 Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int normCount, int shooterCount, 
-		   int slimCount, int strayerCount ) : HamurObject(name), mTimeCounter(0)
+		   int slimCount, int strayerCount ) : HamurObject(name), mTimeCounter(0), mStarted(false)
 {
 	mCreatedWaves = new list<Wave *>;
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
@@ -54,6 +54,7 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 		if(b != NULL)
 		{
 			b->SetActive(false);
+			b->SetVisible(false);
 			mBacteriaList.push_back(b);
 		}
 	}
@@ -87,6 +88,7 @@ void Wave::Update( float deltaTime )
 			{
 				std::list<Bacteria *>::iterator Iter = mBacteriaList.begin();
 				(*Iter)->SetActive(true);
+				(*Iter)->SetVisible(true);
 				mSpawnedBacterias.push_back((*Iter));
 				mBacteriaList.erase(Iter);
 				mTimeCounter = SDL_GetTicks();

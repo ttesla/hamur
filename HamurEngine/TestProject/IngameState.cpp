@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "Level.h"
 #include "WaveDataReader.h"
+#include "Bullet.h"
 
 using namespace hamur;
 
@@ -26,6 +27,7 @@ void IngameState::Enter()
 	*	BASE	**
 	***************/
 	base = new Base("Base");
+	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
 	
 	/**************
 	*	TEETH	**
@@ -56,6 +58,7 @@ void IngameState::Enter()
 	WaveDataReader dataReader("Waves.xml");
 
 	Level *l = new Level("level");
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));
 	l->Start();
 
 	/**************

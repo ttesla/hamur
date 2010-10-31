@@ -24,6 +24,7 @@ class Wave : public hamur::HamurObject
 		inline std::list<Bacteria *> *GetSpawnedBacterias() {return &mSpawnedBacterias;}
 		inline bool IsFinished() {return mIsWaveFinished;}
 
+
 	private:
 		static Wave *mActiveWave;
 		static std::list<Wave *> *mCreatedWaves;
