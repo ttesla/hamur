@@ -1,24 +1,45 @@
 #include "FlossingBullet.h"
 #include "Wave.h"
+#include "Tooth.h"
+#include "Collision.h"
 
+#include <list>
+
+using namespace std;
 using namespace hamur;
 
 void FlossingBullet::Update( float deltaTime )
 {
 	using namespace hamur;
-	HamurVec3 distance = targetPosition - mPos;
-	if(distance.GetLength() < 2)
-	{
-		Explode();
-		
-		SetVisible(false);
-		SetActive(false);
-		mPos = startingPosition;
+	HamurVec3 distance = mPos - startingPosition;
 
-		return;
+	list<Tooth *> teeth = Tooth::GetTeeth();
+	list<Tooth *>::iterator Iter;
+
+	for(Iter = teeth.begin(); Iter != teeth.end(); Iter++)
+	{
+		if(Collision::RectsIntersectWith(this, (*Iter)))
+		{
+			Explode();
+
+			SetVisible(false);
+			SetActive(false);
+			mPos = startingPosition;
+
+			return;
+		}
 	}
 
 	Bullet::Update(deltaTime);
+	
+	if(mPos.x < -5 || mPos.y < -5 || mPos.x > HamurOpenGL::GetInstance()->GetScreenWidth() + 5 || 
+		mPos.y > HamurOpenGL::GetInstance()->GetScreenHeight() + 5)
+	{
+		this->SetVisible(false);
+		this->SetActive(false);
+		mPos = startingPosition;
+	}
+
 }
 
 void FlossingBullet::Draw( float deltaTime )
@@ -39,10 +60,14 @@ void FlossingBullet::Explode()
 		{
 			HamurVec3 distance = (*Iter)->GetPosition() - mPos; 
 			//TODO:Set distance
-			if(distance.GetLength() < 10)
+			if(distance.GetLength() < 50)
 			{
 				//TODO:Set damage
-				(*Iter)->SetLife((*Iter)->GetLife() - 10);
+				if((*Iter)->DecreaseLife(1))
+				{
+					HAMURWORLD->DeleteObject((*Iter)->GetName());
+					bacterias->erase(Iter++);
+				}
 			}
 		}
 	}
