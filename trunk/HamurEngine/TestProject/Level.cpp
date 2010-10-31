@@ -4,9 +4,9 @@
 
 using namespace std;
 
-Level::Level(const string& name) : HamurObject(name)
+Level::Level(const string& name) : HamurObject(name), isLevelFinished(false)
 {
-	mBrush = new Brush("BrushBullet", 1);	
+	mBrush = new Brush("BrushBullet", 1);
 }
 
 void Level::Start()
@@ -39,5 +39,9 @@ void Level::StartNextWave()
 		mActiveWave = *(mWaves.end() - 1);
 		mActiveWave->StartWave();
 		mWaves.pop_back();
+	}
+	else
+	{
+		isLevelFinished = true;
 	}
 }
