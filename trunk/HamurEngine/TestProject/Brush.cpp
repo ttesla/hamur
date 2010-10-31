@@ -31,7 +31,8 @@ void Brush::Explode()
 		Tooth *t = (Tooth *)HAMURWORLD->GetHamurObject("Tooth" + str.GetString());
 
 		//TODO:Value of shield increase must be set
-		t->SetShield(1000);
+		if(t != NULL)
+			t->SetShield(1000);
 	}
 
 	//mRemainingCooldown = mCooldown;

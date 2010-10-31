@@ -73,15 +73,6 @@ void Wave::Update( float deltaTime )
 {
 	if(mStarted)
 	{
-/*
-		mTimeCounter += deltaTime;
-
-		if(mTimeCounter >= 3000)
-		{
-			
-		}
-*/
-
 		if(SDL_GetTicks() - mTimeCounter >= 3000)
 		{
 			if (!mBacteriaList.empty())

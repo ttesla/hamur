@@ -60,7 +60,9 @@ bool HamurWorld::DeleteObject(const string& objectName)
         if(iter->second)
 		{
 			mDeleteList.push_back(iter->second->GetName());
-            delete iter->second;
+            //delete iter->second;
+			iter->second->SetActive(false);
+			iter->second->SetVisible(false);
 		}
 
         //mWorldObjects.erase(iter);

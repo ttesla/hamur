@@ -27,7 +27,7 @@ void IngameState::Enter()
 	*	BASE	**
 	***************/
 	base = new Base("Base");
-	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
+	base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
 	
 	/**************
 	*	TEETH	**
