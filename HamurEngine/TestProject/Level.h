@@ -19,10 +19,13 @@ class Level : HamurObject
 		void AddWave(Wave *w);
 		void StartNextWave();
 
+		inline bool IsLevelFinished() {return isLevelFinished;}
+
 	private:
 		std::vector<Wave *> mWaves;
 		Wave *mActiveWave;
 		Brush *mBrush;
+		bool isLevelFinished;
 };
 
 #endif
