@@ -21,6 +21,8 @@ class TestState : public HamurState
         void Update(float deltaTime);      
         void Draw(float deltaTime);
         void Exit();
+
+		void DrawPlotter();
         
 	protected:
 

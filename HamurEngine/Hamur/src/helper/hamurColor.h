@@ -15,6 +15,11 @@ class HamurColor
         // Red, Green, Blue color values.
         HamurColor(float R, float G, float B);
 
+		static void SetDefaultColor(float R, float G, float B);
+		static void SetDefaultColor(const HamurColor& color);
+
+		void operator=(const HamurColor& color) { R = color.R; G = color.G; B = color.B;}
+
         static HamurColor RED;
         static HamurColor GREEN;
         static HamurColor BLUE;
@@ -24,6 +29,7 @@ class HamurColor
         static HamurColor CYAN;
         static HamurColor MAGENTA;
         static HamurColor GREY;
+		static HamurColor DEFAULT_COLOR;
 
         float R;
         float G;

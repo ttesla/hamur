@@ -32,13 +32,16 @@ public:
 	}
 
 	/** Returns the length of the vector. */
-	float GetLength () const { return sqrt(x*x + y*y + z*z); }
+	float Length () const { return sqrt(x*x + y*y + z*z); }
 
 	/** Returns the squared length of the vector. */
-	float GetSquaredLength () const { return (x*x + y*y + z*z); }
+	float SquaredLength () const { return (x*x + y*y + z*z); }
 
     /** Sets the vector elements to zero*/
     void SetZero() { x = 0.0f; y = 0.0f; z = 0.0f;}
+
+	/** Set this vector to some specified coordinates */
+	void Set(float xc, float yc, float zc) { x = xc; y = yc; z = zc; }
 
 	/** Flips the signs of all coordinates. */
 	void Flip() { x=-x; y=-y; z=-z; }
@@ -52,13 +55,13 @@ public:
 	/** Adds \a vec to the vector. */
 	const HamurVec3 operator+(const HamurVec3 &vec) const { return HamurVec3 (x+vec.x, y+vec.y, z+vec.z); }
 
-	/** Returns the vector scaled by \a fact. */
+	/** Returns the vector scaled by \a scalar. */
 	const HamurVec3 operator*(float fact) const { return HamurVec3 (x*fact, y*fact, z*fact); }
 
-	/** Returns the vector scaled by \a fact. */
+	/** Returns the vector scaled by \a scalar. */
 	const HamurVec3 operator/(float fact) const { float xfact = 1.0f/fact; return HamurVec3 (x*xfact, y*xfact, z*xfact); }
 
-	/** Scales the vector by \a fact. */
+	/** Scales the vector by \a scalar. */
 	HamurVec3 &operator*=(float fact){ x*=fact; y*=fact; z*=fact; return *this; }
 
 	/** Returns the dot product of \a v1 and \a v2.*/

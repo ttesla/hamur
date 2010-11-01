@@ -83,7 +83,7 @@ struct b2Vec2
 	/// Negate this vector.
 	b2Vec2 operator -() const { b2Vec2 v; v.Set(-x, -y); return v; }
 	
-	/// Read from and indexed element.
+	/// Read from an indexed element.
 	float32 operator () (int32 i) const
 	{
 		return (&x)[i];
