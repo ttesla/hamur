@@ -60,7 +60,7 @@ void FlossingBullet::Explode()
 		{
 			HamurVec3 distance = (*Iter)->GetPosition() - mPos; 
 			//TODO:Set distance
-			if(distance.GetLength() < 50)
+			if(distance.Length() < 50)
 			{
 				//TODO:Set damage
 				if((*Iter)->DecreaseLife(1))

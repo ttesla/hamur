@@ -6,10 +6,11 @@
 
 #include <map>
 #include <string>
-#include <list>
+#include <vector>
 
 using std::map;
 using std::string;
+using std::vector;
 
 
 namespace hamur
@@ -53,7 +54,7 @@ class HamurWorld : public Singleton<HamurWorld>
     private:
         void InitializePhysics();
         map<string, HamurObject*> mWorldObjects;
-		std::list<string> mDeleteList;
+		std::vector<string> mDeleteList;
         int mObjectCount;
         // BOX2D Attributes
         b2Vec2 mGravity;

@@ -103,12 +103,11 @@ void HamurWorld::UpdateAllObjects(float deltaTime)
 
 	if(!mDeleteList.empty())
 	{
-		using namespace std;
-
-		list<string>::iterator delIter;
-		for(delIter = mDeleteList.begin(); delIter != mDeleteList.end(); delIter++)
+		for(int i = 0; i < mDeleteList.size(); i++)
 		{
-			mWorldObjects.erase(mWorldObjects.find((*delIter)));
+			map<string, HamurObject*>::iterator iter = mWorldObjects.find((mDeleteList[i]));
+			delete iter->second;
+			mWorldObjects.erase(iter);
 		}
 
 		mDeleteList.clear();

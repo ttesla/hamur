@@ -6,7 +6,7 @@
 #include "../hamurTextureManager.h"
 #include "hamurConsole.h"
 #include "../hamurDefinitions.h"
-#include "hamurColor.h"
+//#include "hamurColor.h"
 #include "hamurMath.h"
 
 namespace hamur
@@ -17,18 +17,18 @@ void HamurPlotter::DrawRectangle(float x, float y, float width, float height, co
     // All vertices of the Rectangle
     HamurVec2 vertex1, vertex2, vertex3, vertex4;
 
-    // For World to OpenGL coordinate conversions 
-    vertex1.x = x;
-    vertex1.y = y;
+	// For World to OpenGL coordinate conversions 
+	vertex1.x = x - width / 2;
+	vertex1.y = y - height / 2;
 
-    vertex2.x = x;
-    vertex2.y = y + height;
+	vertex2.x = x - width / 2;
+	vertex2.y = y + height / 2;
 
-    vertex3.x = x + width;
-    vertex3.y = y + height;
+	vertex3.x = x + width / 2;
+	vertex3.y = y + height / 2;
 
-    vertex4.x = x + width;
-    vertex4.y = y;
+	vertex4.x = x + width / 2;
+	vertex4.y = y - height / 2;
 
     // Here World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -89,22 +89,22 @@ void HamurPlotter::DrawRectangle(float x, float y, float z, float width, float h
     // All vertices of the Rectangle
     HamurVec3 vertex1, vertex2, vertex3, vertex4;
 
-    // For World to OpenGL coordinate conversions 
-    vertex1.x = x;
-    vertex1.y = y;
-    vertex1.z = z;
+	// For World to OpenGL coordinate conversions 
+	vertex1.x = x - width / 2;
+	vertex1.y = y - height / 2;
+	vertex1.z = z;
 
-    vertex2.x = x;
-    vertex2.y = y + height;
-    vertex2.z = z;
+	vertex2.x = x - width / 2;
+	vertex2.y = y + height / 2;
+	vertex2.z = z;
 
-    vertex3.x = x + width;
-    vertex3.y = y + height;
-    vertex3.z = z;
+	vertex3.x = x + width / 2;
+	vertex3.y = y + height / 2;
+	vertex3.z = z;
 
-    vertex4.x = x + width;
-    vertex4.y = y;
-    vertex4.z = z;
+	vertex4.x = x + width / 2;
+	vertex4.y = y - height / 2;
+	vertex4.z = z;
 
     // Here World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -166,17 +166,17 @@ void HamurPlotter::DrawRectangle(const HamurVec2& pos, float width, float height
     HamurVec2 vertex1, vertex2, vertex3, vertex4;
 
     // Here World to OpenGL coordinate conversions
-    vertex1.x = pos.x;
-    vertex1.y = pos.y;
+    vertex1.x = pos.x - width / 2;
+    vertex1.y = pos.y - height / 2;
 
-    vertex2.x = pos.x;
-    vertex2.y = pos.y + height;
+    vertex2.x = pos.x - width / 2;
+    vertex2.y = pos.y + height / 2;
 
-    vertex3.x = pos.x + width;
-    vertex3.y = pos.y + height;
+    vertex3.x = pos.x + width / 2;
+    vertex3.y = pos.y + height / 2;
 
-    vertex4.x = pos.x + width;
-    vertex4.y = pos.y;
+    vertex4.x = pos.x + width / 2;
+    vertex4.y = pos.y - height / 2;
 
     // For World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -237,22 +237,22 @@ void HamurPlotter::DrawRectangle(const HamurVec3& pos, float width, float height
     // All vertices of the Rectangle
     HamurVec3 vertex1, vertex2, vertex3, vertex4;
 
-    // Here World to OpenGL coordinate conversions
-    vertex1.x = pos.x;
-    vertex1.y = pos.y;
-    vertex1.z = pos.z;
+	// Here World to OpenGL coordinate conversions
+	vertex1.x = pos.x - width / 2;
+	vertex1.y = pos.y - height / 2;
+	vertex1.z = pos.z;
 
-    vertex2.x = pos.x;
-    vertex2.y = pos.y + height;
-    vertex2.z = pos.z;
+	vertex2.x = pos.x - width / 2;
+	vertex2.y = pos.y + height / 2;
+	vertex2.z = pos.z;
 
-    vertex3.x = pos.x + width;
-    vertex3.y = pos.y + height;
-    vertex3.z = pos.z;
+	vertex3.x = pos.x + width / 2;
+	vertex3.y = pos.y + height / 2;
+	vertex3.z = pos.z;
 
-    vertex4.x = pos.x + width;
-    vertex4.y = pos.y;
-    vertex4.z = pos.z;
+	vertex4.x = pos.x + width / 2;
+	vertex4.y = pos.y - height / 2;
+	vertex4.z = pos.z;
 
     // For World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -313,18 +313,18 @@ void HamurPlotter::DrawSolidRectangle(float x, float y, float width, float heigh
     // All vertices of the Rectangle
     HamurVec2 vertex1, vertex2, vertex3, vertex4;
 
-    // Here World to OpenGL coordinate conversions
-    vertex1.x = x;
-    vertex1.y = y;
+	// For World to OpenGL coordinate conversions 
+	vertex1.x = x - width / 2;
+	vertex1.y = y - height / 2;
 
-    vertex2.x = x;
-    vertex2.y = y + height;
+	vertex2.x = x - width / 2;
+	vertex2.y = y + height / 2;
 
-    vertex3.x = x + width;
-    vertex3.y = y + height;
+	vertex3.x = x + width / 2;
+	vertex3.y = y + height / 2;
 
-    vertex4.x = x + width;
-    vertex4.y = y;
+	vertex4.x = x + width / 2;
+	vertex4.y = y - height / 2;
 
     // For World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -375,22 +375,22 @@ void HamurPlotter::DrawSolidRectangle(float x, float y, float z, float width, fl
     // All vertices of the Rectangle
     HamurVec3 vertex1, vertex2, vertex3, vertex4;
 
-    // For World to OpenGL coordinate conversions
-    vertex1.x = x;
-    vertex1.y = y;
-    vertex1.z = z;
+	// For World to OpenGL coordinate conversions 
+	vertex1.x = x - width / 2;
+	vertex1.y = y - height / 2;
+	vertex1.z = z;
 
-    vertex2.x = x;
-    vertex2.y = y + height;
-    vertex2.z = z;
+	vertex2.x = x - width / 2;
+	vertex2.y = y + height / 2;
+	vertex2.z = z;
 
-    vertex3.x = x + width;
-    vertex3.y = y + height;
-    vertex3.z = z;
+	vertex3.x = x + width / 2;
+	vertex3.y = y + height / 2;
+	vertex3.z = z;
 
-    vertex4.x = x + width;
-    vertex4.y = y;
-    vertex4.z = z;
+	vertex4.x = x + width / 2;
+	vertex4.y = y - height / 2;
+	vertex4.z = z;
 
     // Here World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -441,18 +441,18 @@ void HamurPlotter::DrawSolidRectangle(const HamurVec2& pos, float width, float h
     // All vertices of the Rectangle
     HamurVec2 vertex1, vertex2, vertex3, vertex4;
 
-    // For World to OpenGL coordinate conversions
-    vertex1.x = pos.x;
-    vertex1.y = pos.y;
+	// Here World to OpenGL coordinate conversions
+	vertex1.x = pos.x - width / 2;
+	vertex1.y = pos.y - height / 2;
 
-    vertex2.x = pos.x;
-    vertex2.y = pos.y + height;
+	vertex2.x = pos.x - width / 2;
+	vertex2.y = pos.y + height / 2;
 
-    vertex3.x = pos.x + width;
-    vertex3.y = pos.y + height;
+	vertex3.x = pos.x + width / 2;
+	vertex3.y = pos.y + height / 2;
 
-    vertex4.x = pos.x + width;
-    vertex4.y = pos.y;
+	vertex4.x = pos.x + width / 2;
+	vertex4.y = pos.y - height / 2;
 
     // Here World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
@@ -503,22 +503,22 @@ void HamurPlotter::DrawSolidRectangle(const HamurVec3& pos, float width, float h
     // All vertices of the Rectangle
     HamurVec3 vertex1, vertex2, vertex3, vertex4;
 
-    // For World to OpenGL coordinate conversions
-    vertex1.x = pos.x;
-    vertex1.y = pos.y;
-    vertex1.z = pos.z;
+	// Here World to OpenGL coordinate conversions
+	vertex1.x = pos.x - width / 2;
+	vertex1.y = pos.y - height / 2;
+	vertex1.z = pos.z;
 
-    vertex2.x = pos.x;
-    vertex2.y = pos.y + height;
-    vertex2.z = pos.z;
+	vertex2.x = pos.x - width / 2;
+	vertex2.y = pos.y + height / 2;
+	vertex2.z = pos.z;
 
-    vertex3.x = pos.x + width;
-    vertex3.y = pos.y + height;
-    vertex3.z = pos.z;
+	vertex3.x = pos.x + width / 2;
+	vertex3.y = pos.y + height / 2;
+	vertex3.z = pos.z;
 
-    vertex4.x = pos.x + width;
-    vertex4.y = pos.y;
-    vertex4.z = pos.z;
+	vertex4.x = pos.x + width / 2;
+	vertex4.y = pos.y - height / 2;
+	vertex4.z = pos.z;
 
     // Here World to OpenGL coordinate conversions
     vertex1 = HAMURTEXMR->WorldToGL(vertex1);
