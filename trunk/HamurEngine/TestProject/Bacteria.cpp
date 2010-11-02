@@ -7,7 +7,7 @@ using namespace std;
 
 #define SPEEDCOEF 0.01;
  
-Bacteria::Bacteria(const string &name, hamur::HamurVec3 basePosition, const float &speed):HamurObject(name), mBasePosition(basePosition), mSpeed(speed)
+Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):HamurObject(name, sprite), mBasePosition(basePosition), mSpeed(speed)
 {
 	mActive = false;
 
@@ -79,6 +79,7 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	std::list<Tooth *> teeth = Tooth::GetTeeth();
 	std::list<Tooth *>::iterator Iter;
 
+	// Checks if the bacteria is on a tooth. NOT for shooters
 	for(Iter = teeth.begin(); Iter != teeth.end(); Iter++)
 	{
 		if(Collision::RectsIntersectWith(this, (*Iter)))
@@ -93,7 +94,7 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 			return true;
 		}
 	}
-
+	
 	return false;
 }
 /* Not using it at the moment...

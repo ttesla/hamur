@@ -55,7 +55,7 @@ void IngameState::Enter()
 	/**************
 	*	WAVE	**
 	***************/
-	WaveDataReader dataReader("Waves.xml");
+	WaveDataReader dataReader("waves.xml");
 
 	Level *l = new Level("level");
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));

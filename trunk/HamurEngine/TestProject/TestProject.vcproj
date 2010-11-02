@@ -271,6 +271,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\ShooterBullet.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\ToothPasteBullet.cpp"
 					>
 				</File>
@@ -390,6 +394,10 @@
 				</File>
 				<File
 					RelativePath=".\FlossingBullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ShooterBullet.h"
 					>
 				</File>
 				<File

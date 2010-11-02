@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
  
-BacteriaNorm::BacteriaNorm(const string &name, hamur::HamurVec3 basePosition, const float &speed):Bacteria(name, basePosition, speed)
+BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, basePosition, speed)
 {
 	// We set Life and Shield for Norms
 	this->SetLife(3.0); // Example values at the moment
@@ -44,7 +44,6 @@ void Bacteria::setPhysics()
     mBody = HAMURWORLD->Getb2World()->CreateBody(&mBodyDef);
     mBody->CreateFixture(&fixtureDef);
 }
-*/
 
 void BacteriaNorm::Draw(float deltaTime)
 {
@@ -57,4 +56,4 @@ void BacteriaNorm::Update(float deltaTime)
 	Bacteria::Update(deltaTime);
 
 }
-
+*/

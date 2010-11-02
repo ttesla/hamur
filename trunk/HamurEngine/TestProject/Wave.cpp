@@ -24,30 +24,30 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 		HamurString str;
 		str << i;
 		int randNumber = (int)(rand() % 5);
-
+	
 		if(fattieCount > 0 && randNumber == 0)
 		{
-			b = new BacteriaFattie("FattieBact" + str.GetString(), basePos, 20);
+			b = new BacteriaFattie("FattieBact" + str.GetString(), "Graphics/fatty.png", basePos, 20);
 			fattieCount--;
 		}
 		else if(normCount > 0 && randNumber == 1)
 		{
-			b = new BacteriaNorm("NormBact" + str.GetString(), basePos, 40);
+			b = new BacteriaNorm("NormBact" + str.GetString(), "Graphics/normal.png", basePos, 40);
 			normCount--;
 		}
 		else if(shooterCount > 0 && randNumber == 2)
 		{
-			b = new BacteriaShooter("ShooterBact" + str.GetString(), basePos, 40);
+			b = new BacteriaShooter("ShooterBact" + str.GetString(), "Graphics/shooter.png", basePos, 40);
 			shooterCount--;
 		}
 		else if(slimCount > 0 && randNumber == 3)
 		{
-			b = new BacteriaSlim("SlimBact" + str.GetString(), basePos, 70);
+			b = new BacteriaSlim("SlimBact" + str.GetString(), "Graphics/slim.png", basePos, 70);
 			slimCount--;
 		}
 		else if(strayerCount > 0 && randNumber == 4)
 		{
-			b = new BacteriaStrayer("StrayerBact" + str.GetString(), basePos, 30);
+			b = new BacteriaStrayer("StrayerBact" + str.GetString(), "Graphics/strayer.png", basePos, 30);
 			strayerCount--;
 		}
 
