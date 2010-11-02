@@ -15,7 +15,3 @@ of "Debug" directory to "Release" directory.
 All working project executables, binary and asset files are saved in this directory.
 This directory should contain final release build of HamurTest project.
 But you can also use this directory structure for your game projects.
-
-
-
-
