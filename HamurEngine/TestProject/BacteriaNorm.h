@@ -11,9 +11,9 @@ using namespace hamur;
 class BacteriaNorm : public Bacteria
 {
     public:
-		BacteriaNorm(const string& name, hamur::HamurVec3 basePos, const float &speed);
-        virtual void Draw(float deltaTime);	
-		virtual void Update(float deltaTime);
+		BacteriaNorm(const string& name, const string& sprite, HamurVec3 basePos, const float &speed);
+        //virtual void Draw(float deltaTime);	
+		//virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
 	private:

@@ -55,7 +55,6 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 
 void Base::Draw(float deltaTime)
 {
-  
     HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
 }
 

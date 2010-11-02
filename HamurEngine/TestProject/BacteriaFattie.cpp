@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
  
-BacteriaFattie::BacteriaFattie(const string &name, hamur::HamurVec3 basePosition, const float &speed):Bacteria(name, basePosition, speed)
+BacteriaFattie::BacteriaFattie(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, basePosition, speed)
 {
 	// We set Life and Shield for Norms
 	this->SetLife(5.0); // Example values at the moment
@@ -47,13 +47,14 @@ void Bacteria::setPhysics()
 }
 */
 
+/*
 void BacteriaFattie::Draw(float deltaTime)
 {
-	// Draw yellow circles
-	HamurPlotter::DrawSolidCircle(mPos.x, mPos.y, mWidth, HamurColor::GREEN);
+	Bacteria::Draw(deltaTime);
 }
 
 void BacteriaFattie::Update(float deltaTime)
 {
 	Bacteria::Update(deltaTime);
 }
+*/

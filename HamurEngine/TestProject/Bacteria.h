@@ -12,8 +12,8 @@ using namespace hamur;
 class Bacteria : public HamurObject
 {
     public:
-		Bacteria(const string& name, hamur::HamurVec3 basePos, const float &speed);
-		virtual void Draw(float deltaTime){};
+		Bacteria(const string& name, const string& sprite, HamurVec3 basePos, const float &speed);
+		void Draw(float deltaTime){HamurObject::Draw(deltaTime);};
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
 
@@ -27,7 +27,7 @@ class Bacteria : public HamurObject
 
 		// returns true: bacteria killed, false otherwise
 		bool DecreaseLife (int bulletPower);
-		bool IsAttacking2Tooth(float deltaTime);
+		virtual bool IsAttacking2Tooth(float deltaTime);
 
 	protected:
 		HamurVec3 mBasePosition;
