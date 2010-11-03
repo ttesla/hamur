@@ -49,6 +49,10 @@ Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosit
 	mDamage = 1;
 }
 
+void Bacteria::Draw(float deltaTime)
+{
+	HamurObject::Draw(deltaTime);
+}
 
 void Bacteria::Update( float deltaTime )
 {
@@ -57,9 +61,6 @@ void Bacteria::Update( float deltaTime )
 	
 	mPos.x += movementDirection.x * mSpeed * deltaTime;
 	mPos.y += movementDirection.y * mSpeed * deltaTime;
-
-	
-
 }
 
 bool Bacteria::DecreaseLife(int bulletPower)
@@ -86,10 +87,14 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 		{
 			if((*Iter)->GetShield() > 0)
 			{
+				cout << "Shield: " << (*Iter)->GetShield() << endl;
 				(*Iter)->SetShield((*Iter)->GetShield() - deltaTime * 90);
 			}
 			else
+			{
+				cout << "Life: " << (*Iter)->GetShield() << endl;
 				(*Iter)->SetLife((*Iter)->GetLife() - deltaTime * 90);
+			}
 
 			return true;
 		}
@@ -97,38 +102,3 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	
 	return false;
 }
-/* Not using it at the moment...
-
-void Bacteria::setPhysics()
-{
-    b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set((mPos.x + mWidth / 2) / 100.0f, (mPos.y + mHeight /2) / 100.0f);
-    groundBodyDef.userData = this;
-    SetBodyDef(groundBodyDef);
-        
-   // b2Vec2 _center(3.5f, 0.25f);
-
-    mBox.SetAsBox(mWidth / 200.0f, mHeight / 200.0f);
-    //setShape(mBox);
-   
-    b2Vec2 vertices[4];
-    vertices[0].Set(0.0f, height / 100.0f);
-    vertices[1].Set(width / 100.0f, height / 100.0f);
-    vertices[2].Set(width / 100.0f, 0.0f);
-    vertices[3].Set(0.0f, 0.0f);
-
-    int vertexCount = 4;
-
-    b2PolygonShape groundBox;
-    groundBox.Set(vertices, 4);
-    setShape(groundBox);
-    
-
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &mBox;
-    SetFixDef(fixtureDef);
-
-    mBody = HAMURWORLD->Getb2World()->CreateBody(&mBodyDef);
-    mBody->CreateFixture(&fixtureDef);
-}
-*/

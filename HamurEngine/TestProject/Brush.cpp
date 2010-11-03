@@ -32,7 +32,9 @@ void Brush::Explode()
 
 		//TODO:Value of shield increase must be set
 		if(t != NULL)
+		{
 			t->SetShield(1000);
+		}
 	}
 
 	//mRemainingCooldown = mCooldown;

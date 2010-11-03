@@ -36,8 +36,6 @@ void Tooth::Update(float deltaTime)
 {
 	if(mLife <= 0)
 	{
-		HAMURWORLD->DeleteObject(this->GetName());
-
 		std::list<Tooth *>::iterator Iter;
 		for(Iter = teeth->begin(); Iter != teeth->end(); Iter++)
 		{
@@ -47,5 +45,7 @@ void Tooth::Update(float deltaTime)
 				break;
 			}
 		}
+
+		HAMURWORLD->DeleteObject(this->GetName());
 	}
 }
