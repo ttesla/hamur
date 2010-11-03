@@ -83,7 +83,7 @@ bool HamurOpenGL::InitGL()
 {	
 	glEnable(GL_TEXTURE_2D);				// Enable 2D textures
 	glShadeModel(GL_SMOOTH);				// Enable smooth shading
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f );	// Clear color -- Black background
+	glClearColor(0, 0, 0, 0);               // Clear color -- Black background
 	glClearDepth(1.0f);						// Depth buffer setup
 	glEnable(GL_DEPTH_TEST);				// Enables Depth Testing
 	glDepthFunc(GL_LEQUAL);					// The Type Of Depth Test To Do

@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
     //HAMURSTATEMR->RegisterState(new ExampleState());
     //HAMURSTATEMR->RegisterState(new MainState());
     //HAMURSTATEMR->ChangeState("ExampleState");
+	
 	HAMURSTATEMR->RegisterState(new IngameState());
 	HAMURSTATEMR->ChangeState("IngameState");
 

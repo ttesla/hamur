@@ -71,6 +71,8 @@ void HamurEngine::Run()
         // Handle all events
         HAMUREVENT->HandleEvents();
 
+		HAMURENGINE->SetBackgroundColor(HamurColor.WHITE);
+
         //Clear the screen & reset identity matrix
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();
@@ -142,6 +144,11 @@ void HamurEngine::DisableMouseCursor()
 int HamurEngine::GetFrameCount()
 {
     return mFrameCount;
+}
+
+void HamurEngine::SetBackgroundColor(HamurColor backgroundColor)
+{
+	glClearColor(backgroundColor.R, backgroundColor.G, backgroundColor.B, 0);
 }
 
 } // namespace hamur
