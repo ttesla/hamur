@@ -1,16 +1,18 @@
 /*
-	Hamur II - June 2010
-
-	This main.cpp is written to test Hamur Engine.
+	Backteria Game
 
 	Programming by:
-	- Daghan DEMIRCI <daghan.demirci@gmail.com>
-	- Omer AKYOL	 <omer.akyol@gmail.com>
+	- Sitki Emre Solak
+	- Edu 
+
+	Graphics by:
+	- Victor
+
+	Music by:
+	- ?
 */
 
-//#include "hamur.h"
-#include "ExampleState.h"
-#include "MainState.h"
+#include "hamur.h"
 #include "IngameState.h"
 #include "time.h"
 
@@ -21,16 +23,12 @@ int main(int argc, char *argv[])
 {
 	srand((unsigned)time(0)); 
 
-
-    if(HAMURENGINE->Init("Hamur II test - 2010", 800, 600) == false)
+    if(HAMURENGINE->Init("Bacteria Outbreak! - 2010", 800, 600) == false)
         return 1;
 
+	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
     //HAMURENGINE->DisableMouseCursor();
 
-    //HAMURSTATEMR->RegisterState(new ExampleState());
-    //HAMURSTATEMR->RegisterState(new MainState());
-    //HAMURSTATEMR->ChangeState("ExampleState");
-	
 	HAMURSTATEMR->RegisterState(new IngameState());
 	HAMURSTATEMR->ChangeState("IngameState");
 

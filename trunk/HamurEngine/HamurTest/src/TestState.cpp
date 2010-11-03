@@ -16,28 +16,40 @@ TestState::~TestState()
 // ENTER
 void TestState::Enter() 
 {
-    //HAMURWORLD->AddObject(new HamurObject("Tank", "data/Tank.png", HamurColorRGB::COLORKEY));
-   // HAMURWORLD->GetHamurObject("Tank")->SetPosition(100, 100);
-    mAngle = 0;
+    HAMURWORLD->AddObject(new HamurObject("B1", "data/normal.png", HamurColorRGB::COLORKEY));
+    HAMURWORLD->AddObject(new HamurObject("B2", "data/fatty.png"));
+	HAMURWORLD->AddObject(new HamurObject("B3", "data/slim.png"));
+	HAMURWORLD->AddObject(new HamurObject("B4", "data/strayer.png"));
+	HAMURWORLD->AddObject(new HamurObject("B5", "data/shooter.png"));
 
+    HAMURWORLD->GetHamurObject("B1")->SetPosition(200, 100);
+	HAMURWORLD->GetHamurObject("B2")->SetPosition(250, 100);
+	HAMURWORLD->GetHamurObject("B3")->SetPosition(300, 100);
+	HAMURWORLD->GetHamurObject("B4")->SetPosition(350, 100);
+	HAMURWORLD->GetHamurObject("B5")->SetPosition(400, 100);
+    mAngle = 0;
 }
 
 
 // UPDATE
 void TestState::Update(float deltaTime) 
 {
-	/*
+	
     if(HAMUREVENT->IsKeyDown(Keys::Escape)) 
     {
         HAMURENGINE->Stop();
     }
     
     mAngle += 10*deltaTime;
-    HAMURWORLD->GetHamurObject("Tank")->RotateDegree(mAngle);
+    HAMURWORLD->GetHamurObject("B1")->RotateDegree(mAngle);
+	HAMURWORLD->GetHamurObject("B2")->RotateDegree(mAngle);
+	HAMURWORLD->GetHamurObject("B3")->RotateDegree(mAngle);
+	HAMURWORLD->GetHamurObject("B4")->RotateDegree(mAngle);
+	HAMURWORLD->GetHamurObject("B5")->RotateDegree(mAngle);
     
     HAMURCONSOLE << HAMURTIMER->DeltaTime() << "\n";
-	*/
-	DrawPlotter();
+	
+	//DrawPlotter();
 }
 
 

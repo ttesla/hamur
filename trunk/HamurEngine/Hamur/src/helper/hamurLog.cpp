@@ -3,9 +3,19 @@
 namespace hamur
 {
 
+
 // HamurLog constructor
 HamurLog::HamurLog() : mLogFileName("hamur.log") , mDebugMode(true), initLogLength(28)
 {
+
+// If we are in DEBUG mode enable extensive debugging
+// else disable it. Hope this works in 
+#if defined( _DEBUG ) || defined( DEBUG )
+	mDebugMode = true;
+#else
+	mDebugMode = false;
+#endif
+
     // Open for writing and append
     mLogFile.OpenForWrite(mLogFileName);
 }

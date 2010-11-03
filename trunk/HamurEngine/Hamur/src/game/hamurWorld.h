@@ -53,9 +53,9 @@ class HamurWorld : public Singleton<HamurWorld>
 
     private:
         void InitializePhysics();
+
         map<string, HamurObject*> mWorldObjects;
 		std::vector<string> mDeleteList;
-        int mObjectCount;
         // BOX2D Attributes
         b2Vec2 mGravity;
         bool mDoSleep;

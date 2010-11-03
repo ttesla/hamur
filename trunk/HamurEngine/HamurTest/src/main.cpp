@@ -21,9 +21,8 @@ int main(int argc, char *argv[])
 
     // Set debug mode for logging
     HAMURLOG->SetDebugMode(true);
-
     HAMURENGINE->DisableMouseCursor();
-	HAMURENGINE->SetBackgroundColor(HamurColor.WHITE);
+	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
 
     HAMURSTATEMR->RegisterState(new TestState());
 	HAMURSTATEMR->ChangeState("TestState");
