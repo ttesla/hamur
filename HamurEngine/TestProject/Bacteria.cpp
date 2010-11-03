@@ -7,10 +7,12 @@ using namespace std;
 
 #define SPEEDCOEF 0.01;
  
-Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):HamurObject(name, sprite), mBasePosition(basePosition), mSpeed(speed)
+Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):HamurObject(name), mBasePosition(basePosition), mSpeed(speed)
 {
-	mActive = false;
+	SetSprite(sprite, 255, 255, 255);
 
+	mActive = false;
+	
 	//Distributing bacterias to the borders of screen
 	//we can distribute them equally. It' s being done by chance
 	int dice = (int)rand() % 4;

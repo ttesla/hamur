@@ -10,6 +10,9 @@ using std::string;
 namespace hamur
 {
 
+// Forward declerations
+class HamurColor;
+
 /**
 * HamurEngine controls the entire Hamur engine
 */
@@ -51,6 +54,9 @@ public:
 
     /**< Get Engine frame count. Every successfull engine loop increases count by 1 */ 
     int GetFrameCount();
+
+	/**< Set Background clear color */
+	void SetBackgroundColor(HamurColor backgroundColor);
 
 protected:
 
