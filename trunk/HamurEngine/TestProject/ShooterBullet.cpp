@@ -11,6 +11,30 @@ ShooterBullet::ShooterBullet(const string &name, const hamur::HamurVec3 &startin
 
 void ShooterBullet::Update(float deltaTime)
 {	
+	list<Tooth *> teeth = Tooth::GetTeeth();
+	list<Tooth *>::iterator Iter;
+
+	for(Iter = teeth.begin(); Iter != teeth.end(); Iter++)
+	{
+		if(Collision::RectsIntersectWith(this, (*Iter)))
+		{
+			if((*Iter)->GetShield() > 0)
+			{
+				cout << "Shield: " << (*Iter)->GetShield() << endl;
+				(*Iter)->SetShield((*Iter)->GetShield() - 100);
+			}
+			else
+			{
+				cout << "Life: " << (*Iter)->GetLife() << endl;
+				(*Iter)->SetLife((*Iter)->GetLife() - 100);
+			}
+
+			// Unactivate the bullets
+			this->SetActive(false);
+			this->SetVisible(false);
+		}
+	}
+
 	/*
 	//Get enemies from wave and look if they are colliding with this
 	list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();

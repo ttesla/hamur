@@ -2,6 +2,8 @@
 #define SHOOTERBULLET_H
 
 #include "Bullet.h"
+#include "Tooth.h"
+#include <list>
 using namespace hamur;
 using namespace std;
 

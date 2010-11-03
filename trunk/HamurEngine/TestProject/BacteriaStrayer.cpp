@@ -9,8 +9,8 @@ BacteriaStrayer::BacteriaStrayer(const string &name, const string &sprite, Hamur
 	this->SetLife(2.0); // Example values at the moment
 	this->SetShield(3.0); 
 	this->mPrevTickCount = (double)SDL_GetTicks();
-	this->mMovementRange = 100;
-	this->mSideMovFactor = 5;
+	this->mMovementRange = 500;
+	this->mSideMovFactor = 1;
 }
 
 /*
@@ -19,11 +19,14 @@ void BacteriaStrayer::Draw(float deltaTime)
 	// Draw yellow circles
 	HamurPlotter::DrawSolidCircle(mPos.x, mPos.y, mWidth, HamurColor::RED);
 }
+*/
 
 void BacteriaStrayer::Update(float deltaTime)
 {
 	if(IsAttacking2Tooth(deltaTime))
+	{
 		return;
+	}
 
 	if (SDL_GetTicks() - mPrevTickCount <= mMovementRange)
 	{	
@@ -35,4 +38,3 @@ void BacteriaStrayer::Update(float deltaTime)
 
 	Bacteria::Update(deltaTime);
 }
-*/

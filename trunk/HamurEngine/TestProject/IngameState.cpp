@@ -83,7 +83,6 @@ void IngameState::Update(float deltaTime)
 	{
 		HAMURENGINE->Stop();
 	}
-
 }
 
 void IngameState::Draw(float deltaTime)
