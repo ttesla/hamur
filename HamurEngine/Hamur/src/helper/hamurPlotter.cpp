@@ -53,9 +53,6 @@ void HamurPlotter::DrawRectangle(float x, float y, float width, float height, co
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -72,9 +69,6 @@ void HamurPlotter::DrawRectangle(float x, float y, float width, float height, co
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -129,9 +123,6 @@ void HamurPlotter::DrawRectangle(float x, float y, float z, float width, float h
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -148,9 +139,6 @@ void HamurPlotter::DrawRectangle(float x, float y, float z, float width, float h
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -201,9 +189,6 @@ void HamurPlotter::DrawRectangle(const HamurVec2& pos, float width, float height
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -220,9 +205,6 @@ void HamurPlotter::DrawRectangle(const HamurVec2& pos, float width, float height
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -277,9 +259,6 @@ void HamurPlotter::DrawRectangle(const HamurVec3& pos, float width, float height
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -296,9 +275,6 @@ void HamurPlotter::DrawRectangle(const HamurVec3& pos, float width, float height
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
      // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -601,9 +577,6 @@ void HamurPlotter::DrawPolygon(const HamurVec2* verticeList, int verticeCount, c
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -621,10 +594,7 @@ void HamurPlotter::DrawPolygon(const HamurVec2* verticeList, int verticeCount, c
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
-
+ 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
 
@@ -670,9 +640,6 @@ void HamurPlotter::DrawPolygon(const HamurVec3* verticeList, int verticeCount, c
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -690,9 +657,6 @@ void HamurPlotter::DrawPolygon(const HamurVec3* verticeList, int verticeCount, c
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -828,9 +792,6 @@ void HamurPlotter::DrawCircle(float xCenter, float yCenter, float radius, const 
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -855,9 +816,6 @@ void HamurPlotter::DrawCircle(float xCenter, float yCenter, float radius, const 
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -872,9 +830,6 @@ void HamurPlotter::DrawCircle(float xCenter, float yCenter, float zCenter, float
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -899,9 +854,6 @@ void HamurPlotter::DrawCircle(float xCenter, float yCenter, float zCenter, float
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -916,9 +868,6 @@ void HamurPlotter::DrawCircle(const HamurVec2& pos, float radius, const HamurCol
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -943,9 +892,6 @@ void HamurPlotter::DrawCircle(const HamurVec2& pos, float radius, const HamurCol
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -960,9 +906,6 @@ void HamurPlotter::DrawCircle(const HamurVec3& pos, float radius, const HamurCol
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -987,10 +930,7 @@ void HamurPlotter::DrawCircle(const HamurVec3& pos, float radius, const HamurCol
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
-
+   
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
 }
@@ -1164,9 +1104,6 @@ void HamurPlotter::DrawLine(float firstX, float firstY, float secondX, float sec
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -1181,9 +1118,6 @@ void HamurPlotter::DrawLine(float firstX, float firstY, float secondX, float sec
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -1226,9 +1160,6 @@ void HamurPlotter::DrawLine(float firstX, float firstY, float firstZ, float seco
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -1243,9 +1174,6 @@ void HamurPlotter::DrawLine(float firstX, float firstY, float firstZ, float seco
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -1287,9 +1215,6 @@ void HamurPlotter::DrawLine(const HamurVec2& pos1, const HamurVec2& pos2, const 
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -1304,9 +1229,6 @@ void HamurPlotter::DrawLine(const HamurVec2& pos1, const HamurVec2& pos2, const 
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -1349,9 +1271,6 @@ void HamurPlotter::DrawLine(const HamurVec3& pos1, const HamurVec3& pos2, const 
     glDisable(GL_TEXTURE_2D);
 
     // For Anti-aliasing
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_LINE_SMOOTH);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -1366,9 +1285,6 @@ void HamurPlotter::DrawLine(const HamurVec3& pos1, const HamurVec3& pos2, const 
 
     // OpenGL State Machine Reset
     glEnable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LINE_SMOOTH);
-    glEnable(GL_ALPHA_TEST);
 
     // Clear color to white
     glColor3f(1.0f, 1.0f, 1.0f);

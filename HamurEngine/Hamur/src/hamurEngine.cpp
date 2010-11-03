@@ -71,8 +71,6 @@ void HamurEngine::Run()
         // Handle all events
         HAMUREVENT->HandleEvents();
 
-		HAMURENGINE->SetBackgroundColor(HamurColor.WHITE);
-
         //Clear the screen & reset identity matrix
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();

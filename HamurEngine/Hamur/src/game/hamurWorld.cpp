@@ -9,11 +9,12 @@
 namespace hamur
 {
 
+
 HamurWorld::HamurWorld()
 {
-    mObjectCount = 0;
-    InitializePhysics();
+
 }
+
 
 HamurWorld::~HamurWorld()
 {
@@ -21,10 +22,13 @@ HamurWorld::~HamurWorld()
     HAMURLOG->WriteTerminateLog("HamurWorld");
 }
 
+
 // Initialize Hamur World
 bool HamurWorld::Init()
 {
+    InitializePhysics();
     HAMURLOG->WriteInitLog("HamurWorld");
+    
     return true;
 }
 
@@ -34,17 +38,11 @@ bool HamurWorld::AddObject(HamurObject* newObject)
     // Look in the map if the object is already added. If not found, then add.
     if(HasObject(newObject->GetName()))
 	{
-		/*HamurString str;
-		str << (int)mWorldObjects.size();
-		string newName = newObject->GetName() + str.GetString();
-		HAMURLOG->WriteLogln("Object name used: " + newObject->GetName());
-		HAMURLOG->WriteLogln("Object " + newObject->GetName() + "'s name has been changed to by engine: " + newName);
-		newObject->SetName(newName);*/
+        HAMURLOG->WriteLogln("Warning: Object name already exists: " + newObject->GetName());
 		return false;
 	}
 
     mWorldObjects[newObject->GetName()] = newObject;
-    mObjectCount++;
     return true;
 }
 
@@ -66,7 +64,6 @@ bool HamurWorld::DeleteObject(const string& objectName)
 		}
 
         //mWorldObjects.erase(iter);
-        mObjectCount--;
         return true;
     }
 
@@ -147,8 +144,6 @@ HamurObject* HamurWorld::GetHamurObject(const string& objectName) const
 }
 
 
-
-
 // Delete all objects in the Hamur World
 void HamurWorld::ClearAll()
 {
@@ -160,9 +155,9 @@ void HamurWorld::ClearAll()
             delete iter->second;
     }
 
-    mObjectCount = 0;
     HAMURLOG->WriteLogln("All world objects deleted.");
 }
+
 
 HamurObject* HamurWorld::GetHamurObjectByIndex(int index) const
 {
@@ -186,10 +181,12 @@ HamurObject* HamurWorld::GetHamurObjectByIndex(int index) const
         return NULL;
 }
 
+
 int HamurWorld::GetWorldSize() const
 {
-    return mObjectCount;
+    return mWorldObjects.size();
 }
+
 
 b2World* HamurWorld::GetPhysicWorld() const
 {
@@ -258,6 +255,7 @@ void HamurWorld::RunPhysicSimulation()
     }  
 }
 */
+
 
 void HamurWorld::InitializePhysics()
 {

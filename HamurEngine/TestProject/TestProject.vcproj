@@ -119,7 +119,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../Hamur/libraries;../Hamur/src"
+				AdditionalIncludeDirectories="../Hamur/libraries;../Hamur/src;../tinyxml"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -136,7 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Hamur.lib tinyxml_STL.lib"
+				AdditionalDependencies="Hamur.lib tinyxmld_STL.lib"
 				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release;../tinyxml/Debug_STL"
 				GenerateDebugInformation="false"
 				SubSystem="2"
@@ -180,19 +180,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DynamicObject.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ExampleState.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Food.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\GroundObject.cpp"
 				>
 			</File>
 			<File
@@ -205,10 +193,6 @@
 			</File>
 			<File
 				RelativePath=".\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MainState.cpp"
 				>
 			</File>
 			<File
@@ -310,19 +294,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DynamicObject.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ExampleState.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Food.h"
-				>
-			</File>
-			<File
-				RelativePath=".\GroundObject.h"
 				>
 			</File>
 			<File
@@ -331,10 +303,6 @@
 			</File>
 			<File
 				RelativePath=".\Level.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MainState.h"
 				>
 			</File>
 			<File
