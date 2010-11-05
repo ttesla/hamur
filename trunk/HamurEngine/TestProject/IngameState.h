@@ -20,17 +20,10 @@ public:
 	IngameState();
 	~IngameState();
 
-
 	void Enter();
 	void Update(float deltaTime);
 	void Draw(float deltaTime);
 	void Exit();
-
-
-
-
-	//When the bacteria shot, this pointers are set by bullet object.
-	//Very creepy from the point of software engineering, isn' t it:D:D
 
 private:
 	Bacteria **allocatedBacterias;

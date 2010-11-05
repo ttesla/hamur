@@ -6,6 +6,7 @@
 #include "Level.h"
 #include "WaveDataReader.h"
 #include "Bullet.h"
+#include "Text.h"
 
 using namespace hamur;
 
@@ -26,12 +27,14 @@ void IngameState::Enter()
 	/**************
 	*	BASE	**
 	***************/
+	
 	base = new Base("Base");
 	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
 	
 	/**************
 	*	TEETH	**
 	***************/
+	
 	//allocatedTeeth = new Tooth*[MAXTEETH];
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
@@ -51,25 +54,34 @@ void IngameState::Enter()
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
 	Tooth::SetTeeth(&allocatedTeeth);
-
+	
 	/**************
 	*	WAVE	**
 	***************/
-	WaveDataReader dataReader("waves.xml");
+	
+	WaveDataReader dataReader("test.xml");
 
 	Level *l = new Level("level");
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));
 	l->Start();
-
+	
 	/**************
 	*	BUTTONS	**
 	**************/
+	
 	GUIElement *button1 = new Button("Button1");
 	button1->SetHeight(40.0);
 	button1->SetWidth(80.0);
 	button1->SetPosition(100, 100);
-	//button1->SetSprite("../WorkingDir/button.bmp", 200, 100, 20);
-
+	//button1->SetSprite("Graphics/testbutton1.png", 200, 100, 20);
+	
+	/*
+	HamurVec3 c;
+	c.x = 200;
+	c.y = 200;
+	c.z = 0;
+	GUIElement *text = new Text("Text1", "Hello peopleeee!", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLUE);
+	*/
 }
 
 void IngameState::Update(float deltaTime)

@@ -10,12 +10,8 @@ GUIElement::GUIElement(const string &name, const HamurVec3 &position,
 	this->SetWidth(width);
 	this->SetHeight(height);
 }
-/*
-void GUIElement::Draw(float deltaTime)
-{
-}
 
 void GUIElement::Update(float deltaTime)
 {
 }
-*/
+

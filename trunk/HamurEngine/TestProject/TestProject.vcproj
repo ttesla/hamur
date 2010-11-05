@@ -278,6 +278,10 @@
 					RelativePath=".\GUIElement.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\Text.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -386,6 +390,10 @@
 				</File>
 				<File
 					RelativePath=".\GUIElement.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Text.h"
 					>
 				</File>
 			</Filter>
