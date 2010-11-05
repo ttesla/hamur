@@ -28,10 +28,12 @@ void Button::Update(float deltaTime)
 	}
 }
 
+//COMMENT
 void Button::Draw(float deltaTime)
 {
 	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, c);
 }
+
 
 bool Button::isPushed()
 {
