@@ -136,8 +136,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Hamur.lib tinyxmld_STL.lib"
-				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release;../tinyxml/Debug_STL"
+				AdditionalDependencies="Hamur.lib tinyxml.lib"
+				AdditionalLibraryDirectories="../Hamur/libraries/hamur/Release;../tinyxml/Release"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"

@@ -83,6 +83,16 @@ void IngameState::Update(float deltaTime)
 	{
 		HAMURENGINE->Stop();
 	}
+
+	if(HAMUREVENT->IsKeyPressed(Keys::Key1))
+	{
+		base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
+
+	}
+	else if(HAMUREVENT->IsKeyPressed(Keys::Key2))
+	{
+		base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
+	}
 }
 
 void IngameState::Draw(float deltaTime)
