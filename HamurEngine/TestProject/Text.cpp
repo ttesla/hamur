@@ -41,3 +41,8 @@ void Text::Draw(float deltaTime)
 {
 	HAMURTEXMR->BlitTexture(mID, mPosition);
 }
+
+void Text::SetBold()
+{
+	TTF_SetFontStyle(mFont, TTF_STYLE_UNDERLINE);
+}

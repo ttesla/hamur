@@ -13,6 +13,8 @@ class Text : public GUIElement
 		virtual void Update(float deltaTime);
 		virtual void Draw(float deltaTime);
 
+		void SetBold();
+	
 	private:
 		string mText;
 		HamurVec3 mPosition;

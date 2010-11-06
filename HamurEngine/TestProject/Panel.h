@@ -1,16 +1,16 @@
 #include "GUIElement.h"
 
-class Button : public GUIElement
+class Panel : public GUIElement
 {
 	public:
-		Button(const string &name);
-		Button(const string &name, const HamurVec3 &position,
+		Panel(const string &name);
+		Panel(const string &name, const HamurVec3 &position,
 				   const string &sprite, 
 				   const int width, const int height);
 		virtual void Update(float deltaTime);
 		//virtual void Draw(float deltaTime);
-		bool isPushed();
 
 	private:
-		
+		// Temporal
+		HamurColor c;
 };
