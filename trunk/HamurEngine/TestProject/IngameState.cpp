@@ -1,33 +1,76 @@
 #include "IngameState.h"
-#include "Math.h"
-#include "Base.h"
-#include "Wave.h"
-#include "Button.h"
-#include "Level.h"
-#include "WaveDataReader.h"
-#include "Bullet.h"
-#include "Text.h"
 
 using namespace hamur;
 
 IngameState::IngameState() : HamurState("IngameState")
 {
-
+	playing = false;
 }
 
 IngameState::~IngameState()
 {
 }
 
-void IngameState::Enter()
+void IngameState::UnloadSelection()
 {
+	HAMURWORLD->DeleteObject("Text1");
+	HAMURWORLD->DeleteObject("Text2");
+	HAMURWORLD->DeleteObject("Text3");
+	HAMURWORLD->DeleteObject("Text4");
+	HAMURWORLD->DeleteObject("Text5");
+	HAMURWORLD->DeleteObject("Button1");
+	HAMURWORLD->DeleteObject("Button2");
+	HAMURWORLD->DeleteObject("Button3");
+	HAMURWORLD->DeleteObject("Button4");
+}
+
+void IngameState::LoadSelection()
+{
+	/*************
+	*	GUI		*
+	*************/
+	HamurVec3 c;
+	c.x = 375;
+	c.y = 50;
+	c.z = 0;
+	// Some texts
+	Text *text1 = new Text("Text1", "Chose what to eat", "Fonts/DejaVuSans.ttf", 40, c, HamurColorRGB::BLACK);
+	c.x = 100;
+	c.y = 150;
+	Text *text2 = new Text("Text2", "Breakfast", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	c.x = 375;
+	Text *text3 = new Text("Text3", "Lunch", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	c.x = 650;
+	Text *text4 = new Text("Text4", "Dinner", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	c.x = 375;
+	c.y = 350;
+	Text *text5 = new Text("Text5", "Snacks", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	// Some buttons
+	c.x = 100;
+	c.y = 230;
+	Button *button1 = new Button("Button1", c, "Graphics/testbutton.png", 40, 40);
+	c.x = 375;
+	Button *button2 = new Button("Button2", c, "Graphics/testbutton.png", 40, 40);
+	c.x = 650;
+	Button *button3 = new Button("Button3", c, "Graphics/testbutton.png", 40, 40);
+
+	c.x = 750;
+	c.y = 550;
+
+	startButton = new Button("Button4", c, "Graphics/playbutton.png", 90, 90);
+}
+
+void IngameState::LoadGame()
+{
+	playing = true;
+
 	mPrevTickCount = 0;
 	spawnedEnemyCount = 0;
 
 	/**************
 	*	BASE	**
 	***************/
-	
+		
 	base = new Base("Base");
 	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
 	
@@ -65,45 +108,45 @@ void IngameState::Enter()
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));
 	l->Start();
 	
-	/**************
-	*	BUTTONS	**
-	**************/
-	
-	GUIElement *button1 = new Button("Button1");
-	button1->SetHeight(40.0);
-	button1->SetWidth(80.0);
-	button1->SetPosition(100, 100);
-	//button1->SetSprite("Graphics/testbutton1.png", 200, 100, 20);
-	
-	/*
-	HamurVec3 c;
-	c.x = 200;
-	c.y = 200;
-	c.z = 0;
-	GUIElement *text = new Text("Text1", "Hello peopleeee!", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLUE);
-	*/
+}
+
+void IngameState::Enter()
+{
+	LoadSelection();
 }
 
 void IngameState::Update(float deltaTime)
 {
-	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
-	{
-		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
+	if (!playing)
+	{	
+		if (startButton->isPushed())
+		{
+			UnloadSelection();
+			LoadGame();
+			playing = true;
+		}
 	}
-
-	if(HAMUREVENT->IsKeyPressed(Keys::Escape))
+	else
 	{
-		HAMURENGINE->Stop();
-	}
+		if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
+		{
+			base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
+		}
 
-	if(HAMUREVENT->IsKeyPressed(Keys::Key1))
-	{
-		base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
+		if(HAMUREVENT->IsKeyPressed(Keys::Escape))
+		{
+			HAMURENGINE->Stop();
+		}
 
-	}
-	else if(HAMUREVENT->IsKeyPressed(Keys::Key2))
-	{
-		base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
+		if(HAMUREVENT->IsKeyPressed(Keys::Key1))
+		{
+			base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
+
+		}
+		else if(HAMUREVENT->IsKeyPressed(Keys::Key2))
+		{
+			base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
+		}
 	}
 }
 

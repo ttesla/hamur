@@ -2,8 +2,7 @@
 
 Button::Button(const string &name):GUIElement(name)
 {
-	//Temporal
-	c = HamurColor::CYAN;
+
 }
 
 Button::Button(const string &name, const HamurVec3 &position, const string &sprite, 
@@ -14,26 +13,8 @@ Button::Button(const string &name, const HamurVec3 &position, const string &spri
 
 void Button::Update(float deltaTime)
 {
-	//if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
-	if(HAMUREVENT->IsMouseDown(Keys::LeftButton))
-	{
-		if(isPushed())
-		{
-			c = HamurColor::GREEN;
-		}
-		else
-		{
-			c = HamurColor::CYAN;
-		}
-	}
+	
 }
-
-//COMMENT
-void Button::Draw(float deltaTime)
-{
-	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, c);
-}
-
 
 bool Button::isPushed()
 {
@@ -41,10 +22,16 @@ bool Button::isPushed()
 	mousePos.x = HAMUREVENT->GetMouseX();
 	mousePos.y = HAMUREVENT->GetMouseY();
 
-	if((mousePos.x > this->GetPosition().x) && (mousePos.x < this->GetPosition().x + this->mWidth)
-		&& (mousePos.y > this->GetPosition().y) && (mousePos.y < this->GetPosition().y + this->mHeight))
+	float halfW = mWidth/2;
+	float halfH = mHeight/2;
+
+	if(HAMUREVENT->IsMouseDown(Keys::LeftButton))
 	{
-		return true;
+		if((mousePos.x > this->GetPosition().x - halfW) && (mousePos.x < this->GetPosition().x + halfW)
+			&& (mousePos.y > this->GetPosition().y - halfH) && (mousePos.y < this->GetPosition().y + halfH))
+		{
+			return true;
+		}
 	}
 	return false;
 }
