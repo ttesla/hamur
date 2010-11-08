@@ -6,11 +6,9 @@
 #include "Math.h"
 #include "Base.h"
 #include "Wave.h"
-#include "Button.h"
 #include "Level.h"
 #include "WaveDataReader.h"
 #include "Bullet.h"
-#include "Text.h"
 #include <list>
 
 using namespace hamur;
@@ -40,9 +38,5 @@ private:
 	int spawnedEnemyCount;
 	Base *base;
 
-	bool playing;
-	Button *startButton;
-	void UnloadSelection();
-	void LoadSelection();
 	void LoadGame();
 };
