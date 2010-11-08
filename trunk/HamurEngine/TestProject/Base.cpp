@@ -50,6 +50,8 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 
 	//WaterBullet. Because of having cooldown and can be used once per time, one instance is enough
 	mWater = new WaterBullet("WaterBullet", 5);
+	mFlossingBulletCooldown = 3;
+	mLastFlossingBulletFiredTime = 3;
 }
 
 
@@ -60,13 +62,22 @@ void Base::Draw(float deltaTime)
 
 void Base::Update(float deltaTime)
 {
-	
+	if(mSelectedWeaponType == BulletTypes::FlossingBulletType)
+		mLastFlossingBulletFiredTime += HAMURTIMER->DeltaTime();
 }
 
 void Base::Fire(const HamurVec3 &targetPos)
 {
 	//TODO:Selected type of weapon should be fired
 	using namespace std;
+
+	if(mSelectedWeaponType == BulletTypes::FlossingBulletType)
+	{
+		if(mLastFlossingBulletFiredTime < mFlossingBulletCooldown)
+			return;
+
+		mLastFlossingBulletFiredTime = 0;
+	}
 
 	std::vector<Bullet *>::iterator Iter;
 

@@ -102,12 +102,12 @@ void IngameState::LoadGame()
 	*	WAVE	**
 	***************/
 	
-	WaveDataReader dataReader("test.xml");
+	//WaveDataReader dataReader("test.xml");
+	WaveDataReader waveReader("Waves.xml");
 
 	Level *l = new Level("level");
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));
 	l->Start();
-	
 }
 
 void IngameState::Enter()
