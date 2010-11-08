@@ -184,10 +184,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\IngameState.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Level.cpp"
 				>
 			</File>
@@ -287,6 +283,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="States"
+				>
+				<File
+					RelativePath=".\IngameState.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MenuState.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SelectionState.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -303,10 +315,6 @@
 			</File>
 			<File
 				RelativePath=".\Food.h"
-				>
-			</File>
-			<File
-				RelativePath=".\IngameState.h"
 				>
 			</File>
 			<File
@@ -393,6 +401,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\GUI.h"
+					>
+				</File>
+				<File
 					RelativePath=".\GUIElement.h"
 					>
 				</File>
@@ -402,6 +414,26 @@
 				</File>
 				<File
 					RelativePath=".\Text.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="State"
+				>
+				<File
+					RelativePath=".\FeedbackState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\IngameState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MenuState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SelectionState.h"
 					>
 				</File>
 			</Filter>

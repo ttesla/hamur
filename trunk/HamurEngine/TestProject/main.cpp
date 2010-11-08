@@ -1,5 +1,5 @@
 /*
-	Backteria Game
+	Bacteria Game
 
 	Programming by:
 	- Sitki Emre Solak
@@ -9,11 +9,14 @@
 	- Victor
 
 	Music by:
-	- ?
+	- Elton John
 */
 
 #include "hamur.h"
+#include "MenuState.h"
+#include "SelectionState.h"
 #include "IngameState.h"
+
 #include "time.h"
 
 using namespace hamur;
@@ -29,9 +32,15 @@ int main(int argc, char *argv[])
 	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
     //HAMURENGINE->DisableMouseCursor();
 
+	// Registering the states of the game:
+	HAMURSTATEMR->RegisterState(new MenuState());
+	HAMURSTATEMR->RegisterState(new SelectionState());
 	HAMURSTATEMR->RegisterState(new IngameState());
-	HAMURSTATEMR->ChangeState("IngameState");
+	//HAMURSTATEMR->RegisterState(new FeedbackState());
 
+	
+	HAMURSTATEMR->ChangeState("SelectionState");
+	
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 
