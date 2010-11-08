@@ -1,6 +1,5 @@
 #include "SelectionState.h"
 
-
 using namespace hamur;
 
 SelectionState::SelectionState() : HamurState("SelectionState")

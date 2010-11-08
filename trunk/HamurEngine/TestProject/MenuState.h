@@ -26,6 +26,7 @@ class MenuState : public HamurState
 		Button *optionsButton;
 		Button *exitButton;
 		Button *howToPlayButton;
+		Panel *title;
 		Panel *background;
 };
 

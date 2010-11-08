@@ -38,8 +38,7 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new IngameState());
 	//HAMURSTATEMR->RegisterState(new FeedbackState());
 
-	
-	HAMURSTATEMR->ChangeState("SelectionState");
+	HAMURSTATEMR->ChangeState("MenuState");
 	
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
