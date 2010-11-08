@@ -63,7 +63,7 @@ void FlossingBullet::Explode()
 			if(distance.Length() < 50)
 			{
 				//TODO:Set damage
-				if((*Iter)->DecreaseLife(1))
+				if((*Iter)->DecreaseLife(100))
 				{
 					HAMURWORLD->DeleteObject((*Iter)->GetName());
 					bacterias->erase(Iter++);

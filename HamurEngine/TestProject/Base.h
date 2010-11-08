@@ -37,6 +37,8 @@ class Base : public HamurObject
 		BulletTypes mSelectedWeaponType;
 		int killedEnemyCount;
 		bool update;
+		float mFlossingBulletCooldown;
+		float mLastFlossingBulletFiredTime;
 };
 
 #endif
