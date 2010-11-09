@@ -287,6 +287,10 @@
 				Name="States"
 				>
 				<File
+					RelativePath=".\FeedbackState.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\IngameState.cpp"
 					>
 				</File>
