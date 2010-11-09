@@ -5,9 +5,7 @@
 
 #include "hamur.h"
 #include "hamurDefinitions.h"
-#include "Button.h"
-#include "Text.h"
-#include "Panel.h"
+#include "GUI.h"
 
 using namespace hamur;
 using namespace std;
@@ -29,6 +27,9 @@ class FeedbackState : public HamurState
 		Text *badText;
 		Text *shieldsText;
 		Text *lifeText;
+		int goodNumber;
+		int normalNumber;
+		int badNumber;
 		vector<Panel *> goodPanels;
 		vector<Panel *> normalPanels;
 		vector<Panel *> badPanels;
