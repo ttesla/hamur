@@ -9,6 +9,7 @@
 #include "Level.h"
 #include "WaveDataReader.h"
 #include "Bullet.h"
+#include "GUI.h"
 #include <list>
 
 using namespace hamur;
@@ -38,5 +39,17 @@ private:
 	int spawnedEnemyCount;
 	Base *base;
 
-	void LoadGame();
+	/****************
+		INGAME GUI  *
+	*****************/
+	Panel *currentFoodPanel;
+	Panel *timeLeftPanel;
+	Panel *lifePanel;
+	Panel *shieldPanel;
+	Button *waterButton;
+	
+	void startBase();
+	void startTeeth();
+	void startWave();
+	void startGUI();
 };

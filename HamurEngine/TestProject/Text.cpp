@@ -14,7 +14,7 @@ Text::Text(const string &name, const string &text):GUIElement(name)
 }
 
 Text::Text(const string &name, const string &text, const string &fontpath,
-		   int fontsize, const HamurVec3 &position, HamurColorRGB color):GUIElement(name)
+		   int fontsize, const HamurVec3 &position, HamurColorRGB color, int style):GUIElement(name)
 {
 	mPosition = position;
 	mColor = color;
@@ -25,6 +25,27 @@ Text::Text(const string &name, const string &text, const string &fontpath,
 		cerr << "Error opening the font" << endl;
 	}
 	
+	switch (style)
+	{
+		case NORMAL:
+			TTF_SetFontStyle(mFont, TTF_STYLE_NORMAL);
+			break;
+		case BOLD:
+			TTF_SetFontStyle(mFont, TTF_STYLE_BOLD);
+			break;
+		case UNDERLINE:
+			TTF_SetFontStyle(mFont, TTF_STYLE_UNDERLINE);
+			break;
+		case ITALIC:
+			TTF_SetFontStyle(mFont, TTF_STYLE_ITALIC);
+			break;
+		case STRIKETHROUGH:
+			TTF_SetFontStyle(mFont, TTF_STYLE_STRIKETHROUGH);
+			break;
+		default:
+			break;
+	}
+
 	mSurface = TTF_RenderText_Blended(mFont, text.c_str(), c);
 
 	mID = HAMURTEXMR->AddTexture(mSurface, mName);
@@ -39,57 +60,3 @@ void Text::Draw(float deltaTime)
 {
 	HAMURTEXMR->BlitTexture(mID, mPosition);
 }
-
-void Text::SetBold()
-{
-	TTF_SetFontStyle(mFont, TTF_STYLE_UNDERLINE);
-}
-
-/** Control text lines **
-
-char* wrapText(NFont& font, const char* Text, unsigned int width) 
-{ 
-    if (Text == NULL) 
-        return NULL; 
-     
-    string result, text, line, word; 
-     
-    line = ""; 
-    result = ""; 
-    text = Text; 
-     
-    while(text.size() > 0) 
-    { 
-        int nextSpace = text.find(' '); 
-        if(nextSpace == string::npos) 
-        { 
-            nextSpace = text.size(); 
-            word = text.substr(0, nextSpace); 
-            text = ""; 
-        } 
-        else 
-        { 
-            word = text.substr(0, nextSpace+1); 
-            text.erase(0, nextSpace + 1); 
-        } 
-        string temp = word + line; 
-
-
-        if(font.getWidth(temp.c_str()) <= width) 
-        { 
-            line += word; 
-        } 
-        else 
-        { 
-            line += '\n'; 
-            result += line; 
-            line = word; 
-        } 
-         
-    } 
-    result += line; 
-     
-    return copyString(result); 
-}
-
-**/

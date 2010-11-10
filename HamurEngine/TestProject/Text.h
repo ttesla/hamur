@@ -4,16 +4,20 @@
 #include "SDL_ttf.h"
 #include "hamurTextureManager.h"
 
+#define NORMAL 0
+#define BOLD 1
+#define UNDERLINE 2
+#define ITALIC 3
+#define STRIKETHROUGH 4
+
 class Text : public GUIElement
 {
 	public:
 		Text(const string &name, const string &text);
 		Text(const string &name, const string &text, const string &fontpath,
-		   int fontsize, const HamurVec3 &position, HamurColorRGB c);
+		   int fontsize, const HamurVec3 &position, HamurColorRGB c, int style = 0);
 		virtual void Update(float deltaTime);
 		virtual void Draw(float deltaTime);
-
-		void SetBold();
 	
 	private:
 		string mText;

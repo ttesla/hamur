@@ -1,5 +1,4 @@
 #include "IngameState.h"
-
 using namespace hamur;
 
 IngameState::IngameState() : HamurState("IngameState")
@@ -12,22 +11,14 @@ IngameState::~IngameState()
 	//DELETE OBJECTS!
 }
 
-void IngameState::LoadGame()
+void IngameState::startBase()
 {
-	mPrevTickCount = 0;
-	spawnedEnemyCount = 0;
-
-	/**************
-	*	BASE	**
-	***************/
-		
 	base = new Base("Base");
 	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
-	
-	/**************
-	*	TEETH	**
-	***************/
-	
+}
+
+void IngameState::startTeeth()
+{
 	//allocatedTeeth = new Tooth*[MAXTEETH];
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
@@ -47,10 +38,10 @@ void IngameState::LoadGame()
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
 	Tooth::SetTeeth(&allocatedTeeth);
-	
-	/**************
-	*	WAVE	**
-	***************/
+}
+
+void IngameState::startWave()
+{
 	//WaveDataReader dataReader("test.xml");
 	WaveDataReader waveReader("Waves.xml");
 
@@ -59,9 +50,30 @@ void IngameState::LoadGame()
 	l->Start();
 }
 
+void IngameState::startGUI()
+{
+	HamurVec3 c;
+	c.x = 50; c.y = 50;
+	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
+	c.x = 0; c.y = 300; c.z = -2;
+	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 600, HamurColor::GREEN);
+	c.x += 10;
+	lifePanel = new Panel("lifePanel", c, "", 10, 600, HamurColor::RED);	
+	c.x += 10;
+	shieldPanel = new Panel("shieldPanel", c, "", 10, 600, HamurColor::BLUE);
+	c.x = 40; c.y = 600-40; c.z = 0;
+	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
+	
+	
+	
+}
+
 void IngameState::Enter()
 {
-	LoadGame();
+	startBase();
+	startTeeth();
+	startWave();
+	startGUI();
 }
 
 void IngameState::Update(float deltaTime)
