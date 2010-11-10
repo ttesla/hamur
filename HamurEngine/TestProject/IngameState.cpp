@@ -63,9 +63,6 @@ void IngameState::startGUI()
 	shieldPanel = new Panel("shieldPanel", c, "", 10, 600, HamurColor::BLUE);
 	c.x = 40; c.y = 600-40; c.z = 0;
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
-	
-	
-	
 }
 
 void IngameState::Enter()
