@@ -282,6 +282,10 @@
 					RelativePath=".\Text.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\TextDataReader.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="States"
@@ -418,6 +422,10 @@
 				</File>
 				<File
 					RelativePath=".\Text.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TextDataReader.h"
 					>
 				</File>
 			</Filter>

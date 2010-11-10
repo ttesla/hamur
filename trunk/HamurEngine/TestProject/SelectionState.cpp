@@ -27,7 +27,7 @@ void SelectionState::Enter()
 
 	// Some texts
 	c.x = 375; c.y = 50;
-	chooseText = new Text("chooseText", "Chose what to eat", "Fonts/DejaVuSans.ttf", 40, c, HamurColorRGB::BLACK);
+	chooseText = new Text("chooseText", "Chose what to eat", "Fonts/DejaVuSans.ttf", 40, c, HamurColorRGB::BLACK, BOLD);
 	c.x = 100; c.y = 150;
 	breakfastText = new Text("breakfastText", "Breakfast", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 	c.x = 375;
