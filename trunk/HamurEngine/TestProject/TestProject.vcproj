@@ -196,6 +196,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Teeth.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Tooth.cpp"
 				>
 			</File>
@@ -331,6 +335,10 @@
 			</File>
 			<File
 				RelativePath=".\Selection.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Teeth.h"
 				>
 			</File>
 			<File

@@ -2,7 +2,8 @@
 
 #include "hamur.h"
 #include "hamurDefinitions.h"
-#include "Tooth.h"
+#include "Teeth.h"
+#include "Tooth.h" // TO BE CHANGED
 #include "Math.h"
 #include "Base.h"
 #include "Wave.h"
@@ -19,7 +20,7 @@ class Bacteria;
 class Base;
 
 #define MAXBACT 16
-#define MAXTEETH 16
+#define MAXTEETH 25
 
 class IngameState : public HamurState
 {
@@ -38,6 +39,7 @@ private:
 	int mPrevTickCount;
 	int spawnedEnemyCount;
 	Base *base;
+	Teeth *teeth;
 
 	/****************
 		INGAME GUI  *

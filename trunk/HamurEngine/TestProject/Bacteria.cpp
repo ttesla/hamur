@@ -2,6 +2,7 @@
 #include <cstdlib> 
 #include <ctime> 
 #include "Tooth.h"
+#include "Teeth.h"
 #include "Collision.h"
 using namespace std;
 
@@ -85,6 +86,18 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	{
 		if(Collision::RectsIntersectWith(this, (*Iter)))
 		{
+			if (Teeth::GetShield() > 0)
+			{
+				cout << "Shield: " << Teeth::GetShield() << endl;
+				Teeth::DecreaseShield(deltaTime);			
+			}
+			else
+			{
+				cout << "Life: " << Teeth::GetHealth() << endl;
+				Teeth::DecreaseHealth(deltaTime);
+			}
+
+			/** EDU: this is not valid anymore (To be erased)
 			if((*Iter)->GetShield() > 0)
 			{
 				cout << "Shield: " << (*Iter)->GetShield() << endl;
@@ -95,10 +108,12 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 				cout << "Life: " << (*Iter)->GetShield() << endl;
 				(*Iter)->SetLife((*Iter)->GetLife() - deltaTime * 90);
 			}
+			*/
 
 			return true;
 		}
 	}
 	
 	return false;
+
 }

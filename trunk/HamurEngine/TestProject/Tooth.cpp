@@ -34,6 +34,7 @@ void Tooth::Draw(float deltaTime)
 
 void Tooth::Update(float deltaTime)
 {
+	/*
 	if(mLife <= 0)
 	{
 		std::list<Tooth *>::iterator Iter;
@@ -48,4 +49,5 @@ void Tooth::Update(float deltaTime)
 
 		HAMURWORLD->DeleteObject(this->GetName());
 	}
+	*/
 }
