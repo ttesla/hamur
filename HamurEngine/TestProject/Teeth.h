@@ -2,25 +2,28 @@
 
 #include "hamur.h"
 
-class Teeth : hamur::HamurObject
+using namespace hamur;
+using namespace std;
+
+class Teeth : public HamurObject
 {
-public:
-	Teeth(const string &name);
+	public:
+		Teeth(const string &name, const string &sprite, float mLife, float mShield);
 
-	void Reset();
+		void Reset();
 
-	void Update(float deltaTime);
-	void Draw(float deltaTime);
+		void Update(float deltaTime);
+		//void Draw(float deltaTime);
 
-	inline const float &GetHealth(){return health;}
-	inline const float &GetShield(){return shield;}
-	inline void SetHealth(const float &value){health = value;}
-	inline void SetShield(const float &value){shield = value;}
-	inline void DecreaseHealth(const float &value){health -= value;}
-	inline void DecreaseShield(const float &value){shield -= value;}
-	inline void IncreaseShield(const float &value){shield += value;}
+		static inline const float &GetHealth(){return mLife;}
+		static inline const float &GetShield(){return mShield;}
+		static inline void SetHealth(const float &value){mLife = value;}
+		static inline void SetShield(const float &value){mShield = value;}
+		static inline void DecreaseHealth(const float &value){Teeth::mLife -= value;}
+		static inline void DecreaseShield(const float &value){Teeth::mShield -= value;}
+		static inline void IncreaseShield(const float &value){Teeth::mShield += value;}
 
-private:
-	float health;
-	float shield;
+	private:
+		static float mLife;
+		static float mShield;
 };

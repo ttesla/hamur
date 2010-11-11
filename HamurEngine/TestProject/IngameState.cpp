@@ -13,13 +13,28 @@ IngameState::~IngameState()
 
 void IngameState::startBase()
 {
+	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
+	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
+	HamurVec3 c;
+	
+	c.x = w/2; c.y = h/2;
 	base = new Base("Base");
 	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
+	base->SetPosition(c);
 }
 
 void IngameState::startTeeth()
 {
-	//allocatedTeeth = new Tooth*[MAXTEETH];
+	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
+	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
+	HamurVec3 c;
+	
+	c.x = w/2; c.y = h/2, c.z = -2.0;
+	teeth = new Teeth("teeth", "Graphics/teeth.png", 100, 100);
+	teeth->SetPosition(c);
+
+	/****** TO BE CHANGED ******/
+	
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
 	xBase = base->GetPosition().x;
@@ -34,10 +49,12 @@ void IngameState::startTeeth()
 		str << i;
 		Tooth *t = new Tooth(indexStr + str.GetString());
 		t->SetPosition((xBase-xInc)*cos(i*a) + xBase, (yBase-yInc)*sin(i*a) + yBase);
+		t->SetVisible(false);
 		allocatedTeeth.push_back(t);
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
 	Tooth::SetTeeth(&allocatedTeeth);
+	
 }
 
 void IngameState::startWave()
@@ -52,7 +69,10 @@ void IngameState::startWave()
 
 void IngameState::startGUI()
 {
+	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
+	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
+
 	c.x = 50; c.y = 50;
 	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
 	c.x = 0; c.y = 300; c.z = -2;
@@ -94,6 +114,11 @@ void IngameState::Update(float deltaTime)
 	{
 		base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
 	}
+
+	// Shield and Life levels
+	this->shieldPanel->SetHeight(Teeth::GetShield()*6);
+	this->lifePanel->SetHeight(Teeth::GetHealth()*6);
+
 }
 
 void IngameState::Draw(float deltaTime)

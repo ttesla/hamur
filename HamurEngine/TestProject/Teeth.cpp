@@ -1,28 +1,25 @@
 #include "Teeth.h"
 
-using namespace hamur;
+float Teeth::mLife = 100;
+float Teeth::mShield = 100;
 
-Teeth::Teeth(const string &name) : HamurObject(name)
+Teeth::Teeth(const string &name, const string &sprite, float life, float shield):HamurObject(name, sprite)
 {
-	mWidth = 100;
-	mHeight = 100;
-
-	mPos = HamurVec3((HamurOpenGL::GetInstance()->GetScreenWidth() - mWidth) / 2, 
-		(HamurOpenGL::GetInstance()->GetScreenHeight() - mHeight) / 2, 0);
+	mLife = life;
+	mShield = shield;
 }
 
 void Teeth::Reset()
 {
-	health = 100;
-	shield = 100;
+
 }
 
-void Teeth::Update( float deltaTime )
+void Teeth::Update(float deltaTime)
 {
-
+	if(mLife <= 0)
+	{
+		HAMURWORLD->DeleteObject(this->GetName());
+	}
 }
 
-void Teeth::Draw( float deltaTime )
-{
-	HamurPlotter::DrawRectangle(mPos, 100, 100, HamurColor::GREEN);
-}
+//void Draw(float deltaTime);
