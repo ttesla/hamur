@@ -32,8 +32,6 @@ void IngameState::startTeeth()
 	c.x = w/2; c.y = h/2, c.z = -2.0;
 	teeth = new Teeth("teeth", "Graphics/teeth.png", 100, 100);
 	teeth->SetPosition(c);
-
-	/****** TO BE CHANGED ******/
 	
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;

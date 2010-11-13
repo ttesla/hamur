@@ -299,6 +299,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\HowToPlayState.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\IngameState.cpp"
 					>
 				</File>
@@ -442,6 +446,10 @@
 				>
 				<File
 					RelativePath=".\FeedbackState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\HowToPlayState.h"
 					>
 				</File>
 				<File
