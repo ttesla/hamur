@@ -37,11 +37,15 @@ void MenuState::Enter()
 
 void MenuState::Update(float deltaTime)
 {
-	if (this->playButton->isPushed())
+	if (playButton->isPushed())
 	{
 		HAMURSTATEMR->ChangeState("SelectionState");
 	}
-	if (this->exitButton->isPushed())
+	else if (howToPlayButton->isPushed())
+	{
+		HAMURSTATEMR->ChangeState("HowToPlayState");
+	}
+	else if (exitButton->isPushed())
 	{
 		HAMURENGINE->Stop();	
 	}
