@@ -8,7 +8,7 @@ using namespace std;
 
 #define SPEEDCOEF 0.01;
  
-Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):HamurObject(name, sprite), mBasePosition(basePosition), mSpeed(speed)
+Bacteria::Bacteria(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):HamurObject(name), mBasePosition(basePosition), mSpeed(speed)
 {
 	mActive = false;
 	
@@ -48,15 +48,21 @@ Bacteria::Bacteria(const string &name, const string &sprite, HamurVec3 basePosit
     mHeight = 20;
 
 	mDamage = 1;
+
+	mAnimation = new Animation(sprite, spriteCount);
+	mAnimation->PlayAnimation(true);
 }
 
 void Bacteria::Draw(float deltaTime)
 {
-	HamurObject::Draw(deltaTime);
+	//HamurObject::Draw(deltaTime);
+	mAnimation->Draw(mPos, mRotation);
 }
 
 void Bacteria::Update( float deltaTime )
 {
+	mAnimation->Update(deltaTime);
+
 	if(IsAttacking2Tooth(deltaTime))
 		return;
 	

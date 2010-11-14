@@ -3,7 +3,7 @@
 #include <ctime> 
 using namespace std;
  
-BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, basePosition, speed)
+BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, spriteCount, basePosition, speed)
 {
 	// We set Life and Shield for Norms
 	this->SetLife(3.0); // Example values at the moment

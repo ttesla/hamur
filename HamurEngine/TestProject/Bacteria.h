@@ -2,6 +2,7 @@
 #define BACTERIA_H
 
 #include "hamur.h"
+#include "Animation.h"
 
 using namespace hamur;
 
@@ -12,7 +13,7 @@ using namespace hamur;
 class Bacteria : public HamurObject
 {
     public:
-		Bacteria(const string& name, const string& sprite, HamurVec3 basePos, const float &speed);
+		Bacteria(const string& name, const string& sprite, const int &spriteCount, HamurVec3 basePos, const float &speed);
 		void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
@@ -30,6 +31,7 @@ class Bacteria : public HamurObject
 		virtual bool IsAttacking2Tooth(float deltaTime);
 
 	protected:
+		Animation *mAnimation;
 		HamurVec3 mBasePosition;
 		HamurVec3 movementDirection;
 		float mLife;
