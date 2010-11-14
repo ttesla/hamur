@@ -11,7 +11,7 @@ using namespace hamur;
 class BacteriaSlim : public Bacteria
 {
     public:
-		BacteriaSlim(const string& name, const string& sprite, HamurVec3 basePos, const float &speed);
+		BacteriaSlim(const string& name, const string& sprite, const int &spriteCount, HamurVec3 basePos, const float &speed);
         //virtual void Draw(float deltaTime);	
 		//virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...

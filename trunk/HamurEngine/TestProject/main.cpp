@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     if(HAMURENGINE->Init("Bacteria Outbreak! - 2010", 800, 600) == false)
         return 1;
 
-	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
+	HAMURENGINE->SetBackgroundColor(HamurColor::BLACK);
     //HAMURENGINE->DisableMouseCursor();
 
 	// Registering the states of the game:
