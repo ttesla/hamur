@@ -38,6 +38,7 @@ void Level::StartNextWave()
 	{
 		mActiveWave = *(mWaves.end() - 1);
 		mActiveWave->StartWave();
+		cout<<mActiveWave->GetName() + "wave started";
 		mWaves.pop_back();
 	}
 	else

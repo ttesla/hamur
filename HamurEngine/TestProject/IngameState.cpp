@@ -61,14 +61,17 @@ void IngameState::startWave()
 
 	Level *l = new Level("level");
 
-	list<string>::iterator Iter;
-	for (Iter = foodSelection.begin(); Iter != foodSelection.end(); Iter++)
-	{
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(*Iter));
-	}
-	
-	Iter = foodSelection.begin();
-	currentWave = (Wave *)HAMURWORLD->GetHamurObject(*Iter);
+	//list<string>::iterator Iter;
+	//for (Iter = foodSelection.begin(); Iter != foodSelection.end(); Iter++)
+	//{
+	//	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(*Iter));
+	//}
+	//
+	//Iter = foodSelection.begin();
+	//currentWave = (Wave *)HAMURWORLD->GetHamurObject(*Iter);
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["breakfast"]));
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["lunch"]));
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["dinner"]));
 
 	l->Start();
 }
@@ -158,7 +161,7 @@ void IngameState::Exit()
 	currentWave->DeleteBacteria();
 }
 
-void IngameState::SetFoodSelection(list<string> l)
+void IngameState::SetFoodSelection(map<string, string> l)
 {
 	foodSelection = l;
 	startWave();
