@@ -44,9 +44,6 @@ void FeedbackState::Enter()
 	}
 
 	c.y += 150;
-	// Perhaps a new constructor that takes an external file and formats the long text to fit the screen
-	// will be needed...
-	//fbText = new Text ("fbText", "lalalalalaalalallaallalalla\nlalalalalallalaa\nlalalala", "Fonts/DejaVuSans.ttf", 10, c, HamurColorRGB::BLACK);
 
 	okButton = new Button("okfbButton", c, "Graphics/testButton.png", 200, 200);
 	c.y = 200; c.x = 600;
@@ -69,4 +66,17 @@ void FeedbackState::Exit()
 	HAMURWORLD->DeleteObject("playMenuButton");
 	HAMURWORLD->DeleteObject("howToPlayMenuButton");
 	HAMURWORLD->DeleteObject("exitMenuButton");
+}
+
+void FeedbackState::SetFeedBack(list<string> sel, float h, float s, int tBU)
+{
+	foodSelection = sel;
+	health = h;
+	shield = s;
+	toothBrushUses = tBU;
+}
+
+string FeedbackState::chooseFeedback()
+{
+	return "";
 }

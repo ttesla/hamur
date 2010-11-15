@@ -33,6 +33,8 @@ public:
 	void Draw(float deltaTime);
 	void Exit();
 
+	void SetFoodSelection(list<string> l);
+
 private:
 	Bacteria **allocatedBacterias;
 	list<Tooth *> allocatedTeeth;
@@ -40,6 +42,7 @@ private:
 	int spawnedEnemyCount;
 	Base *base;
 	Teeth *teeth;
+	Wave *currentWave;
 
 	/****************
 		INGAME GUI  *
@@ -54,4 +57,7 @@ private:
 	void startTeeth();
 	void startWave();
 	void startGUI();
+
+	list<string> foodSelection;
+	int toothBrushUses;
 };

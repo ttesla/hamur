@@ -1,4 +1,5 @@
 #include "SelectionState.h"
+#include "IngameState.h"
 
 using namespace hamur;
 
@@ -38,13 +39,17 @@ void SelectionState::Enter()
 	snacksText = new Text("snacksText", "Snacks", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 
 	// Some buttons
-	c.x = 100; c.y = 230;
-	breakfastButton = new Button("breakfastButton", c, "Graphics/testbutton.png", 40, 40);
-	c.x = 375;
-	lunchButton = new Button("lunchButton", c, "Graphics/testbutton.png", 40, 40);
-	c.x = 650;
-	dinnerButton = new Button("dinnerButton", c, "Graphics/testbutton.png", 40, 40);
+	/*******************************/
+	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
+	c.x = 100; c.y = 230;
+	breakfastButton = new Button("Flingor", c, "Graphics/Food/flingor.png", 100, 100);
+	c.x = 375;
+	lunchButton = new Button("Vit_smorgas", c, "Graphics/Food/vit_smorgas.png", 100, 100);
+	c.x = 650;
+	dinnerButton = new Button("Nyponsoppa", c, "Graphics/Food/nyponsoppa.png", 100, 100);
+
+	/*
 	HamurString str;
 	string aux = "snackButton";
 	for (int i = 0; i < snacksNumber; i++)
@@ -52,6 +57,7 @@ void SelectionState::Enter()
 		str << i;
 		snackButtons.push_back(new Button(aux + str.GetString(), c, "Graphics/testbutton.png", 30,30));
 	}
+	*/
 
 	c.x = 750;
 	c.y = 550;
@@ -62,10 +68,45 @@ void SelectionState::Enter()
 
 void SelectionState::Update(float deltaTime)
 {
-	if (startButton->isPushed())
-	{
-		HAMURSTATEMR->ChangeState("IngameState");
+	string s = "Wave";
+
+	if (breakfastButton->isPushed())
+	{	
+		foodSelection.push_back(breakfastButton->GetName() + s);
+		cout << "Adding:" << breakfastButton->GetName() + s << endl;
+		breakfastButton->SetVisible(false);
 	}
+	else if (lunchButton->isPushed())
+	{
+		foodSelection.push_back(lunchButton->GetName() + s);
+		cout << "Adding:" << lunchButton->GetName() + s << endl;
+		lunchButton->SetVisible(false);
+	}
+	else if (dinnerButton->isPushed())
+	{
+		foodSelection.push_back(dinnerButton->GetName() + s);
+		cout << "Adding:" << dinnerButton->GetName() + s << endl;
+		dinnerButton->SetVisible(false);
+	}
+	else if (startButton->isPushed())
+	{
+		if (foodSelection.empty() == false)
+		{
+			HAMURSTATEMR->ChangeState("IngameState");
+			dynamic_cast<IngameState*>(HAMURSTATEMR->GetCurrentState())->SetFoodSelection(foodSelection);
+		}
+	}
+
+	/*
+	vector<Button *>::iterator Iter;
+	for (Iter = snackButtons.begin(); Iter != snackButtons.end(); Iter++)
+	{
+		if ((*Iter)->isPushed())
+		{
+			foodSelection.push_back((*Iter)->GetName());
+		}
+	}
+	*/
 }
 
 void SelectionState::Draw(float deltaTime)
@@ -77,13 +118,15 @@ void SelectionState::Exit()
 {
 	HAMURWORLD->DeleteObject("backgroundSelection");
 	HAMURWORLD->DeleteObject("chooseText");
-	HAMURWORLD->DeleteObject("breakfastText");
+	HAMURWORLD->DeleteObject("breakfastText"); 
 	HAMURWORLD->DeleteObject("lunchText");
 	HAMURWORLD->DeleteObject("dinnerText");
 	HAMURWORLD->DeleteObject("snacksText");
-	HAMURWORLD->DeleteObject("breakfastButton");
-	HAMURWORLD->DeleteObject("lunchButton");
-	HAMURWORLD->DeleteObject("dinnerButton");
+
+	HAMURWORLD->DeleteObject("Flingor");
+	HAMURWORLD->DeleteObject("Vit_smorgas");
+	HAMURWORLD->DeleteObject("Nyponsoppa");
+
 	HAMURWORLD->DeleteObject("startButton");
 
 	HamurString str;

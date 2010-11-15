@@ -57,11 +57,19 @@ void IngameState::startTeeth()
 
 void IngameState::startWave()
 {
-	//WaveDataReader dataReader("test.xml");
 	WaveDataReader waveReader("Waves.xml");
 
 	Level *l = new Level("level");
-	l->AddWave((Wave *)HAMURWORLD->GetHamurObject("Breakfast1"));
+
+	list<string>::iterator Iter;
+	for (Iter = foodSelection.begin(); Iter != foodSelection.end(); Iter++)
+	{
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(*Iter));
+	}
+	
+	Iter = foodSelection.begin();
+	currentWave = (Wave *)HAMURWORLD->GetHamurObject(*Iter);
+
 	l->Start();
 }
 
@@ -87,12 +95,16 @@ void IngameState::Enter()
 {
 	startBase();
 	startTeeth();
-	startWave();
 	startGUI();
 }
 
 void IngameState::Update(float deltaTime)
 {
+	if (Teeth::GetHealth() <= 0)
+	{
+		HAMURSTATEMR->ChangeState("GameOverState");		
+	}
+
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
@@ -126,5 +138,28 @@ void IngameState::Draw(float deltaTime)
 
 void IngameState::Exit()
 {
+	// GUI
+	HAMURWORLD->DeleteObject("currentFoodPanel");
+	HAMURWORLD->DeleteObject("timeLeftPanel");
+	HAMURWORLD->DeleteObject("lifePanel");
+	HAMURWORLD->DeleteObject("shieldPanel");
+	HAMURWORLD->DeleteObject("waterButton");
+	
+	// OBJECTS
+	HAMURWORLD->DeleteObject(base->GetName());
+	HAMURWORLD->DeleteObject(teeth->GetName());
+	
+	list<Tooth *>::iterator Iter;
+	for (Iter = allocatedTeeth.begin(); Iter != allocatedTeeth.end(); Iter++)
+	{
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+	}
+	
+	currentWave->DeleteBacteria();
+}
 
+void IngameState::SetFoodSelection(list<string> l)
+{
+	foodSelection = l;
+	startWave();
 }

@@ -5,6 +5,8 @@
 #include "Bacteria.h"
 #include <list>
 
+using namespace std;
+
 class Wave : public hamur::HamurObject
 {
     public:
@@ -20,6 +22,9 @@ class Wave : public hamur::HamurObject
 		//Starts the wave and register it to the static mActiveWave variable. 
 		void StartWave();
 
+		//Deletes all the bacterias for the hamurworld
+		void DeleteBacteria();
+
 		inline std::list<Bacteria *> GetBacteriaList() {return mBacteriaList;}
 		inline std::list<Bacteria *> *GetSpawnedBacterias() {return &mSpawnedBacterias;}
 		inline bool IsFinished() {return mIsWaveFinished;}
@@ -31,10 +36,10 @@ class Wave : public hamur::HamurObject
 
 		//All bacterias which will be spawned during the wave. If this list is empty, it means
 		//all bacterias in this wave has been spawned
-		std::list<Bacteria *> mBacteriaList;
+		list<Bacteria *> mBacteriaList;
 
 		//Spawned bacterias
-		std::list<Bacteria *> mSpawnedBacterias;
+		list<Bacteria *> mSpawnedBacterias;
 
 		bool mStarted;
 
