@@ -68,24 +68,26 @@ void SelectionState::Enter()
 
 void SelectionState::Update(float deltaTime)
 {
-	string s = "Wave";
-
 	if (breakfastButton->isPushed())
 	{	
-		foodSelection.push_back(breakfastButton->GetName() + s);
-		cout << "Adding:" << breakfastButton->GetName() + s << endl;
+		//foodSelection.push_back(breakfastButton->GetName() + s);
+		int randomIndex = (int)((rand() % 2) + 1);
+		foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
 		breakfastButton->SetVisible(false);
 	}
 	else if (lunchButton->isPushed())
 	{
-		foodSelection.push_back(lunchButton->GetName() + s);
-		cout << "Adding:" << lunchButton->GetName() + s << endl;
+		int randomIndex = (int)((rand() % 2) + 1);
+		//foodSelection.push_back(lunchButton->GetName() + s);
+		foodSelection["lunch"] = "Lunch" + HamurString::ParseInt(randomIndex).GetString();
 		lunchButton->SetVisible(false);
+		
 	}
 	else if (dinnerButton->isPushed())
 	{
-		foodSelection.push_back(dinnerButton->GetName() + s);
-		cout << "Adding:" << dinnerButton->GetName() + s << endl;
+		//foodSelection.push_back(dinnerButton->GetName() + s);
+		int randomIndex = (int)((rand() % 2) + 1);
+		foodSelection["dinner"] = "Dinner" + HamurString::ParseInt(randomIndex).GetString();
 		dinnerButton->SetVisible(false);
 	}
 	else if (startButton->isPushed())

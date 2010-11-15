@@ -49,9 +49,8 @@ void WaveDataReader::CreateWavesFromData(TiXmlDocument doc)
 				strayerCount = atoi(bacterias->Attribute("Count"));
 			}
 		}
-		string s = "Wave";
 		
-		Wave *w = new Wave(waves->Attribute("Name") + s, HAMURWORLD->GetHamurObject("Base")->GetPosition(), fattieCount, normCount,
+		Wave *w = new Wave(waves->Attribute("Name"), HAMURWORLD->GetHamurObject("Base")->GetPosition(), fattieCount, normCount,
 			shooterCount, slimCount, strayerCount);
 	}
 }

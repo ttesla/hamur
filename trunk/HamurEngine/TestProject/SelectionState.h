@@ -36,7 +36,7 @@ class SelectionState : public HamurState
 		int snacksNumber; // Could be removed..
 		Panel *background;
 
-		list<string> foodSelection;
+		map<string, string> foodSelection;
 };
 
 #endif 

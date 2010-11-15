@@ -33,7 +33,7 @@ public:
 	void Draw(float deltaTime);
 	void Exit();
 
-	void SetFoodSelection(list<string> l);
+	void SetFoodSelection(map<string, string> l);
 
 private:
 	Bacteria **allocatedBacterias;
@@ -58,6 +58,6 @@ private:
 	void startWave();
 	void startGUI();
 
-	list<string> foodSelection;
+	map<string, string> foodSelection;
 	int toothBrushUses;
 };
