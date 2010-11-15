@@ -6,6 +6,7 @@
 #include "hamur.h"
 #include "hamurDefinitions.h"
 #include "GUI.h"
+#include <list>
 
 using namespace hamur;
 using namespace std;
@@ -20,6 +21,8 @@ class FeedbackState : public HamurState
 		void Update(float deltaTime);
 		void Draw(float deltaTime);
 		void Exit();
+
+		void SetFeedBack(list<string> selection, float health, float shield, int toothBrushUses);
 
 	private:
 		Text *goodText;
@@ -37,6 +40,14 @@ class FeedbackState : public HamurState
 		Button *okButton; // To exit to the menu again
 		Panel *characterPanel; 
 		Panel *background;
+
+		// To generate feedback info
+		list<string> foodSelection;
+		float health;
+		float shield;
+		int toothBrushUses;
+		// Select the proper feedback according to the variables above
+		string chooseFeedback();
 };
 
 #endif 

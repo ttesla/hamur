@@ -89,3 +89,17 @@ void Wave::Update( float deltaTime )
 		}
 	}
 }
+
+void Wave::DeleteBacteria()
+{
+	list<Bacteria *>::iterator Iter;
+
+	for (Iter = mBacteriaList.begin(); Iter != mBacteriaList.end(); Iter++)
+	{
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+	}
+	for (Iter = mSpawnedBacterias.begin(); Iter != mSpawnedBacterias.end(); Iter++)
+	{
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+	}
+}

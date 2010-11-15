@@ -16,10 +16,12 @@ void Teeth::Reset()
 
 void Teeth::Update(float deltaTime)
 {
+	/*
 	if(mLife <= 0)
 	{
 		HAMURWORLD->DeleteObject(this->GetName());
 	}
+	*/
 }
 
 //void Draw(float deltaTime);

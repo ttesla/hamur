@@ -6,6 +6,7 @@
 #include "hamur.h"
 #include "hamurDefinitions.h"
 #include "GUI.h"
+#include <list>
 
 using namespace hamur;
 using namespace std;
@@ -32,8 +33,10 @@ class SelectionState : public HamurState
 		Button *dinnerButton;
 		Button *startButton;
 		vector<Button *> snackButtons;
-		int snacksNumber;
+		int snacksNumber; // Could be removed..
 		Panel *background;
+
+		list<string> foodSelection;
 };
 
 #endif 
