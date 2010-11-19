@@ -61,7 +61,7 @@ void Bacteria::Draw(float deltaTime)
 
 void Bacteria::Update( float deltaTime )
 {
-	mAnimation->Update(deltaTime);
+	mAnimation->Update(deltaTime * 5);
 
 	if(IsAttacking2Tooth(deltaTime))
 		return;

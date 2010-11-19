@@ -42,7 +42,7 @@ void SelectionState::Enter()
 	/*******************************/
 	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
-	c.x = 100; c.y = 230;
+	c.x = 100; c.y = 230; c.z = 0.01;
 	breakfastButton = new Button("Flingor", c, "Graphics/Food/flingor.png", 100, 100);
 	c.x = 375;
 	lunchButton = new Button("Vit_smorgas", c, "Graphics/Food/vit_smorgas.png", 100, 100);
@@ -71,14 +71,16 @@ void SelectionState::Update(float deltaTime)
 	if (breakfastButton->isPushed())
 	{	
 		//foodSelection.push_back(breakfastButton->GetName() + s);
-		int randomIndex = (int)((rand() % 2) + 1);
+		int randomIndex = (int)((rand() % 3) + 1);
+		cout << randomIndex;
 		foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
 		breakfastButton->SetVisible(false);
 	}
 	else if (lunchButton->isPushed())
 	{
-		int randomIndex = (int)((rand() % 2) + 1);
+		int randomIndex = (int)((rand() % 3) + 1);
 		//foodSelection.push_back(lunchButton->GetName() + s);
+		cout << randomIndex;
 		foodSelection["lunch"] = "Lunch" + HamurString::ParseInt(randomIndex).GetString();
 		lunchButton->SetVisible(false);
 		
@@ -86,7 +88,8 @@ void SelectionState::Update(float deltaTime)
 	else if (dinnerButton->isPushed())
 	{
 		//foodSelection.push_back(dinnerButton->GetName() + s);
-		int randomIndex = (int)((rand() % 2) + 1);
+		int randomIndex = (int)((rand() % 3) + 1);
+		cout << randomIndex;
 		foodSelection["dinner"] = "Dinner" + HamurString::ParseInt(randomIndex).GetString();
 		dinnerButton->SetVisible(false);
 	}
