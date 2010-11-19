@@ -158,4 +158,10 @@ void HamurString::Clear()
     mCustomString.clear();
 }
 
+HamurString HamurString::ParseInt( const int &value )
+{
+	HamurString str;
+	str << value;
+	return str;
+}
 } // namespace hamur

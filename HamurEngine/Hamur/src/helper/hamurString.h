@@ -18,6 +18,8 @@ class HamurVec3;
 class HamurString
 {
     public:
+		static HamurString ParseInt(const int &value);
+
 
         HamurString& operator<<(int input);
         HamurString& operator<<(float input);
