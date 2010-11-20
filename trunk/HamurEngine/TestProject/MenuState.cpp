@@ -58,8 +58,10 @@ void MenuState::Draw(float deltaTime)
 
 void MenuState::Exit()
 {
-	HAMURWORLD->DeleteObject("titleMenuPanel");
+	/*HAMURWORLD->DeleteObject("titleMenuPanel");
 	HAMURWORLD->DeleteObject("playMenuButton");
 	HAMURWORLD->DeleteObject("howToPlayMenuButton");
-	HAMURWORLD->DeleteObject("exitMenuButton");
+	HAMURWORLD->DeleteObject("exitMenuButton");*/
+
+	HAMURWORLD->ClearAll();
 }

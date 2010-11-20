@@ -15,9 +15,8 @@ BacteriaShooter::BacteriaShooter(const string &name, const string &sprite, const
 	// The shooter bacteria will have some ShooterBullets
 	for(int i = 0; i < 64; i++)
 	{
-		HamurString str;
-		str << i;
-		Bullet *b = new ShooterBullet(name + " ShooterBullet" + str.GetString(), mPos, mBasePosition, 300); 
+		Bullet *b = new ShooterBullet(name + " ShooterBullet" + HamurString::ParseInt(i).GetString(), 
+			mPos, mBasePosition, 300); 
 		b->SetActive(false);
 		b->SetVisible(false);
 
@@ -94,3 +93,10 @@ void BacteriaShooter::Update(float deltaTime)
 	Bacteria::Update(deltaTime);
 }
 
+BacteriaShooter::~BacteriaShooter()
+{
+	std::vector<Bullet *>::iterator Iter;
+
+	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+}

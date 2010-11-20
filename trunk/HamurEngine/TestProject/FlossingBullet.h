@@ -16,6 +16,7 @@ public:
 	void Update(float deltaTime);
 	void Draw(float deltaTime);
 	void Explode();
+	void ResetBullet();
 
 protected:
 private:

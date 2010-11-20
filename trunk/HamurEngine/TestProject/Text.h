@@ -16,6 +16,7 @@ class Text : public GUIElement
 		Text(const string &name, const string &text);
 		Text(const string &name, const string &text, const string &fontpath,
 		   int fontsize, const HamurVec3 &position, HamurColorRGB c, int style = 0);
+		virtual ~Text();
 		virtual void Update(float deltaTime);
 		virtual void Draw(float deltaTime);
 	

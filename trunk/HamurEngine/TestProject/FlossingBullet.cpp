@@ -22,9 +22,7 @@ void FlossingBullet::Update( float deltaTime )
 		{
 			Explode();
 
-			SetVisible(false);
-			SetActive(false);
-			mPos = startingPosition;
+			ResetBullet();
 
 			return;
 		}
@@ -35,9 +33,7 @@ void FlossingBullet::Update( float deltaTime )
 	if(mPos.x < -5 || mPos.y < -5 || mPos.x > HamurOpenGL::GetInstance()->GetScreenWidth() + 5 || 
 		mPos.y > HamurOpenGL::GetInstance()->GetScreenHeight() + 5)
 	{
-		this->SetVisible(false);
-		this->SetActive(false);
-		mPos = startingPosition;
+		ResetBullet();
 	}
 
 }
@@ -51,7 +47,7 @@ void FlossingBullet::Explode()
 {
 	//Get enemies from wave and calculate their distances
 	using namespace std;
-	list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
+	list<Bacteria *> *bacterias = Wave::GetAllSpawnedBacterias();
 	list<Bacteria *>::iterator Iter;
 
 	if (!bacterias->empty())
@@ -71,4 +67,11 @@ void FlossingBullet::Explode()
 			}
 		}
 	}
+}
+
+void FlossingBullet::ResetBullet()
+{
+	this->SetVisible(false);
+	this->SetActive(false);
+	mPos = startingPosition;
 }

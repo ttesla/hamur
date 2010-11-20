@@ -10,13 +10,101 @@ using namespace hamur;
 
 Wave *Wave::mActiveWave = NULL;
 list<Wave *> *Wave::mCreatedWaves = NULL;
+list<Bacteria *> *Wave::mAllSpawnedBacterias = NULL;
 
-Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int normCount, int shooterCount, 
+Wave::Wave( const string& name, int fattieCount, int normCount, int shooterCount, 
 		   int slimCount, int strayerCount ) : HamurObject(name), mTimeCounter(0), mStarted(false)
 {
-	mCreatedWaves = new list<Wave *>;
+	if(mCreatedWaves == NULL)
+		mCreatedWaves = new list<Wave *>;
+
+	if(mAllSpawnedBacterias == NULL)
+		mAllSpawnedBacterias = new list<Bacteria *>;
+
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
 	mSpawningInterval = (30 * 1000) / totalBactCount;
+
+	FillBacterias(fattieCount, normCount, shooterCount, slimCount, strayerCount);
+
+	mCreatedWaves->push_back(this);
+}
+
+Wave::~Wave()
+{
+	/*if(mAllSpawnedBacterias != NULL)
+	{
+		delete mAllSpawnedBacterias;
+		mAllSpawnedBacterias = NULL;
+	}
+
+	if(mCreatedWaves != NULL)
+	{
+		delete mCreatedWaves;
+		mCreatedWaves = NULL;
+	}*/
+
+	std::list<Bacteria *>::iterator Iter;
+	for(Iter = mBacteriaList.begin(); Iter != mBacteriaList.end(); Iter++)
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+}
+
+void Wave::StartWave()
+{
+	Wave::mActiveWave = this;
+	mStarted = true;
+	mIsWaveFinished = false;
+}
+
+void Wave::Update( float deltaTime )
+{
+	if(mStarted)
+	{
+		if(SDL_GetTicks() - mTimeCounter >= mSpawningInterval)
+		{
+			if (!mBacteriaList.empty())
+			{
+				std::list<Bacteria *>::iterator Iter = mBacteriaList.begin();
+				(*Iter)->SetActive(true);
+				(*Iter)->SetVisible(true);
+				mAllSpawnedBacterias->push_back((*Iter));
+				mBacteriaList.erase(Iter);
+				mTimeCounter = SDL_GetTicks();
+			}
+			else
+				mIsWaveFinished = true;
+		}
+	}
+}
+
+void Wave::DeleteBacteria()
+{
+	list<Bacteria *>::iterator Iter;
+
+	if(!mBacteriaList.empty())
+	{
+		for (Iter = mBacteriaList.begin(); Iter != mBacteriaList.end(); Iter++)
+		{
+			HAMURWORLD->DeleteObject((*Iter)->GetName());
+		}
+
+		mBacteriaList.clear();
+	}
+	/*if(!mSpawnedBacterias.empty())
+	{
+
+		for (Iter = mSpawnedBacterias.begin(); Iter != mSpawnedBacterias.end(); Iter++)
+		{
+			HAMURWORLD->DeleteObject((*Iter)->GetName());
+		}
+	}*/
+}
+
+void Wave::FillBacterias(int fattieCount, 
+						 int normCount, int shooterCount, int slimCount, int strayerCount)
+{
+	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
+	string name = GetName();
+	HamurVec3 basePos = HAMURWORLD->GetHamurObject("Base")->GetPosition();
 
 	for(int i = 0; i < totalBactCount; i++)
 	{
@@ -25,7 +113,7 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 		HamurString str;
 		str << i;
 		int randNumber = (int)(rand() % 5);
-	
+
 		if(fattieCount > 0 && randNumber == 0)
 		{
 			b = new BacteriaFattie(name + "/" + "FattieBact" + str.GetString(), "Graphics/Bact1/bact1", 3, basePos, 20);
@@ -59,48 +147,22 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 			mBacteriaList.push_back(b);
 		}
 	}
-
-	mCreatedWaves->push_back(this);
 }
+/*
 
-void Wave::StartWave()
+void Wave::DeleteAllWaveBacterias()
 {
-	Wave::mActiveWave = this;
-	mStarted = true;
-	mIsWaveFinished = false;
-}
+	std::list<Wave *>::iterator Iter;
 
-void Wave::Update( float deltaTime )
-{
-	if(mStarted)
-	{
-		if(SDL_GetTicks() - mTimeCounter >= mSpawningInterval)
-		{
-			if (!mBacteriaList.empty())
-			{
-				std::list<Bacteria *>::iterator Iter = mBacteriaList.begin();
-				(*Iter)->SetActive(true);
-				(*Iter)->SetVisible(true);
-				mSpawnedBacterias.push_back((*Iter));
-				mBacteriaList.erase(Iter);
-				mTimeCounter = SDL_GetTicks();
-			}
-			else
-				mIsWaveFinished = true;
-		}
-	}
-}
+	for(Iter = mCreatedWaves->begin(); Iter != mCreatedWaves->end(); Iter++)
+		(*Iter)->DeleteBacteria();
 
-void Wave::DeleteBacteria()
-{
-	list<Bacteria *>::iterator Iter;
+	std::list<Bacteria *>::iterator Iter2;
+	for(Iter2 = mAllSpawnedBacterias->begin(); Iter2 != mAllSpawnedBacterias->end(); Iter2++)
+	{
+		HAMURWORLD->DeleteObject((*Iter2)->GetName());
+	}
 
-	for (Iter = mBacteriaList.begin(); Iter != mBacteriaList.end(); Iter++)
-	{
-		HAMURWORLD->DeleteObject((*Iter)->GetName());
-	}
-	for (Iter = mSpawnedBacterias.begin(); Iter != mSpawnedBacterias.end(); Iter++)
-	{
-		HAMURWORLD->DeleteObject((*Iter)->GetName());
-	}
+	mAllSpawnedBacterias->clear();
 }
+*/

@@ -11,6 +11,6 @@ public:
 
 
 private:
-	void CreateWavesFromData(TiXmlDocument doc);
+	void CreateWavesFromData(const TiXmlDocument &doc);
 
 };

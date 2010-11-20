@@ -42,7 +42,6 @@ private:
 	int spawnedEnemyCount;
 	Base *base;
 	Teeth *teeth;
-	Wave *currentWave;
 
 	/****************
 		INGAME GUI  *

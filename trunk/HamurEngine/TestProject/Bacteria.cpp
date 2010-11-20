@@ -123,3 +123,8 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	return false;
 
 }
+
+Bacteria::~Bacteria()
+{
+	delete mAnimation;
+}

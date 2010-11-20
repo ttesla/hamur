@@ -14,6 +14,7 @@ class BacteriaShooter : public Bacteria
 {
     public:
 		BacteriaShooter(const string& name, const string& sprite, const int &spriteCount, HamurVec3 basePos, const float &speed);
+		virtual ~BacteriaShooter();
 		virtual bool IsAttacking2Tooth(float deltaTime);
         //virtual void Draw(float deltaTime);	
 		virtual void Update(float deltaTime);

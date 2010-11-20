@@ -62,10 +62,14 @@ void FeedbackState::Draw(float deltaTime)
 
 void FeedbackState::Exit()
 {
+	HAMURWORLD->ClearAll();
+
+	/*
 	HAMURWORLD->DeleteObject("titleMenuPanel");
 	HAMURWORLD->DeleteObject("playMenuButton");
 	HAMURWORLD->DeleteObject("howToPlayMenuButton");
-	HAMURWORLD->DeleteObject("exitMenuButton");
+	HAMURWORLD->DeleteObject("exitMenuButton");*/
+
 }
 
 void FeedbackState::SetFeedBack(list<string> sel, float h, float s, int tBU)

@@ -19,6 +19,13 @@ Tooth::Tooth(const string &name):HamurObject(name)
 	mShield = 1000;
 }
 
+
+
+Tooth::~Tooth()
+{
+	teeth->clear();
+}
+
 void Tooth::SetPosition(float x, float y)
 {
 	mPos.x = x;

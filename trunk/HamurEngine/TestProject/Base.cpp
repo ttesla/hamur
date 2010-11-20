@@ -5,6 +5,7 @@
 #include "IngameState.h"
 #include "Bacteria.h"
 #include "WaterBullet.h"
+#include "Brush.h"
 
 //#include <cstdlib> 
 //#include <ctime> 
@@ -23,10 +24,8 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 	//ToothpasteBullet
 	for(int i = 0; i < 64; i++)
 	{
-		HamurString str;
-		str << i;
-		Bullet *b = new ToothPasteBullet("ToothPasteBullet" + str.GetString(), mPos, 
-			HamurVec3(0, 0, 0), 300);
+		Bullet *b = new ToothPasteBullet("ToothPasteBullet" + HamurString::ParseInt(i).GetString(), mPos, 
+				HamurVec3(0, 0, 0), 300);
 
 		b->SetActive(false);
 		b->SetVisible(false);
@@ -37,10 +36,8 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 	//FlossingBullet
 	for(int i = 0; i < 16; i++)
 	{
-		HamurString str;
-		str << i;
-		Bullet *b = new FlossingBullet("FlossingBullet" + str.GetString(), mPos, 
-			HamurVec3(0, 0, 0), 150);
+		Bullet *b = new FlossingBullet("FlossingBullet" + HamurString::ParseInt(i).GetString(), mPos, 
+				HamurVec3(0, 0, 0), 150);
 
 		b->SetVisible(false);
 		b->SetActive(false);
@@ -50,10 +47,22 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 
 	//WaterBullet. Because of having cooldown and can be used once per time, one instance is enough
 	mWater = new WaterBullet("WaterBullet", 5);
+	mBrush = new Brush("BrushBullet", 1);
+
 	mFlossingBulletCooldown = 3;
 	mLastFlossingBulletFiredTime = 3;
 }
 
+Base::~Base()
+{
+	std::vector<Bullet *>::iterator Iter;
+
+	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
+		HAMURWORLD->DeleteObject((*Iter)->GetName());
+
+	HAMURWORLD->DeleteObject(mWater->GetName());
+	HAMURWORLD->DeleteObject(mBrush->GetName());
+}
 
 void Base::Draw(float deltaTime)
 {
@@ -62,16 +71,15 @@ void Base::Draw(float deltaTime)
 
 void Base::Update(float deltaTime)
 {
-	if(mSelectedWeaponType == BulletTypes::FlossingBulletType)
-		mLastFlossingBulletFiredTime += HAMURTIMER->DeltaTime();
+	mLastFlossingBulletFiredTime += HAMURTIMER->DeltaTime();
 }
 
-void Base::Fire(const HamurVec3 &targetPos)
+void Base::Fire(const HamurVec3 &targetPos, const BulletTypes &bulletType)
 {
 	//TODO:Selected type of weapon should be fired
 	using namespace std;
 
-	if(mSelectedWeaponType == BulletTypes::FlossingBulletType)
+	if(bulletType == BulletTypes::FlossingBulletType)
 	{
 		if(mLastFlossingBulletFiredTime < mFlossingBulletCooldown)
 			return;
@@ -84,7 +92,7 @@ void Base::Fire(const HamurVec3 &targetPos)
 	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
 	{
 		if(!(*Iter)->IsActive() && !(*Iter)->IsVisible() && 
-			(*Iter)->GetBulletType() == mSelectedWeaponType )
+			(*Iter)->GetBulletType() == bulletType)
 		{
 			(*Iter)->SetPosition(mPos);
 			(*Iter)->SetTarget(targetPos);
@@ -98,4 +106,10 @@ void Base::Fire(const HamurVec3 &targetPos)
 void Base::UseWater()
 {
 	mWater->Explode();
+}
+
+void Base::UseBrush()
+{
+	if(mBrush->IsActive())
+		mBrush->Explode();
 }

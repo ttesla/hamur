@@ -12,9 +12,15 @@ class Wave : public hamur::HamurObject
     public:
 		static Wave *GetActiveWave() {if(mActiveWave != NULL)return mActiveWave;}
 		static std::list<Wave *> *CreatedWaves() {return mCreatedWaves;}
+		static std::list<Bacteria *> *GetAllSpawnedBacterias() {return mAllSpawnedBacterias;}
 
-		Wave(const string& name, const hamur::HamurVec3 &basePos, int fattieCount, int normCount, int shooterCount, int slimCount, 
-			int strayerCount);
+		//Deletes all the created wave bacterias in the end of IngameState
+		//They will be created again in the enter function of IngameState
+		//static void DeleteAllWaveBacterias();
+
+		Wave(const string& name, int fattieCount, 
+			int normCount, int shooterCount, int slimCount, int strayerCount);
+		virtual ~Wave();
 
 		void Update(float deltaTime);
 		void Draw(float deltaTime){};
@@ -25,21 +31,25 @@ class Wave : public hamur::HamurObject
 		//Deletes all the bacterias for the hamurworld
 		void DeleteBacteria();
 
+		void FillBacterias(int fattieCount, 
+			int normCount, int shooterCount, int slimCount, int strayerCount);
+
 		inline std::list<Bacteria *> GetBacteriaList() {return mBacteriaList;}
-		inline std::list<Bacteria *> *GetSpawnedBacterias() {return &mSpawnedBacterias;}
+		//inline std::list<Bacteria *> *GetSpawnedBacterias() {return &mSpawnedBacterias;}
 		inline bool IsFinished() {return mIsWaveFinished;}
 
 
 	private:
 		static Wave *mActiveWave;
 		static std::list<Wave *> *mCreatedWaves;
+		static std::list<Bacteria *> *mAllSpawnedBacterias;
 
 		//All bacterias which will be spawned during the wave. If this list is empty, it means
 		//all bacterias in this wave has been spawned
 		list<Bacteria *> mBacteriaList;
 
 		//Spawned bacterias
-		list<Bacteria *> mSpawnedBacterias;
+		//list<Bacteria *> mSpawnedBacterias;
 
 		bool mStarted;
 

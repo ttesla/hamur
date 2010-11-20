@@ -60,3 +60,9 @@ void Text::Draw(float deltaTime)
 {
 	HAMURTEXMR->BlitTexture(mID, mPosition);
 }
+
+Text::~Text()
+{
+	SDL_FreeSurface(mSurface);
+	TTF_CloseFont(mFont);
+}

@@ -8,7 +8,7 @@ using namespace std;
 void ToothPasteBullet::Update(float deltaTime)
 {
 	//Get enemies from wave and look if they are colliding with this
-	list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
+	list<Bacteria *> *bacterias = Wave::GetAllSpawnedBacterias();
 	if(!bacterias->empty())
 	{
 		list<Bacteria *>::iterator Iter;
@@ -19,7 +19,7 @@ void ToothPasteBullet::Update(float deltaTime)
 				ResetBullet();		
 				if((*Iter)->DecreaseLife(1))
 				{
-					HAMURWORLD->DeleteObject((*Iter)->GetName());
+					HAMURWORLD->DeleteObject((*Iter)->GetName()); //Deleting bacteria
 					bacterias->erase(Iter);
 				}
 				return;

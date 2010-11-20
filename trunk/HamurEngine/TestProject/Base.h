@@ -12,29 +12,30 @@ class Bacteria;
 class WaterBullet;
 class Bullet;
 enum BulletTypes;
+class Brush;
 
 //Tower which is in the middle of tooth. Controled by player and can fire
 class Base : public HamurObject
 {
     public:
         Base(const string& name);
+		~Base();
         virtual void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
 		
-		void Fire(const hamur::HamurVec3 &targetPos);
+		void Fire(const hamur::HamurVec3 &targetPos, const BulletTypes &bulletType);
 		void UseWater();
+		void UseBrush();
 		
-		inline void SetSelectedWeapon(const BulletTypes &typeName) {mSelectedWeaponType = typeName;}
-		inline BulletTypes GetSelectedWeapon() {return mSelectedWeaponType;}
 		//void setPhysics(); We are not using physics at the moment...
 
-		std::vector<Bacteria *> *GetEnemiesList(){return &enemies;}
+		//std::vector<Bacteria *> *GetEnemiesList(){return &enemies;}
 
 	private:
-		std::vector<Bacteria *> enemies;
+		//std::vector<Bacteria *> enemies;
 		std::vector<Bullet *> mBullets;
 		WaterBullet *mWater;
-		BulletTypes mSelectedWeaponType;
+		Brush *mBrush;
 		int killedEnemyCount;
 		bool update;
 		float mFlossingBulletCooldown;
