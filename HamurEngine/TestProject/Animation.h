@@ -8,7 +8,7 @@ class Animation
 {
 public:
 	Animation(const string &name, const int &frameCount);
-	~Animation();
+	~Animation(){};
 
 	void Update(float deltaTime);
 	void Draw(const hamur::HamurVec3 &position, const float &rotation);

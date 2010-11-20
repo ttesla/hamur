@@ -6,7 +6,7 @@ using namespace std;
 
 Level::Level(const string& name) : HamurObject(name), isLevelFinished(false)
 {
-	mBrush = new Brush("BrushBullet", 1);
+	resetTimeBetweenWaves();
 }
 
 void Level::Start()
@@ -27,10 +27,19 @@ void Level::Update( float deltaTime )
 		//TODO:This section will be removed from here, and toothbrushing will be done manually by
 		//player
 		if(mActiveWave->GetName().compare(0, 9, "Breakfast") == 0 ||
-			mActiveWave->GetName().compare(0, 6, "Dinner"))
-			mBrush->Explode();
+			mActiveWave == mWaves.at(mWaves.capacity() - 1)  )
+		{
+			activateBrush(true);
+		}
 
-		StartNextWave();
+		mTimeBetweenWaves = mTimeBetweenWaves - deltaTime;
+		
+		if(mTimeBetweenWaves <= 0)
+		{
+			StartNextWave();
+			activateBrush(false);
+			resetTimeBetweenWaves();
+		}
 	}
 }
 
@@ -50,3 +59,10 @@ void Level::StartNextWave()
 		HAMURSTATEMR->ChangeState("FeedbackState");
 	}
 }
+
+void Level::activateBrush( const bool &isActive )
+{
+	Brush *b = static_cast<Brush *>(HAMURWORLD->GetHamurObject("BrushBullet"));
+	b->SetActive(isActive);
+}
+

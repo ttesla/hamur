@@ -3,15 +3,11 @@ using namespace hamur;
 
 IngameState::IngameState() : HamurState("IngameState")
 {
-	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
-	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
-	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
-	activeLevel = NULL;
+
 }
 
 IngameState::~IngameState()
 {
-	//DELETE OBJECTS!
 }
 
 void IngameState::startBase()
@@ -22,7 +18,6 @@ void IngameState::startBase()
 	
 	c.x = w/2; c.y = h/2;
 	base = new Base("Base");
-	base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
 	base->SetPosition(c);
 }
 
@@ -54,12 +49,18 @@ void IngameState::startTeeth()
 		allocatedTeeth.push_back(t);
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
+
 	Tooth::SetTeeth(&allocatedTeeth);
 	
 }
 
 void IngameState::createLevel()
 {
+	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
+	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
+	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
+	activeLevel = NULL;
+
 	WaveDataReader waveReader("Waves.xml");
 
 	string newLevelName = "mondayLevel";
@@ -141,22 +142,17 @@ void IngameState::Update(float deltaTime)
 
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
-		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0));
+		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
+	}
+
+	if(HAMUREVENT->IsMousePressed(Keys::Mouse::RightButton))
+	{
+		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::FlossingBulletType);
 	}
 
 	if(HAMUREVENT->IsKeyPressed(Keys::Escape))
 	{
 		HAMURENGINE->Stop();
-	}
-
-	if(HAMUREVENT->IsKeyPressed(Keys::Key1))
-	{
-		base->SetSelectedWeapon(BulletTypes::ToothPasteBulletType);
-
-	}
-	else if(HAMUREVENT->IsKeyPressed(Keys::Key2))
-	{
-		base->SetSelectedWeapon(BulletTypes::FlossingBulletType);
 	}
 
 	// Shield and Life levels
@@ -179,17 +175,33 @@ void IngameState::Exit()
 	HAMURWORLD->DeleteObject("shieldPanel");
 	HAMURWORLD->DeleteObject("waterButton");
 	
+	{
+		list<Tooth *>::iterator Iter;
+		for (Iter = allocatedTeeth.begin(); Iter != allocatedTeeth.end(); Iter++)
+		{
+			HAMURWORLD->DeleteObject((*Iter)->GetName());
+		}
+	}
+
 	// OBJECTS
 	HAMURWORLD->DeleteObject(base->GetName());
 	HAMURWORLD->DeleteObject(teeth->GetName());
-	
-	list<Tooth *>::iterator Iter;
-	for (Iter = allocatedTeeth.begin(); Iter != allocatedTeeth.end(); Iter++)
-	{
+	HAMURWORLD->DeleteObject(mondayLevel->GetName());
+	HAMURWORLD->DeleteObject(thursdayLevel->GetName());
+	HAMURWORLD->DeleteObject(saturdayLevel->GetName());
+
+	std::list<Wave *> *waves = Wave::CreatedWaves();
+	std::list<Wave *>::iterator Iter;
+	for(Iter = waves->begin(); Iter != waves->end(); Iter++)
 		HAMURWORLD->DeleteObject((*Iter)->GetName());
-	}
-	
-	currentWave->DeleteBacteria();
+	waves->clear();
+
+	std::list<Bacteria *> *bact = Wave::GetAllSpawnedBacterias();
+	std::list<Bacteria *>::iterator Iter2;
+	for(Iter2 = bact->begin(); Iter2 != bact->end(); Iter2++)
+		HAMURWORLD->DeleteObject((*Iter2)->GetName());
+	bact->clear();
+
 }
 
 void IngameState::SetFoodSelection(map<string, string> l)

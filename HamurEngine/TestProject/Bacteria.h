@@ -14,6 +14,7 @@ class Bacteria : public HamurObject
 {
     public:
 		Bacteria(const string& name, const string& sprite, const int &spriteCount, HamurVec3 basePos, const float &speed);
+		virtual ~Bacteria();
 		void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...

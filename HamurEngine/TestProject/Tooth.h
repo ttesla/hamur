@@ -13,6 +13,7 @@ class Tooth : public HamurObject
 		static void SetTeeth(std::list<Tooth *> *toothList) {teeth = toothList;}
 
         Tooth(const string& name);
+		virtual ~Tooth();
         virtual void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...

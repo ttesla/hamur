@@ -43,11 +43,11 @@ void SelectionState::Enter()
 	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
 	c.x = 100; c.y = 230; c.z = 0.1;
-	breakfastButton = new Button("Flingor", c, "Graphics/Food/flingor.png", 100, 100);
+	breakfastButton = new Button("FlingorButton", c, "Graphics/Food/flingor.png", 100, 100);
 	c.x = 375;
-	lunchButton = new Button("Vit_smorgas", c, "Graphics/Food/vit_smorgas.png", 100, 100);
+	lunchButton = new Button("Vit_smorgasButton", c, "Graphics/Food/vit_smorgas.png", 100, 100);
 	c.x = 650;
-	dinnerButton = new Button("Nyponsoppa", c, "Graphics/Food/nyponsoppa.png", 100, 100);
+	dinnerButton = new Button("NyponsoppaButton", c, "Graphics/Food/nyponsoppa.png", 100, 100);
 
 	/*
 	HamurString str;
@@ -101,7 +101,7 @@ void SelectionState::Update(float deltaTime)
 		if (foodSelection.empty() == false)
 		{
 			HAMURSTATEMR->ChangeState("IngameState");
-			dynamic_cast<IngameState*>(HAMURSTATEMR->GetCurrentState())->SetFoodSelection(foodSelection);
+			static_cast<IngameState*>(HAMURSTATEMR->GetCurrentState())->SetFoodSelection(foodSelection);
 		}
 	}
 
@@ -124,24 +124,26 @@ void SelectionState::Draw(float deltaTime)
 
 void SelectionState::Exit()
 {
-	HAMURWORLD->DeleteObject("backgroundSelection");
-	HAMURWORLD->DeleteObject("chooseText");
-	HAMURWORLD->DeleteObject("breakfastText"); 
-	HAMURWORLD->DeleteObject("lunchText");
-	HAMURWORLD->DeleteObject("dinnerText");
-	HAMURWORLD->DeleteObject("snacksText");
+	//HAMURWORLD->DeleteObject("backgroundSelection");
+	//HAMURWORLD->DeleteObject("chooseText");
+	//HAMURWORLD->DeleteObject("breakfastText"); 
+	//HAMURWORLD->DeleteObject("lunchText");
+	//HAMURWORLD->DeleteObject("dinnerText");
+	//HAMURWORLD->DeleteObject("snacksText");
 
-	HAMURWORLD->DeleteObject("Flingor");
-	HAMURWORLD->DeleteObject("Vit_smorgas");
-	HAMURWORLD->DeleteObject("Nyponsoppa");
+	//HAMURWORLD->DeleteObject("FlingorButton");
+	//HAMURWORLD->DeleteObject("Vit_smorgasButton");
+	//HAMURWORLD->DeleteObject("NyponsoppaButton");
 
-	HAMURWORLD->DeleteObject("startButton");
+	//HAMURWORLD->DeleteObject("startButton");
 
-	HamurString str;
-	string aux = "snackButton";
-	for (int i = 0; i < snacksNumber; i++)
-	{
-		str << i;
-		HAMURWORLD->DeleteObject(aux + str.GetString());
-	}
+	//HamurString str;
+	//string aux = "snackButton";
+	//for (int i = 0; i < snacksNumber; i++)
+	//{
+	//	str << i;
+	//	HAMURWORLD->DeleteObject(aux + str.GetString());
+	//}
+
+	HAMURWORLD->ClearAll();
 }

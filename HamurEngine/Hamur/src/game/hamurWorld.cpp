@@ -104,6 +104,7 @@ void HamurWorld::UpdateAllObjects(float deltaTime)
 		{
 			map<string, HamurObject*>::iterator iter = mWorldObjects.find((mDeleteList[i]));
 			delete iter->second;
+			iter->second = NULL;
 			mWorldObjects.erase(iter);
 		}
 
@@ -152,8 +153,13 @@ void HamurWorld::ClearAll()
     for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
     {
         if(iter->second)
+		{
             delete iter->second;
+			iter->second = NULL;
+		}
     }
+
+	mWorldObjects.clear();
 
     HAMURLOG->WriteLogln("All world objects deleted.");
 }

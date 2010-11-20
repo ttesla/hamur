@@ -16,7 +16,7 @@ WaveDataReader::WaveDataReader( char *fileName )
 	CreateWavesFromData(doc);
 }
 
-void WaveDataReader::CreateWavesFromData(TiXmlDocument doc)
+void WaveDataReader::CreateWavesFromData(const TiXmlDocument &doc)
 {
 	TiXmlNode *root = (TiXmlElement *)doc.RootElement();
 	
@@ -50,8 +50,8 @@ void WaveDataReader::CreateWavesFromData(TiXmlDocument doc)
 			}
 		}
 		
-		Wave *w = new Wave(waves->Attribute("Name"), HAMURWORLD->GetHamurObject("Base")->GetPosition(), fattieCount, normCount,
-			shooterCount, slimCount, strayerCount);
+		Wave *w = new Wave(waves->Attribute("Name"), fattieCount, normCount,
+				shooterCount, slimCount, strayerCount);
 	}
 }
 

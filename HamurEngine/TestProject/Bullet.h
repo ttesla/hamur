@@ -20,6 +20,7 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw(float deltaTime){};
 	virtual void Explode(){};
+	virtual void ResetBullet(){};
 
 	void SetTarget(const hamur::HamurVec3 &target);
 

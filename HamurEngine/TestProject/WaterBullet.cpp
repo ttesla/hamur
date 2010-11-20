@@ -26,7 +26,7 @@ void WaterBullet::Explode()
 	if (mIsUsable)
 	{
 		//Get enemies from wave and damage all
-		std::list<Bacteria *> *bacterias = Wave::GetActiveWave()->GetSpawnedBacterias();
+		std::list<Bacteria *> *bacterias = Wave::GetAllSpawnedBacterias();
 		std::list<Bacteria *>::iterator Iter;
 	
 		for(Iter = bacterias->begin(); Iter != bacterias->end(); Iter++)

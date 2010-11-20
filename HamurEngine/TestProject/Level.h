@@ -22,9 +22,13 @@ class Level : public HamurObject
 		inline bool IsLevelFinished() {return isLevelFinished;}
 
 	private:
+		inline void resetTimeBetweenWaves() {mTimeBetweenWaves = 5;}
+
+		void activateBrush(const bool &isActive);
+
 		std::vector<Wave *> mWaves;
 		Wave *mActiveWave;
-		Brush *mBrush;
+		float mTimeBetweenWaves;
 		bool isLevelFinished;
 };
 

@@ -45,6 +45,8 @@ void GameOverState::Draw(float deltaTime)
 
 void GameOverState::Exit()
 {
-	HAMURWORLD->DeleteObject("gameOverText");
-	HAMURWORLD->DeleteObject("gameOverButton");
+	HAMURWORLD->ClearAll();
+
+	//HAMURWORLD->DeleteObject("gameOverText");
+	//HAMURWORLD->DeleteObject("gameOverButton");
 }
