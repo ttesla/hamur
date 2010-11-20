@@ -1,5 +1,6 @@
 #include "ShooterBullet.h"
 #include "Collision.h"
+#include "Teeth.h"
 
 ShooterBullet::ShooterBullet(const string &name, const hamur::HamurVec3 &startingPos, 
 		const hamur::HamurVec3 targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
@@ -7,6 +8,7 @@ ShooterBullet::ShooterBullet(const string &name, const hamur::HamurVec3 &startin
 	mBulletType = BulletTypes::ShooterBulletType;
 	mWidth = 3;
 	mHeight = 3;
+	mDamage = 1;
 }
 
 void ShooterBullet::Update(float deltaTime)
@@ -18,15 +20,16 @@ void ShooterBullet::Update(float deltaTime)
 	{
 		if(Collision::RectsIntersectWith(this, (*Iter)))
 		{
+			Teeth *t = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
 			if((*Iter)->GetShield() > 0)
 			{
 				cout << "Shield: " << (*Iter)->GetShield() << endl;
-				(*Iter)->SetShield((*Iter)->GetShield() - 100);
+				t->DecreaseShield(deltaTime * mDamage);
 			}
 			else
 			{
 				cout << "Life: " << (*Iter)->GetLife() << endl;
-				(*Iter)->SetLife((*Iter)->GetLife() - 100);
+				t->DecreaseHealth(deltaTime * mDamage);
 			}
 
 			// Unactivate the bullets

@@ -146,7 +146,7 @@ void IngameState::Update(float deltaTime)
 	{
 		base->UseWater();
 	}
-	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
+	else if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
 	}
@@ -164,7 +164,6 @@ void IngameState::Update(float deltaTime)
 	// Shield and Life levels
 	this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
 	this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
-
 }
 
 void IngameState::Draw(float deltaTime)
