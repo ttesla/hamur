@@ -114,15 +114,15 @@ void IngameState::startGUI()
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
 
-	c.x = 50; c.y = 50;
+	c.x = 50; c.y = 50; c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
-	c.x = 0; c.y = 300; c.z = -2;
-	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 600, HamurColor::GREEN);
+	c.x = 20; c.y = 300; 
+	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 300, HamurColor::GREEN);
 	c.x += 10;
-	lifePanel = new Panel("lifePanel", c, "", 10, 600, HamurColor::RED);	
+	lifePanel = new Panel("lifePanel", c, "", 10, 300, HamurColor::RED);	
 	c.x += 10;
-	shieldPanel = new Panel("shieldPanel", c, "", 10, 600, HamurColor::BLUE);
-	c.x = 40; c.y = 600-40; c.z = 0;
+	shieldPanel = new Panel("shieldPanel", c, "", 10, 300, HamurColor::BLUE);
+	c.x = 40; c.y = 600-40;
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
 }
 
@@ -139,7 +139,10 @@ void IngameState::Update(float deltaTime)
 	{
 		HAMURSTATEMR->ChangeState("GameOverState");		
 	}
-
+	if (waterButton->isPushed())
+	{
+		base->UseWater();	
+	}
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
