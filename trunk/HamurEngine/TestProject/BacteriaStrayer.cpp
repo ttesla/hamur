@@ -25,13 +25,14 @@ void BacteriaStrayer::Update(float deltaTime)
 {
 	if(IsAttacking2Tooth(deltaTime))
 	{
+		mAnimation->Update(deltaTime * 5);
 		return;
 	}
 
 	if (SDL_GetTicks() - mPrevTickCount <= mMovementRange)
 	{	
-		mPos.x += sin(((double)mPrevTickCount)) / mSideMovFactor;	
-		mPos.y += cos(((double)mPrevTickCount)) / mSideMovFactor;	
+		mPos.x += deltaTime * 100 * sin(((double)mPrevTickCount)) / mSideMovFactor;	
+		mPos.y += deltaTime * 100 * cos(((double)mPrevTickCount)) / mSideMovFactor;	
 	}
 	else
 		mPrevTickCount = SDL_GetTicks();
