@@ -6,6 +6,8 @@
 
 using namespace hamur;
 
+class Teeth;
+
 /**
 *	This is an abstract bacteria class.
 *	Each concrete bacteria would have its own life, shield and speedcoef
@@ -32,6 +34,7 @@ class Bacteria : public HamurObject
 		virtual bool IsAttacking2Tooth(float deltaTime);
 
 	protected:
+		Teeth *mTeeth;
 		Animation *mAnimation;
 		HamurVec3 mBasePosition;
 		HamurVec3 movementDirection;

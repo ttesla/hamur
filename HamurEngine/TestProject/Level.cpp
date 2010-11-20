@@ -27,7 +27,7 @@ void Level::Update( float deltaTime )
 		//TODO:This section will be removed from here, and toothbrushing will be done manually by
 		//player
 		if(mActiveWave->GetName().compare(0, 9, "Breakfast") == 0 ||
-			mActiveWave == *(mWaves.begin()))
+			mWaves.empty()) //mActiveWave == *(mWaves.begin()))
 		{
 			activateBrush(true);
 		}

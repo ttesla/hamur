@@ -11,6 +11,7 @@ using namespace std;
 Bacteria::Bacteria(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):HamurObject(name), mBasePosition(basePosition), mSpeed(speed)
 {
 	mActive = false;
+	mTeeth = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
 	
 	//Distributing bacterias to the borders of screen
 	//we can distribute them equally. It' s being done by chance
@@ -92,15 +93,15 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	{
 		if(Collision::RectsIntersectWith(this, (*Iter)))
 		{
-			if (Teeth::GetShield() > 0)
+			if (mTeeth->GetShield() > 0)
 			{
-				cout << "Shield: " << Teeth::GetShield() << endl;
-				Teeth::DecreaseShield(deltaTime);			
+				cout << "Shield: " << mTeeth->GetShield() << endl;
+				mTeeth->DecreaseShield(deltaTime);			
 			}
 			else
 			{
-				cout << "Life: " << Teeth::GetHealth() << endl;
-				Teeth::DecreaseHealth(deltaTime);
+				cout << "Life: " << mTeeth->GetHealth() << endl;
+				mTeeth->DecreaseHealth(deltaTime);
 			}
 
 			/** EDU: this is not valid anymore (To be erased)
