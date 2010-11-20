@@ -26,6 +26,7 @@ bool HamurEvent::Init()
 {
     mQuit = false;
     mKeyPressed = -1;
+	mMousePressed = -1;
     HAMURLOG->WriteInitLog("HamurEvent");
     return true;
 }
@@ -36,7 +37,6 @@ bool HamurEvent::IsKeyDown(Keys::Keyboard keyState) const
 {
 	if(SDL_GetKeyState(NULL)[keyState])
 		return true; // given key is down
-	
 	else 
 		return false; // given key is not down
 }
@@ -45,10 +45,7 @@ bool HamurEvent::IsKeyDown(Keys::Keyboard keyState) const
 bool HamurEvent::IsKeyPressed(Keys::Keyboard keyState) 
 {
     if(mKeyPressed == keyState)
-    {
-        mKeyPressed = -1;
         return true; // given key is pressed
-    }
 
     else 
         return false; // given key is not pressed
@@ -57,11 +54,7 @@ bool HamurEvent::IsKeyPressed(Keys::Keyboard keyState)
 bool HamurEvent::IsMousePressed(Keys::Mouse mouseState)
 {
     if(mMousePressed == mouseState)
-    {
-        mMousePressed = -1;
         return true; // given button is pressed
-    }
-
     else 
         return false; // given button is not pressed
 }
@@ -126,6 +119,14 @@ void HamurEvent::HandleEvents()
             mMousePressed = mEvents.button.button;
         }
 	}
+}
+
+
+// Clear all events and set them to their original state
+void HamurEvent::ClearEvents()
+{
+    mKeyPressed = -1;
+    mMousePressed = -1;
 }
 
 } // namespace hamur

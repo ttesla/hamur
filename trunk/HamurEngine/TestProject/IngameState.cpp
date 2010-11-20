@@ -28,7 +28,7 @@ void IngameState::startTeeth()
 	HamurVec3 c;
 	
 	c.x = w/2; c.y = h/2, c.z = -2.0;
-	teeth = new Teeth("teeth", "Graphics/teeth.png", 100, 100);
+	teeth = new Teeth("teeth", "Graphics/teeth.png", 1000, 1000);
 	teeth->SetPosition(c);
 
 	
@@ -138,10 +138,10 @@ void IngameState::Enter()
 
 void IngameState::Update(float deltaTime)
 {
-	if (teeth->GetHealth() <= 0)
-	{
-		HAMURSTATEMR->ChangeState("GameOverState");		
-	}
+	//if (teeth->GetHealth() <= 0)
+	//{
+	//	HAMURSTATEMR->ChangeState("GameOverState");		
+	//}
 	if (waterButton->isPushed())
 	{
 		base->UseWater();
@@ -162,8 +162,8 @@ void IngameState::Update(float deltaTime)
 	}
 
 	// Shield and Life levels
-	this->shieldPanel->SetHeight(teeth->GetShield()*3);
-	this->lifePanel->SetHeight(teeth->GetHealth()*3);
+	this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
+	this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
 
 }
 

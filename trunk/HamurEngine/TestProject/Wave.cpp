@@ -4,6 +4,7 @@
 #include "BacteriaStrayer.h"
 #include "BacteriaShooter.h"
 #include "BacteriaSlim.h"
+#include "Teeth.h"
 
 using namespace std;
 using namespace hamur; 
@@ -22,9 +23,11 @@ Wave::Wave( const string& name, int fattieCount, int normCount, int shooterCount
 		mAllSpawnedBacterias = new list<Bacteria *>;
 
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
-	mSpawningInterval = (30 * 1000) / totalBactCount;
+	mSpawningInterval = 30 / totalBactCount;
 
 	FillBacterias(fattieCount, normCount, shooterCount, slimCount, strayerCount);
+	
+	mTeeth = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
 
 	mCreatedWaves->push_back(this);
 }
@@ -59,7 +62,7 @@ void Wave::Update( float deltaTime )
 {
 	if(mStarted)
 	{
-		if(SDL_GetTicks() - mTimeCounter >= mSpawningInterval)
+		if(mTimeCounter >= mSpawningInterval)
 		{
 			if (!mBacteriaList.empty())
 			{
@@ -68,12 +71,17 @@ void Wave::Update( float deltaTime )
 				(*Iter)->SetVisible(true);
 				mAllSpawnedBacterias->push_back((*Iter));
 				mBacteriaList.erase(Iter);
-				mTimeCounter = SDL_GetTicks();
+				mTimeCounter = 0;
+
+				mTeeth->DecreaseShield(mSpawningInterval * 1000 / (12 * 30));
 			}
 			else
 				mIsWaveFinished = true;
 		}
+
+		mTimeCounter += deltaTime;
 	}
+
 }
 
 void Wave::DeleteBacteria()

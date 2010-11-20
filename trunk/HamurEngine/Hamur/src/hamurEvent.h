@@ -232,6 +232,12 @@ class HamurEvent : public Singleton<HamurEvent>
         */
 		void HandleEvents();
 
+		/**
+		* Clears all events, set them to initial states
+		*/
+		void ClearEvents();
+
+
 	protected:
 
         HamurEvent();

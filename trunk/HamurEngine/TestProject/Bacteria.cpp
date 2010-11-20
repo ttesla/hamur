@@ -96,12 +96,12 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 			if (mTeeth->GetShield() > 0)
 			{
 				cout << "Shield: " << mTeeth->GetShield() << endl;
-				mTeeth->DecreaseShield(deltaTime);			
+				mTeeth->DecreaseShield(deltaTime * mDamage);			
 			}
 			else
 			{
 				cout << "Life: " << mTeeth->GetHealth() << endl;
-				mTeeth->DecreaseHealth(deltaTime);
+				mTeeth->DecreaseHealth(deltaTime * mDamage);
 			}
 
 			/** EDU: this is not valid anymore (To be erased)
