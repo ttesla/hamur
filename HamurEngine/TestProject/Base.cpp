@@ -105,6 +105,7 @@ void Base::Fire(const HamurVec3 &targetPos, const BulletTypes &bulletType)
 
 void Base::UseWater()
 {
+	cout << "Water Used!" << endl;
 	mWater->Explode();
 }
 

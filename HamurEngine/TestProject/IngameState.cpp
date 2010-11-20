@@ -114,7 +114,7 @@ void IngameState::startGUI()
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
 
-	c.x = 50; c.y = 50; c.z = +10.0;
+	c.x = 50; c.y = 50; //c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
 	c.x = 20; c.y = 300; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 300, HamurColor::GREEN);
@@ -141,7 +141,7 @@ void IngameState::Update(float deltaTime)
 	}
 	if (waterButton->isPushed())
 	{
-		base->UseWater();	
+		base->UseWater();
 	}
 	if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
@@ -159,8 +159,8 @@ void IngameState::Update(float deltaTime)
 	}
 
 	// Shield and Life levels
-	this->shieldPanel->SetHeight(Teeth::GetShield()*6);
-	this->lifePanel->SetHeight(Teeth::GetHealth()*6);
+	this->shieldPanel->SetHeight(Teeth::GetShield()*3);
+	this->lifePanel->SetHeight(Teeth::GetHealth()*3);
 
 }
 

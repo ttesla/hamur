@@ -28,11 +28,14 @@ class SelectionState : public HamurState
 		Text *lunchText;
 		Text *dinnerText;
 		Text *snacksText;
-		Button *breakfastButton;
-		Button *lunchButton;
-		Button *dinnerButton;
-		Button *startButton;
+
+		Panel *breakfastPanel;
+		Panel *lunchPanel;
+		Panel *dinnerPanel;
+
 		vector<Button *> snackButtons;
+		Button *startButton;
+
 		int snacksNumber; // Could be removed..
 		Panel *background;
 

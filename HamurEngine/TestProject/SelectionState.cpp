@@ -43,11 +43,11 @@ void SelectionState::Enter()
 	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
 	c.x = 100; c.y = 230; c.z = 0.1;
-	breakfastButton = new Button("FlingorButton", c, "Graphics/Food/flingor.png", 100, 100);
+	breakfastPanel = new Panel("breakfastPanel", c, "Graphics/Food/flingor.png", 64, 64);
 	c.x = 375;
-	lunchButton = new Button("Vit_smorgasButton", c, "Graphics/Food/vit_smorgas.png", 100, 100);
+	lunchPanel = new Panel("lunchPanel", c, "Graphics/Food/vit_smorgas.png", 64, 64);
 	c.x = 650;
-	dinnerButton = new Button("NyponsoppaButton", c, "Graphics/Food/nyponsoppa.png", 100, 100);
+	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/nyponsoppa.png", 64, 64);
 
 	/*
 	HamurString str;
@@ -68,6 +68,7 @@ void SelectionState::Enter()
 
 void SelectionState::Update(float deltaTime)
 {
+	/*
 	if (breakfastButton->isPushed())
 	{	
 		//foodSelection.push_back(breakfastButton->GetName() + s);
@@ -91,7 +92,8 @@ void SelectionState::Update(float deltaTime)
 		//foodSelection["dinner"] = "Dinner" + HamurString::ParseInt(randomIndex).GetString();
 		dinnerButton->SetVisible(false);
 	}
-	else if (startButton->isPushed())
+	*/
+	if (startButton->isPushed())
 	{
 		int randomIndex = (int)((rand() % 3) + 1);
 		foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
