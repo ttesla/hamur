@@ -7,6 +7,8 @@
 
 using namespace std;
 
+class Teeth;
+
 class Wave : public hamur::HamurObject
 {
     public:
@@ -43,6 +45,8 @@ class Wave : public hamur::HamurObject
 		static Wave *mActiveWave;
 		static std::list<Wave *> *mCreatedWaves;
 		static std::list<Bacteria *> *mAllSpawnedBacterias;
+
+		Teeth *mTeeth;
 
 		//All bacterias which will be spawned during the wave. If this list is empty, it means
 		//all bacterias in this wave has been spawned

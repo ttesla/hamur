@@ -19,9 +19,14 @@ class Teeth : public HamurObject
 		inline const float &GetShield(){return mShield;}
 		inline void SetHealth(const float &value){mLife = value;}
 		inline void SetShield(const float &value){mShield = value;}
-		inline void DecreaseHealth(const float &value){Teeth::mLife -= value;}
-		inline void DecreaseShield(const float &value){Teeth::mShield -= value;}
-		inline void IncreaseShield(const float &value){Teeth::mShield += value;}
+		inline void DecreaseShield(const float &value){mShield -= value;}
+		inline void IncreaseShield(const float &value){mShield += value;}
+		inline void DecreaseHealth(const float &value)
+		{
+			mLife -= value;
+			if(mLife <= 0)
+				HAMURSTATEMR->ChangeState("GameOverState");
+		}
 
 	private:
 		float mLife;

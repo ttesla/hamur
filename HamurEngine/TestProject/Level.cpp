@@ -51,7 +51,7 @@ void Level::StartNextWave()
 		mActiveWave->StartWave();
 		mWaves.pop_back();
 	}
-	else
+	else if(mWaves.empty() && Wave::GetAllSpawnedBacterias()->empty())
 	{
 		isLevelFinished = true;
 		mWaves.clear();

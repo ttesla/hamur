@@ -91,6 +91,9 @@ void HamurEngine::Run()
         //Update screen
         SDL_GL_SwapBuffers();
 
+		// Clear all unused events
+		HAMUREVENT->ClearEvents();
+
         // Increase frame count & Set delta time
         mFrameCount++;
         HAMURTIMER->SetDeltaTime(HAMURTIMER->GetTimeInSeconds() - frameStartTime);

@@ -208,10 +208,6 @@
 			Name="Hamur"
 			>
 			<File
-				RelativePath=".\src\hamur.h"
-				>
-			</File>
-			<File
 				RelativePath=".\src\hamurDefinitions.h"
 				>
 			</File>
@@ -354,6 +350,10 @@
 			<Filter
 				Name="Helper"
 				>
+				<File
+					RelativePath=".\src\hamur.h"
+					>
+				</File>
 				<File
 					RelativePath=".\src\helper\hamurColor.cpp"
 					>
