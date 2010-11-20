@@ -45,6 +45,9 @@ class Wave : public hamur::HamurObject
 
 		//Time counter which is used for activating bacterias
 		float mTimeCounter;
+
+		//Spawning interval between every bacteria. It' s been found by deviding the total wave time, which is 30, by bacteria amount
+		float mSpawningInterval;
 		bool mIsWaveFinished;
 };
 

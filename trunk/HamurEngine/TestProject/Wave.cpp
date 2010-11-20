@@ -16,6 +16,7 @@ Wave::Wave( const string& name, const HamurVec3 &basePos, int fattieCount, int n
 {
 	mCreatedWaves = new list<Wave *>;
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
+	mSpawningInterval = (30 * 1000) / totalBactCount;
 
 	for(int i = 0; i < totalBactCount; i++)
 	{
@@ -73,7 +74,7 @@ void Wave::Update( float deltaTime )
 {
 	if(mStarted)
 	{
-		if(SDL_GetTicks() - mTimeCounter >= 3000)
+		if(SDL_GetTicks() - mTimeCounter >= mSpawningInterval)
 		{
 			if (!mBacteriaList.empty())
 			{

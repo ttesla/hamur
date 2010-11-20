@@ -52,10 +52,16 @@ private:
 	Panel *lifePanel;
 	Panel *shieldPanel;
 	Button *waterButton;
+
+	//Levels
+	Level *mondayLevel;
+	Level *thursdayLevel;
+	Level *saturdayLevel;
+	Level *activeLevel;
 	
 	void startBase();
 	void startTeeth();
-	void startWave();
+	void createLevel();
 	void startGUI();
 
 	map<string, string> foodSelection;

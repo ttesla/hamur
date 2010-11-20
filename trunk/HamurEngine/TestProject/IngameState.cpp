@@ -3,7 +3,10 @@ using namespace hamur;
 
 IngameState::IngameState() : HamurState("IngameState")
 {
-	
+	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
+	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
+	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
+	activeLevel = NULL;
 }
 
 IngameState::~IngameState()
@@ -55,25 +58,53 @@ void IngameState::startTeeth()
 	
 }
 
-void IngameState::startWave()
+void IngameState::createLevel()
 {
 	WaveDataReader waveReader("Waves.xml");
 
-	Level *l = new Level("level");
+	string newLevelName = "mondayLevel";
+	
+	if(activeLevel != NULL)
+	{
+		if(activeLevel->GetName() == "mondayLevel")
+			newLevelName = "thursdayLevel";
+		else if(activeLevel->GetName() == "thursdayLevel")
+			newLevelName = "saturdayLevel";
+	}
 
-	//list<string>::iterator Iter;
-	//for (Iter = foodSelection.begin(); Iter != foodSelection.end(); Iter++)
-	//{
-	//	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(*Iter));
-	//}
-	//
-	//Iter = foodSelection.begin();
-	//currentWave = (Wave *)HAMURWORLD->GetHamurObject(*Iter);
+	Level *l = (Level *)HAMURWORLD->GetHamurObject(newLevelName);
+
+	//Breakfast wave
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["breakfast"]));
+	
+	//Snack waves between breakfast and lunch
+	if(foodSelection["snack2"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack2"]));
+	if(foodSelection["snack5"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack5"]));
+
+	//Lunch wave
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["lunch"]));
+
+	//Snack waves between lunch and dinner
+	if(foodSelection["snack1"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack1"]));
+	if(foodSelection["snack4"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack4"]));
+
+	//Dinner wave
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["dinner"]));
 
+	//Snack waves after dinner wave
+	if(foodSelection["snack3"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack3"]));
+	if(foodSelection["snack6"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack6"]));
+
 	l->Start();
+
+	activeLevel = l;
+	activeLevel->SetActive(true);
 }
 
 void IngameState::startGUI()
@@ -164,5 +195,5 @@ void IngameState::Exit()
 void IngameState::SetFoodSelection(map<string, string> l)
 {
 	foodSelection = l;
-	startWave();
+	createLevel();
 }

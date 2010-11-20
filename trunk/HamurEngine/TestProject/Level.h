@@ -7,7 +7,7 @@ using namespace hamur;
 
 class Brush;
 
-class Level : HamurObject
+class Level : public HamurObject
 {
     public:
         Level(const string& name);
