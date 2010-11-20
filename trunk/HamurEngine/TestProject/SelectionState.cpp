@@ -42,13 +42,31 @@ void SelectionState::Enter()
 	/*******************************/
 	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
-	c.x = 100; c.y = 230; c.z = 0.1;
+	c.x = 100; c.y = 230; c.z = +10.0;
 	breakfastPanel = new Panel("breakfastPanel", c, "Graphics/Food/flingor.png", 64, 64);
 	c.x = 375;
 	lunchPanel = new Panel("lunchPanel", c, "Graphics/Food/vit_smorgas.png", 64, 64);
 	c.x = 650;
 	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/nyponsoppa.png", 64, 64);
-
+	c.x = 100; c.y = 420;
+	snackButtons.push_back(new Button("aggButton", c, "Graphics/Food/agg.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("appleButton", c, "Graphics/Food/apple.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("chipsButton", c, "Graphics/Food/chips.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("glassButton", c, "Graphics/Food/glass.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("godisButton", c, "Graphics/Food/godis.png", 64, 64));
+	c.x += 70;
+	snackButtons.push_back(new Button("kakorButton", c, "Graphics/Food/kakor.png", 64, 64));
+	c.x += 70;
+	snackButtons.push_back(new Button("laskButton", c, "Graphics/Food/lask.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("mork_smorgasButton", c, "Graphics/Food/mork_smorgas.png", 64, 64));
+	c.x += 70; 
+	snackButtons.push_back(new Button("smoothieButton", c, "Graphics/Food/yoghurt.png", 64, 64));
+	
 	/*
 	HamurString str;
 	string aux = "snackButton";
@@ -68,31 +86,6 @@ void SelectionState::Enter()
 
 void SelectionState::Update(float deltaTime)
 {
-	/*
-	if (breakfastButton->isPushed())
-	{	
-		//foodSelection.push_back(breakfastButton->GetName() + s);
-		//int randomIndex = (int)((rand() % 3) + 1);
-		//foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
-		//cout << "bf" << endl;
-		breakfastButton->SetActive(false);
-	}
-	else if (lunchButton->isPushed())
-	{
-		//int randomIndex = (int)((rand() % 3) + 1);
-		//foodSelection.push_back(lunchButton->GetName() + s);
-		//foodSelection["lunch"] = "Lunch" + HamurString::ParseInt(randomIndex).GetString();
-		lunchButton->SetVisible(false);
-		
-	}
-	else if (dinnerButton->isPushed())
-	{
-		//foodSelection.push_back(dinnerButton->GetName() + s);
-		//int randomIndex = (int)((rand() % 3) + 1);
-		//foodSelection["dinner"] = "Dinner" + HamurString::ParseInt(randomIndex).GetString();
-		dinnerButton->SetVisible(false);
-	}
-	*/
 	if (startButton->isPushed())
 	{
 		int randomIndex = (int)((rand() % 3) + 1);
@@ -107,16 +100,14 @@ void SelectionState::Update(float deltaTime)
 		}
 	}
 
-	/*
 	vector<Button *>::iterator Iter;
 	for (Iter = snackButtons.begin(); Iter != snackButtons.end(); Iter++)
 	{
 		if ((*Iter)->isPushed())
 		{
-			foodSelection.push_back((*Iter)->GetName());
+			cout << (*Iter)->GetName() + " pushed!" << endl;
 		}
 	}
-	*/
 }
 
 void SelectionState::Draw(float deltaTime)
