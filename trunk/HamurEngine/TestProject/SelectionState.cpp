@@ -73,7 +73,8 @@ void SelectionState::Update(float deltaTime)
 		//foodSelection.push_back(breakfastButton->GetName() + s);
 		//int randomIndex = (int)((rand() % 3) + 1);
 		//foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
-		breakfastButton->SetVisible(false);
+		//cout << "bf" << endl;
+		breakfastButton->SetActive(false);
 	}
 	else if (lunchButton->isPushed())
 	{
@@ -92,7 +93,6 @@ void SelectionState::Update(float deltaTime)
 	}
 	else if (startButton->isPushed())
 	{
-		
 		int randomIndex = (int)((rand() % 3) + 1);
 		foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
 		foodSelection["lunch"] = "Lunch" + HamurString::ParseInt(randomIndex).GetString();

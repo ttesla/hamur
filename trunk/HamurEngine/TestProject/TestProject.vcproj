@@ -454,7 +454,7 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="State"
+				Name="States"
 				>
 				<File
 					RelativePath=".\FeedbackState.h"

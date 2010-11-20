@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new HowToPlayState());
 	HAMURSTATEMR->RegisterState(new GameOverState());
 
-	HAMURSTATEMR->ChangeState("MenuState");
-	//HAMURSTATEMR->ChangeState("IngameState");
+	//HAMURSTATEMR->ChangeState("MenuState");
+	HAMURSTATEMR->ChangeState("IngameState");
 	
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();

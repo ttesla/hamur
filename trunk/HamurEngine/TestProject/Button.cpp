@@ -25,7 +25,7 @@ bool Button::isPushed()
 	float halfW = mWidth/2;
 	float halfH = mHeight/2;
 
-	if(HAMUREVENT->IsMouseDown(Keys::LeftButton))
+	if(HAMUREVENT->IsMousePressed(Keys::LeftButton))
 	{
 		if((mousePos.x > this->GetPosition().x - halfW) && (mousePos.x < this->GetPosition().x + halfW)
 			&& (mousePos.y > this->GetPosition().y - halfH) && (mousePos.y < this->GetPosition().y + halfH))
