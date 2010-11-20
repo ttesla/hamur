@@ -49,23 +49,23 @@ void SelectionState::Enter()
 	c.x = 650;
 	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/nyponsoppa.png", 64, 64);
 	c.x = 100; c.y = 420;
-	snackButtons.push_back(new Button("aggButton", c, "Graphics/Food/agg.png", 64, 64));
+	snackButtons.push_back(new Button("EggButton", c, "Graphics/Food/agg.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("appleButton", c, "Graphics/Food/apple.png", 64, 64));
+	snackButtons.push_back(new Button("AppleButton", c, "Graphics/Food/apple.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("chipsButton", c, "Graphics/Food/chips.png", 64, 64));
+	snackButtons.push_back(new Button("ChipsButton", c, "Graphics/Food/chips.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("glassButton", c, "Graphics/Food/glass.png", 64, 64));
+	snackButtons.push_back(new Button("GlassButton", c, "Graphics/Food/glass.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("godisButton", c, "Graphics/Food/godis.png", 64, 64));
+	snackButtons.push_back(new Button("GodisButton", c, "Graphics/Food/godis.png", 64, 64));
 	c.x += 70;
-	snackButtons.push_back(new Button("kakorButton", c, "Graphics/Food/kakor.png", 64, 64));
+	snackButtons.push_back(new Button("KakorButton", c, "Graphics/Food/kakor.png", 64, 64));
 	c.x += 70;
-	snackButtons.push_back(new Button("laskButton", c, "Graphics/Food/lask.png", 64, 64));
+	snackButtons.push_back(new Button("LaskButton", c, "Graphics/Food/lask.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("mork_smorgasButton", c, "Graphics/Food/mork_smorgas.png", 64, 64));
+	snackButtons.push_back(new Button("Mork_smorgasButton", c, "Graphics/Food/mork_smorgas.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("smoothieButton", c, "Graphics/Food/yoghurt.png", 64, 64));
+	snackButtons.push_back(new Button("SmoothieButton", c, "Graphics/Food/yoghurt.png", 64, 64));
 	
 	/*
 	HamurString str;
@@ -106,6 +106,9 @@ void SelectionState::Update(float deltaTime)
 		if ((*Iter)->isPushed())
 		{
 			cout << (*Iter)->GetName() + " pushed!" << endl;
+			string foodKey = "snack" + HamurString::ParseInt(foodSelection.size()).GetString();
+			string waveName = (*Iter)->GetName();
+			foodSelection[foodKey] = waveName.substr(0, waveName.find("Button"));
 		}
 	}
 }

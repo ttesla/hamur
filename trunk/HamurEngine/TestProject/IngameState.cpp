@@ -75,32 +75,32 @@ void IngameState::createLevel()
 
 	Level *l = (Level *)HAMURWORLD->GetHamurObject(newLevelName);
 
-	//Breakfast wave
-	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["breakfast"]));
-	
-	//Snack waves between breakfast and lunch
-	if(foodSelection["snack2"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack2"]));
-	if(foodSelection["snack5"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack5"]));
-
-	//Lunch wave
-	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["lunch"]));
-
-	//Snack waves between lunch and dinner
-	if(foodSelection["snack1"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack1"]));
-	if(foodSelection["snack4"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack4"]));
+	//Snack waves after dinner wave
+	if(foodSelection["snack6"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack6"]));
+	if(foodSelection["snack3"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack3"]));
 
 	//Dinner wave
 	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["dinner"]));
 
-	//Snack waves after dinner wave
-	if(foodSelection["snack3"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack3"]));
-	if(foodSelection["snack6"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack6"]));
+	//Snack waves between lunch and dinner
+	if(foodSelection["snack4"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack4"]));
+	if(foodSelection["snack1"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack1"]));
+
+	//Lunch wave
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["lunch"]));
+
+	//Snack waves between breakfast and lunch
+	if(foodSelection["snack5"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack5"]));
+	if(foodSelection["snack2"] != "")
+		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack2"]));
+
+	//Breakfast wave
+	l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["breakfast"]));
 
 	l->Start();
 
