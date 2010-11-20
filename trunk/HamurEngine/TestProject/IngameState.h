@@ -38,6 +38,8 @@ public:
 private:
 	Bacteria **allocatedBacterias;
 	list<Tooth *> allocatedTeeth;
+	float mTeethHealth;
+	float mTeethShield;
 	int mPrevTickCount;
 	int spawnedEnemyCount;
 	Base *base;
@@ -56,7 +58,7 @@ private:
 	Level *mondayLevel;
 	Level *thursdayLevel;
 	Level *saturdayLevel;
-	Level *activeLevel;
+	string activeLevel;
 	
 	void startBase();
 	void startTeeth();

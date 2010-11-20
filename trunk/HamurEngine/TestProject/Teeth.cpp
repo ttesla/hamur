@@ -1,8 +1,5 @@
 #include "Teeth.h"
 
-float Teeth::mLife = 100;
-float Teeth::mShield = 100;
-
 Teeth::Teeth(const string &name, const string &sprite, float life, float shield):HamurObject(name, sprite)
 {
 	mLife = life;

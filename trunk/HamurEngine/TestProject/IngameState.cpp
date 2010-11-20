@@ -30,6 +30,7 @@ void IngameState::startTeeth()
 	c.x = w/2; c.y = h/2, c.z = -2.0;
 	teeth = new Teeth("teeth", "Graphics/teeth.png", 100, 100);
 	teeth->SetPosition(c);
+
 	
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
@@ -59,17 +60,19 @@ void IngameState::createLevel()
 	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
 	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
 	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
-	activeLevel = NULL;
 
 	WaveDataReader waveReader("Waves.xml");
 
 	string newLevelName = "mondayLevel";
 	
-	if(activeLevel != NULL)
+	if(activeLevel != "")
 	{
-		if(activeLevel->GetName() == "mondayLevel")
+		teeth->SetHealth(mTeethHealth);
+		teeth->SetShield(mTeethShield);
+
+		if(activeLevel == "mondayLevel")
 			newLevelName = "thursdayLevel";
-		else if(activeLevel->GetName() == "thursdayLevel")
+		else if(activeLevel == "thursdayLevel")
 			newLevelName = "saturdayLevel";
 	}
 
@@ -104,8 +107,8 @@ void IngameState::createLevel()
 
 	l->Start();
 
-	activeLevel = l;
-	activeLevel->SetActive(true);
+	activeLevel = l->GetName();
+	l->SetActive(true);
 }
 
 void IngameState::startGUI()
@@ -135,7 +138,7 @@ void IngameState::Enter()
 
 void IngameState::Update(float deltaTime)
 {
-	if (Teeth::GetHealth() <= 0)
+	if (teeth->GetHealth() <= 0)
 	{
 		HAMURSTATEMR->ChangeState("GameOverState");		
 	}
@@ -159,8 +162,8 @@ void IngameState::Update(float deltaTime)
 	}
 
 	// Shield and Life levels
-	this->shieldPanel->SetHeight(Teeth::GetShield()*3);
-	this->lifePanel->SetHeight(Teeth::GetHealth()*3);
+	this->shieldPanel->SetHeight(teeth->GetShield()*3);
+	this->lifePanel->SetHeight(teeth->GetHealth()*3);
 
 }
 
@@ -171,6 +174,9 @@ void IngameState::Draw(float deltaTime)
 
 void IngameState::Exit()
 {
+	mTeethHealth = teeth->GetHealth();
+	mTeethShield = teeth->GetShield();
+
 	// GUI
 	HAMURWORLD->DeleteObject("currentFoodPanel");
 	HAMURWORLD->DeleteObject("timeLeftPanel");
