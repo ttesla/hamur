@@ -8,13 +8,15 @@
 namespace hamur
 {
 
-HamurTexture::HamurTexture(const string& filePath) : mFilePath(filePath), mHasColorKey(false)
+HamurTexture::HamurTexture(const string& filePath) 
+    : mFilePath(filePath), mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f)
 {
 	if(!LoadTextureFromFile()) exit(1);
 }
 
 
-HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) : mFilePath(filePath), mHasColorKey(true)
+HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) 
+    : mFilePath(filePath), mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f)
 {
     mRedKey   = red;
     mGreenKey = green;
@@ -24,12 +26,15 @@ HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8
 }
 
 
-HamurTexture::HamurTexture(SDL_Surface* newSurface) : mHasColorKey(false)
+HamurTexture::HamurTexture(SDL_Surface* newSurface) 
+    : mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f)
 {
 	if(!LoadTextureFromSurface(newSurface)) exit(1);
 }
 
-HamurTexture::HamurTexture(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) : mHasColorKey(true)
+
+HamurTexture::HamurTexture(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) 
+    : mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f)
 {
     mRedKey   = red;
     mGreenKey = green;
@@ -50,7 +55,6 @@ bool HamurTexture::LoadTextureFromFile()
 {
     SDL_Surface* tempSurface = NULL;
 	SDL_Surface* finalSurface = NULL;
-	int mode = 0; // Texture mode RGB, RGBA, BGRA...ect
 
     // Load image from disk
 	tempSurface = IMG_Load(mFilePath.c_str());
@@ -60,8 +64,6 @@ bool HamurTexture::LoadTextureFromFile()
         HAMURLOG->WriteLogln("Error!: Can't load texture: " + mFilePath, HamurLog::ALWAYS);
 		return false;
 	}
-
-    //TODO: bitmap, tga, jpeg support & check will be added here
 	
     // Add alpha channel with colorkey (if has colorkey)
     // colorkey pixels are full transparent (Alpha = 0)
@@ -77,9 +79,7 @@ bool HamurTexture::LoadTextureFromFile()
     SDL_BlitSurface(tempSurface, NULL, finalSurface, NULL);
 
     // Determine texture format
-    if (finalSurface->format->BytesPerPixel == 4) // RGBA 32bit (it should be always this)
-        mode = GL_RGBA; 
-    else 
+    if (finalSurface->format->BytesPerPixel != 4) // RGBA 32bit (it should be always this)
     {
         HAMURLOG->WriteLogln("Error!: Can't set 32bit texture format (use PNG images only): " + mFilePath, HamurLog::ALWAYS);
         SDL_FreeSurface(tempSurface);
@@ -88,7 +88,7 @@ bool HamurTexture::LoadTextureFromFile()
     }
 
     // Generate texture
-	GenerateTexture(finalSurface, mode);
+	GenerateTexture(finalSurface);
 
 	// Free SDL_surfaces
 	SDL_FreeSurface(tempSurface);
@@ -103,7 +103,6 @@ bool HamurTexture::LoadTextureFromFile()
 bool HamurTexture::LoadTextureFromSurface(SDL_Surface* surface)
 {
     SDL_Surface* finalSurface = NULL;
-	int mode = 0; // Texture mode RGB, RGBA 
 
 	if(surface == NULL)
 	{
@@ -124,10 +123,8 @@ bool HamurTexture::LoadTextureFromSurface(SDL_Surface* surface)
     finalSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, surface->w, surface->h, 32, mRedMask, mGreenMask, mBlueMask, mAlphaMask);
     SDL_BlitSurface(surface, NULL, finalSurface, NULL);
 
-    // Determine texture format
-    if (finalSurface->format->BytesPerPixel == 4) // RGBA 32bit (it should be always this)
-        mode = GL_RGBA; 
-    else 
+    // Check texture format
+    if (finalSurface->format->BytesPerPixel != 4) // RGBA 32bit (it should be always this!)
     {
         HAMURLOG->WriteLogln("Error!: Can't set 32bit texture format of given surface.", HamurLog::ALWAYS);
         SDL_FreeSurface(finalSurface);
@@ -135,58 +132,37 @@ bool HamurTexture::LoadTextureFromSurface(SDL_Surface* surface)
     }
 
     // Generate texture
-    GenerateTexture(finalSurface, mode);
+    GenerateTexture(finalSurface);
+
+    // Free SDL Surfaces
+    SDL_FreeSurface(finalSurface);
 
 	return true;
 }
 
 
 // Generate opengl texture from given surface
-void HamurTexture::GenerateTexture(const SDL_Surface* surface, int mode)
+void HamurTexture::GenerateTexture(const SDL_Surface* surface)
 {
     // Create & bind the texture 
     glGenTextures(1, &mTextureID[0]);
     glBindTexture(GL_TEXTURE_2D, mTextureID[0]);
 
     // Set current image properties
-    mTextureWidth  = surface->w;
-    mTextureHeight = surface->h;
-    mScaledWidth   = mTextureWidth  / (float)HAMURGL->GetScreenWidth(); 
-    mScaledHeight  = mTextureHeight / (float)HAMURGL->GetScreenWidth(); 
+    mPixelWidth  = surface->w;
+    mPixelHeight = surface->h;
+    mOpenglWidth   = (mPixelWidth  / (float)HAMURGL->GetScreenWidth()) * 0.8f; // 0.8 is magic number for perfect ratio
+    mOpenglHeight  = (mPixelHeight / (float)HAMURGL->GetScreenWidth()) * 0.8f; 
 
     // Generate texture with LINEAR filtering
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// MAG filter
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);// MIN filter
-    glTexImage2D(GL_TEXTURE_2D, 0, 4, mTextureWidth, mTextureHeight, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, mPixelWidth, mPixelHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
 
     // Generate texture with MIPMAP
     //glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);				   // MAG filter
     //glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST); // MIN filter
-    //gluBuild2DMipmaps(GL_TEXTURE_2D, 4, textureWidth, textureHeight, mode, GL_UNSIGNED_BYTE, loadedImage->pixels);
-}
-
-
-// GETTERS & SETTERS 
-int HamurTexture::GetGLtextureID() const	    { return mTextureID[0];	}
-int HamurTexture::GetWidth() const              { return mTextureWidth;  }
-int HamurTexture::GetHeight() const             { return mTextureHeight; }
-float HamurTexture::GetScaledWidth() const      { return mScaledWidth;	}
-float HamurTexture::GetScaledHeight() const     { return mScaledHeight;	}
-string HamurTexture::GetFilePath() const        { return mFilePath;	}
-float HamurTexture::GetCorX() const { return mCorX; }
-float HamurTexture::GetCorY() const { return mCorY; }
-float HamurTexture::GetCorZ() const { return mCorZ; }
-
-void HamurTexture::SetCorX(float x) { mCorX = x; }
-void HamurTexture::SetCorY(float y) { mCorY = y; }
-void HamurTexture::setCorZ(float z) { mCorZ = z; }
-void HamurTexture::SetScaledWidth(float sw)  { mScaledWidth  = sw; }
-void HamurTexture::SetScaledHeight(float sh) { mScaledHeight = sh; }
-void HamurTexture::SetAllCoord(float x, float y, float z)
-{
-	mCorX = x;
-	mCorY = y;
-	mCorZ = z;
+    //gluBuild2DMipmaps(GL_TEXTURE_2D, 4, textureWidth, textureHeight, GL_RGBA, GL_UNSIGNED_BYTE, loadedImage->pixels);
 }
 
 

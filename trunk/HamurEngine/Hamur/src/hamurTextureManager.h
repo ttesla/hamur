@@ -40,8 +40,10 @@ class HamurTextureManager : public Singleton<HamurTextureManager>
         unsigned int AddTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue); //Add texture from image file with colorkey
 	    unsigned int AddTexture(SDL_Surface* newSurface, const string &strName); //Add texture from SDL surface
         unsigned int AddTexture(SDL_Surface* newSurface, const string &strName, Uint8 red, Uint8 green, Uint8 blue); //Add texture from SDL surface with colorkey
-	    void BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation = 0); // Blits image onto screen
-        void BlitTexture(unsigned int textureID, float x, float y, float z, float rotation = 0); // Blits image onto screen
+	    void BlitTexture(unsigned int textureID);
+        void BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation = 0);
+        void BlitTexture(unsigned int textureID, const HamurVec3& position, const HamurVec2& scale, float rotation); 
+        void BlitTexture(unsigned int textureID, float x, float y, float z, float scaleX = 1, float scaleY = 1, float rotation = 0);
 
         HamurVec3 WorldToGL(float x, float y, float z) const;
         HamurVec3 WorldToGL(const HamurVec3& vec3) const;
@@ -69,6 +71,8 @@ class HamurTextureManager : public Singleton<HamurTextureManager>
         float mAspectRatio;
         float mPixRatioX;
         float mPixRatioY;
+
+        void Blit(const HamurTexture* texture);
 };
 
 
