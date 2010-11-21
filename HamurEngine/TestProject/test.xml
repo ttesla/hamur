@@ -44,5 +44,25 @@
 		17
 		The mussels and clams will steam open. When they open, they're ready to eat.
 	</HowToPlay>
+	<FoodDivisions>
+	<Goods>
+		<Good>agg</Good>
+		<Good>apple</Good>
+		<Good>flingor</Good>
+		<Good>mork_smorgas</Good>
+		<Good>smoothie</Good>
+	</Goods>
+	<NotSoGoods>
+		<NotSoGood>nyponsoppa</NotSoGood>
+		<NotSoGood>vit_smorgas</NotSoGood>
+	</NotSoGoods>
+	<Bads>
+		<Bad>chips</Bad>
+		<Bad>glass</Bad>
+		<Bad>godis</Bad>
+		<Bad>kakor</Bad>
+		<Bad>lask</Bad>
+		<Bad>saft</Bad>
+	</Bads>
 	
 </Texts>

@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     if(HAMURENGINE->Init("Bacteria Outbreak! - 2010", 800, 600) == false)
         return 1;
 
-	HAMURENGINE->SetBackgroundColor(HamurColor::BLACK);
+	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
     //HAMURENGINE->DisableMouseCursor();
 
 	// Registering the states of the game:
@@ -43,8 +43,12 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new GameOverState());
 
 	HAMURSTATEMR->ChangeState("MenuState");
-	//HAMURSTATEMR->ChangeState("IngameState");
-	
+	/*
+	map<string, string> fs;
+	HAMURSTATEMR->ChangeState("FeedbackState");
+	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
+	*/
+
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 

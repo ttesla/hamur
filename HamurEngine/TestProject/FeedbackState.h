@@ -22,17 +22,23 @@ class FeedbackState : public HamurState
 		void Draw(float deltaTime);
 		void Exit();
 
-		void SetFeedBack(list<string> selection, float health, float shield, int toothBrushUses);
+		void SetFeedback(map<string, string> selection, float health, float shield, int toothBrushUses);
 
 	private:
 		Text *goodText;
 		Text *normalText;
 		Text *badText;
 		Text *shieldsText;
+		Text *shieldsValueText;
+		Panel *shieldsPanel;
 		Text *lifeText;
+		Text *lifeValueText;
+		Panel *lifePanel;
+
 		int goodNumber;
 		int normalNumber;
 		int badNumber;
+
 		vector<Panel *> goodPanels;
 		vector<Panel *> normalPanels;
 		vector<Panel *> badPanels;
@@ -42,7 +48,7 @@ class FeedbackState : public HamurState
 		Panel *background;
 
 		// To generate feedback info
-		list<string> foodSelection;
+		map<string, string> foodSelection;
 		float health;
 		float shield;
 		int toothBrushUses;

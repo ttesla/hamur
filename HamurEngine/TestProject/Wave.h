@@ -13,6 +13,9 @@ class Wave : public hamur::HamurObject
 {
     public:
 		static Wave *GetActiveWave() {if(mActiveWave != NULL)return mActiveWave;}
+		string GetWaveFood() {return mWaveFood;}
+		void SetWaveFood(const string s) {mWaveFood = s;}
+
 		static std::list<Wave *> *CreatedWaves() {return mCreatedWaves;}
 		static std::list<Bacteria *> *GetAllSpawnedBacterias() {return mAllSpawnedBacterias;}
 
@@ -43,6 +46,8 @@ class Wave : public hamur::HamurObject
 
 	private:
 		static Wave *mActiveWave;
+		string mWaveFood;
+
 		static std::list<Wave *> *mCreatedWaves;
 		static std::list<Bacteria *> *mAllSpawnedBacterias;
 

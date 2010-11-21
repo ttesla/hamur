@@ -18,7 +18,8 @@ class Level : public HamurObject
 		void Start();
 		void AddWave(Wave *w);
 		void StartNextWave();
-
+		
+		Wave* GetActiveWave() {return mActiveWave;}
 		inline bool IsLevelFinished() {return isLevelFinished;}
 
 	private:
