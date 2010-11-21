@@ -242,10 +242,6 @@
 					RelativePath=".\BacteriaStrayer.cpp"
 					>
 				</File>
-				<File
-					RelativePath=".\GameOverState.cpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Bullets"
@@ -304,6 +300,10 @@
 				>
 				<File
 					RelativePath=".\FeedbackState.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\GameOverState.cpp"
 					>
 				</File>
 				<File

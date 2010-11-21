@@ -80,7 +80,10 @@ void IngameState::createLevel()
 
 	//Snack waves after dinner wave
 	if(foodSelection["snack6"] != "")
-		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack6"]));
+	{
+		Wave *w = (Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack6"]);
+		l->AddWave(w);
+	}
 	if(foodSelection["snack3"] != "")
 		l->AddWave((Wave *)HAMURWORLD->GetHamurObject(foodSelection["snack3"]));
 
@@ -118,6 +121,16 @@ void IngameState::startGUI()
 	HamurVec3 c;
 
 	c.x = 50; c.y = 50; //c.z = +10.0;
+	
+	HamurString s;
+
+	/* EDU: needs to be checked if Level's active wave works properly 
+	//Level *l = (Level*)HAMURWORLD->GetHamurObject(activeLevel);
+	//Wave *wave = l->GetActiveWave(); 
+	Wave *wave = Wave::GetActiveWave();
+	cout << "---" << wave->GetName() << endl;
+	*/
+
 	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
 	c.x = 20; c.y = 300; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 300, HamurColor::GREEN);
@@ -142,6 +155,8 @@ void IngameState::Update(float deltaTime)
 	//{
 	//	HAMURSTATEMR->ChangeState("GameOverState");		
 	//}
+	//cout << "WAVE: " << Wave::GetActiveWave()->GetName() << endl;
+
 	if (waterButton->isPushed())
 	{
 		base->UseWater();
