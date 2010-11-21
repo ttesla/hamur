@@ -13,9 +13,17 @@
 
 /*
 
+November 2010
+----------------
+- Event and game state manager added
+- Math helper functions added
+- A game is developed with Hamur by random students
+  for their school project
+
+
 June 2010
 ----------------
-- 
+- Box2D entegration started
 
 
 October 2009 - (Rise Of Hamur)
