@@ -403,6 +403,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\helper\hamurRect.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\helper\hamurString.cpp"
 					>
 				</File>

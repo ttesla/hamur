@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "SDL_image.h"
+#include "helper/hamurVec2.h"
 
 #include <string>
 
@@ -13,6 +14,9 @@ using std::string;
 namespace hamur
 {
 
+/**
+* Hamur Texture
+*/
 class HamurTexture
 {
 	public:
@@ -25,32 +29,38 @@ class HamurTexture
 
 		// SETTERS & GETTERS
 		int GetGLtextureID() const;
-        int GetWidth() const;
-        int GetHeight() const;
-		float GetScaledWidth() const;
-		float GetScaledHeight() const;
+        int GetPixelWidth() const;
+        int GetPixelHeight() const;
+		float GetOpenglWidth() const;
+		float GetOpenglHeight() const;
+        HamurVec2 GetScale() const;
+        float GetRotation() const;
 		float GetVolume() const;
-        float GetCorX() const;
-        float GetCorY() const;
-        float GetCorZ() const;
+        float GetX() const;
+        float GetY() const;
+        float GetZ() const;
         string GetTextName() const;
         string GetFilePath() const;
 
-		void SetCorX(float x);
-		void SetCorY(float y);
-		void setCorZ(float z);
+		void SetX(float x);
+		void SetY(float y);
+		void SetZ(float z);
 		void SetAllCoord(float x, float y, float z);
-		void SetScaledWidth(float sw);
-		void SetScaledHeight(float sh);
-		
+		void SetOpenglWidth(float sw);
+		void SetOpenglHeight(float sh);
+        void SetScale(const HamurVec2&  scale);
+        void SetRotation(float rotation);
+   
 
 	private:
 
 		GLuint mTextureID[1]; /// Storage for one texture
-		int mTextureWidth;    /// Width of the texture
-		int mTextureHeight;   /// Height of the texture
-		float mScaledWidth;   /// Scaled width of the texture
-		float mScaledHeight;  /// Scaled height of the texture
+		int mPixelWidth;      /// Actual Width of the texture in pixels
+		int mPixelHeight;     /// Actual Height of the texture in pixels
+		float mOpenglWidth;   /// Width of the texture scaled to OpenGL coordinates
+		float mOpenglHeight;  /// Height of the texture scaled to OpenGL coordinates
+        HamurVec2 mScale;     /// Scale factor of texture
+        float mRotation;      /// Rotation amount of the texture (0-360) degree
 		string mFilePath;  /// File path name of the texture
 		float mCorX; /// X coordinate of the texture
 		float mCorY; /// Y coordinate of the texture
@@ -75,8 +85,38 @@ class HamurTexture
 
 		bool LoadTextureFromFile(); /// Loads texture from image file
 		bool LoadTextureFromSurface(SDL_Surface* newSurface); /// Loads texture from SDL surface
-        void GenerateTexture(const SDL_Surface* surface, int mode);
+        void GenerateTexture(const SDL_Surface* surface);
 };
+
+
+// GETTERS & SETTERS 
+inline int HamurTexture::GetGLtextureID() const	   { return mTextureID[0];	}
+inline int HamurTexture::GetPixelWidth() const     { return mPixelWidth;  }
+inline int HamurTexture::GetPixelHeight() const    { return mPixelHeight; }
+inline float HamurTexture::GetOpenglWidth() const  { return mOpenglWidth;  }
+inline float HamurTexture::GetOpenglHeight() const { return mOpenglHeight; }
+inline HamurVec2 HamurTexture::GetScale() const     { return mScale; }
+inline float HamurTexture::GetRotation() const { return mRotation;	}
+inline string HamurTexture::GetFilePath() const    { return mFilePath;	}
+inline float HamurTexture::GetX() const { return mCorX; }
+inline float HamurTexture::GetY() const { return mCorY; }
+inline float HamurTexture::GetZ() const { return mCorZ; }
+
+inline void HamurTexture::SetX(float x) { mCorX = x; }
+inline void HamurTexture::SetY(float y) { mCorY = y; }
+inline void HamurTexture::SetZ(float z) { mCorZ = z; }
+inline void HamurTexture::SetOpenglWidth(float sw)  { mOpenglWidth  = sw; }
+inline void HamurTexture::SetOpenglHeight(float sh) { mOpenglHeight = sh; }
+inline void HamurTexture::SetScale(const HamurVec2& scale) { mScale = scale; }
+inline void HamurTexture::SetRotation(float rotation) { mRotation = rotation;}
+
+inline void HamurTexture::SetAllCoord(float x, float y, float z)
+{
+    mCorX = x;
+    mCorY = y;
+    mCorZ = z;
+}
+
 
 } // namespace hamur
 

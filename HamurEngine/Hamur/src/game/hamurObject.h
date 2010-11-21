@@ -4,6 +4,7 @@
 #include "../helper/hamurVec3.h"
 #include "../helper/hamurVec2.h"
 #include "../helper/hamurColor.h"
+#include "../helper/hamurRect.h"
 //#include "hamurPhysics.h"
 
 #include <string>
@@ -158,6 +159,27 @@ class HamurObject
         */
         void SetHeight(float height);
 
+        /**
+        * Scale sprite
+        * ex: (0.5, 0.5) will scale down the sprite into half size
+        * @param scale Scaling factor of sprite
+        */
+        void ScaleSprite(const HamurVec2& scale);
+
+        /**
+        * Scale sprite
+        * ex: (0.5, 0.5) will scale down the sprite into half size
+        * @param scaleX Scaling factor of sprite in X direction
+        * @param scaleY Scaling factor of sprite in Y direction
+        */
+        void ScaleSprite(float scaleX, float scaleY);
+
+        /**
+        * Scale sprite uniformly, equal amounts from each direction
+        * ex: (0.5) will scale down the sprite into half size
+        */
+        void ScaleSpriteUniform(float scale);
+
     protected:
         
         virtual ~HamurObject();
@@ -170,6 +192,8 @@ class HamurObject
         unsigned int mSpriteID; /**< Sprite ID of the game object. */
         float mWidth;   /**< Width of the game object. */
         float mHeight;  /**< Height of the game object. */
+        HamurVec2 mScale; /**< Scaling factor of object texture, 1 by default */
+        
 
         // HamurObject Physic Component
         //HamurPhysics* mPhysicComponent;

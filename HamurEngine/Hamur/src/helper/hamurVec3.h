@@ -37,8 +37,11 @@ public:
 	/** Returns the squared length of the vector. */
 	float SquaredLength () const { return (x*x + y*y + z*z); }
 
-    /** Sets the vector elements to zero*/
-    void SetZero() { x = 0.0f; y = 0.0f; z = 0.0f;}
+	/** Set all vector elements to zero. */
+	void SetZero() { x = 0.0f; y = 0.0f; }
+
+    /** Set all vector elements with the same value*/
+    void SetAll(float xy) { x = xy; y = xy; z = xy;}
 
 	/** Set this vector to some specified coordinates */
 	void Set(float xc, float yc, float zc) { x = xc; y = yc; z = zc; }

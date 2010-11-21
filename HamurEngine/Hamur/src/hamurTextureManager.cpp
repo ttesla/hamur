@@ -5,6 +5,7 @@
 #include "helper/hamurLog.h"
 #include "helper/hamurConsole.h"
 #include "helper/hamurHash.h"
+#include "helper/hamurMath.h"
 #include "hamurDefinitions.h"
 
 
@@ -47,7 +48,7 @@ HamurTexture* HamurTextureManager::GetTexture(unsigned int textureID) const
 		return iter->second;
 
 	else
-		return 0; // Return NULL, texture not found.
+		return NULL; // Texture not found.
 }
 
 
@@ -156,8 +157,45 @@ bool HamurTextureManager::DeleteTexture(unsigned int textureID)
 }
 
 
-// Blits image onto screen
+// Assuming that all the properties of the texture was set before Blitting 
+void HamurTextureManager::BlitTexture(unsigned int textureID)
+{
+    HamurTexture *texture = GetTexture(textureID);
+
+    if(texture == 0)
+    {
+        HAMURLOG->WriteLog("Error!: Can't find texture, ID: ", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln(textureID, HamurLog::ALWAYS);
+        exit(1);
+    }
+
+    Blit(texture);
+}
+
+
+// Blits with position and rotation (if any)
 void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation)
+{
+    HamurTexture *texture = GetTexture(textureID);
+
+    if(texture == 0)
+    {
+        HAMURLOG->WriteLog("Error!: Can't find texture, ID: ", HamurLog::ALWAYS);
+        HAMURLOG->WriteLogln(textureID, HamurLog::ALWAYS);
+        exit(1);
+    }
+
+    // World to openGL coordinates - Update position - Scale 
+    HamurVec3 openglPos = WorldToGL(position);
+    texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z); 
+    texture->SetRotation(rotation);
+
+    Blit(texture);    
+}
+
+
+// Blits image onto screen
+void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, const HamurVec2& scale, float rotation)
 {
 	HamurTexture *texture = GetTexture(textureID);
 
@@ -168,69 +206,64 @@ void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& p
 		exit(1);
 	}
 
-    // Translate coordinates from World to openGL coordinates.
+    // World to openGL coordinates - Update position - Scale 
     HamurVec3 openglPos = WorldToGL(position);
-
-	texture->SetAllCoord(openglPos.x, openglPos.x, openglPos.x); // Update texture coordinates
-	glBindTexture(GL_TEXTURE_2D, texture->GetGLtextureID()); // Bind texture
-
-    // Save current matrix. 
-    // Perform translation to texture's middle and rotate from middle around Z axis.
-    // Translate back and blit the texture.
-    // Restore matrix.
-    glPushMatrix();
+	texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z);
+    texture->SetScale(scale);
+    texture->SetRotation(rotation);
     
-    glTranslatef(openglPos.x, openglPos.y, openglPos.z);
-    //glTranslatef(openglPos.x + texture->GetScaledWidth()/2, 
-    //    openglPos.y - texture->GetScaledHeight()/2, openglPos.z);
-    glRotatef(rotation, 0, 0, 1.0f); 
-    //glTranslatef(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
-
-    glBegin(GL_QUADS);
-        glTexCoord2f(0.0f, 0.0f); glVertex3f(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
-        glTexCoord2f(1.0f, 0.0f); glVertex3f(texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
-        glTexCoord2f(1.0f, 1.0f); glVertex3f(texture->GetScaledWidth()/2, -texture->GetScaledHeight()/2, 0);
-        glTexCoord2f(0.0f, 1.0f); glVertex3f(-texture->GetScaledWidth()/2, -texture->GetScaledHeight()/2, 0); 
-    glEnd();
-
-    glPopMatrix();
+    Blit(texture);
 }
 
 
 // Blits image onto screen
-void HamurTextureManager::BlitTexture(unsigned int textureID, float x, float y, float z, float rotation)
+void HamurTextureManager::BlitTexture(unsigned int textureID, float x, float y, float z, float scaleX, float scaleY, float rotation)
 {
     HamurTexture *texture = GetTexture(textureID);
 
-    if(texture == 0)
+    if(texture == NULL)
     {
         HAMURLOG->WriteLog("Error!: Can't find texture: ", HamurLog::ALWAYS);
         HAMURLOG->WriteLogln(textureID, HamurLog::ALWAYS);
         exit(1);
     }
 
-    // Translate coordinates from World to openGL coordinates.
+    // World to openGL coordinates - Update position - Scale 
     HamurVec3 openglPos = WorldToGL(x, y, z);
+    texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z); 
+    texture->SetScale(HamurVec2(scaleX, scaleY));
+    texture->SetRotation(rotation);
 
-    texture->SetAllCoord(openglPos.x, openglPos.x, openglPos.x); // Update texture coordinates
-    glBindTexture(GL_TEXTURE_2D, texture->GetGLtextureID()); // Bind texture
+    Blit(texture);
+}
 
-    // Save current matrix. 
-    // Perform translation to texture's middle and rotate from middle around Z axis.
-    // Translate back and blit the texture.
-    // Restore matrix.
+
+// Actual Blit is done here
+void HamurTextureManager::Blit(const HamurTexture* texture)
+{
+    // This function does:
+    // - Calculate scaling (also middle)
+    // - Bind texture
+    // - Save current matrix 
+    // - Translate and Rotate
+    // - Blit texture from middle
+    // - Restore matrix
+
+    float scaledWidth  = (texture->GetOpenglWidth()  * texture->GetScale().x) / 2;
+    float scaledHeight = (texture->GetOpenglHeight() * texture->GetScale().y) / 2;
+
+    glBindTexture(GL_TEXTURE_2D, texture->GetGLtextureID()); 
+  
     glPushMatrix();
 
-    glTranslatef(openglPos.x + texture->GetScaledWidth()/2, 
-        openglPos.y - texture->GetScaledHeight()/2, openglPos.z);
-    glRotatef(rotation, 0, 0, 1.0f); // Rotate around Z axis
-    glTranslatef(-texture->GetScaledWidth()/2, texture->GetScaledHeight()/2, 0);
+    glTranslatef(texture->GetX(), texture->GetY(), texture->GetZ());
+    glRotatef(texture->GetRotation(), 0, 0, 1.0f); 
 
     glBegin(GL_QUADS);
-        glTexCoord2f(0.0f, 0.0f); glVertex3f(0, 0, 0);
-        glTexCoord2f(1.0f, 0.0f); glVertex3f(texture->GetScaledWidth(), 0, 0);
-        glTexCoord2f(1.0f, 1.0f); glVertex3f(texture->GetScaledWidth(), -texture->GetScaledHeight(), 0);
-        glTexCoord2f(0.0f, 1.0f); glVertex3f(0, -texture->GetScaledHeight(), 0); 
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-scaledWidth,  scaledHeight, 0);
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(scaledWidth,   scaledHeight, 0);
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(scaledWidth,  -scaledHeight, 0);
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-scaledWidth, -scaledHeight, 0); 
     glEnd();
 
     glPopMatrix();

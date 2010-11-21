@@ -6,7 +6,6 @@ namespace hamur
 float HamurMath::Converter::DegreeToRadian(float degree)
 {
    return (float)((degree / 180) * PI);
-
 }
 
 float HamurMath::Converter::RadianToDegree(float radian)
