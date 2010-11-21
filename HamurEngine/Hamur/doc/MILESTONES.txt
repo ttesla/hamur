@@ -1,14 +1,14 @@
 MILESTONES:
 -----------
 
-Hamur, v0.5 : ilkcan
+Hamur, v0.9 : ilkcan
 ------------------------
 OK! - OpenGL coordinates.
 OK! - Game World, Game Object, Game State.
 - Basic camera.
-
-
-Hamur, v0.6 : ilkcan
-------------------------
 - Box2D integration.
-- Developing the mechanics up to be ready for a platform game.
+- Basic level editor.
+- Animation system
+- Font support
+- GUI system
+- Open Al support
