@@ -49,7 +49,6 @@ string TextDataReader::GetHowToPlay()
 	return text;
 }
 
-/*
 list<string> TextDataReader::GetGoodFood()
 {
 	list<string> food;
@@ -59,7 +58,7 @@ list<string> TextDataReader::GetGoodFood()
 	if (root)
 	{
 		TiXmlElement* fd = root->FirstChildElement( "FoodDivisions" );
-		if (element)
+		if (fd)
 		{
 			TiXmlElement* goods = fd->FirstChildElement("Goods");
 			if (goods)
@@ -68,15 +67,74 @@ list<string> TextDataReader::GetGoodFood()
 
 				while (good)
 				{
-						
+					cout << "Good: " << good->GetText() << endl;
+					food.push_back(good->GetText());
+					good = good->NextSiblingElement();
 				}
-	
 			}
 		}
 	}
 
+	return food;
 }
-*/
+
+list<string> TextDataReader::GetNSGFood()
+{
+	list<string> food;
+
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* fd = root->FirstChildElement( "FoodDivisions" );
+		if (fd)
+		{
+			TiXmlElement* nsgs = fd->FirstChildElement("NotSoGoods");
+			if (nsgs)
+			{
+				TiXmlElement* nsg = nsgs->FirstChildElement("NotSoGood");
+
+				while (nsg)
+				{
+					cout << "NSG: " << nsg->GetText() << endl;
+					food.push_back(nsg->GetText());
+					nsg = nsg->NextSiblingElement();
+				}
+			}
+		}
+	}
+
+	return food;
+}
+
+list<string> TextDataReader::GetBadFood()
+{
+	list<string> food;
+
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* fd = root->FirstChildElement( "FoodDivisions" );
+		if (fd)
+		{
+			TiXmlElement* bads = fd->FirstChildElement("Bads");
+			if (bads)
+			{
+				TiXmlElement* bad = bads->FirstChildElement("Bad");
+
+				while (bad)
+				{
+					cout << "Bad: " << bad->GetText() << endl;
+					food.push_back(bad->GetText());
+					bad = bad->NextSiblingElement();
+				}
+			}
+		}
+	}
+
+	return food;
+}
 
 string* TextDataReader::FormatText(string text, int lines)
 {

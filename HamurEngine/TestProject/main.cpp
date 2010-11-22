@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     if(HAMURENGINE->Init("Bacteria Outbreak! - 2010", 800, 600) == false)
         return 1;
 
-	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
+	HAMURENGINE->SetBackgroundColor(HamurColor::CYAN);
     //HAMURENGINE->DisableMouseCursor();
 
 	// Registering the states of the game:
@@ -43,9 +43,16 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new GameOverState());
 
 	HAMURSTATEMR->ChangeState("MenuState");
-	/*
+	
+	/* To test FB state 
 	map<string, string> fs;
 	HAMURSTATEMR->ChangeState("FeedbackState");
+	fs["snack1"] = "apple";
+	fs["snack2"] = "agg";
+	fs["snack3"] = "nyponsoppa";
+	fs["snack4"] = "saft";
+	fs["snack5"] = "vit_smorgas";
+	fs["snack6"] = "smoothie";
 	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
 	*/
 
