@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Wave.h"
 #include "Brush.h"
+#include "IngameState.h"
 
 using namespace std;
 
@@ -50,13 +51,15 @@ void Level::StartNextWave()
 		mActiveWave = *(mWaves.end() - 1);
 		mActiveWave->StartWave();
 		mWaves.pop_back();
+		cout << mActiveWave->GetName() + "started";
 	}
 	else if(mWaves.empty() && Wave::GetAllSpawnedBacterias()->empty())
 	{
 		isLevelFinished = true;
 		mWaves.clear();
 		SetActive(false);
-		HAMURSTATEMR->ChangeState("FeedbackState");
+		//HAMURSTATEMR->ChangeState("FeedbackState");
+		static_cast<IngameState *>(HAMURSTATEMR->GetCurrentState())->GoToFeedbackState();
 	}
 }
 

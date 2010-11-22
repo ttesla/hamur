@@ -3,7 +3,7 @@
 
 using namespace hamur;
 
-SelectionState::SelectionState() : HamurState("SelectionState")
+SelectionState::SelectionState() : HamurState("SelectionState"), mSelectedSnackCount(0)
 {
 	
 }
@@ -81,7 +81,15 @@ void SelectionState::Enter()
 	c.y = 550;
 
 	startButton = new Button("startButton", c, "Graphics/playbutton.png", 90, 90);	
-	
+
+	//Reset values;
+	foodSelection["snack1"] = "";
+	foodSelection["snack2"] = "";
+	foodSelection["snack3"] = "";
+	foodSelection["snack4"] = "";
+	foodSelection["snack5"] = "";
+	foodSelection["snack6"] = "";
+
 }
 
 void SelectionState::Update(float deltaTime)
@@ -103,10 +111,10 @@ void SelectionState::Update(float deltaTime)
 	vector<Button *>::iterator Iter;
 	for (Iter = snackButtons.begin(); Iter != snackButtons.end(); Iter++)
 	{
-		if ((*Iter)->isPushed())
+		if ((*Iter)->isPushed() && mSelectedSnackCount < 6)
 		{
 			cout << (*Iter)->GetName() + " pushed!" << endl;
-			string foodKey = "snack" + HamurString::ParseInt(foodSelection.size()).GetString();
+			string foodKey = "snack" + HamurString::ParseInt(++mSelectedSnackCount).GetString();
 			string waveName = (*Iter)->GetName();
 			foodSelection[foodKey] = waveName.substr(0, waveName.find("Button"));
 		}

@@ -34,7 +34,8 @@ public:
 	void Draw(float deltaTime);
 	void Exit();
 
-	void SetFoodSelection(map<string, string> l);
+	void SetFoodSelection(const map<string, string> &l);
+	void GoToFeedbackState();
 
 private:
 	Bacteria **allocatedBacterias;
@@ -54,12 +55,12 @@ private:
 	Panel *lifePanel;
 	Panel *shieldPanel;
 	Button *waterButton;
+	Button *brushButton;
 
 	//Levels
 	Level *mondayLevel;
 	Level *thursdayLevel;
 	Level *saturdayLevel;
-	Level *activeLevelPointer;
 	string activeLevel;
 	
 	void startBase();

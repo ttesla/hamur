@@ -23,13 +23,13 @@ void ShooterBullet::Update(float deltaTime)
 			Teeth *t = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
 			if((*Iter)->GetShield() > 0)
 			{
-				cout << "Shield: " << (*Iter)->GetShield() << endl;
-				t->DecreaseShield(deltaTime * mDamage);
+				cout << "Shield: " << t->GetShield() << endl;
+				t->DecreaseShield(mDamage);
 			}
 			else
 			{
-				cout << "Life: " << (*Iter)->GetLife() << endl;
-				t->DecreaseHealth(deltaTime * mDamage);
+				cout << "Life: " << t->GetHealth() << endl;
+				t->DecreaseHealth(mDamage);
 			}
 
 			// Unactivate the bullets

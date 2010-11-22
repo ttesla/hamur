@@ -40,6 +40,8 @@ class SelectionState : public HamurState
 		Panel *background;
 
 		map<string, string> foodSelection;
+
+		int mSelectedSnackCount; //SelectedSnackCount
 };
 
 #endif 
