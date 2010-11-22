@@ -9,14 +9,14 @@ namespace hamur
 {
 
 HamurTexture::HamurTexture(const string& filePath) 
-    : mFilePath(filePath), mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f)
+    : mFilePath(filePath), mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f), mAlpha(1.0f)
 {
 	if(!LoadTextureFromFile()) exit(1);
 }
 
 
 HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8 blue) 
-    : mFilePath(filePath), mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f)
+    : mFilePath(filePath), mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f), mAlpha(1.0f)
 {
     mRedKey   = red;
     mGreenKey = green;
@@ -27,14 +27,14 @@ HamurTexture::HamurTexture(const string& filePath, Uint8 red, Uint8 green, Uint8
 
 
 HamurTexture::HamurTexture(SDL_Surface* newSurface) 
-    : mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f)
+    : mHasColorKey(false), mScale(1.0f,1.0f), mRotation(0.0f), mAlpha(1.0f)
 {
 	if(!LoadTextureFromSurface(newSurface)) exit(1);
 }
 
 
 HamurTexture::HamurTexture(SDL_Surface* newSurface, Uint8 red, Uint8 green, Uint8 blue) 
-    : mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f)
+    : mHasColorKey(true), mScale(1.0f,1.0f), mRotation(0.0f), mAlpha(1.0f)
 {
     mRedKey   = red;
     mGreenKey = green;

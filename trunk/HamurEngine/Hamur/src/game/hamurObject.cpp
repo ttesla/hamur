@@ -11,7 +11,7 @@ namespace hamur
 {
 
 HamurObject::HamurObject(const string& name) 
-    :mName(name), mVisible(true), mActive(true), mRotation(0.0f)
+    :mName(name), mVisible(true), mActive(true), mRotation(0.0f), mTransparency(1.0f)
 {
     mPos.SetZero();
     mScale.SetAll(1.0f);
@@ -21,7 +21,7 @@ HamurObject::HamurObject(const string& name)
 
 
 HamurObject::HamurObject(const string& name, const string& spritePath)
-    :mName(name), mVisible(true), mActive(true), mRotation(0.0f)
+    :mName(name), mVisible(true), mActive(true), mRotation(0.0f), mTransparency(1.0f)
 {
 	mPos.SetZero();
     mScale.SetAll(1.0f);
@@ -32,7 +32,7 @@ HamurObject::HamurObject(const string& name, const string& spritePath)
 
 
 HamurObject::HamurObject(const string& name, const string& spritePath, const HamurColorRGB& colorkey)
-    :mName(name), mVisible(true), mActive(true), mRotation(0.0f)
+    :mName(name), mVisible(true), mActive(true), mRotation(0.0f), mTransparency(1.0f)
 {
     mPos.SetZero();
     mScale.SetAll(1.0f);
@@ -49,7 +49,7 @@ HamurObject::~HamurObject()
 
 void HamurObject::Draw(float deltaTime)
 {
-    HAMURTEXMR->BlitTexture(mSpriteID, mPos, mScale, mRotation);
+    HAMURTEXMR->BlitTexture(mSpriteID, mPos, mScale, mRotation, mTransparency);
 }
 
 void HamurObject::RotateDegree(float rotationAngle)
@@ -134,6 +134,12 @@ void HamurObject::ScaleSpriteUniform(float scale)
 {
     mScale.x = scale;
     mScale.y = scale;
+}
+
+
+void HamurObject::SetTransparency(float transparency)
+{
+    mTransparency = transparency;
 }
 
 } // namespace hamur
