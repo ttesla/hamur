@@ -3,7 +3,7 @@ using namespace hamur;
 
 IngameState::IngameState() : HamurState("IngameState")
 {
-
+	toothBrushUses = 0;
 }
 
 IngameState::~IngameState()
@@ -111,6 +111,8 @@ void IngameState::createLevel()
 	l->Start();
 
 	activeLevel = l->GetName();
+	activeLevelPointer = l;
+
 	l->SetActive(true);
 }
 
@@ -174,6 +176,13 @@ void IngameState::Update(float deltaTime)
 	if(HAMUREVENT->IsKeyPressed(Keys::Escape))
 	{
 		HAMURENGINE->Stop();
+	}
+	
+	// Edu: Maybe we can save the pointer to the active level to avoid all this stuff 
+	if (activeLevelPointer->IsLevelFinished())
+	{
+		HAMURSTATEMR->ChangeState("FeedbackState");
+		static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(foodSelection, teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
 	}
 
 	// Shield and Life levels

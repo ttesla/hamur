@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "GUI.h"
 #include <list>
+#include "FeedbackState.h"
 
 using namespace hamur;
 using namespace std;
@@ -58,6 +59,7 @@ private:
 	Level *mondayLevel;
 	Level *thursdayLevel;
 	Level *saturdayLevel;
+	Level *activeLevelPointer;
 	string activeLevel;
 	
 	void startBase();
