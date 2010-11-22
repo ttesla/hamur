@@ -3,7 +3,7 @@
 
 #include "hamur.h"
 
-#include <vector>
+#include <list>
 
 using namespace hamur;
 
@@ -33,7 +33,7 @@ class Base : public HamurObject
 
 	private:
 		//std::vector<Bacteria *> enemies;
-		std::vector<Bullet *> mBullets;
+		std::list<Bullet *> mBullets;
 		WaterBullet *mWater;
 		Brush *mBrush;
 		int killedEnemyCount;

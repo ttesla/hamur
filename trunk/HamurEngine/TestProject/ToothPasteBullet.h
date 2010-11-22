@@ -5,7 +5,7 @@ class ToothPasteBullet : public Bullet
 {
 public:
 	ToothPasteBullet(const string &name, const hamur::HamurVec3 &startingPos, 
-		const hamur::HamurVec3 targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
+		const hamur::HamurVec3 &targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
 	{
 		mBulletType = BulletTypes::ToothPasteBulletType;
 

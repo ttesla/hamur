@@ -111,7 +111,6 @@ void IngameState::createLevel()
 	l->Start();
 
 	activeLevel = l->GetName();
-	activeLevelPointer = l;
 
 	l->SetActive(true);
 }
@@ -142,6 +141,8 @@ void IngameState::startGUI()
 	shieldPanel = new Panel("shieldPanel", c, "", 10, 300, HamurColor::BLUE);
 	c.x = 40; c.y = 600-40;
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
+	c.x = 150; c.y = 600-40;
+	brushButton = new Button("brushButton", c, "Graphics/brush.png", 100, 100);
 }
 
 void IngameState::Enter()
@@ -163,6 +164,10 @@ void IngameState::Update(float deltaTime)
 	{
 		base->UseWater();
 	}
+	else if(brushButton->isPushed())
+	{
+		base->UseBrush();
+	}
 	else if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
@@ -178,14 +183,7 @@ void IngameState::Update(float deltaTime)
 		HAMURENGINE->Stop();
 	}
 	
-	// Edu: Maybe we can save the pointer to the active level to avoid all this stuff 
-	if (activeLevelPointer->IsLevelFinished())
-	{
-		HAMURSTATEMR->ChangeState("FeedbackState");
-		static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(foodSelection, teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
-	}
-
-	// Shield and Life levels
+	 //Shield and Life levels
 	this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
 	this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
 }
@@ -236,8 +234,15 @@ void IngameState::Exit()
 
 }
 
-void IngameState::SetFoodSelection(map<string, string> l)
+void IngameState::SetFoodSelection(const map<string, string> &l)
 {
 	foodSelection = l;
 	createLevel();
+}
+
+void IngameState::GoToFeedbackState()
+{
+	HAMURSTATEMR->ChangeState("FeedbackState");
+	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(foodSelection,
+		teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
 }

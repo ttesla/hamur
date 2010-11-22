@@ -12,8 +12,6 @@ void WaterBullet::Update( float deltaTime )
 		if(mRemainingCooldown <= 0)
 			mIsUsable = true;
 	}
-
-
 }
 
 void WaterBullet::Draw( float deltaTime )
@@ -31,7 +29,12 @@ void WaterBullet::Explode()
 	
 		for(Iter = bacterias->begin(); Iter != bacterias->end(); Iter++)
 		{
-			(*Iter)->SetLife((*Iter)->GetLife() - 1);
+			if((*Iter)->DecreaseLife(1))
+			{
+				HAMURWORLD->DeleteObject((*Iter)->GetName());
+				bacterias->erase(Iter);
+				Iter = bacterias->begin();
+			}
 		}
 	
 	

@@ -55,7 +55,7 @@ Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 
 Base::~Base()
 {
-	std::vector<Bullet *>::iterator Iter;
+	std::list<Bullet *>::iterator Iter;
 
 	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
 		HAMURWORLD->DeleteObject((*Iter)->GetName());
@@ -87,7 +87,7 @@ void Base::Fire(const HamurVec3 &targetPos, const BulletTypes &bulletType)
 		mLastFlossingBulletFiredTime = 0;
 	}
 
-	std::vector<Bullet *>::iterator Iter;
+	std::list<Bullet *>::iterator Iter;
 
 	for(Iter = mBullets.begin(); Iter != mBullets.end(); Iter++)
 	{
