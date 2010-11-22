@@ -177,8 +177,15 @@ class HamurObject
         /**
         * Scale sprite uniformly, equal amounts from each direction
         * ex: (0.5) will scale down the sprite into half size
+        * @param scale Scaling factor of sprite in both X and Y direction
         */
         void ScaleSpriteUniform(float scale);
+
+        /**
+        * Sets transparency of the object sprite, 
+        * modifies sprite texture alpha color.
+        */
+        void SetTransparency(float transparency);
 
     protected:
         
@@ -193,6 +200,7 @@ class HamurObject
         float mWidth;   /**< Width of the game object. */
         float mHeight;  /**< Height of the game object. */
         HamurVec2 mScale; /**< Scaling factor of object texture, 1 by default */
+        float mTransparency; /**< Sprite transparency of the object */
         
 
         // HamurObject Physic Component

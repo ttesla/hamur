@@ -174,7 +174,8 @@ void HamurTextureManager::BlitTexture(unsigned int textureID)
 
 
 // Blits with position and rotation (if any)
-void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, float rotation)
+void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, 
+    float rotation, float alpha)
 {
     HamurTexture *texture = GetTexture(textureID);
 
@@ -189,13 +190,15 @@ void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& p
     HamurVec3 openglPos = WorldToGL(position);
     texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z); 
     texture->SetRotation(rotation);
+    texture->SetAlpha(alpha);
 
     Blit(texture);    
 }
 
 
 // Blits image onto screen
-void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, const HamurVec2& scale, float rotation)
+void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& position, 
+    const HamurVec2& scale, float rotation, float alpha)
 {
 	HamurTexture *texture = GetTexture(textureID);
 
@@ -211,13 +214,15 @@ void HamurTextureManager::BlitTexture(unsigned int textureID, const HamurVec3& p
 	texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z);
     texture->SetScale(scale);
     texture->SetRotation(rotation);
+    texture->SetAlpha(alpha);
     
     Blit(texture);
 }
 
 
 // Blits image onto screen
-void HamurTextureManager::BlitTexture(unsigned int textureID, float x, float y, float z, float scaleX, float scaleY, float rotation)
+void HamurTextureManager::BlitTexture(unsigned int textureID, float x, float y, float z, 
+    float scaleX, float scaleY, float rotation, float alpha)
 {
     HamurTexture *texture = GetTexture(textureID);
 
@@ -233,6 +238,7 @@ void HamurTextureManager::BlitTexture(unsigned int textureID, float x, float y, 
     texture->SetAllCoord(openglPos.x, openglPos.y, openglPos.z); 
     texture->SetScale(HamurVec2(scaleX, scaleY));
     texture->SetRotation(rotation);
+    texture->SetAlpha(alpha);
 
     Blit(texture);
 }
@@ -246,7 +252,9 @@ void HamurTextureManager::Blit(const HamurTexture* texture)
     // - Bind texture
     // - Save current matrix 
     // - Translate and Rotate
+    // - Set transparency color - alpha
     // - Blit texture from middle
+    // - Restore color
     // - Restore matrix
 
     float scaledWidth  = (texture->GetOpenglWidth()  * texture->GetScale().x) / 2;
@@ -259,12 +267,16 @@ void HamurTextureManager::Blit(const HamurTexture* texture)
     glTranslatef(texture->GetX(), texture->GetY(), texture->GetZ());
     glRotatef(texture->GetRotation(), 0, 0, 1.0f); 
 
+    glColor4f(1.0f, 1.0f, 1.0f, texture->GetAlpha());
+
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f); glVertex3f(-scaledWidth,  scaledHeight, 0);
     glTexCoord2f(1.0f, 0.0f); glVertex3f(scaledWidth,   scaledHeight, 0);
     glTexCoord2f(1.0f, 1.0f); glVertex3f(scaledWidth,  -scaledHeight, 0);
     glTexCoord2f(0.0f, 1.0f); glVertex3f(-scaledWidth, -scaledHeight, 0); 
     glEnd();
+
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
     glPopMatrix();
 }

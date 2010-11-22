@@ -41,6 +41,7 @@ class HamurTexture
         float GetZ() const;
         string GetTextName() const;
         string GetFilePath() const;
+        float GetAlpha() const;
 
 		void SetX(float x);
 		void SetY(float y);
@@ -50,6 +51,7 @@ class HamurTexture
 		void SetOpenglHeight(float sh);
         void SetScale(const HamurVec2&  scale);
         void SetRotation(float rotation);
+        void SetAlpha(float alpha);
    
 
 	private:
@@ -69,6 +71,7 @@ class HamurTexture
         Uint8 mRedKey;   /// Colorkey for RED
         Uint8 mGreenKey; /// Colorkey for GREEN
         Uint8 mBlueKey;  /// Colorkey for BLUE
+        float mAlpha; /// Alpha color of the texture for transparency (1: opaque, 0: transparent)
 
         // SDL color masks according to endianness (byte order) of the machine 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -101,6 +104,7 @@ inline string HamurTexture::GetFilePath() const    { return mFilePath;	}
 inline float HamurTexture::GetX() const { return mCorX; }
 inline float HamurTexture::GetY() const { return mCorY; }
 inline float HamurTexture::GetZ() const { return mCorZ; }
+inline float HamurTexture::GetAlpha() const { return mAlpha; }
 
 inline void HamurTexture::SetX(float x) { mCorX = x; }
 inline void HamurTexture::SetY(float y) { mCorY = y; }
@@ -109,6 +113,7 @@ inline void HamurTexture::SetOpenglWidth(float sw)  { mOpenglWidth  = sw; }
 inline void HamurTexture::SetOpenglHeight(float sh) { mOpenglHeight = sh; }
 inline void HamurTexture::SetScale(const HamurVec2& scale) { mScale = scale; }
 inline void HamurTexture::SetRotation(float rotation) { mRotation = rotation;}
+inline void HamurTexture::SetAlpha(float alpha) { mAlpha = alpha; }
 
 inline void HamurTexture::SetAllCoord(float x, float y, float z)
 {
