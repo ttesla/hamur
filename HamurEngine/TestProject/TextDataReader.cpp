@@ -49,6 +49,35 @@ string TextDataReader::GetHowToPlay()
 	return text;
 }
 
+/*
+list<string> TextDataReader::GetGoodFood()
+{
+	list<string> food;
+
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* fd = root->FirstChildElement( "FoodDivisions" );
+		if (element)
+		{
+			TiXmlElement* goods = fd->FirstChildElement("Goods");
+			if (goods)
+			{
+				TiXmlElement* good = goods->FirstChildElement("Good");
+
+				while (good)
+				{
+						
+				}
+	
+			}
+		}
+	}
+
+}
+*/
+
 string* TextDataReader::FormatText(string text, int lines)
 {
 	bool end = false;

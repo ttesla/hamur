@@ -33,7 +33,7 @@ void FeedbackState::Enter()
 	c.y += 150;
 
 	okButton = new Button("okfbButton", c, "Graphics/testButton.png", 200, 200);
-	c.y = 200; c.x = 600;
+	c.y = 150; c.x = 600;
 	characterPanel = new Panel("characterfbPanel", c, "Graphics/testChar.png", 10, 10); 
 }
 
@@ -102,9 +102,10 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 	lifePanel->SetWidth(h*3);
 	shieldsPanel->SetWidth(s*3);
 
-	// The panels
+	// The panels //
+	// Good
 
-
+	
 }
 
 string FeedbackState::chooseFeedback()
