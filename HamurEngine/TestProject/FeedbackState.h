@@ -35,10 +35,6 @@ class FeedbackState : public HamurState
 		Text *lifeValueText;
 		Panel *lifePanel;
 
-		int goodNumber;
-		int normalNumber;
-		int badNumber;
-
 		vector<Panel *> goodPanels;
 		vector<Panel *> normalPanels;
 		vector<Panel *> badPanels;
