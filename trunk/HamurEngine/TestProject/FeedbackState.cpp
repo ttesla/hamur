@@ -4,8 +4,6 @@ using namespace hamur;
 
 FeedbackState::FeedbackState() : HamurState("FeedbackState")
 {
-	// Get the values from the game
-	goodNumber = badNumber = normalNumber = 3;
 }
 
 FeedbackState::~FeedbackState()
