@@ -123,16 +123,10 @@ void IngameState::startGUI()
 
 	c.x = 50; c.y = 50; //c.z = +10.0;
 	
-	HamurString s;
 
-	/* EDU: needs to be checked if Level's active wave works properly 
-	//Level *l = (Level*)HAMURWORLD->GetHamurObject(activeLevel);
-	//Wave *wave = l->GetActiveWave(); 
-	Wave *wave = Wave::GetActiveWave();
-	cout << "---" << wave->GetName() << endl;
-	*/
-
-	currentFoodPanel = new Panel("currentFoodPanel", c, "Graphics/testfood.png", 120, 120);
+	/* EDU: needs to be checked if Level's active wave works properly */
+	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
+	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	c.x = 20; c.y = 300; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 300, HamurColor::GREEN);
 	c.x += 10;
@@ -149,7 +143,6 @@ void IngameState::Enter()
 {
 	startBase();
 	startTeeth();
-	startGUI();
 }
 
 void IngameState::Update(float deltaTime)
@@ -238,6 +231,7 @@ void IngameState::SetFoodSelection(const map<string, string> &l)
 {
 	foodSelection = l;
 	createLevel();
+	startGUI();
 }
 
 void IngameState::GoToFeedbackState()

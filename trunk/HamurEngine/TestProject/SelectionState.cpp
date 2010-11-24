@@ -43,29 +43,29 @@ void SelectionState::Enter()
 	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
 
 	c.x = 100; c.y = 230; c.z = +10.0;
-	breakfastPanel = new Panel("breakfastPanel", c, "Graphics/Food/flingor.png", 64, 64);
+	breakfastPanel = new Panel("breakfastPanel", c, "Graphics/Food/Flingor.png", 64, 64);
 	c.x = 375;
-	lunchPanel = new Panel("lunchPanel", c, "Graphics/Food/vit_smorgas.png", 64, 64);
+	lunchPanel = new Panel("lunchPanel", c, "Graphics/Food/Vit_smorgas.png", 64, 64);
 	c.x = 650;
-	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/nyponsoppa.png", 64, 64);
+	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/Nyponsoppa.png", 64, 64);
 	c.x = 100; c.y = 420;
-	snackButtons.push_back(new Button("EggButton", c, "Graphics/Food/agg.png", 64, 64));
+	snackButtons.push_back(new Button("EggButton", c, "Graphics/Food/Agg.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("AppleButton", c, "Graphics/Food/apple.png", 64, 64));
+	snackButtons.push_back(new Button("AppleButton", c, "Graphics/Food/Apple.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("ChipsButton", c, "Graphics/Food/chips.png", 64, 64));
+	snackButtons.push_back(new Button("ChipsButton", c, "Graphics/Food/Chips.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("GlassButton", c, "Graphics/Food/glass.png", 64, 64));
+	snackButtons.push_back(new Button("GlassButton", c, "Graphics/Food/Glass.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("GodisButton", c, "Graphics/Food/godis.png", 64, 64));
+	snackButtons.push_back(new Button("GodisButton", c, "Graphics/Food/Godis.png", 64, 64));
 	c.x += 70;
-	snackButtons.push_back(new Button("KakorButton", c, "Graphics/Food/kakor.png", 64, 64));
+	snackButtons.push_back(new Button("KakorButton", c, "Graphics/Food/Kakor.png", 64, 64));
 	c.x += 70;
-	snackButtons.push_back(new Button("LaskButton", c, "Graphics/Food/lask.png", 64, 64));
+	snackButtons.push_back(new Button("LaskButton", c, "Graphics/Food/Lask.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("Mork_smorgasButton", c, "Graphics/Food/mork_smorgas.png", 64, 64));
+	snackButtons.push_back(new Button("Mork_smorgasButton", c, "Graphics/Food/Mork_smorgas.png", 64, 64));
 	c.x += 70; 
-	snackButtons.push_back(new Button("SmoothieButton", c, "Graphics/Food/yoghurt.png", 64, 64));
+	snackButtons.push_back(new Button("SmoothieButton", c, "Graphics/Food/Yoghurt.png", 64, 64));
 	
 	/*
 	HamurString str;
@@ -114,6 +114,7 @@ void SelectionState::Update(float deltaTime)
 		if ((*Iter)->isPushed() && mSelectedSnackCount < 6)
 		{
 			cout << (*Iter)->GetName() + " pushed!" << endl;
+			(*Iter)->SetSprite("Graphics/Food/foodselected.png");
 			string foodKey = "snack" + HamurString::ParseInt(++mSelectedSnackCount).GetString();
 			string waveName = (*Iter)->GetName();
 			foodSelection[foodKey] = waveName.substr(0, waveName.find("Button"));
