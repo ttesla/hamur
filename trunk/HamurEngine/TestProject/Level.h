@@ -23,7 +23,7 @@ class Level : public HamurObject
 		inline bool IsLevelFinished() {return isLevelFinished;}
 
 	private:
-		inline void resetTimeBetweenWaves() {mTimeBetweenWaves = 10;}
+		inline void resetTimeBetweenWaves() {mTimeBetweenWaves = 3;}
 
 		void activateBrush(const bool &isActive);
 

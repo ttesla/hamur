@@ -37,7 +37,8 @@ void FeedbackState::Enter()
 
 void FeedbackState::Update(float deltaTime)
 {
-
+	if(okButton->isPushed())
+		HAMURSTATEMR->ChangeState("SelectionState");
 }
 
 void FeedbackState::Draw(float deltaTime)

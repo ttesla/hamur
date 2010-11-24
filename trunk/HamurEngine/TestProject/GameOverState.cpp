@@ -22,7 +22,7 @@ void GameOverState::Enter()
 
 	// Background
 	c.x = w/2; c.y = h/2;
-	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
+	//HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
 	//background = new Panel ("backgroundSelection", c, "Graphics/testbg2.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
 
 	gameOverText = new Text("gameOverText", "GAME OVER", font, 40, c, HamurColorRGB::BLACK, BOLD);

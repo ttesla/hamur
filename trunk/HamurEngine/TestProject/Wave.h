@@ -67,6 +67,8 @@ class Wave : public hamur::HamurObject
 
 		//Spawning interval between every bacteria. It' s been found by deviding the total wave time, which is 30, by bacteria amount
 		float mSpawningInterval;
+
+		float mTotalTimeOfWave;
 		bool mIsWaveFinished;
 };
 

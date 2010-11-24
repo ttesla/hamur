@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include "hamurTexture.h"
 
 using namespace hamur;
 
@@ -43,5 +44,16 @@ void Animation::PlayAnimation( const bool &isLooped )
 
 void Animation::Draw(const HamurVec3 &position, const float &rotation)
 {
-	HamurTextureManager::GetInstance()->BlitTexture((int)mTextureIDs[mActiveFrame] , position, rotation );
+	if(mIsAnimationPlaying)
+		HamurTextureManager::GetInstance()->BlitTexture(mTextureIDs[(int)mActiveFrame] , position, rotation );
+}
+
+void Animation::Draw( const hamur::HamurVec3 &position, const float &sizeX, const float &sizeY, const float &rotation )
+{
+	if (mIsAnimationPlaying)
+	{
+		HamurTexture *texture = HamurTextureManager::GetInstance()->GetTexture(mTextureIDs[(int)mActiveFrame]);
+		texture->SetScale(2 * HamurVec2(sizeX / texture->GetPixelWidth(), sizeY / texture->GetPixelHeight()));
+		Draw(position, rotation);
+	}
 }

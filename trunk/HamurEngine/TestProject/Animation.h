@@ -12,6 +12,7 @@ public:
 
 	void Update(float deltaTime);
 	void Draw(const hamur::HamurVec3 &position, const float &rotation);
+	void Draw(const hamur::HamurVec3 &position, const float &sizeX, const float &sizeY, const float &rotation);
 
 	void PlayAnimation(const bool &isLooped);
 	

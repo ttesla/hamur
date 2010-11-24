@@ -1,14 +1,12 @@
 #include "Bullet.h"
 
+class Animation;
+
 //Glass of water type bullet:D
 class WaterBullet : public Bullet
 {
 public:
-	WaterBullet(const string &name, const float &cooldown) : 
-	  Bullet(name, hamur::HamurVec3(0, 0, 0), hamur::HamurVec3(0, 0, 0), 0), mCooldownTime(cooldown)
-	  {
-		  mBulletType = BulletTypes::WaterBulletType;
-	  }
+	WaterBullet(const string &name, const float &cooldown); 
 
 	void Update(float deltaTime);
 	void Draw(float deltaTime);
@@ -18,6 +16,7 @@ public:
 	inline float GetRemainingCooldownTime() {return mRemainingCooldown;}
 protected:
 private:
+	Animation *mAnimation;
 	float mCooldownTime;
 	float mRemainingCooldown;
 	bool mIsUsable;

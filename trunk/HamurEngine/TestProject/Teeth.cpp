@@ -20,3 +20,14 @@ void Teeth::Update(float deltaTime)
 	}
 	*/
 }
+
+void Teeth::HitDamage( const float &value )
+{
+	mShield -= value;
+
+	if(mShield < 0)
+	{
+		mLife += mShield;
+		mShield = 0;
+	}
+}

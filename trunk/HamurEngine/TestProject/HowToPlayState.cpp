@@ -24,7 +24,7 @@ void HowToPlayState::Enter()
 
 	// Background
 	c.x = w/2; c.y = h/2;
-	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
+	//HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
 	//background = new Panel ("backgroundHTP", c, "Graphics/testbg2.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
 	c.y = 50;
 	// Title
