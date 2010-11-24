@@ -11,9 +11,9 @@ using namespace std;
 class ShooterBullet : public Bullet
 {
 	public:
-		ShooterBullet(const string &name, const HamurVec3 &startingPos, const HamurVec3 targetPos, const float &speed);
+		ShooterBullet(const string &name, const string &sprite, const HamurVec3 &startingPos, const HamurVec3 targetPos, const float &speed);
 		void Update(float deltaTime);
-		void Draw(float deltaTime);
+		//void Draw(float deltaTime);
 		void Explode();
 
 		void ResetBullet();
@@ -21,7 +21,6 @@ class ShooterBullet : public Bullet
 	protected:
 	private:
 		HamurVec3 startingPosition;
-
 };
 
 #endif

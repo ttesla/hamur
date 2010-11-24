@@ -16,7 +16,7 @@ BacteriaShooter::BacteriaShooter(const string &name, const string &sprite, const
 	for(int i = 0; i < 64; i++)
 	{
 		Bullet *b = new ShooterBullet(name + " ShooterBullet" + HamurString::ParseInt(i).GetString(), 
-			mPos, mBasePosition, 300); 
+			"Graphics/shooterbullet.png", mPos, mBasePosition, 300); 
 		b->SetActive(false);
 		b->SetVisible(false);
 
