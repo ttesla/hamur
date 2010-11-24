@@ -34,9 +34,8 @@ void Tooth::SetPosition(float x, float y)
 
 void Tooth::Draw(float deltaTime)
 {
-	HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor(mLife / 1000, mLife / 1000, mLife / 1000));
-
-	HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor(0, 0, mShield / 1000));
+	//HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor(mLife / 1000, mLife / 1000, mLife / 1000));
+	//HamurPlotter::DrawRectangle(mPos, mWidth, mHeight, HamurColor(0, 0, mShield / 1000));
 }
 
 void Tooth::Update(float deltaTime)
