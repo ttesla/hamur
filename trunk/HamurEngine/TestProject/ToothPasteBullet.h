@@ -4,8 +4,8 @@
 class ToothPasteBullet : public Bullet
 {
 public:
-	ToothPasteBullet(const string &name, const hamur::HamurVec3 &startingPos, 
-		const hamur::HamurVec3 &targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
+	ToothPasteBullet(const string &name, const string &sprite, const hamur::HamurVec3 &startingPos, 
+		const hamur::HamurVec3 &targetPos, const float &speed) : Bullet(name, sprite, startingPos, targetPos, speed), startingPosition(startingPos)
 	{
 		mBulletType = BulletTypes::ToothPasteBulletType;
 
@@ -15,7 +15,7 @@ public:
 	}
 
 	void Update(float deltaTime);
-	void Draw(float deltaTime);
+	//void Draw(float deltaTime);
 	void Explode();
 
 	void ResetBullet();

@@ -65,7 +65,7 @@ Base::Base(const string &name, const string &sprite): HamurObject(name, sprite)
 	//ToothpasteBullet
 	for(int i = 0; i < 64; i++)
 	{
-		Bullet *b = new ToothPasteBullet("ToothPasteBullet" + HamurString::ParseInt(i).GetString(), mPos, 
+		Bullet *b = new ToothPasteBullet("ToothPasteBullet" + HamurString::ParseInt(i).GetString(), "Graphics/toothpastebullet.png", mPos, 
 				HamurVec3(0, 0, 0), 300);
 
 		b->SetActive(false);

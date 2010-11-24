@@ -17,8 +17,10 @@ public:
 
 	Bullet(const string &name, const hamur::HamurVec3 &startingPos, 
 		const hamur::HamurVec3 &targetPos, const float &speed);
+	Bullet(const string &name, const string &sprite, const hamur::HamurVec3 &startingPos, 
+		const hamur::HamurVec3 &targetPos, const float &speed);
 	virtual void Update(float deltaTime);
-	virtual void Draw(float deltaTime){};
+	// virtual void Draw(float deltaTime){};
 	virtual void Explode(){};
 	virtual void ResetBullet(){};
 

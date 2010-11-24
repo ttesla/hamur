@@ -38,10 +38,12 @@ void ToothPasteBullet::Update(float deltaTime)
 	}
 }
 
+/*
 void ToothPasteBullet::Draw(float deltaTime)
 {
 	HamurPlotter::DrawSolidCircle(mPos, 3, HamurColor::YELLOW);
 }
+*/
 
 void ToothPasteBullet::Explode()
 {

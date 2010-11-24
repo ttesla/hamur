@@ -2,8 +2,8 @@
 #include "Collision.h"
 #include "Teeth.h"
 
-ShooterBullet::ShooterBullet(const string &name, const hamur::HamurVec3 &startingPos, 
-		const hamur::HamurVec3 targetPos, const float &speed) : Bullet(name, startingPos, targetPos, speed), startingPosition(startingPos)
+ShooterBullet::ShooterBullet(const string &name, const string &sprite, const hamur::HamurVec3 &startingPos, 
+		const hamur::HamurVec3 targetPos, const float &speed) : Bullet(name, sprite, startingPos, targetPos, speed), startingPosition(startingPos)
 {
 	mBulletType = BulletTypes::ShooterBulletType;
 	mWidth = 3;
@@ -71,10 +71,12 @@ void ShooterBullet::Update(float deltaTime)
 	}
 }
 
+/*
 void ShooterBullet::Draw(float deltaTime)
 {
 	HamurPlotter::DrawSolidCircle(mPos, 3, HamurColor::MAGENTA);
 }
+*/
 
 void ShooterBullet::Explode()
 {
