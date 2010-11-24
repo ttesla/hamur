@@ -8,7 +8,7 @@ Teeth::Teeth(const string &name, const string &sprite, float life, float shield)
 
 void Teeth::Reset()
 {
-
+	mLife = mShield = 1000.0;
 }
 
 void Teeth::Update(float deltaTime)
@@ -20,5 +20,3 @@ void Teeth::Update(float deltaTime)
 	}
 	*/
 }
-
-//void Draw(float deltaTime);

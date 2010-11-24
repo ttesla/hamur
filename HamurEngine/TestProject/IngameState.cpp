@@ -21,7 +21,7 @@ void IngameState::startTeeth()
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
 	
-	c.x = w/2; c.y = h/2, c.z = -2.0;
+	c.x = w/2; c.y = h/2; c.z = -1;
 	teeth = new Teeth("teeth", "Graphics/teeth.png", 1000, 1000);
 	teeth->SetPosition(c);
 	
@@ -168,8 +168,16 @@ void IngameState::Update(float deltaTime)
 	}
 	
 	//Shield and Life levels
-	shieldPanel->ScaleSprite(1.0, (teeth->GetShield()*0.3 / 300));
-	lifePanel->ScaleSprite(1.0, (teeth->GetHealth()*0.3 / 300));
+	float s = teeth->GetShield();
+	float l = teeth->GetHealth();
+	if (s > 0)
+		shieldPanel->ScaleSprite(1.0, (s * 0.3 / 300));
+	else
+		shieldPanel->ScaleSprite(1, 0);
+	if (l > 0)
+		lifePanel->ScaleSprite(1.0, (l * 0.3 / 300));
+	else
+		lifePanel->ScaleSprite(1, 0);
 
 	//this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
 	//this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
