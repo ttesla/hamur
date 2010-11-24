@@ -18,9 +18,10 @@ class Brush;
 class Base : public HamurObject
 {
     public:
-        Base(const string& name);
+        //Base(const string& name);
+		Base(const string &name, const string &sprite);
 		~Base();
-        virtual void Draw(float deltaTime);
+        //virtual void Draw(float deltaTime);
 		virtual void Update(float deltaTime);
 		
 		void Fire(const hamur::HamurVec3 &targetPos, const BulletTypes &bulletType);

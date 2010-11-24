@@ -11,14 +11,55 @@
 //#include <ctime> 
 #include <iostream>
 using namespace std;
-
+/*
 Base::Base(const string &name):HamurObject(name), killedEnemyCount(0)
 {
     mWidth = 20;
     mHeight = 20;
 
-	mPos.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2 - mWidth / 2; 
-	mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - mHeight / 2;
+	mPos.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2; 
+	mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2;
+	mPos.z = 0;
+
+	//ToothpasteBullet
+	for(int i = 0; i < 64; i++)
+	{
+		Bullet *b = new ToothPasteBullet("ToothPasteBullet" + HamurString::ParseInt(i).GetString(), mPos, 
+				HamurVec3(0, 0, 0), 300);
+
+		b->SetActive(false);
+		b->SetVisible(false);
+
+		mBullets.push_back(b);
+	}
+
+	//FlossingBullet
+	for(int i = 0; i < 16; i++)
+	{
+		Bullet *b = new FlossingBullet("FlossingBullet" + HamurString::ParseInt(i).GetString(), mPos, 
+				HamurVec3(0, 0, 0), 150);
+
+		b->SetVisible(false);
+		b->SetActive(false);
+
+		mBullets.push_back(b);
+	}
+
+	//WaterBullet. Because of having cooldown and can be used once per time, one instance is enough
+	mWater = new WaterBullet("WaterBullet", 5);
+	mBrush = new Brush("BrushBullet", 1);
+
+	mFlossingBulletCooldown = 3;
+	mLastFlossingBulletFiredTime = 3;
+}
+*/
+Base::Base(const string &name, const string &sprite): HamurObject(name, sprite)
+{
+	mWidth = 20;
+    mHeight = 20;
+
+	mPos.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2; 
+	mPos.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2;
 	mPos.z = 0;
 
 	//ToothpasteBullet
@@ -62,11 +103,6 @@ Base::~Base()
 
 	HAMURWORLD->DeleteObject(mWater->GetName());
 	HAMURWORLD->DeleteObject(mBrush->GetName());
-}
-
-void Base::Draw(float deltaTime)
-{
-    HamurPlotter::DrawSolidRectangle(mPos, mWidth, mHeight, HamurColor::GREY);
 }
 
 void Base::Update(float deltaTime)

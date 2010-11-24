@@ -12,13 +12,7 @@ IngameState::~IngameState()
 
 void IngameState::startBase()
 {
-	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
-	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
-	HamurVec3 c;
-	
-	c.x = w/2; c.y = h/2;
-	base = new Base("Base");
-	base->SetPosition(c);
+	base = new Base("Base", "Graphics/base.png");
 }
 
 void IngameState::startTeeth()
@@ -30,7 +24,6 @@ void IngameState::startTeeth()
 	c.x = w/2; c.y = h/2, c.z = -2.0;
 	teeth = new Teeth("teeth", "Graphics/teeth.png", 1000, 1000);
 	teeth->SetPosition(c);
-
 	
 	float xInc, yInc, xBase, yBase;
 	float a = 2*PI/MAXTEETH;
@@ -51,8 +44,7 @@ void IngameState::startTeeth()
 		//activeObjList.push_front(allocatedTeeth[i]);
 	}
 
-	Tooth::SetTeeth(&allocatedTeeth);
-	
+	Tooth::SetTeeth(&allocatedTeeth);	
 }
 
 void IngameState::createLevel()
@@ -123,16 +115,15 @@ void IngameState::startGUI()
 
 	c.x = 50; c.y = 50; //c.z = +10.0;
 	
-
-	/* EDU: needs to be checked if Level's active wave works properly */
+	string root = "Graphics/";
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	c.x = 20; c.y = 300; 
-	timeLeftPanel = new Panel("timeLeftPanel", c, "", 10, 300, HamurColor::GREEN);
+	timeLeftPanel = new Panel("timeLeftPanel", c, root + "greenbar.png", 10, 300);
 	c.x += 10;
-	lifePanel = new Panel("lifePanel", c, "", 10, 300, HamurColor::RED);	
+	lifePanel = new Panel("lifePanel", c, root + "redbar.png", 10, 300);	
 	c.x += 10;
-	shieldPanel = new Panel("shieldPanel", c, "", 10, 300, HamurColor::BLUE);
+	shieldPanel = new Panel("shieldPanel", c, root + "bluebar.png", 10, 300);
 	c.x = 40; c.y = 600-40;
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
 	c.x = 150; c.y = 600-40;
@@ -176,9 +167,12 @@ void IngameState::Update(float deltaTime)
 		HAMURENGINE->Stop();
 	}
 	
-	 //Shield and Life levels
-	this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
-	this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
+	//Shield and Life levels
+	shieldPanel->ScaleSprite(1.0, (teeth->GetShield()*0.3 / 300));
+	lifePanel->ScaleSprite(1.0, (teeth->GetHealth()*0.3 / 300));
+
+	//this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
+	//this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
 }
 
 void IngameState::Draw(float deltaTime)
