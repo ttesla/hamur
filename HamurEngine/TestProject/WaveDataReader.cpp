@@ -24,6 +24,7 @@ void WaveDataReader::CreateWavesFromData(const TiXmlDocument &doc)
 	while( waves = (TiXmlElement *)root->IterateChildren(waves) )
 	{
 		int fattieCount, normCount, shooterCount, slimCount, strayerCount;
+		fattieCount = normCount = shooterCount = slimCount = strayerCount = 0;
 
 		TiXmlElement *bacterias = 0;//(TiXmlElement *)waves->FirstChild();
 		while(bacterias = (TiXmlElement *)waves->IterateChildren(bacterias))

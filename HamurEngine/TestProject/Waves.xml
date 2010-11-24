@@ -63,7 +63,7 @@
 		<BacteriaSlim Count="5" />
 		<BacteriaStrayer Count="5" />
 	</Wave>
-	<Wave Name="youghurt">  
+	<Wave Name="Yoghurt">  
 		<BacteriaFattie Count="3" />
 		<BacteriaNorm Count="2" />
 		<BacteriaShooter Count="2" />
@@ -84,7 +84,7 @@
 		<BacteriaSlim Count="4" />
 		<BacteriaStrayer Count="0" />
 	</Wave>
-	<Wave Name="flingor"> 
+	<Wave Name="Flingor"> 
 		<BacteriaFattie Count="3" />
 		<BacteriaNorm Count="1" />
 		<BacteriaShooter Count="0" />
@@ -105,14 +105,14 @@
 		<BacteriaSlim Count="3" />
 		<BacteriaStrayer Count="3" />
 	</Wave>
-	<Wave Name="nyponsoppa">  
+	<Wave Name="Nyponsoppa">  
 		<BacteriaFattie Count="5" />
 		<BacteriaNorm Count="5" />
 		<BacteriaShooter Count="5" />
 		<BacteriaSlim Count="5" />
 		<BacteriaStrayer Count="5" />
 	</Wave>
-	<Wave Name="vit_smorgas">
+	<Wave Name="Vit_smorgas">
 		<BacteriaFattie Count="5" />
 		<BacteriaNorm Count="5" />
 		<BacteriaShooter Count="5" />
@@ -127,7 +127,7 @@
 		<BacteriaStrayer Count="5" />
 	</Wave>
 	<Wave Name="Lask"> 
-		<BacteriaFattie Count="5" />
+		<BacteriagFattie Count="5" />
 		<BacteriaNorm Count="5" />
 		<BacteriaShooter Count="5" />
 		<BacteriaSlim Count="5" />
@@ -161,7 +161,7 @@
 		<BacteriaSlim Count="5" />
 		<BacteriaStrayer Count="5" />
 	</Wave>
-	<Wave Name="saft">
+	<Wave Name="Saft">
 		<BacteriaFattie Count="5" />
 		<BacteriaNorm Count="5" />
 		<BacteriaShooter Count="5" />
