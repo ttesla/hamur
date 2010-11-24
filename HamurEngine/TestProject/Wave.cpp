@@ -23,7 +23,8 @@ Wave::Wave( const string& name, int fattieCount, int normCount, int shooterCount
 		mAllSpawnedBacterias = new list<Bacteria *>;
 
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
-	mSpawningInterval = 30 / totalBactCount;
+	mTotalTimeOfWave = 20;
+	mSpawningInterval = mTotalTimeOfWave / totalBactCount;
 
 	FillBacterias(fattieCount, normCount, shooterCount, slimCount, strayerCount);
 	
@@ -73,7 +74,7 @@ void Wave::Update( float deltaTime )
 				mBacteriaList.erase(Iter);
 				mTimeCounter = 0;
 
-				mTeeth->DecreaseShield(mSpawningInterval * 1000 / (12 * 30));
+				mTeeth->DecreaseShield(mSpawningInterval * 1000 / (12 * mTotalTimeOfWave));
 			}
 			else
 				mIsWaveFinished = true;

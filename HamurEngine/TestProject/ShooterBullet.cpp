@@ -21,16 +21,17 @@ void ShooterBullet::Update(float deltaTime)
 		if(Collision::RectsIntersectWith(this, (*Iter)))
 		{
 			Teeth *t = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
-			if((*Iter)->GetShield() > 0)
-			{
-				cout << "Shield: " << t->GetShield() << endl;
-				t->DecreaseShield(mDamage);
-			}
-			else
-			{
-				cout << "Life: " << t->GetHealth() << endl;
-				t->DecreaseHealth(mDamage);
-			}
+			//if((*Iter)->GetShield() > 0)
+			//{
+			//	cout << "Shield: " << t->GetShield() << endl;
+			//	t->DecreaseShield(mDamage);
+			//}
+			//else
+			//{
+			//	cout << "Life: " << t->GetHealth() << endl;
+			//	t->DecreaseHealth(mDamage);
+			//}
+			t->HitDamage(mDamage);
 
 			// Unactivate the bullets
 			this->SetActive(false);

@@ -48,7 +48,7 @@ Bacteria::Bacteria(const string &name, const string &sprite, const int &spriteCo
     mWidth = 20;
     mHeight = 20;
 
-	mDamage = 1;
+	mDamage = 3;
 
 	mAnimation = new Animation(sprite, spriteCount);
 	mAnimation->PlayAnimation(true);
@@ -93,16 +93,17 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 	{
 		if(Collision::RectsIntersectWith(this, (*Iter)))
 		{
-			if (mTeeth->GetShield() > 0)
-			{
-				cout << "Shield: " << mTeeth->GetShield() << endl;
-				mTeeth->DecreaseShield(deltaTime * mDamage);			
-			}
-			else
-			{
-				cout << "Life: " << mTeeth->GetHealth() << endl;
-				mTeeth->DecreaseHealth(deltaTime * mDamage);
-			}
+			//if (mTeeth->GetShield() > 0)
+			//{
+			//	cout << "Shield: " << mTeeth->GetShield() << endl;
+			//	mTeeth->DecreaseShield(deltaTime * mDamage);			
+			//}
+			//else
+			//{
+			//	cout << "Life: " << mTeeth->GetHealth() << endl;
+			//	mTeeth->DecreaseHealth(deltaTime * mDamage);
+			//}
+			mTeeth->HitDamage(deltaTime * mDamage);
 
 			/** EDU: this is not valid anymore (To be erased)
 			if((*Iter)->GetShield() > 0)

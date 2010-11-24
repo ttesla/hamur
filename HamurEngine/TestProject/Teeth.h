@@ -27,6 +27,8 @@ class Teeth : public HamurObject
 			if(mLife <= 0)
 				HAMURSTATEMR->ChangeState("GameOverState");
 		}
+		void HitDamage(const float &value);
+
 
 	private:
 		float mLife;
