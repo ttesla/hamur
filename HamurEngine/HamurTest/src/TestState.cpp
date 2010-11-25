@@ -16,7 +16,8 @@ TestState::~TestState()
 // ENTER
 void TestState::Enter() 
 {
-    HAMURWORLD->AddObject(new HamurObject("B1", "data/normal.png", HamurColorRGB::COLORKEY));
+	HAMURWORLD->AddObject(new HamurObject("a", "data/teeth.png", HamurColorRGB::BLACK));
+    HAMURWORLD->AddObject(new HamurObject("B1", "data/normal.png"));
     HAMURWORLD->AddObject(new HamurObject("B2", "data/fatty.png"));
 	HAMURWORLD->AddObject(new HamurObject("B3", "data/slim.png"));
 	HAMURWORLD->AddObject(new HamurObject("B4", "data/strayer.png"));
@@ -24,11 +25,15 @@ void TestState::Enter()
 
     HAMURWORLD->GetHamurObject("B1")->SetPosition(200, 100);
     HAMURWORLD->GetHamurObject("B1")->ScaleSpriteUniform(2);
+
 	HAMURWORLD->GetHamurObject("B2")->SetPosition(230, 100);
     HAMURWORLD->GetHamurObject("B2")->SetTransparency(0.3f);
+
 	HAMURWORLD->GetHamurObject("B3")->SetPosition(280, 100);
 	HAMURWORLD->GetHamurObject("B4")->SetPosition(300, 100);
+
 	HAMURWORLD->GetHamurObject("B5")->SetPosition(320, 100);
+	HAMURWORLD->GetHamurObject("a")->SetPosition(520, 100, -10);
     mAngle = 0;
 }
 
@@ -49,7 +54,7 @@ void TestState::Update(float deltaTime)
 	HAMURWORLD->GetHamurObject("B4")->RotateDegree(mAngle);
 	HAMURWORLD->GetHamurObject("B5")->RotateDegree(mAngle);
     HAMURWORLD->GetHamurObject("B5")->ScaleSpriteUniform(mAngle/10);
-     HAMURWORLD->GetHamurObject("B5")->SetTransparency(mAngle/100);
+    HAMURWORLD->GetHamurObject("B5")->SetTransparency(mAngle/100);
     
     HAMURCONSOLE << HAMURTIMER->DeltaTime() << "\n";
 	
