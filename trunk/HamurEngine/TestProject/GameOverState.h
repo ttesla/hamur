@@ -22,7 +22,7 @@ class GameOverState : public HamurState
 		void Exit();
 
 	private:
-		Text *gameOverText;
+		Panel *gameOverPanel;
 		Button *okButton; 
 		Panel *background;
 };

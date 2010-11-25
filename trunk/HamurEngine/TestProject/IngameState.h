@@ -36,6 +36,7 @@ public:
 
 	void SetFoodSelection(map<string, string> fs);
 	void GoToFeedbackState();
+	void GoToGameOverState();
 
 private:
 	Bacteria **allocatedBacterias;

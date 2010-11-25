@@ -22,16 +22,17 @@ void MenuState::Enter()
 	// Background
 	c.x = w/2; c.y = h/2;
 	//HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
-	//background = new Panel ("backgroundSelection", c, "Graphics/testbg2.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
-	c.y = 75;
+	background = new Panel ("backgroundSelection", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background->ScaleSprite(1.5,1.5);
+	c.y = 150;
 	// Title
 	title = new Panel("titleMenuPanel", c, "Graphics/menutitle.png", 700, 105);
 	// Some buttons
-	c.y = 250;
+	c.y = 300;
 	playButton = new Button("playMenuButton", c, "Graphics/menuplay.png", 200, 50);
-	c.y += 50;
+	c.y += 70;
 	howToPlayButton = new Button("howToPlayMenuButton", c, "Graphics/menuhowtoplay.png", 200, 50);
-	c.y += 50;
+	c.y += 70;
 	exitButton = new Button("exitMenuButton", c, "Graphics/menuexit.png", 200, 50);
 }
 
@@ -58,10 +59,5 @@ void MenuState::Draw(float deltaTime)
 
 void MenuState::Exit()
 {
-	/*HAMURWORLD->DeleteObject("titleMenuPanel");
-	HAMURWORLD->DeleteObject("playMenuButton");
-	HAMURWORLD->DeleteObject("howToPlayMenuButton");
-	HAMURWORLD->DeleteObject("exitMenuButton");*/
-
 	HAMURWORLD->ClearAll();
 }
