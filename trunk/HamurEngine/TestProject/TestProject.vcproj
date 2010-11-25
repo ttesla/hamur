@@ -327,6 +327,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Sound"
+				>
+				<File
+					RelativePath=".\Effect.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -482,6 +490,14 @@
 				</File>
 				<File
 					RelativePath=".\SelectionState.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Sound"
+				>
+				<File
+					RelativePath=".\Effect.h"
 					>
 				</File>
 			</Filter>
