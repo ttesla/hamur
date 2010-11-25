@@ -91,8 +91,11 @@ bool HamurOpenGL::InitGL()
 	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); // Set viewport
 
 	// Alpha blending
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
+
+    glAlphaFunc ( GL_GREATER, 0.1f ) ;
+    glEnable ( GL_ALPHA_TEST ) ;
 
 	// Set projection
 	glMatrixMode(GL_PROJECTION);
