@@ -23,11 +23,19 @@ class SelectionState : public HamurState
 		void Exit();
 
 	private:
+		/*
 		Text *chooseText;
 		Text *breakfastText;
 		Text *lunchText;
 		Text *dinnerText;
 		Text *snacksText;
+		*/
+
+		Panel *chooseTextPanel;
+		Panel *breakfastTextPanel;
+		Panel *lunchTextPanel;
+		Panel *dinnerTextPanel;
+		Panel *snacksTextPanel;
 
 		Panel *breakfastPanel;
 		Panel *lunchPanel;

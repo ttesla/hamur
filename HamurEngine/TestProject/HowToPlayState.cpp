@@ -25,10 +25,13 @@ void HowToPlayState::Enter()
 	// Background
 	c.x = w/2; c.y = h/2;
 	//HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
-	//background = new Panel ("backgroundHTP", c, "Graphics/testbg2.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background = new Panel ("backgroundHTP", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background->ScaleSprite(1.5,1.5);
+	
 	c.y = 50;
 	// Title
-	titleText = new Text("titleHTPText", "How to play", font, 40, c, HamurColorRGB::BLUE, BOLD);
+	//titleText = new Text("titleHTPText", "How to play", font, 40, c, HamurColorRGB::BLUE, BOLD);
+	titlePanel = new Panel("titleHTP", c, "Graphics/htptitle.png", 400, 100);
 	
 	// Main text
 	HamurString s;
@@ -48,7 +51,7 @@ void HowToPlayState::Enter()
 	}
 
 	c.y += 100;
-	doneButton = new Button("doneHTPButton", c, "Graphics/testbutton.png", 90, 90);
+	doneButton = new Button("doneHTPButton", c, "Graphics/backtomenu.png", 300, 50);
 }
 
 void HowToPlayState::Update(float deltaTime)

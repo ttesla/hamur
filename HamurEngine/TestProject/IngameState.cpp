@@ -168,7 +168,6 @@ void IngameState::Update(float deltaTime)
 		HAMURENGINE->Stop();
 	}
 
-	
 	//Shield and Life levels
 	float s = teeth->GetShield();
 	float l = teeth->GetHealth();
@@ -180,6 +179,11 @@ void IngameState::Update(float deltaTime)
 		lifePanel->ScaleSprite(1.0, (l * 0.3 / 300));
 	else
 		lifePanel->ScaleSprite(1, 0);
+
+	if (l < 0)
+	{
+		GoToGameOverState();
+	}
 }
 
 void IngameState::Draw(float deltaTime)
@@ -233,8 +237,6 @@ void IngameState::SetFoodSelection(map<string, string> fs)
 	foodSelection = fs;
 	createLevel();
 	startGUI();
-
-	cout << "IS: " << "s1: " << foodSelection["snack1"] << endl;
 }
 
 void IngameState::GoToFeedbackState()
@@ -242,4 +244,9 @@ void IngameState::GoToFeedbackState()
 	HAMURSTATEMR->ChangeState("FeedbackState");
 	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(foodSelection,
 		teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
+}
+
+void IngameState::GoToGameOverState()
+{
+	HAMURSTATEMR->ChangeState("GameOverState");
 }

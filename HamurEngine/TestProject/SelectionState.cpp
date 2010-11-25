@@ -25,19 +25,24 @@ void SelectionState::Enter()
 
 	// Background
 	c.x = w/2; c.y = h/2;
-	background = new Panel ("backgroundSelection", c, "Graphics/testbg2.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
-
+	background = new Panel ("backgroundSelection", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background->ScaleSprite(1.5,1.5);
 	// Some texts
 	c.x = 375; c.y = 50;
-	chooseText = new Text("chooseText", "Chose what to eat", "Fonts/DejaVuSans.ttf", 40, c, HamurColorRGB::BLACK, BOLD);
+	chooseTextPanel = new Panel("chooseText", c, "Graphics/selwhattoeat.png", 400, 100);
+	//chooseText = new Text("chooseText", "Chose what to eat", "Fonts/DejaVuSans.ttf", 40, c, HamurColorRGB::BLACK, BOLD);
 	c.x = 100; c.y = 150;
-	breakfastText = new Text("breakfastText", "Breakfast", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	breakfastTextPanel = new Panel("breakfastText", c, "Graphics/selbreakfast.png", 150,50); 
+	//breakfastText = new Text("breakfastText", "Breakfast", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 	c.x = 375;
-	lunchText = new Text("lunchText", "Lunch", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	lunchTextPanel = new Panel("lunchText", c, "Graphics/sellunch.png", 150,50);
+	//lunchText = new Text("lunchText", "Lunch", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 	c.x = 650;
-	dinnerText = new Text("dinnerText", "Dinner", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	dinnerTextPanel = new Panel("dinnerText", c, "Graphics/seldinner.png", 150,50);
+	//dinnerText = new Text("dinnerText", "Dinner", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 	c.x = 375; c.y = 350;
-	snacksText = new Text("snacksText", "Snacks", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
+	snacksTextPanel = new Panel("snacksText", c, "Graphics/selsnacks.png", 150,50);
+	//snacksText = new Text("snacksText", "Snacks", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
 
 	// Some buttons
 	/*******************************/
@@ -78,10 +83,10 @@ void SelectionState::Enter()
 	}
 	*/
 
-	c.x = 750;
+	c.x = 700;
 	c.y = 550;
 
-	startButton = new Button("startButton", c, "Graphics/playbutton.png", 90, 90);	
+	startButton = new Button("startButton", c, "Graphics/selstart.png", 250, 75);	
 
 	//Reset values;
 	foodSelection["snack1"] = "";
