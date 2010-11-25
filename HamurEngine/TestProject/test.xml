@@ -46,23 +46,23 @@
 	</HowToPlay>
 	<FoodDivisions>
 		<Goods>
-			<Good>agg</Good>
-			<Good>apple</Good>
-			<Good>flingor</Good>
-			<Good>mork_smorgas</Good>
-			<Good>smoothie</Good>
+			<Good>Agg</Good>
+			<Good>Apple</Good>
+			<Good>Flingor</Good>
+			<Good>Mork_smorgas</Good>
+			<Good>Smoothie</Good>
 		</Goods>
 		<NotSoGoods>
-			<NotSoGood>nyponsoppa</NotSoGood>
-			<NotSoGood>vit_smorgas</NotSoGood>
+			<NotSoGood>Nyponsoppa</NotSoGood>
+			<NotSoGood>Vit_smorgas</NotSoGood>
 		</NotSoGoods>
 		<Bads>
-			<Bad>chips</Bad>
-			<Bad>glass</Bad>
-			<Bad>godis</Bad>
-			<Bad>kakor</Bad>
-			<Bad>lask</Bad>
-			<Bad>saft</Bad>
+			<Bad>Chips</Bad>
+			<Bad>Glass</Bad>
+			<Bad>Godis</Bad>
+			<Bad>Kakor</Bad>
+			<Bad>Lask</Bad>
+			<Bad>Saft</Bad>
 		</Bads>
 	</FoodDivisions>
 	

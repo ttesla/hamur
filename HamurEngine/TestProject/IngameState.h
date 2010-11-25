@@ -34,7 +34,7 @@ public:
 	void Draw(float deltaTime);
 	void Exit();
 
-	void SetFoodSelection(const map<string, string> &l);
+	void SetFoodSelection(map<string, string> fs);
 	void GoToFeedbackState();
 
 private:
@@ -63,6 +63,7 @@ private:
 	Level *saturdayLevel;
 	string activeLevel;
 	
+	void startSound();
 	void startBase();
 	void startTeeth();
 	void createLevel();

@@ -75,19 +75,19 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 	///////////////
 	lifePanel = new Panel("lifefbPanel", c, "", 300, 10, HamurColor::RED);
 	c.x = 600;
-	str << h;
+	str << h/10;
 	str << "%";
 	lifeValueText = new Text("lifeValueText", str.GetString(), font, 14, c, HamurColorRGB::BLACK); 
 	c.x = 300; c.y += 50;
 	shieldsPanel = new Panel("shieldsfbPanel", c, "", 300, 10, HamurColor::BLUE);
 	c.x = 600;
 	str.Clear();
-	str << s;
+	str << s/10;
 	str << "%";
 	shieldsValueText = new Text("shieldValueText", str.GetString(), font, 14, c, HamurColorRGB::BLACK);
 	// We apply the values
-	lifePanel->SetWidth(h*3);
-	shieldsPanel->SetWidth(s*3);
+	lifePanel->SetWidth(h*0.3);
+	shieldsPanel->SetWidth(s*0.3);
 
 	//////////////////
 	// The panels ////
@@ -110,7 +110,7 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 		str.Clear();
 		str << i;
 		found = false;
-		aux = foodSelection["snack" + str.GetString()];
+		aux = sel["snack" + str.GetString()];
 
 		if(aux != "")
 		{

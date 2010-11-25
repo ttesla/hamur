@@ -33,6 +33,8 @@ class Bacteria : public HamurObject
 		bool DecreaseLife (int bulletPower);
 		virtual bool IsAttacking2Tooth(float deltaTime);
 
+		void ResetMovement();
+
 	protected:
 		Teeth *mTeeth;
 		Animation *mAnimation;

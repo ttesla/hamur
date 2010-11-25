@@ -66,6 +66,9 @@ void Bacteria::Update( float deltaTime )
 
 	if(IsAttacking2Tooth(deltaTime))
 		return;
+
+	if (mPos.x > 800 || mPos.x < 0 || mPos.y > 600 || mPos.y < 0)
+		ResetMovement();
 	
 	mPos.x += movementDirection.x * mSpeed * deltaTime;
 	mPos.y += movementDirection.y * mSpeed * deltaTime;
@@ -104,26 +107,18 @@ bool Bacteria::IsAttacking2Tooth(float deltaTime)
 			//	mTeeth->DecreaseHealth(deltaTime * mDamage);
 			//}
 			mTeeth->HitDamage(deltaTime * mDamage);
-
-			/** EDU: this is not valid anymore (To be erased)
-			if((*Iter)->GetShield() > 0)
-			{
-				cout << "Shield: " << (*Iter)->GetShield() << endl;
-				(*Iter)->SetShield((*Iter)->GetShield() - deltaTime * 90);
-			}
-			else
-			{
-				cout << "Life: " << (*Iter)->GetShield() << endl;
-				(*Iter)->SetLife((*Iter)->GetLife() - deltaTime * 90);
-			}
-			*/
-
+			
 			return true;
 		}
 	}
 	
 	return false;
+}
 
+void Bacteria::ResetMovement()
+{
+	movementDirection = mBasePosition - mPos;
+	movementDirection.Normalize();
 }
 
 Bacteria::~Bacteria()

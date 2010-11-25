@@ -10,12 +10,14 @@ IngameState::~IngameState()
 {
 }
 
+void IngameState::startSound()
+{
+	HAMURAUMR->AddFX("waterGlassFX", "Sounds/WaterGlassUse.wav");
+}
+
 void IngameState::startBase()
 {
 	base = new Base("Base", "Graphics/base.png");
-	//int w = HamurOpenGL::GetInstance()->GetScreenWidth();
-	//int h = HamurOpenGL::GetInstance()->GetScreenHeight();
-	//base->SetPosition(w / 2, h / 2, 2);
 }
 
 void IngameState::startTeeth()
@@ -135,20 +137,16 @@ void IngameState::startGUI()
 
 void IngameState::Enter()
 {
+	startSound();
 	startBase();
 	startTeeth();
 }
 
 void IngameState::Update(float deltaTime)
 {
-	//if (teeth->GetHealth() <= 0)
-	//{
-	//	HAMURSTATEMR->ChangeState("GameOverState");		
-	//}
-	//cout << "WAVE: " << Wave::GetActiveWave()->GetName() << endl;
-
 	if (waterButton->isPushed())
 	{
+		HAMURAUMR->PlayFX("waterGlassFX");
 		base->UseWater();
 	}
 	else if(brushButton->isPushed())
@@ -182,9 +180,6 @@ void IngameState::Update(float deltaTime)
 		lifePanel->ScaleSprite(1.0, (l * 0.3 / 300));
 	else
 		lifePanel->ScaleSprite(1, 0);
-
-	//this->shieldPanel->SetHeight(teeth->GetShield() / 1000 * 300);
-	//this->lifePanel->SetHeight(teeth->GetHealth() / 1000 * 300);
 }
 
 void IngameState::Draw(float deltaTime)
@@ -203,6 +198,7 @@ void IngameState::Exit()
 	HAMURWORLD->DeleteObject("lifePanel");
 	HAMURWORLD->DeleteObject("shieldPanel");
 	HAMURWORLD->DeleteObject("waterButton");
+	HAMURWORLD->DeleteObject("brushButton");
 	
 	{
 		list<Tooth *>::iterator Iter;
@@ -230,14 +226,15 @@ void IngameState::Exit()
 	for(Iter2 = bact->begin(); Iter2 != bact->end(); Iter2++)
 		HAMURWORLD->DeleteObject((*Iter2)->GetName());
 	bact->clear();
-
 }
 
-void IngameState::SetFoodSelection(const map<string, string> &l)
+void IngameState::SetFoodSelection(map<string, string> fs)
 {
-	foodSelection = l;
+	foodSelection = fs;
 	createLevel();
 	startGUI();
+
+	cout << "IS: " << "s1: " << foodSelection["snack1"] << endl;
 }
 
 void IngameState::GoToFeedbackState()

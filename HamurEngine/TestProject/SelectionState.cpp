@@ -1,5 +1,6 @@
 #include "SelectionState.h"
 #include "IngameState.h"
+#include "audio/hamurFX.h"
 
 using namespace hamur;
 
