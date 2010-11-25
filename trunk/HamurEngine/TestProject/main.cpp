@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new HowToPlayState());
 	HAMURSTATEMR->RegisterState(new GameOverState());
 
-	//HAMURSTATEMR->ChangeState("MenuState");
-	HAMURSTATEMR->ChangeState("HowToPlayState");
+	HAMURSTATEMR->ChangeState("MenuState");
+	//HAMURSTATEMR->ChangeState("HowToPlayState");
 	
 	/* To test FB state 
 	map<string, string> fs;
