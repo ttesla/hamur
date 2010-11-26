@@ -15,22 +15,24 @@ void FeedbackState::Enter()
 {
 	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
+	string font = "Fonts/LambadaDexter.ttf"; 
 
 	HamurVec3 c;
+	c.x = w/2; c.y = h/2;
+	background = new Panel ("backgroundSelection", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background->ScaleSprite(1.5,1.5);
 	c.x = 75; c.y = 75;
-	goodText = new Text ("goodfbText", "Good", "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+	goodText = new Text ("goodfbText", "Good", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 75;
-	normalText = new Text ("normalfbText", "Not so good", "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+	normalText = new Text ("normalfbText", "Not so good", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 75;
-	badText = new Text ("badfbText", "Bad", "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+	badText = new Text ("badfbText", "Bad", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 125;
-	lifeText = new Text ("lifefbText", "Life", "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+	lifeText = new Text ("lifefbText", "Life", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 50;
-	shieldsText = new Text ("shieldsfbText", "Shields", "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
-
-	c.y += 150;
-
-	okButton = new Button("okfbButton", c, "Graphics/testButton.png", 200, 200);
+	shieldsText = new Text ("shieldsfbText", "Shields", font, 30, c, HamurColorRGB::BLACK);
+	c.x = 650; c.y = 550;
+	okButton = new Button("okfbButton", c, "Graphics/fbnext.png", 350, 75);
 	c.y = 150; c.x = 600;
 	characterPanel = new Panel("characterfbPanel", c, "Graphics/testChar.png", 10, 10); 
 }
@@ -67,7 +69,7 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 
 	HamurVec3 c;
 	HamurString str;
-	string font = "Fonts/DejaVuSans.ttf";
+	string font = "Fonts/LambadaDexter.ttf";
 
 	c.x = 300; c.y = 350;
 
@@ -77,14 +79,14 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 	c.x = 600;
 	str << h/10;
 	str << "%";
-	lifeValueText = new Text("lifeValueText", str.GetString(), font, 14, c, HamurColorRGB::BLACK); 
+	lifeValueText = new Text("lifeValueText", str.GetString(), font, 30, c, HamurColorRGB::BLACK); 
 	c.x = 300; c.y += 50;
 	shieldsPanel = new Panel("shieldsfbPanel", c, "", 300, 10, HamurColor::BLUE);
 	c.x = 600;
 	str.Clear();
 	str << s/10;
 	str << "%";
-	shieldsValueText = new Text("shieldValueText", str.GetString(), font, 14, c, HamurColorRGB::BLACK);
+	shieldsValueText = new Text("shieldValueText", str.GetString(), font, 30, c, HamurColorRGB::BLACK);
 	// We apply the values
 	lifePanel->SetWidth(h*0.3);
 	shieldsPanel->SetWidth(s*0.3);
