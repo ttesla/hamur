@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
     //HAMURENGINE->DisableMouseCursor();
 
-	// Registering the states of the game:
+	// Registering the states of the game: 
 	HAMURSTATEMR->RegisterState(new MenuState());
 	HAMURSTATEMR->RegisterState(new SelectionState());
 	HAMURSTATEMR->RegisterState(new IngameState());
@@ -48,12 +48,6 @@ int main(int argc, char *argv[])
 	/* To test FB state 
 	map<string, string> fs;
 	HAMURSTATEMR->ChangeState("FeedbackState");
-	fs["snack1"] = "apple";
-	fs["snack2"] = "agg";
-	fs["snack3"] = "nyponsoppa";
-	fs["snack4"] = "saft";
-	fs["snack5"] = "vit_smorgas";
-	fs["snack6"] = "smoothie";
 	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
 	*/
 
