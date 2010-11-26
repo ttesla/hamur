@@ -58,6 +58,8 @@ private:
 	Button *waterButton;
 	Button *brushButton;
 
+	Text *currentWaveText;
+
 	//Levels
 	Level *mondayLevel;
 	Level *thursdayLevel;

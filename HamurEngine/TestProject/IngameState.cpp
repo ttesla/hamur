@@ -118,10 +118,15 @@ void IngameState::startGUI()
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
 
-	c.x = 50; c.y = 50; //c.z = +10.0;
+	/* FOR THE TEXT SHOWING THE WAVE
+	c.x = w/2; c.y = h/2; 
+	currentWaveText = new Text("currentWaveText", Wave::GetActiveWave()->GetName(), "Fonts/LambadaDexter.ttf", 100, c, HamurColorRGB::GREEN);
+	currentWaveText->SetTransparency(0.5);
+	*/
 	
 	string root = "Graphics/";
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
+	c.x = 50; c.y = 50; //c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	c.x = 20; c.y = 300; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, root + "greenbar.png", 10, 300);
@@ -184,6 +189,10 @@ void IngameState::Update(float deltaTime)
 	{
 		GoToGameOverState();
 	}
+
+	// Current food panel update
+	string str = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
+	currentFoodPanel->SetSprite(str);
 }
 
 void IngameState::Draw(float deltaTime)
