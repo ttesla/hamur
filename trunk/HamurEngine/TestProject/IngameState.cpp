@@ -8,6 +8,7 @@ IngameState::IngameState() : HamurState("IngameState")
 
 IngameState::~IngameState()
 {
+
 }
 
 void IngameState::startSound()
@@ -114,6 +115,8 @@ void IngameState::createLevel()
 
 void IngameState::startGUI()
 {
+	escapeWindowShowing = false;
+
 	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
@@ -123,13 +126,25 @@ void IngameState::startGUI()
 	currentWaveText = new Text("currentWaveText", Wave::GetActiveWave()->GetName(), "Fonts/LambadaDexter.ttf", 100, c, HamurColorRGB::GREEN);
 	currentWaveText->SetTransparency(0.5);
 	*/
-	
+
 	string root = "Graphics/";
+
+	// Window (appears when escape is pushed)
+	c.x = w/2; c.y = h/2; 
+	/*
+	escapeWindow = new Window("escapeWindow", c, 400, 300);
+	escapeWindow->SetTitle("PAUSED");
+	escapeWindow->AddButton(new Button("escapeWindowb1", c, root + "Window/windowquit.png", 140, 40));
+	escapeWindow->AddButton(new Button("escapeWindowb2", c, root + "Window/windowbtm.png", 140, 40));
+	escapeWindow->AddButton(new Button("escapeWindowb3", c, root + "Window/windowret.png", 140, 40));
+	dynamic_cast<Window*>(escapeWindow)->SetVisible(false);
+	*/
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
 	c.x = 50; c.y = 50; //c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	c.x = 20; c.y = 300; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, root + "greenbar.png", 10, 300);
+	timeLeftPanel->SetVisible(false);
 	c.x += 10;
 	lifePanel = new Panel("lifePanel", c, root + "redbar.png", 10, 300);	
 	c.x += 10;
@@ -170,7 +185,36 @@ void IngameState::Update(float deltaTime)
 
 	if(HAMUREVENT->IsKeyPressed(Keys::Escape))
 	{
-		HAMURENGINE->Stop();
+		if (!escapeWindowShowing)
+		{
+			openEscapeWindow();
+		}
+		else
+		{
+			closeEscapeWindow();
+		}
+	}
+
+	
+	if (escapeWindowShowing)
+	{
+		if (escapeWindow->closeButton->isPushed())
+		{
+			closeEscapeWindow();
+		}
+		else if(dynamic_cast<Button*>(HAMURWORLD->GetHamurObject("escapeWindowb1"))->isPushed()) // Quit
+		{
+			HAMURENGINE->Stop();
+		}
+		else if(dynamic_cast<Button*>(HAMURWORLD->GetHamurObject("escapeWindowb2"))->isPushed()) // BackToMenu
+		{
+			closeEscapeWindow();
+			HAMURSTATEMR->ChangeState("MenuState");
+		}
+		else if(dynamic_cast<Button*>(HAMURWORLD->GetHamurObject("escapeWindowb3"))->isPushed()) // Return
+		{
+			closeEscapeWindow();
+		}
 	}
 
 	//Shield and Life levels
@@ -219,7 +263,7 @@ void IngameState::Exit()
 		{
 			HAMURWORLD->DeleteObject((*Iter)->GetName());
 		}
-	}
+	}	
 
 	// OBJECTS
 	HAMURWORLD->DeleteObject(base->GetName());
@@ -258,4 +302,25 @@ void IngameState::GoToFeedbackState()
 void IngameState::GoToGameOverState()
 {
 	HAMURSTATEMR->ChangeState("GameOverState");
+}
+
+void IngameState::openEscapeWindow()
+{
+	HamurVec3 c; string root = "Graphics/";
+	c.x = HAMURGL->GetScreenWidth()/2; c.y = HAMURGL->GetScreenHeight()/2; 
+
+	escapeWindow = new Window("escapeWindow", c, 400, 300);
+	escapeWindow->SetTitle("PAUSED");
+	escapeWindow->AddButton(new Button("escapeWindowb1", c, root + "Window/windowquit.png", 140, 40));
+	escapeWindow->AddButton(new Button("escapeWindowb2", c, root + "Window/windowbtm.png", 140, 40));
+	escapeWindow->AddButton(new Button("escapeWindowb3", c, root + "Window/windowret.png", 140, 40));
+	
+	escapeWindowShowing = true;
+}
+
+void IngameState::closeEscapeWindow()
+{
+	escapeWindow->DeleteWindow();
+	HAMURWORLD->DeleteObject("escapeWindow");
+	escapeWindowShowing = false;
 }

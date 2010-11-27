@@ -13,7 +13,22 @@ Button::Button(const string &name, const HamurVec3 &position, const string &spri
 
 void Button::Update(float deltaTime)
 {
+	HamurVec3 mousePos;
+	mousePos.x = HAMUREVENT->GetMouseX();
+	mousePos.y = HAMUREVENT->GetMouseY();
+	float halfW = mWidth/2;
+	float halfH = mHeight/2;
 	
+	// On mouse over animation
+	if((mousePos.x > this->GetPosition().x - halfW) && (mousePos.x < this->GetPosition().x + halfW)
+			&& (mousePos.y > this->GetPosition().y - halfH) && (mousePos.y < this->GetPosition().y + halfH))
+	{
+		this->ScaleSprite(1.2, 1.2);
+	}
+	else
+	{
+		this->ScaleSprite(1, 1);
+	}
 }
 
 bool Button::isPushed()
