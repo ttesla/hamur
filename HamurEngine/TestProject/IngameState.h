@@ -13,6 +13,7 @@
 #include "GUI.h"
 #include <list>
 #include "FeedbackState.h"
+#include "Window.h"
 
 using namespace hamur;
 using namespace std;
@@ -51,6 +52,7 @@ private:
 	/****************
 		INGAME GUI  *
 	*****************/
+	Window *escapeWindow;
 	Panel *currentFoodPanel;
 	Panel *timeLeftPanel;
 	Panel *lifePanel;
@@ -71,7 +73,11 @@ private:
 	void startTeeth();
 	void createLevel();
 	void startGUI();
+	void openEscapeWindow();
+	void closeEscapeWindow();
 
 	map<string, string> foodSelection;
 	int toothBrushUses;
+
+	bool escapeWindowShowing;
 };
