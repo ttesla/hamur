@@ -10,6 +10,8 @@ class Brush;
 class Level : public HamurObject
 {
     public:
+		static string mActiveLevel;
+
         Level(const string& name);
 
 		void Update(float deltaTime);

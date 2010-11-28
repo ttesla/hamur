@@ -68,7 +68,7 @@ private:
 	Level *mondayLevel;
 	Level *thursdayLevel;
 	Level *saturdayLevel;
-	string activeLevel;
+	//string activeLevel;
 	
 	void startSound();
 	void startBase();

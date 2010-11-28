@@ -5,6 +5,8 @@
 
 using namespace std;
 
+string Level::mActiveLevel = "";
+
 Level::Level(const string& name) : HamurObject(name), isLevelFinished(false)
 {
 	resetTimeBetweenWaves();

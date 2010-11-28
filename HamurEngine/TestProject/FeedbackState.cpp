@@ -1,4 +1,5 @@
 #include "FeedbackState.h"
+#include "StoryState.h"
 
 using namespace hamur;
 
@@ -19,7 +20,7 @@ void FeedbackState::Enter()
 
 	HamurVec3 c;
 	c.x = w/2; c.y = h/2;
-	background = new Panel ("backgroundSelection", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	background = new Panel ("backgroundFeedback", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
 	background->ScaleSprite(1.5,1.5);
 	c.x = 75; c.y = 75;
 	goodText = new Text ("goodfbText", "Good", font, 30, c, HamurColorRGB::BLACK);
@@ -44,7 +45,9 @@ void FeedbackState::Update(float deltaTime)
 		if(!mIsGameFinished)	
 			HAMURSTATEMR->ChangeState("SelectionState");
 		else
-			HAMURSTATEMR->ChangeState("MainMenuState");
+		{
+			HAMURSTATEMR->ChangeState("StoryState");
+		}
 	}
 }
 

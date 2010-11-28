@@ -330,6 +330,10 @@
 					RelativePath=".\SelectionState.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\StoryState.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -490,6 +494,10 @@
 				</File>
 				<File
 					RelativePath=".\SelectionState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\StoryState.h"
 					>
 				</File>
 			</Filter>

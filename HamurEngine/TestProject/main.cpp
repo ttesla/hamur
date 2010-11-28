@@ -19,6 +19,7 @@
 #include "FeedbackState.h"
 #include "HowToPlayState.h"
 #include "GameOverState.h"
+#include "StoryState.h"
 #include "time.h"
 
 using namespace hamur;
@@ -41,6 +42,7 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new FeedbackState());
 	HAMURSTATEMR->RegisterState(new HowToPlayState());
 	HAMURSTATEMR->RegisterState(new GameOverState());
+	HAMURSTATEMR->RegisterState(new StoryState());
 
 	HAMURSTATEMR->ChangeState("MenuState");
 	//HAMURSTATEMR->ChangeState("IngameState");

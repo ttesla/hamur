@@ -41,7 +41,6 @@ void Window::Draw(float deltaTime)
 
 void Window::SetVisible(bool visible)
 {
-	cout << "POR AQUI PASABA" << visible << endl;
 	windowPanel->SetVisible(visible);
 	closeButton->SetVisible(visible);
 	windowTitle->SetVisible(visible);
