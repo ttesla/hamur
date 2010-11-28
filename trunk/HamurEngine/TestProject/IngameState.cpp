@@ -63,14 +63,14 @@ void IngameState::createLevel()
 
 	string newLevelName = "mondayLevel";
 	
-	if(activeLevel != "")
+	if(Level::mActiveLevel != "")
 	{
 		teeth->SetHealth(mTeethHealth);
 		teeth->SetShield(mTeethShield);
 
-		if(activeLevel == "mondayLevel")
+		if(Level::mActiveLevel == "mondayLevel")
 			newLevelName = "thursdayLevel";
-		else if(activeLevel == "thursdayLevel")
+		else if(Level::mActiveLevel == "thursdayLevel")
 			newLevelName = "saturdayLevel";
 	}
 
@@ -108,7 +108,8 @@ void IngameState::createLevel()
 
 	l->Start();
 
-	activeLevel = l->GetName();
+	Level::mActiveLevel = l->GetName();
+	//activeLevel = l->GetName(); Not necessary anymore
 
 	l->SetActive(true);
 }
@@ -153,9 +154,9 @@ void IngameState::startGUI()
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
 	c.x = 150; c.y = 600-40;
 	brushButton = new Button("brushButton", c, "Graphics/brush.png", 100, 100);
-	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() + 150;
+	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 150;
 	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() - 120;
-	brushText = new Text("brushText", "Brush Time", "Fonts/LambadaDexter.ttf", 20, c, HamurColorRGB::BLACK, 0);
+	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 20, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
 }
 
@@ -302,7 +303,7 @@ void IngameState::GoToFeedbackState()
 	FeedbackState *fbState = static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState());
 	fbState->SetFeedback(foodSelection,
 		teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
-	if(activeLevel == "saturdayLevel")
+	if(Level::mActiveLevel == "saturdayLevel")
 		fbState->SetGameFinished(true);
 	else
 		fbState->SetGameFinished(false);
@@ -310,7 +311,7 @@ void IngameState::GoToFeedbackState()
 
 void IngameState::GoToGameOverState()
 {
-	activeLevel = "";
+	Level::mActiveLevel = "";
 	HAMURSTATEMR->ChangeState("GameOverState");
 }
 

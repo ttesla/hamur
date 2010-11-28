@@ -40,7 +40,7 @@ void MenuState::Update(float deltaTime)
 {
 	if (playButton->isPushed())
 	{
-		HAMURSTATEMR->ChangeState("SelectionState");
+		HAMURSTATEMR->ChangeState("StoryState");
 	}
 	else if (howToPlayButton->isPushed())
 	{
