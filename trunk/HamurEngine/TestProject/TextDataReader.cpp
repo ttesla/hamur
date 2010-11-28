@@ -26,22 +26,30 @@ TextDataReader::TextDataReader( char *fileName )
 
 string TextDataReader::GetFeedback(string nameValue)
 {
-	TiXmlNode *root = (TiXmlElement *)doc.RootElement();
-	
-	TiXmlElement *texts = 0;//(TiXmlElement *)root->FirstChild();
-	while( texts = (TiXmlElement *)root->IterateChildren(texts) )
+	string text = "";
+	bool done = false;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
 	{
-		TiXmlElement *feedbacks = 0;//(TiXmlElement *)texts->FirstChild();
-		while(feedbacks = (TiXmlElement *)texts->IterateChildren(feedbacks))
+		TiXmlElement* fbs = root->FirstChildElement( "Feedbacks" );
+		if (fbs)
 		{
-			if (feedbacks->Attribute("name") == "nameValue")
+			TiXmlElement* fb = fbs->FirstChildElement("Feedback");
+			while (fb && !done)
 			{
-				//Whatever			
+				if (fb->Attribute("name") == nameValue)
+				{
+					text = fb->GetText();
+					done = true;
+				}
+
+				fb = fb->NextSiblingElement();
 			}
 		}
 	}
 
-	return "nice!";
+	return text;
 }
 
 string TextDataReader::GetHowToPlay()

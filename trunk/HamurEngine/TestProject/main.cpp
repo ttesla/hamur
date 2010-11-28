@@ -52,7 +52,6 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->ChangeState("FeedbackState");
 	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
 	*/
-
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 

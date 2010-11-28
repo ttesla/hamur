@@ -1,11 +1,41 @@
 <?xml version="1.0" ?>
 <Texts>
 	<Feedbacks>
+		<!-- Food selection -->
 		<Feedback name="fb1">
-			You should eat more spaghetti. But you shouldn't eat so many snacks!
+			Man ska vara noga med att äta. 
 		</Feedback>
 		<Feedback name="fb2">
-			If you want to take good care of your teeth use toothbrush after each meal!
+			Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka.
+		</Feedback>
+		<Feedback name="fb3">
+			Att äta något gott och onyttigt är ingen fara, så länge man bara gör det ibland så att tänderna orkar med och är noga med att sköta borstning. 
+		</Feedback>
+		<Feedback name="fb4">
+			Du visste säkert redan att äta sån där saker inte är bra för tänderna.
+		</Feedback>
+		<Feedback name="fb5">
+			Du vet hur man gör bra matval.
+		</Feedback>
+		<!-- Health & Shield -->
+		<Feedback name="fb6">
+			När tänderna själva tar skada är det riktigt farligt eftersom dom inte kan laga sig själva särskilt snabbt. 
+		</Feedback>
+		<Feedback name="fb7">
+			Idag var du visst skötsam med tänderna. 
+		</Feedback>
+		<Feedback name="fb8">
+			Ja, tänderna klarade sig visst bra idag.
+		</Feedback>
+		<Feedback name="fb9">
+			Det gick visst inte allt för bra. Du måste vara mer nogrann med att skydda tänderna. 
+		</Feedback>
+		<Feedback name="fb10">
+			Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. 
+		</Feedback>
+		<!-- Toothbrushing -->
+		<Feedback name="fb11">
+			Kom ihåg att borsta tänderna ordentligt nästa gång.
 		</Feedback>
 	</Feedbacks>
 	<HowToPlay>

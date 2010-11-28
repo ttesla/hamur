@@ -1,8 +1,6 @@
 #include "FeedbackState.h"
 #include "StoryState.h"
 
-using namespace hamur;
-
 FeedbackState::FeedbackState() : HamurState("FeedbackState")
 {
 }
@@ -36,6 +34,8 @@ void FeedbackState::Enter()
 	okButton = new Button("okfbButton", c, "Graphics/fbnext.png", 350, 75);
 	c.y = 150; c.x = 600;
 	characterPanel = new Panel("characterfbPanel", c, "Graphics/testChar.png", 10, 10); 
+
+	SetFeedback();
 }
 
 void FeedbackState::Update(float deltaTime)
@@ -68,12 +68,26 @@ void FeedbackState::Exit()
 
 }
 
-void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int tBU)
+void FeedbackState::SetFeedback()
 {
-	foodSelection = sel;
-	health = h;
-	shield = s;
-	toothBrushUses = tBU;
+	map<string, string> sel = FeedbackInfo::GetInstance()->GetFoodSelection();
+	float h, s;
+
+	if (Level::mActiveLevel == "")
+	{
+		h = FeedbackInfo::GetInstance()->GetHealth(0);
+		s = FeedbackInfo::GetInstance()->GetShield(0);
+	}
+	else if (Level::mActiveLevel == "mondayLevel")
+	{
+		h = FeedbackInfo::GetInstance()->GetHealth(1);
+		s = FeedbackInfo::GetInstance()->GetShield(1);
+	}
+	else if (Level::mActiveLevel == "thursdayLevel")
+	{
+		h = FeedbackInfo::GetInstance()->GetHealth(2);
+		s = FeedbackInfo::GetInstance()->GetShield(2);
+	}
 
 	HamurVec3 c;
 	HamurString str;
@@ -177,9 +191,15 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 		badPanels.push_back(new Panel((*it) + "Panel", c, root + (*it) + ".png", 64, 64));
 		c.x += 70;
 	}
+
+	// We choose the proper feedback message
+	chooseFeedback();
 }
 
 string FeedbackState::chooseFeedback()
 {
+	TextDataReader *tdr = TextDataReader::GetInstance();
+	cout << tdr->GetFeedback("fb2") << endl;
+
 	return "";
 }
