@@ -40,7 +40,12 @@ void FeedbackState::Enter()
 void FeedbackState::Update(float deltaTime)
 {
 	if(okButton->isPushed())
-		HAMURSTATEMR->ChangeState("SelectionState");
+	{
+		if(!mIsGameFinished)	
+			HAMURSTATEMR->ChangeState("SelectionState");
+		else
+			HAMURSTATEMR->ChangeState("MainMenuState");
+	}
 }
 
 void FeedbackState::Draw(float deltaTime)

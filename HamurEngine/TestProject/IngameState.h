@@ -38,6 +38,7 @@ public:
 	void SetFoodSelection(map<string, string> fs);
 	void GoToFeedbackState();
 	void GoToGameOverState();
+	void ActivateBrush(const bool &isActive);
 
 private:
 	Bacteria **allocatedBacterias;
@@ -59,6 +60,7 @@ private:
 	Panel *shieldPanel;
 	Button *waterButton;
 	Button *brushButton;
+	Text *brushText;
 
 	Text *currentWaveText;
 

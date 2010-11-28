@@ -31,12 +31,14 @@ void Level::Update( float deltaTime )
 			mWaves.empty()) //mActiveWave == *(mWaves.begin()))
 		{
 			activateBrush(true);
+			static_cast<IngameState *>(HAMURSTATEMR->GetCurrentState())->ActivateBrush(true);
 		}
 
 		mTimeBetweenWaves = mTimeBetweenWaves - deltaTime;
 		
 		if(mTimeBetweenWaves <= 0)
 		{
+			static_cast<IngameState *>(HAMURSTATEMR->GetCurrentState())->ActivateBrush(false);
 			StartNextWave();
 			activateBrush(false);
 			resetTimeBetweenWaves();
