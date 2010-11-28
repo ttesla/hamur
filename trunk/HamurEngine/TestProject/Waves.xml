@@ -1,67 +1,67 @@
 <?xml version="1.0" ?>
 <Waves>
 	<Wave Name="Breakfast1">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Breakfast2">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Breakfast3">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Lunch1">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Lunch2">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Lunch3">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Dinner1">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Dinner2">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Dinner3">
-		<BacteriaFattie Count="5" />
-		<BacteriaNorm Count="5" />
-		<BacteriaShooter Count="5" />
-		<BacteriaSlim Count="5" />
-		<BacteriaStrayer Count="5" />
+		<BacteriaFattie Count="1" />
+		<BacteriaNorm Count="1" />
+		<BacteriaShooter Count="1" />
+		<BacteriaSlim Count="1" />
+		<BacteriaStrayer Count="1" />
 	</Wave>
 	<Wave Name="Yoghurt">  
 		<BacteriaFattie Count="3" />

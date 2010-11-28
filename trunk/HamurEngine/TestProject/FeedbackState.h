@@ -23,7 +23,8 @@ class FeedbackState : public HamurState
 		void Exit();
 
 		void SetFeedback(map<string, string> selection, float health, float shield, int toothBrushUses);
-
+		
+		inline void SetGameFinished(const bool &isFinished) {mIsGameFinished = isFinished;}
 	private:
 		Text *goodText;
 		Text *normalText;
@@ -48,6 +49,7 @@ class FeedbackState : public HamurState
 		float health;
 		float shield;
 		int toothBrushUses;
+		bool mIsGameFinished;
 		// Select the proper feedback according to the variables above
 		string chooseFeedback();
 };

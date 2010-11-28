@@ -24,18 +24,21 @@ void Brush::Update( float deltaTime )
 
 void Brush::Explode()
 {
-	for(int i = 0; i < MAXTEETH; i++)
-	{
-		HamurString str;
-		str << i;
-		Tooth *t = (Tooth *)HAMURWORLD->GetHamurObject("Tooth" + str.GetString());
+	Teeth *t = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
+	t->SetShield(t->GetShield() + 500);
 
-		//TODO:Value of shield increase must be set
-		if(t != NULL)
-		{
-			t->SetShield(500);
-		}
-	}
+	//for(int i = 0; i < MAXTEETH; i++)
+	//{
+	//	HamurString str;
+	//	str << i;
+	//	Tooth *t = (Tooth *)HAMURWORLD->GetHamurObject("Tooth" + str.GetString());
+
+	//	//TODO:Value of shield increase must be set
+	//	if(t != NULL)
+	//	{
+	//		t->SetShield(500);
+	//	}
+	//}
 
 	//mRemainingCooldown = mCooldown;
 	//mIsUsable = false;

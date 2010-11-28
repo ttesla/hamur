@@ -18,7 +18,7 @@ class Teeth : public HamurObject
 		inline const float &GetHealth(){return mLife;}
 		inline const float &GetShield(){return mShield;}
 		inline void SetHealth(const float &value){mLife = value;}
-		inline void SetShield(const float &value){mShield = value;}
+		inline void SetShield(const float &value){mShield = value; if(mShield > 1000) mShield = 1000;}
 		inline void DecreaseShield(const float &value){mShield -= value;}
 		inline void IncreaseShield(const float &value){mShield += value;}
 		inline void DecreaseHealth(const float &value)
