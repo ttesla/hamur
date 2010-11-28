@@ -102,7 +102,7 @@ void FeedbackState::SetFeedback(map<string, string> sel, float h, float s, int t
 	//////////////////
 	// The panels ////
 	/////////////////////////////
-	TextDataReader *tdr = new TextDataReader("test.xml");
+	TextDataReader *tdr = TextDataReader::GetInstance();
 	list<string> good = tdr->GetGoodFood();
 	list<string> nsg = tdr->GetNSGFood();
 	list<string> bad = tdr->GetBadFood();

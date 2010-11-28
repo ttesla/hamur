@@ -14,6 +14,66 @@ SelectionState::~SelectionState()
 
 }
 
+void SelectionState::createMenu()
+{
+	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
+	HamurVec3 c;
+	string root = "Graphics/Food/";
+
+	if (Level::mActiveLevel == "")
+	{
+		c.x = 100; c.y = 230; c.z = +10.0;
+		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast1.png", 64, 64);
+		c.x = 375;
+		lunchPanel = new Panel("lunchPanel", c, root + "Lunch1.png", 64, 64);
+		c.x = 650;
+		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner1.png", 64, 64);
+	}
+	else if (Level::mActiveLevel == "")
+	{
+		c.x = 100; c.y = 230; c.z = +10.0;
+		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast2.png", 64, 64);
+		c.x = 375;
+		lunchPanel = new Panel("lunchPanel", c, root + "Lunch2.png", 64, 64);
+		c.x = 650;
+		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner2.png", 64, 64);
+	}
+	else if (Level::mActiveLevel == "")
+	{
+		c.x = 100; c.y = 230; c.z = +10.0;
+		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast3.png", 64, 64);
+		c.x = 375;
+		lunchPanel = new Panel("lunchPanel", c, root + "Lunch3.png", 64, 64);
+		c.x = 650;
+		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner3.png", 64, 64);
+	}
+
+	c.x = 50; c.y = 420;
+
+	TextDataReader *tdr = TextDataReader::GetInstance();
+	list<string> good = tdr->GetGoodFood();
+	list<string> nsg = tdr->GetNSGFood();
+	list<string> bad = tdr->GetBadFood();
+	
+
+	list<string>::iterator it;
+	for (it = good.begin(); it != good.end(); it++)
+	{
+		snackButtons.push_back(new Button((*it) + "Button", c, root + (*it) + ".png", 64, 64));
+		c.x += 70;
+	}
+	for (it = nsg.begin(); it != nsg.end(); it++)
+	{
+		snackButtons.push_back(new Button((*it) + "Button", c, root + (*it) + ".png", 64, 64));
+		c.x += 70;
+	}
+	for (it = bad.begin(); it != bad.end(); it++)
+	{
+		snackButtons.push_back(new Button((*it) + "Button", c, root + (*it) + ".png", 64, 64));
+		c.x += 70;
+	}
+}
+
 void SelectionState::Enter()
 {
 	this->snacksNumber = 4;
@@ -43,46 +103,7 @@ void SelectionState::Enter()
 	c.x = 375; c.y = 350;
 	snacksTextPanel = new Panel("snacksText", c, "Graphics/selsnacks.png", 150,50);
 	//snacksText = new Text("snacksText", "Snacks", "Fonts/DejaVuSans.ttf", 30, c, HamurColorRGB::BLACK);
-
-	// Some buttons
-	/*******************************/
-	/** NOTE! It is important to add each button with the same name its wave has in the XML file!!! */
-
-	c.x = 100; c.y = 230; c.z = +10.0;
-	breakfastPanel = new Panel("breakfastPanel", c, "Graphics/Food/Flingor.png", 64, 64);
-	c.x = 375;
-	lunchPanel = new Panel("lunchPanel", c, "Graphics/Food/Vit_smorgas.png", 64, 64);
-	c.x = 650;
-	dinnerPanel = new Panel("dinnerPanel", c, "Graphics/Food/Nyponsoppa.png", 64, 64);
-	c.x = 100; c.y = 420;
-	snackButtons.push_back(new Button("EggButton", c, "Graphics/Food/Agg.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("AppleButton", c, "Graphics/Food/Apple.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("ChipsButton", c, "Graphics/Food/Chips.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("GlassButton", c, "Graphics/Food/Glass.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("GodisButton", c, "Graphics/Food/Godis.png", 64, 64));
-	c.x += 70;
-	snackButtons.push_back(new Button("KakorButton", c, "Graphics/Food/Kakor.png", 64, 64));
-	c.x += 70;
-	snackButtons.push_back(new Button("LaskButton", c, "Graphics/Food/Lask.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("Mork_smorgasButton", c, "Graphics/Food/Mork_smorgas.png", 64, 64));
-	c.x += 70; 
-	snackButtons.push_back(new Button("SmoothieButton", c, "Graphics/Food/Yoghurt.png", 64, 64));
 	
-	/*
-	HamurString str;
-	string aux = "snackButton";
-	for (int i = 0; i < snacksNumber; i++)
-	{
-		str << i;
-		snackButtons.push_back(new Button(aux + str.GetString(), c, "Graphics/testbutton.png", 30,30));
-	}
-	*/
-
 	c.x = 700;
 	c.y = 550;
 
@@ -95,7 +116,9 @@ void SelectionState::Enter()
 	foodSelection["snack4"] = "";
 	foodSelection["snack5"] = "";
 	foodSelection["snack6"] = "";
-
+	
+	// Create the menu according to the level
+	createMenu();
 }
 
 void SelectionState::Update(float deltaTime)
@@ -135,26 +158,5 @@ void SelectionState::Draw(float deltaTime)
 
 void SelectionState::Exit()
 {
-	//HAMURWORLD->DeleteObject("backgroundSelection");
-	//HAMURWORLD->DeleteObject("chooseText");
-	//HAMURWORLD->DeleteObject("breakfastText"); 
-	//HAMURWORLD->DeleteObject("lunchText");
-	//HAMURWORLD->DeleteObject("dinnerText");
-	//HAMURWORLD->DeleteObject("snacksText");
-
-	//HAMURWORLD->DeleteObject("FlingorButton");
-	//HAMURWORLD->DeleteObject("Vit_smorgasButton");
-	//HAMURWORLD->DeleteObject("NyponsoppaButton");
-
-	//HAMURWORLD->DeleteObject("startButton");
-
-	//HamurString str;
-	//string aux = "snackButton";
-	//for (int i = 0; i < snacksNumber; i++)
-	//{
-	//	str << i;
-	//	HAMURWORLD->DeleteObject(aux + str.GetString());
-	//}
-
 	HAMURWORLD->ClearAll();
 }
