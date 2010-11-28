@@ -33,6 +33,8 @@ class Level : public HamurObject
 		Wave *mActiveWave;
 		float mTimeBetweenWaves;
 		bool isLevelFinished;
+
+		
 };
 
 #endif

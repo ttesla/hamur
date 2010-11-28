@@ -5,6 +5,7 @@
 
 #include "hamur.h"
 #include "hamurDefinitions.h"
+#include "FeedbackInfo.h"
 #include "GUI.h"
 #include <list>
 
@@ -50,7 +51,6 @@ class SelectionState : public HamurState
 		map<string, string> foodSelection;
 
 		int mSelectedSnackCount; //SelectedSnackCount
-
 
 		void createMenu();
 };

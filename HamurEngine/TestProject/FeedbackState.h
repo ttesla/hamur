@@ -6,6 +6,7 @@
 #include "hamur.h"
 #include "hamurDefinitions.h"
 #include "GUI.h"
+#include "FeedbackInfo.h"
 #include <list>
 
 using namespace hamur;
@@ -22,9 +23,9 @@ class FeedbackState : public HamurState
 		void Draw(float deltaTime);
 		void Exit();
 
-		void SetFeedback(map<string, string> selection, float health, float shield, int toothBrushUses);
-		
+		void SetFeedback();
 		inline void SetGameFinished(const bool &isFinished) {mIsGameFinished = isFinished;}
+
 	private:
 		Text *goodText;
 		Text *normalText;
@@ -44,11 +45,7 @@ class FeedbackState : public HamurState
 		Panel *characterPanel; 
 		Panel *background;
 
-		// To generate feedback info
-		map<string, string> foodSelection;
-		float health;
-		float shield;
-		int toothBrushUses;
+		// To generate feedback infoff
 		bool mIsGameFinished;
 		// Select the proper feedback according to the variables above
 		string chooseFeedback();

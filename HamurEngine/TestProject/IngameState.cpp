@@ -57,6 +57,8 @@ void IngameState::startTeeth()
 
 void IngameState::createLevel()
 {
+	map<string, string> foodSelection = FeedbackInfo::GetInstance()->GetFoodSelection();
+
 	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
 	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
 	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
@@ -134,14 +136,7 @@ void IngameState::startGUI()
 
 	// Window (appears when escape is pushed)
 	c.x = w/2; c.y = h/2; 
-	/*
-	escapeWindow = new Window("escapeWindow", c, 400, 300);
-	escapeWindow->SetTitle("PAUSED");
-	escapeWindow->AddButton(new Button("escapeWindowb1", c, root + "Window/windowquit.png", 140, 40));
-	escapeWindow->AddButton(new Button("escapeWindowb2", c, root + "Window/windowbtm.png", 140, 40));
-	escapeWindow->AddButton(new Button("escapeWindowb3", c, root + "Window/windowret.png", 140, 40));
-	dynamic_cast<Window*>(escapeWindow)->SetVisible(false);
-	*/
+	
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
 	c.x = 50; c.y = 50; //c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
@@ -172,7 +167,9 @@ void IngameState::Enter()
 	startSound();
 	startBase();
 	startTeeth();
-
+	createLevel();
+	startGUI();
+	
 	mWaveTextTimer = 3;
 }
 
@@ -313,19 +310,30 @@ void IngameState::Exit()
 	bact->clear();
 }
 
-void IngameState::SetFoodSelection(map<string, string> fs)
-{
-	foodSelection = fs;
-	createLevel();
-	startGUI();
-}
-
 void IngameState::GoToFeedbackState()
 {
 	HAMURSTATEMR->ChangeState("FeedbackState");
 	FeedbackState *fbState = static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState());
-	fbState->SetFeedback(foodSelection,
-		teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
+	//fbState->SetFeedback(foodSelection, teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
+
+	if (Level::mActiveLevel == "")
+	{
+		FeedbackInfo::GetInstance()->SetHealth(0, teeth->GetHealth());
+		FeedbackInfo::GetInstance()->SetShield(0, teeth->GetShield());
+	}	
+	else if (Level::mActiveLevel == "mondayLevel")
+	{
+		FeedbackInfo::GetInstance()->SetHealth(1, teeth->GetHealth());
+		FeedbackInfo::GetInstance()->SetShield(1, teeth->GetShield());
+	}
+	else if (Level::mActiveLevel == "thursdayLevel")
+	{
+		FeedbackInfo::GetInstance()->SetHealth(2, teeth->GetHealth());
+		FeedbackInfo::GetInstance()->SetShield(2, teeth->GetShield());
+	}
+
+	FeedbackInfo::GetInstance()->SetToothBrushUses(toothBrushUses);
+
 	if(Level::mActiveLevel == "saturdayLevel")
 		fbState->SetGameFinished(true);
 	else

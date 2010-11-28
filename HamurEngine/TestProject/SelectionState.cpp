@@ -132,8 +132,9 @@ void SelectionState::Update(float deltaTime)
 
 		if (foodSelection.empty() == false)
 		{
+			FeedbackInfo *fi = FeedbackInfo::GetInstance();
+			fi->SetSelection(foodSelection);
 			HAMURSTATEMR->ChangeState("IngameState");
-			static_cast<IngameState*>(HAMURSTATEMR->GetCurrentState())->SetFoodSelection(foodSelection);
 		}
 	}
 

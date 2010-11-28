@@ -13,6 +13,7 @@
 #include "GUI.h"
 #include <list>
 #include "FeedbackState.h"
+#include "FeedbackInfo.h"
 #include "Window.h"
 
 using namespace hamur;
@@ -35,7 +36,6 @@ public:
 	void Draw(float deltaTime);
 	void Exit();
 
-	void SetFoodSelection(map<string, string> fs);
 	void GoToFeedbackState();
 	void GoToGameOverState();
 	void ActivateBrush(const bool &isActive);
@@ -81,7 +81,6 @@ private:
 	void openEscapeWindow();
 	void closeEscapeWindow();
 
-	map<string, string> foodSelection;
 	int toothBrushUses;
 
 	bool escapeWindowShowing;

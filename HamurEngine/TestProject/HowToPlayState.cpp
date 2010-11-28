@@ -70,17 +70,4 @@ void HowToPlayState::Draw(float deltaTime)
 void HowToPlayState::Exit()
 {
 	HAMURWORLD->ClearAll();
-
-
-/*
-	//Delete objects
-	HAMURWORLD->DeleteObject("doneHTPButton");
-	HAMURWORLD->DeleteObject("titleHTPText");
-	HamurString s;
-	for (int i = 0; i < lines; i++)
-	{
-		s << i;
-		HAMURWORLD->DeleteObject("mainTextHTP" + s.GetString());
-	}*/
-
 }
