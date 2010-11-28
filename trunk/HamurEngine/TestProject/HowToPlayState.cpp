@@ -35,7 +35,7 @@ void HowToPlayState::Enter()
 	
 	// Main text
 	HamurString s;
-	tdr = new TextDataReader("test.xml");
+	tdr = TextDataReader::GetInstance();
 
 	string t = tdr->GetHowToPlay();
 	string* textLines = tdr->FormatText(t, lines);

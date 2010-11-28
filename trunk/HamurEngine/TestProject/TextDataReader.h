@@ -10,7 +10,8 @@ using namespace std;
 class TextDataReader
 {
 	public:
-		TextDataReader(char *fileName);
+		static TextDataReader* GetInstance();
+		//TextDataReader(char *fileName);
 		~TextDataReader();
 		// There should be other parameters to select what feedback to choose
 		string GetFeedback(string nameValue);
@@ -25,6 +26,7 @@ class TextDataReader
 		string* FormatText(string text, int lines);
 
 	private:
-		
+		static TextDataReader* Instance;
+		TextDataReader(char *fileName);
 		TiXmlDocument doc;
 };

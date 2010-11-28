@@ -2,6 +2,18 @@
 
 using namespace hamur;
 
+TextDataReader* TextDataReader::Instance = NULL;
+
+TextDataReader* TextDataReader::GetInstance()
+{
+	if (Instance == NULL)
+	{
+		Instance = new TextDataReader("test.xml");
+	}
+
+	return Instance;
+}
+
 TextDataReader::TextDataReader( char *fileName )
 {
 	if(!doc.LoadFile(fileName))
