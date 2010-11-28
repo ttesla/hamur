@@ -4,6 +4,8 @@ using namespace hamur;
 IngameState::IngameState() : HamurState("IngameState")
 {
 	toothBrushUses = 0;
+
+	waveText = NULL;
 }
 
 IngameState::~IngameState()
@@ -154,10 +156,15 @@ void IngameState::startGUI()
 	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
 	c.x = 150; c.y = 600-40;
 	brushButton = new Button("brushButton", c, "Graphics/brush.png", 100, 100);
-	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 150;
-	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() - 120;
-	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 20, c, HamurColorRGB::BLACK);
+	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2;
+	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - 100;
+	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
+
+	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 200;
+	c.y = 15;
+	waveText = new Text("waveText", Wave::GetActiveWave()->GetName() + " Wave Started", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
+	waveText->SetVisible(true);
 }
 
 void IngameState::Enter()
@@ -165,6 +172,8 @@ void IngameState::Enter()
 	startSound();
 	startBase();
 	startTeeth();
+
+	mWaveTextTimer = 3;
 }
 
 void IngameState::Update(float deltaTime)
@@ -237,6 +246,20 @@ void IngameState::Update(float deltaTime)
 	if (l < 0)
 	{
 		GoToGameOverState();
+	}
+
+	if (waveText != NULL)
+	{
+		if(waveText->IsVisible())
+		{
+			mWaveTextTimer -= deltaTime;
+	
+			if(mWaveTextTimer <= 0)
+			{
+				mWaveTextTimer = 3;
+				waveText->SetVisible(false);
+			}
+		}
 	}
 
 	// Current food panel update
@@ -341,4 +364,13 @@ void IngameState::ActivateBrush(const bool &isActive)
 	brushButton->SetVisible(isActive);
 	brushButton->SetActive(isActive);
 	brushText->SetVisible(isActive);
+}
+
+void IngameState::ShowWaveText( const string &waveName )
+{
+	if (waveText != NULL)
+	{
+		waveText->SetText(waveName + " Wave Started");
+		waveText->SetVisible(true);
+	}
 }

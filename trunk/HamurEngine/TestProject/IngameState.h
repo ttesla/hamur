@@ -39,6 +39,7 @@ public:
 	void GoToFeedbackState();
 	void GoToGameOverState();
 	void ActivateBrush(const bool &isActive);
+	void ShowWaveText(const string &waveName);
 
 private:
 	Bacteria **allocatedBacterias;
@@ -49,6 +50,7 @@ private:
 	int spawnedEnemyCount;
 	Base *base;
 	Teeth *teeth;
+	float mWaveTextTimer;
 
 	/****************
 		INGAME GUI  *
@@ -61,6 +63,7 @@ private:
 	Button *waterButton;
 	Button *brushButton;
 	Text *brushText;
+	Text *waveText;
 
 	Text *currentWaveText;
 

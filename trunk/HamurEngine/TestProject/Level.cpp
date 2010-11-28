@@ -55,7 +55,7 @@ void Level::StartNextWave()
 		mActiveWave = *(mWaves.end() - 1);
 		mActiveWave->StartWave();
 		mWaves.pop_back();
-		cout << mActiveWave->GetName() + "started";
+		static_cast<IngameState *>(HAMURSTATEMR->GetCurrentState())->ShowWaveText(mActiveWave->GetName());
 	}
 	else if(mWaves.empty() && Wave::GetAllSpawnedBacterias()->empty())
 	{

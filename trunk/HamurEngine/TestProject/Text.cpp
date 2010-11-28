@@ -66,3 +66,11 @@ Text::~Text()
 	SDL_FreeSurface(mSurface);
 	TTF_CloseFont(mFont);
 }
+
+void Text::SetText( const string &text )
+{
+	SDL_Color c = {mColor.R, mColor.G, mColor.B};
+	mSurface = TTF_RenderText_Blended(mFont, text.c_str(), c);
+	HAMURTEXMR->DeleteTexture(mID);
+	mID = HAMURTEXMR->AddTexture(mSurface, mName);
+}
