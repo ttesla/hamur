@@ -208,14 +208,15 @@ string FeedbackState::chooseFeedback()
 	FeedbackInfo *fbi = FeedbackInfo::GetInstance();
 	string message = "";
 	int lines = 0;
+	int totalSnacks = fbi->GetGoodSnacks() + fbi->GetNSGSnacks() + fbi->GetBadSnacks();
 
 	// FOR SELECTION --
-	if (fbi->GetFoodSelection().size() < 2)
+	if (totalSnacks < 2)
 	{
 		message += "Man ska vara noga med att äta. "; //tdr->GetFeedback("fb1");
 		lines++;
 	}
-	else if (fbi->GetFoodSelection().size() > 3)
+	else if (totalSnacks > 3)
 	{
 		message += "Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka. "; //tdr->GetFeedback("fb2");
 		lines+=2;
