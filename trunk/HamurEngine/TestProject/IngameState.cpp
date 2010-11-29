@@ -4,7 +4,6 @@ using namespace hamur;
 IngameState::IngameState() : HamurState("IngameState")
 {
 	toothBrushUses = 0;
-
 }
 
 IngameState::~IngameState()
@@ -154,22 +153,18 @@ void IngameState::startGUI()
 	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - 100;
 	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
-
-
-
 }
 
 void IngameState::Enter()
 {
 	waveText = NULL;
 
-
 	startSound();
 	startBase();
 	startTeeth();
 	createLevel();
 	startGUI();
-	
+	this->GoToFeedbackState();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
 

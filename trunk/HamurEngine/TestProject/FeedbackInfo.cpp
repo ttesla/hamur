@@ -43,3 +43,10 @@ void FeedbackInfo::SetToothBrushUses(int tbu)
 {
 	toothBrushUses = tbu;
 }
+
+void FeedbackInfo::SetSnacks(int g, int nsg, int b)
+{
+	goodSnacks = g;
+	nsgSnacks = nsg;
+	badSnacks = b;
+}

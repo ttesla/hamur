@@ -20,7 +20,7 @@ void FeedbackState::Enter()
 	c.x = w/2; c.y = h/2;
 	background = new Panel ("backgroundFeedback", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
 	background->ScaleSprite(1.5,1.5);
-	c.x = 75; c.y = 75;
+	c.x = 75; c.y = 50;
 	goodText = new Text ("goodfbText", "Good", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 75;
 	normalText = new Text ("normalfbText", "Not so good", font, 30, c, HamurColorRGB::BLACK);
@@ -73,18 +73,19 @@ void FeedbackState::SetFeedback()
 {
 	map<string, string> sel = FeedbackInfo::GetInstance()->GetFoodSelection();
 	float h, s;
+	h = s = 0.0;
 
-	if (Level::mActiveLevel == "")
+	if (Level::mActiveLevel == "mondayLevel")
 	{
 		h = FeedbackInfo::GetInstance()->GetHealth(0);
 		s = FeedbackInfo::GetInstance()->GetShield(0);
 	}
-	else if (Level::mActiveLevel == "mondayLevel")
+	else if (Level::mActiveLevel == "thursdayLevel")
 	{
 		h = FeedbackInfo::GetInstance()->GetHealth(1);
 		s = FeedbackInfo::GetInstance()->GetShield(1);
 	}
-	else if (Level::mActiveLevel == "thursdayLevel")
+	else if (Level::mActiveLevel == "saturdayLevel")
 	{
 		h = FeedbackInfo::GetInstance()->GetHealth(2);
 		s = FeedbackInfo::GetInstance()->GetShield(2);
@@ -94,7 +95,7 @@ void FeedbackState::SetFeedback()
 	HamurString str;
 	string font = "Fonts/LambadaDexter.ttf";
 
-	c.x = 300; c.y = 350;
+	c.x = 300; c.y = 300;
 
 	// The bars indicating levels of shields and life
 	///////////////
@@ -171,10 +172,13 @@ void FeedbackState::SetFeedback()
 		}
 	}
 
+	// Add some more feedback information
+	FeedbackInfo::GetInstance()->SetSnacks(good2.size(), nsg2.size(), bad2.size());
+
 	// Now we place the panels
 	list<string>::iterator it;
 	string root = "Graphics/Food/";
-	c.x = 175; c.y = 75;
+	c.x = 175; c.y = 50; c.z = 1.0;
 	for (it = good2.begin(); it != good2.end(); it++)
 	{
 		goodPanels.push_back(new Panel((*it) + "Panel", c, root + (*it) + ".png", 64, 64));
@@ -200,7 +204,110 @@ void FeedbackState::SetFeedback()
 string FeedbackState::chooseFeedback()
 {
 	TextDataReader *tdr = TextDataReader::GetInstance();
-	cout << tdr->GetFeedback("fb2") << endl;
+	FeedbackInfo *fbi = FeedbackInfo::GetInstance();
+	string message = "";
+	int lines = 0;
 
-	return "";
+	// FOR SELECTION --
+	if (fbi->GetFoodSelection().size() < 2)
+	{
+		message += "Man ska vara noga med att äta. "; //tdr->GetFeedback("fb1");
+		lines++;
+	}
+	else if (fbi->GetFoodSelection().size() > 3)
+	{
+		message += "Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka. "; //tdr->GetFeedback("fb2");
+		lines++;
+	}
+	else if (fbi->GetBadSnacks() == 1 || (fbi->GetNSGSnacks() == 1 || fbi->GetNSGSnacks() == 2))
+	{
+		message += "Att äta något gott och onyttigt är ingen fara, så länge man bara gör det ibland så att tänderna orkar med och är noga med att sköta borstning. "; //tdr->GetFeedback("fb3");
+		lines++;
+	}
+	else if (fbi->GetBadSnacks() > 1 || fbi->GetNSGSnacks() == 3)
+	{
+		message += "Du visste säkert redan att äta sån där saker inte är bra för tänderna. "; //tdr->GetFeedback("fb4");
+		lines++;
+	}
+	else
+	{
+		message += "Du vet hur man gör bra matval. "; //tdr->GetFeedback("fb5");
+		lines++;
+	}
+	// FOR HEALTH AND SHIELD --
+	float actS, lastS, actH, lastH;
+	actS = lastS = actH = lastH = 0.0; 
+
+	if (Level::mActiveLevel == "mondayLevel")
+	{
+		actS = fbi->GetShield(0);
+		lastS = 1000.0;
+		actH = fbi->GetHealth(0);
+		lastH = 1000.0;
+	}
+	else if (Level::mActiveLevel == "thursdayLevel")
+	{
+		actS = fbi->GetShield(1);
+		lastS = fbi->GetShield(0);
+		actH = fbi->GetHealth(1);
+		lastH = fbi->GetHealth(0);
+	}
+	else if (Level::mActiveLevel == "saturdayLevel")
+	{
+		actS = fbi->GetShield(2);
+		lastS = fbi->GetShield(1);
+		actH = fbi->GetHealth(2);
+		lastH = fbi->GetHealth(1);
+	}
+
+	if ((actH - lastH) < 0)
+	{
+		message += "När tänderna själva tar skada är det riktigt farligt eftersom dom inte kan laga sig själva särskilt snabbt. "; //tdr->GetFeedback("fb6");
+		lines++;
+	}
+	else if ((actS - lastS) > 0)
+	{
+		message += "Idag var du visst skötsam med tänderna. "; //tdr->GetFeedback("fb7");
+		lines++;
+	}
+	else if ((lastS - actS) < 200)
+	{
+		message += "Ja, tänderna klarade sig visst bra idag. "; //tdr->GetFeedback("fb8");
+		lines++;
+	}
+	else if ((lastS - actS) < 700)
+	{
+		message += "Det gick visst inte allt för bra. Du måste vara mer nogrann med att skydda tänderna. "; //tdr->GetFeedback("fb9");
+		lines++;
+	}
+	else
+	{
+		message += "Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. "; tdr->GetFeedback("fb10");	
+		lines++;
+	}
+	// TOOTHBRUSH USES --
+	if (fbi->GetToothBrushUses() < 2)
+	{
+		message += "Kom ihåg att borsta tänderna ordentligt nästa gång. ";//tdr->GetFeedback("fb11");
+		lines++;
+	}
+
+	cout << "FBMessage: " << message << endl;
+
+	HamurString s;
+	HamurVec3 c; 
+	c.x = 400;
+	c.y = 425;
+	c.z = 3.0;
+
+	string* textLines = tdr->FormatText(message, lines);
+	fbText = new Text* [lines];
+	for (int i = 0; i < lines; i++)
+	{
+		s.Clear(); s << i;
+		fbText[i] = new Text("fbtext" + s.GetString(), textLines[i], "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+		c.y += 20;
+	}
+
+	return message;
 }
