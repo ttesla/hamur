@@ -164,7 +164,7 @@ void IngameState::Enter()
 	startTeeth();
 	createLevel();
 	startGUI();
-	this->GoToFeedbackState();
+	//GoToFeedbackState();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
 
@@ -313,27 +313,28 @@ void IngameState::Exit()
 
 void IngameState::GoToFeedbackState()
 {
-	HAMURSTATEMR->ChangeState("FeedbackState");
-	FeedbackState *fbState = static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState());
 	//fbState->SetFeedback(foodSelection, teeth->GetHealth(), teeth->GetShield(), toothBrushUses);
 
-	if (Level::mActiveLevel == "")
+	if (Level::mActiveLevel == "mondayLevel")
 	{
 		FeedbackInfo::GetInstance()->SetHealth(0, teeth->GetHealth());
 		FeedbackInfo::GetInstance()->SetShield(0, teeth->GetShield());
 	}	
-	else if (Level::mActiveLevel == "mondayLevel")
+	else if (Level::mActiveLevel == "thursdayLevel")
 	{
 		FeedbackInfo::GetInstance()->SetHealth(1, teeth->GetHealth());
 		FeedbackInfo::GetInstance()->SetShield(1, teeth->GetShield());
 	}
-	else if (Level::mActiveLevel == "thursdayLevel")
+	else if (Level::mActiveLevel == "saturdayLevel")
 	{
 		FeedbackInfo::GetInstance()->SetHealth(2, teeth->GetHealth());
 		FeedbackInfo::GetInstance()->SetShield(2, teeth->GetShield());
 	}
 
 	FeedbackInfo::GetInstance()->SetToothBrushUses(toothBrushUses);
+
+	HAMURSTATEMR->ChangeState("FeedbackState");
+	FeedbackState *fbState = static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState());
 
 	if(Level::mActiveLevel == "saturdayLevel")
 		fbState->SetGameFinished(true);
