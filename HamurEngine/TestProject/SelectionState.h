@@ -45,7 +45,6 @@ class SelectionState : public HamurState
 		vector<Button *> snackButtons;
 		Button *startButton;
 
-		int snacksNumber; // Could be removed..
 		Panel *background;
 
 		map<string, string> foodSelection;

@@ -25,7 +25,7 @@ void Brush::Update( float deltaTime )
 void Brush::Explode()
 {
 	Teeth *t = static_cast<Teeth *>(HAMURWORLD->GetHamurObject("teeth"));
-	t->SetShield(t->GetShield() + 500);
+	t->IncreaseShield(500);
 
 	//for(int i = 0; i < MAXTEETH; i++)
 	//{

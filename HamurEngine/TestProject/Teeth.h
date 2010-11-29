@@ -19,8 +19,17 @@ class Teeth : public HamurObject
 		inline const float &GetShield(){return mShield;}
 		inline void SetHealth(const float &value){mLife = value;}
 		inline void SetShield(const float &value){mShield = value; if(mShield > 1000) mShield = 1000;}
-		inline void DecreaseShield(const float &value){mShield -= value;}
-		inline void IncreaseShield(const float &value){mShield += value;}
+		inline void DecreaseShield(const float &value)
+		{
+			mShield -= value;
+		}
+		inline void IncreaseShield(const float &value)
+		{
+			mShield += value;
+
+			if(mShield > 0)
+				SetSprite("Graphics/teeth/teeth0.png");
+		}
 		inline void DecreaseHealth(const float &value)
 		{
 			mLife -= value;
@@ -33,4 +42,6 @@ class Teeth : public HamurObject
 	private:
 		float mLife;
 		float mShield;
+
+		bool isMiddleTextureLoaded;
 };

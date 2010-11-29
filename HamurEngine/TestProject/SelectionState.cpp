@@ -87,7 +87,9 @@ void SelectionState::createMenu()
 
 void SelectionState::Enter()
 {
-	this->snacksNumber = 4;
+	foodSelection.clear();
+	mSelectedSnackCount = 0;
+
 
 	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();

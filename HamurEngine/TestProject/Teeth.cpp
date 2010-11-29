@@ -4,6 +4,7 @@ Teeth::Teeth(const string &name, const string &sprite, float life, float shield)
 {
 	mLife = life;
 	mShield = shield;
+	isMiddleTextureLoaded = false;
 }
 
 void Teeth::Reset()
@@ -24,6 +25,17 @@ void Teeth::Update(float deltaTime)
 void Teeth::HitDamage( const float &value )
 {
 	mShield -= value;
+
+	if(mShield <= 0 && !isMiddleTextureLoaded)
+	{
+		SetSprite("Graphics/teeth/teeth1.png");
+		isMiddleTextureLoaded = true;
+	}
+	else if(mShield > 0 && isMiddleTextureLoaded)
+	{
+		SetSprite("Graphics/teeth/teeth0.png");
+		isMiddleTextureLoaded = false;
+	}
 
 	if(mShield < 0)
 	{
