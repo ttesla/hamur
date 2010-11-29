@@ -29,11 +29,12 @@ void Level::Update( float deltaTime )
 	{
 		//TODO:This section will be removed from here, and toothbrushing will be done manually by
 		//player
-		if(mActiveWave->GetName().compare(0, 9, "Breakfast") == 0 ||
-			mWaves.empty()) //mActiveWave == *(mWaves.begin()))
+		if((mActiveWave->GetName().compare(0, 9, "Breakfast") == 0 ||
+			mWaves.empty()) && !mBrushActivated) //mActiveWave == *(mWaves.begin()))
 		{
 			activateBrush(true);
 			static_cast<IngameState *>(HAMURSTATEMR->GetCurrentState())->ActivateBrush(true);
+			mBrushActivated = true;
 		}
 
 		mTimeBetweenWaves = mTimeBetweenWaves - deltaTime;
@@ -50,6 +51,7 @@ void Level::Update( float deltaTime )
 
 void Level::StartNextWave()
 {
+	mBrushActivated = false;
 	if (!mWaves.empty())
 	{
 		mActiveWave = *(mWaves.end() - 1);

@@ -181,6 +181,7 @@ void IngameState::Update(float deltaTime)
 	else if(brushButton->isPushed() && brushButton->IsActive())
 	{
 		base->UseBrush();
+		ActivateBrush(false);
 		toothBrushUses++;
 	}
 	else if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
