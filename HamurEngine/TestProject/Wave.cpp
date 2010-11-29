@@ -13,7 +13,7 @@ Wave *Wave::mActiveWave = NULL;
 list<Wave *> *Wave::mCreatedWaves = NULL;
 list<Bacteria *> *Wave::mAllSpawnedBacterias = NULL;
 
-Wave::Wave( const string& name, int fattieCount, int normCount, int shooterCount, 
+Wave::Wave( const string& name, const int &totalWaveTime, int fattieCount, int normCount, int shooterCount, 
 		   int slimCount, int strayerCount ) : HamurObject(name), mTimeCounter(0), mStarted(false)
 {
 	if(mCreatedWaves == NULL)
@@ -23,7 +23,7 @@ Wave::Wave( const string& name, int fattieCount, int normCount, int shooterCount
 		mAllSpawnedBacterias = new list<Bacteria *>;
 
 	int totalBactCount = fattieCount + normCount + shooterCount + slimCount + strayerCount;
-	mTotalTimeOfWave = 20;
+	mTotalTimeOfWave = totalWaveTime;
 	mSpawningInterval = mTotalTimeOfWave / totalBactCount;
 
 	FillBacterias(fattieCount, normCount, shooterCount, slimCount, strayerCount);

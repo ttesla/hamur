@@ -5,7 +5,6 @@ IngameState::IngameState() : HamurState("IngameState")
 {
 	toothBrushUses = 0;
 
-	waveText = NULL;
 }
 
 IngameState::~IngameState()
@@ -156,20 +155,24 @@ void IngameState::startGUI()
 	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
 
-	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 200;
-	c.y = 15;
-	waveText = new Text("waveText", Wave::GetActiveWave()->GetName() + " Wave Started", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
-	waveText->SetVisible(true);
+
+
 }
 
 void IngameState::Enter()
 {
+	waveText = NULL;
+
+
 	startSound();
 	startBase();
 	startTeeth();
 	createLevel();
 	startGUI();
 	
+	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
+	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
+
 	mWaveTextTimer = 3;
 }
 
@@ -220,6 +223,7 @@ void IngameState::Update(float deltaTime)
 		else if(dynamic_cast<Button*>(HAMURWORLD->GetHamurObject("escapeWindowb2"))->isPushed()) // BackToMenu
 		{
 			closeEscapeWindow();
+			Level::mActiveLevel = "";
 			HAMURSTATEMR->ChangeState("MenuState");
 		}
 		else if(dynamic_cast<Button*>(HAMURWORLD->GetHamurObject("escapeWindowb3"))->isPushed()) // Return
@@ -281,6 +285,8 @@ void IngameState::Exit()
 	HAMURWORLD->DeleteObject("shieldPanel");
 	HAMURWORLD->DeleteObject("waterButton");
 	HAMURWORLD->DeleteObject("brushButton");
+	HAMURWORLD->DeleteObject("brushText");
+	HAMURWORLD->DeleteObject("waveText");
 	
 	{
 		list<Tooth *>::iterator Iter;
@@ -376,9 +382,16 @@ void IngameState::ActivateBrush(const bool &isActive)
 
 void IngameState::ShowWaveText( const string &waveName )
 {
-	if (waveText != NULL)
+	if(waveText == NULL)
 	{
-		waveText->SetText(waveName + " Wave Started");
+		HamurVec3 c;
+		c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 200;
+		c.y = 15;
+
+		waveText = new Text("waveText", Wave::GetActiveWave()->GetName() + " Wave Started", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 		waveText->SetVisible(true);
 	}
+
+	waveText->SetText(waveName + " Wave Started");
+	waveText->SetVisible(true);
 }

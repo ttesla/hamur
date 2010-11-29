@@ -23,7 +23,7 @@ class Wave : public hamur::HamurObject
 		//They will be created again in the enter function of IngameState
 		//static void DeleteAllWaveBacterias();
 
-		Wave(const string& name, int fattieCount, 
+		Wave(const string& name, const int &totalWaveTime, int fattieCount, 
 			int normCount, int shooterCount, int slimCount, int strayerCount);
 		virtual ~Wave();
 

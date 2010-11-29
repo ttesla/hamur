@@ -42,12 +42,13 @@ void FeedbackState::Update(float deltaTime)
 {
 	if(okButton->isPushed())
 	{
-		if(!mIsGameFinished)	
+		/*if(!mIsGameFinished)	
 			HAMURSTATEMR->ChangeState("SelectionState");
 		else
 		{
 			HAMURSTATEMR->ChangeState("StoryState");
-		}
+		}*/
+		HAMURSTATEMR->ChangeState("StoryState");
 	}
 }
 
