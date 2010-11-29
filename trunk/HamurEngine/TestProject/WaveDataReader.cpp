@@ -51,7 +51,9 @@ void WaveDataReader::CreateWavesFromData(const TiXmlDocument &doc)
 			}
 		}
 		
-		Wave *w = new Wave(waves->Attribute("Name"), fattieCount, normCount,
+		int waveTime = atoi(waves->Attribute("Time"));
+
+		Wave *w = new Wave(waves->Attribute("Name"), waveTime, fattieCount, normCount,
 				shooterCount, slimCount, strayerCount);
 	}
 }

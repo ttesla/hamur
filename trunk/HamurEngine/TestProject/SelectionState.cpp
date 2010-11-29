@@ -29,7 +29,7 @@ void SelectionState::createMenu()
 		c.x = 650;
 		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner1.png", 64, 64);
 	}
-	else if (Level::mActiveLevel == "")
+	else if (Level::mActiveLevel == "mondayLevel")
 	{
 		c.x = 100; c.y = 230; c.z = +10.0;
 		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast2.png", 64, 64);
@@ -38,7 +38,7 @@ void SelectionState::createMenu()
 		c.x = 650;
 		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner2.png", 64, 64);
 	}
-	else if (Level::mActiveLevel == "")
+	else if (Level::mActiveLevel == "thursdayLevel")
 	{
 		c.x = 100; c.y = 230; c.z = +10.0;
 		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast3.png", 64, 64);
