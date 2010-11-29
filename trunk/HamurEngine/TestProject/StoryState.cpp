@@ -46,6 +46,7 @@ void StoryState::Update(float deltaTime)
 	{
 		if (Level::mActiveLevel == "saturdayLevel")
 		{
+			Level::mActiveLevel = "";
 			HAMURSTATEMR->ChangeState("MenuState");
 		}
 		else
