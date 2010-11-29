@@ -20,7 +20,18 @@ void SelectionState::createMenu()
 	HamurVec3 c;
 	string root = "Graphics/Food/";
 
-	if (Level::mActiveLevel == "")
+	int randomIndex = (int)((rand() % 3) + 1);
+	mBreakfastIndex = HamurString::ParseInt(randomIndex).GetString();
+	mLunchIndex = HamurString::ParseInt(randomIndex).GetString();
+	mDinnerIndex = HamurString::ParseInt(randomIndex).GetString();
+
+	c.x = 100; c.y = 230; c.z = +10.0;
+	breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast" + mBreakfastIndex + ".png", 64, 64);
+	c.x = 375;
+	lunchPanel = new Panel("lunchPanel", c, root + "Lunch" + mLunchIndex + ".png", 64, 64);
+	c.x = 650;
+	dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner" + mDinnerIndex + ".png", 64, 64);
+	/*if (Level::mActiveLevel == "")
 	{
 		c.x = 100; c.y = 230; c.z = +10.0;
 		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast1.png", 64, 64);
@@ -28,25 +39,25 @@ void SelectionState::createMenu()
 		lunchPanel = new Panel("lunchPanel", c, root + "Lunch1.png", 64, 64);
 		c.x = 650;
 		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner1.png", 64, 64);
-	}
-	else if (Level::mActiveLevel == "mondayLevel")
-	{
-		c.x = 100; c.y = 230; c.z = +10.0;
-		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast2.png", 64, 64);
-		c.x = 375;
-		lunchPanel = new Panel("lunchPanel", c, root + "Lunch2.png", 64, 64);
-		c.x = 650;
-		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner2.png", 64, 64);
-	}
-	else if (Level::mActiveLevel == "thursdayLevel")
-	{
-		c.x = 100; c.y = 230; c.z = +10.0;
-		breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast3.png", 64, 64);
-		c.x = 375;
-		lunchPanel = new Panel("lunchPanel", c, root + "Lunch3.png", 64, 64);
-		c.x = 650;
-		dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner3.png", 64, 64);
-	}
+	}*/
+	//else if (Level::mActiveLevel == "mondayLevel")
+	//{
+	//	c.x = 100; c.y = 230; c.z = +10.0;
+	//	breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast2.png", 64, 64);
+	//	c.x = 375;
+	//	lunchPanel = new Panel("lunchPanel", c, root + "Lunch2.png", 64, 64);
+	//	c.x = 650;
+	//	dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner2.png", 64, 64);
+	//}
+	//else if (Level::mActiveLevel == "thursdayLevel")
+	//{
+	//	c.x = 100; c.y = 230; c.z = +10.0;
+	//	breakfastPanel = new Panel("breakfastPanel", c, root + "Breakfast3.png", 64, 64);
+	//	c.x = 375;
+	//	lunchPanel = new Panel("lunchPanel", c, root + "Lunch3.png", 64, 64);
+	//	c.x = 650;
+	//	dinnerPanel = new Panel("dinnerPanel", c, root + "Dinner3.png", 64, 64);
+	//}
 
 	c.x = 50; c.y = 420;
 
@@ -125,16 +136,16 @@ void SelectionState::Update(float deltaTime)
 {
 	if (startButton->isPushed())
 	{
-		int randomIndex = (int)((rand() % 3) + 1);
-		foodSelection["breakfast"] = "Breakfast" + HamurString::ParseInt(randomIndex).GetString();
-		foodSelection["lunch"] = "Lunch" + HamurString::ParseInt(randomIndex).GetString();
-		foodSelection["dinner"] = "Dinner" + HamurString::ParseInt(randomIndex).GetString();
+		foodSelection["breakfast"] = "Breakfast" + mBreakfastIndex;
+		foodSelection["lunch"] = "Lunch" + mLunchIndex;
+		foodSelection["dinner"] = "Dinner" + mDinnerIndex;
 
 		if (foodSelection.empty() == false)
 		{
 			FeedbackInfo *fi = FeedbackInfo::GetInstance();
 			fi->SetSelection(foodSelection);
 			HAMURSTATEMR->ChangeState("IngameState");
+			return;
 		}
 	}
 

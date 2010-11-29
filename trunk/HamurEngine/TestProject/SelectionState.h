@@ -52,6 +52,10 @@ class SelectionState : public HamurState
 
 		int mSelectedSnackCount; //SelectedSnackCount
 
+		string mBreakfastIndex;
+		string mLunchIndex;
+		string mDinnerIndex;
+
 		void createMenu();
 };
 
