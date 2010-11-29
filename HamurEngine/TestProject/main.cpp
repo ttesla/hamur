@@ -48,10 +48,21 @@ int main(int argc, char *argv[])
 	//HAMURSTATEMR->ChangeState("IngameState");
 	
 	/* To test FB state 
+	FeedbackInfo *fbi = FeedbackInfo::GetInstance();
 	map<string, string> fs;
-	HAMURSTATEMR->ChangeState("FeedbackState");
-	static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
+	fs["snack1"] = "Egg";
+	fs["snack2"] = "Glass";
+	fs["snack3"] = "Godis";
+	fbi->SetSelection(fs);
+	fbi->SetToothBrushUses(1);
+	fbi->SetHealth(0, 900);
+	fbi->SetShield(0, 900);
 	*/
+
+
+	//HAMURSTATEMR->ChangeState("FeedbackState");
+	//static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
+	
     HAMURENGINE->Run();
     HAMURENGINE->Terminate();
 

@@ -3,39 +3,39 @@
 	<Feedbacks>
 		<!-- Food selection -->
 		<Feedback name="fb1">
-			Man ska vara noga med att äta. 
+			Man ska vara noga med att Ã¤ta. 
 		</Feedback>
 		<Feedback name="fb2">
-			Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka.
+			Ã„ter du fÃ¶r mÃ¥nga saker tar tÃ¤nderna ocksÃ¥ skada, Ã¤ven om det Ã¤r nyttiga saker. TvÃ¥ eller tre mellanmÃ¥l om dagen borde rÃ¤cka.
 		</Feedback>
 		<Feedback name="fb3">
-			Att äta något gott och onyttigt är ingen fara, så länge man bara gör det ibland så att tänderna orkar med och är noga med att sköta borstning. 
+			Att Ã¤ta nÃ¥got gott och onyttigt Ã¤r ingen fara, sÃ¥ lÃ¤nge man bara gÃ¶r det ibland sÃ¥ att tÃ¤nderna orkar med och Ã¤r noga med att skÃ¶ta borstning. 
 		</Feedback>
 		<Feedback name="fb4">
-			Du visste säkert redan att äta sån där saker inte är bra för tänderna.
+			Du visste sÃ¤kert redan att Ã¤ta sÃ¥n dÃ¤r saker inte Ã¤r bra fÃ¶r tÃ¤nderna.
 		</Feedback>
 		<Feedback name="fb5">
-			Du vet hur man gör bra matval.
+			Du vet hur man gÃ¶r bra matval.
 		</Feedback>
 		<!-- Health & Shield -->
 		<Feedback name="fb6">
-			När tänderna själva tar skada är det riktigt farligt eftersom dom inte kan laga sig själva särskilt snabbt. 
+			NÃ¤r tÃ¤nderna sjÃ¤lva tar skada Ã¤r det riktigt farligt eftersom dom inte kan laga sig sjÃ¤lva sÃ¤rskilt snabbt. 
 		</Feedback>
 		<Feedback name="fb7">
-			Idag var du visst skötsam med tänderna. 
+			Idag var du visst skÃ¶tsam med tÃ¤nderna. 
 		</Feedback>
 		<Feedback name="fb8">
-			Ja, tänderna klarade sig visst bra idag.
+			Ja, tÃ¤nderna klarade sig visst bra idag.
 		</Feedback>
 		<Feedback name="fb9">
-			Det gick visst inte allt för bra. Du måste vara mer nogrann med att skydda tänderna. 
+			Det gick visst inte allt fÃ¶r bra. Du mÃ¥ste vara mer nogrann med att skydda tÃ¤nderna. 
 		</Feedback>
 		<Feedback name="fb10">
-			Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. 
+			Aj-aj-aj. Bakterierna kom nÃ¤stan in och skadade tÃ¤nderna. Du borde nog riktigt vara fÃ¶rsiktigt nÃ¤sta gÃ¥ng. 
 		</Feedback>
 		<!-- Toothbrushing -->
 		<Feedback name="fb11">
-			Kom ihåg att borsta tänderna ordentligt nästa gång.
+			Kom ihÃ¥g att borsta tÃ¤nderna ordentligt nÃ¤sta gÃ¥ng.
 		</Feedback>
 	</Feedbacks>
 	<HowToPlay>
