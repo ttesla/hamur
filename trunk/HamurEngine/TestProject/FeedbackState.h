@@ -41,6 +41,7 @@ class FeedbackState : public HamurState
 		vector<Panel *> normalPanels;
 		vector<Panel *> badPanels;
 		Text **fbText; // The feedback message
+		int lines;
 		Button *okButton; // To exit to the menu again
 		Panel *characterPanel; 
 		Panel *background;

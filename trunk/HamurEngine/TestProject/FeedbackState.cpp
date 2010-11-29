@@ -60,6 +60,9 @@ void FeedbackState::Draw(float deltaTime)
 void FeedbackState::Exit()
 {
 	HAMURWORLD->ClearAll();
+	
+	delete [] fbText;
+	fbText = NULL;
 
 	/*
 	HAMURWORLD->DeleteObject("titleMenuPanel");
@@ -77,7 +80,6 @@ void FeedbackState::SetFeedback()
 
 	if (Level::mActiveLevel == "mondayLevel")
 	{
-		cout << "Entro" << endl; 
 		h = FeedbackInfo::GetInstance()->GetHealth(0);
 		s = FeedbackInfo::GetInstance()->GetShield(0);
 	}
@@ -207,13 +209,13 @@ string FeedbackState::chooseFeedback()
 	TextDataReader *tdr = TextDataReader::GetInstance();
 	FeedbackInfo *fbi = FeedbackInfo::GetInstance();
 	string message = "";
-	int lines = 0;
+	lines = 0;
 	int totalSnacks = fbi->GetGoodSnacks() + fbi->GetNSGSnacks() + fbi->GetBadSnacks();
 
 	// FOR SELECTION --
 	if (totalSnacks < 2)
 	{
-		message += "Man ska vara noga med att äta. "; //tdr->GetFeedback("fb1");
+		message += "Man ska vara noga med att äta så man orkar hela dagen. "; //tdr->GetFeedback("fb1");
 		lines++;
 	}
 	else if (totalSnacks > 3)
@@ -231,11 +233,12 @@ string FeedbackState::chooseFeedback()
 		message += "Du visste säkert redan att äta sån där saker inte är bra för tänderna. "; //tdr->GetFeedback("fb4");
 		lines++;
 	}
-	else
+	else if (totalSnacks >= 2 && totalSnacks <= 3)
 	{
 		message += "Du vet hur man gör bra matval. "; //tdr->GetFeedback("fb5");
 		lines++;
 	}
+
 	// FOR HEALTH AND SHIELD --
 	float actS, lastS, actH, lastH;
 	actS = lastS = actH = lastH = 0.0; 
@@ -287,14 +290,17 @@ string FeedbackState::chooseFeedback()
 		message += "Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. "; tdr->GetFeedback("fb10");	
 		lines+=2;
 	}
+
 	// TOOTHBRUSH USES --
 	if (fbi->GetToothBrushUses() < 2)
 	{
 		message += "Kom ihåg att borsta tänderna ordentligt nästa gång. ";//tdr->GetFeedback("fb11");
 		lines++;
 	}
-
-	cout << "FBMessage: " << message << endl;
+	
+	cout << "LEV: " << Level::mActiveLevel << " - FBMessage: " << message << endl;
+	cout << "TotalSnacks: " << totalSnacks << " G: " << fbi->GetGoodSnacks() << " NSG: " << fbi->GetNSGSnacks() << " BAD: " << fbi->GetBadSnacks() << endl;
+	cout << "TBU: " << fbi->GetToothBrushUses()<< endl;
 
 	HamurString s;
 	HamurVec3 c; 
@@ -304,10 +310,11 @@ string FeedbackState::chooseFeedback()
 
 	string* textLines = tdr->FormatText(message, lines);
 	fbText = new Text* [lines];
+
 	for (int i = 0; i < lines; i++)
 	{
 		s.Clear(); s << i;
-		fbText[i] = new Text("fbtext" + s.GetString(), textLines[i], "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+		fbText[i] = new Text("fbtext" + s.GetString() + Level::mActiveLevel, textLines[i], "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
 		c.y += 20;
 	}
 
