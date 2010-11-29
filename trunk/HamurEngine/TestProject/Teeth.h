@@ -22,10 +22,16 @@ class Teeth : public HamurObject
 		inline void DecreaseShield(const float &value)
 		{
 			mShield -= value;
+
+			if(mShield < 0)
+				mShield = 0;
 		}
 		inline void IncreaseShield(const float &value)
 		{
 			mShield += value;
+
+			if(mShield > 1000)
+				mShield = 1000;
 
 			if(mShield > 0)
 				SetSprite("Graphics/teeth/teeth0.png");
