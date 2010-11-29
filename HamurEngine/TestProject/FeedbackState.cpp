@@ -26,7 +26,7 @@ void FeedbackState::Enter()
 	normalText = new Text ("normalfbText", "Not so good", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 75;
 	badText = new Text ("badfbText", "Bad", font, 30, c, HamurColorRGB::BLACK);
-	c.y += 125;
+	c.y = 300;
 	lifeText = new Text ("lifefbText", "Life", font, 30, c, HamurColorRGB::BLACK);
 	c.y += 50;
 	shieldsText = new Text ("shieldsfbText", "Shields", font, 30, c, HamurColorRGB::BLACK);
@@ -77,6 +77,7 @@ void FeedbackState::SetFeedback()
 
 	if (Level::mActiveLevel == "mondayLevel")
 	{
+		cout << "Entro" << endl; 
 		h = FeedbackInfo::GetInstance()->GetHealth(0);
 		s = FeedbackInfo::GetInstance()->GetShield(0);
 	}
@@ -184,13 +185,13 @@ void FeedbackState::SetFeedback()
 		goodPanels.push_back(new Panel((*it) + "Panel", c, root + (*it) + ".png", 64, 64));
 		c.x += 70;
 	}
-	c.x = 175; c.y = 150;
+	c.x = 175; c.y = 125;
 	for (it = nsg2.begin(); it != nsg2.end(); it++)
 	{
 		normalPanels.push_back(new Panel((*it) + "Panel", c, root + (*it) + ".png", 64, 64));
 		c.x += 70;
 	}
-	c.x = 175; c.y = 225;
+	c.x = 175; c.y = 200;
 	for (it = bad2.begin(); it != bad2.end(); it++)
 	{
 		badPanels.push_back(new Panel((*it) + "Panel", c, root + (*it) + ".png", 64, 64));
