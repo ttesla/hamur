@@ -51,9 +51,9 @@ void Level::Update( float deltaTime )
 
 void Level::StartNextWave()
 {
-	mBrushActivated = false;
 	if (!mWaves.empty())
 	{
+		mBrushActivated = false;
 		mActiveWave = *(mWaves.end() - 1);
 		mActiveWave->StartWave();
 		mWaves.pop_back();
