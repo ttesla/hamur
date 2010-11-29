@@ -218,12 +218,12 @@ string FeedbackState::chooseFeedback()
 	else if (fbi->GetFoodSelection().size() > 3)
 	{
 		message += "Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka. "; //tdr->GetFeedback("fb2");
-		lines++;
+		lines+=2;
 	}
 	else if (fbi->GetBadSnacks() == 1 || (fbi->GetNSGSnacks() == 1 || fbi->GetNSGSnacks() == 2))
 	{
 		message += "Att äta något gott och onyttigt är ingen fara, så länge man bara gör det ibland så att tänderna orkar med och är noga med att sköta borstning. "; //tdr->GetFeedback("fb3");
-		lines++;
+		lines+=2;
 	}
 	else if (fbi->GetBadSnacks() > 1 || fbi->GetNSGSnacks() == 3)
 	{
@@ -284,7 +284,7 @@ string FeedbackState::chooseFeedback()
 	else
 	{
 		message += "Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. "; tdr->GetFeedback("fb10");	
-		lines++;
+		lines+=2;
 	}
 	// TOOTHBRUSH USES --
 	if (fbi->GetToothBrushUses() < 2)
