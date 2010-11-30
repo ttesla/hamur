@@ -165,7 +165,7 @@ void IngameState::Enter()
 	startTeeth();
 	createLevel();
 	startGUI();
-	//GoToFeedbackState();
+	GoToFeedbackState();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
 
