@@ -156,11 +156,26 @@ void SelectionState::Update(float deltaTime)
 	{
 		if ((*Iter)->isPushed() && mSelectedSnackCount < 6)
 		{
+			bool exists = false;
+			string foodKey, waveName;
 			cout << (*Iter)->GetName() + " pushed!" << endl;
 			(*Iter)->SetSprite("Graphics/Food/foodselected.png");
-			string foodKey = "snack" + HamurString::ParseInt(++mSelectedSnackCount).GetString();
-			string waveName = (*Iter)->GetName();
-			foodSelection[foodKey] = waveName.substr(0, waveName.find("Button"));
+
+			waveName = (*Iter)->GetName();
+			int i;
+			for (i = 0; i < mSelectedSnackCount && !exists; i++)
+			{
+				foodKey = "snack" + HamurString::ParseInt(i+1).GetString();
+				if (foodSelection[foodKey] == waveName.substr(0, waveName.find("Button")))
+				{
+					exists = true;
+				}
+			}
+			if (!exists)
+			{
+				foodKey = "snack" + HamurString::ParseInt(++mSelectedSnackCount).GetString();
+				foodSelection[foodKey] = waveName.substr(0, waveName.find("Button"));
+			}
 		}
 	}
 }
