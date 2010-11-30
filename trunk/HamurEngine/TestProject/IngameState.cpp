@@ -60,7 +60,7 @@ void IngameState::createLevel()
 	mondayLevel = new Level("mondayLevel"); mondayLevel->SetActive(false);
 	thursdayLevel = new Level("thursdayLevel"); thursdayLevel->SetActive(false);
 	saturdayLevel = new Level("saturdayLevel"); saturdayLevel->SetActive(false);
-
+			
 	WaveDataReader waveReader("Waves.xml");
 
 	string newLevelName = "mondayLevel";
@@ -157,6 +157,7 @@ void IngameState::startGUI()
 
 void IngameState::Enter()
 {
+	toothBrushUses = 0;
 	waveText = NULL;
 
 	startSound();
@@ -205,7 +206,6 @@ void IngameState::Update(float deltaTime)
 			closeEscapeWindow();
 		}
 	}
-
 	
 	if (escapeWindowShowing)
 	{

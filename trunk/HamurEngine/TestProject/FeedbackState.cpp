@@ -106,14 +106,14 @@ void FeedbackState::SetFeedback()
 	c.x = 600;
 	str << h/10;
 	str << "%";
-	lifeValueText = new Text("lifeValueText", str.GetString(), font, 30, c, HamurColorRGB::BLACK); 
+	lifeValueText = new Text("lVT" + Level::mActiveLevel, str.GetString(), font, 30, c, HamurColorRGB::BLACK); 
 	c.x = 300; c.y += 50;
 	shieldsPanel = new Panel("shieldsfbPanel", c, "", 300, 10, HamurColor::BLUE);
 	c.x = 600;
 	str.Clear();
 	str << s/10;
 	str << "%";
-	shieldsValueText = new Text("shieldValueText", str.GetString(), font, 30, c, HamurColorRGB::BLACK);
+	shieldsValueText = new Text("sVT" + Level::mActiveLevel, str.GetString(), font, 30, c, HamurColorRGB::BLACK);
 	// We apply the values
 	lifePanel->SetWidth(h*0.3);
 	shieldsPanel->SetWidth(s*0.3);
