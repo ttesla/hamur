@@ -212,6 +212,7 @@ string FeedbackState::chooseFeedback()
 	lines = 0;
 	int totalSnacks = fbi->GetGoodSnacks() + fbi->GetNSGSnacks() + fbi->GetBadSnacks();
 
+
 	// FOR SELECTION --
 	if (totalSnacks < 2)
 	{

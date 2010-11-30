@@ -16,6 +16,8 @@ HowToPlayState::~HowToPlayState()
 
 void HowToPlayState::Enter()
 {
+	slide = 1;
+
 	int w = HamurOpenGL::GetInstance()->GetScreenWidth();
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 
@@ -24,41 +26,19 @@ void HowToPlayState::Enter()
 
 	// Background
 	c.x = w/2; c.y = h/2;
-	//HAMURENGINE->SetBackgroundColor(HamurColor::WHITE);
-	background = new Panel ("backgroundHTP", c, "Graphics/menubg.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
-	background->ScaleSprite(1.5,1.5);
 	
-	c.y = 50;
-	// Title
-	//titleText = new Text("titleHTPText", "How to play", font, 40, c, HamurColorRGB::BLUE, BOLD);
-	titlePanel = new Panel("titleHTP", c, "Graphics/htptitle.png", 400, 100);
+	background = new Panel ("backgroundHTP", c, "Graphics/HowToPlay/htpslide1.png", HamurOpenGL::GetInstance()->GetScreenWidth(), HamurOpenGL::GetInstance()->GetScreenHeight());
+	//background->ScaleSprite(1.5,1.5);
 	
-	// Main text
-	HamurString s;
-	tdr = TextDataReader::GetInstance();
-
-	string t = tdr->GetHowToPlay();
-	string* textLines = tdr->FormatText(t, lines);
-	mainText = new Text* [lines];
-
-	c.y += 30 ;
-	for (int i = 0; i < lines && textLines[i] != ""; i++)
-	{
-		cout << textLines[i] << endl;
-		s << i; 
-		c.y += 20;
-		mainText[i] = new Text ("mainTextHTP" + s.GetString(), textLines[i], font, 15, c, HamurColorRGB::BLACK);
-	}
-
-	c.y += 100;
-	doneButton = new Button("doneHTPButton", c, "Graphics/backtomenu.png", 300, 50);
+	c.x = 700; c.y = 575;
+	nextButton = new Button("doneHTPButton", c, "Graphics/nextbutton.png", 300, 50);
 }
 
 void HowToPlayState::Update(float deltaTime)
 {
-	if (this->doneButton->isPushed())
+	if (this->nextButton->isPushed())
 	{
-		HAMURSTATEMR->ChangeState("MenuState");
+		GoToNext();
 	}
 }
 
@@ -70,4 +50,33 @@ void HowToPlayState::Draw(float deltaTime)
 void HowToPlayState::Exit()
 {
 	HAMURWORLD->ClearAll();
+}
+
+void HowToPlayState::GoToNext()
+{
+	switch (slide)
+	{
+		case 1:
+			slide = 2;
+			SetBackground("Graphics/HowToPlay/htpslide2.png");
+			break;
+		case 2:
+			slide = 3;
+			SetBackground("Graphics/HowToPlay/htpslide3.png");
+			break;
+		case 3:
+			slide = 4;
+			SetBackground("Graphics/HowToPlay/htpslide4.png");
+			break;
+		case 4:
+			HAMURSTATEMR->ChangeState("MenuState");
+			break;
+		default:
+			break;
+	}
+}
+
+void HowToPlayState::SetBackground(string path)
+{
+	background->SetSprite(path);
 }

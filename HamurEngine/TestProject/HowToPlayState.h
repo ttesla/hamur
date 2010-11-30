@@ -21,13 +21,20 @@ class HowToPlayState : public HamurState
 		void Draw(float deltaTime);
 		void Exit();
 
+		void GoToNext();
+
 	private:
 		TextDataReader *tdr;
-		Text *titleText;
-		Text **mainText;
-		Button *doneButton;
-		Panel *titlePanel;
 		Panel *background;
+		Button *nextButton;
+		int slide;
+
+		void SetBackground(string path);
+		//Text *titleText;
+		//Text **mainText;
+		//Button *doneButton;
+		//Panel *titlePanel;
+		//Panel *background;
 };
 
 #endif 
