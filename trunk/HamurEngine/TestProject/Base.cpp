@@ -92,6 +92,8 @@ Base::Base(const string &name, const string &sprite): HamurObject(name, sprite)
 
 	mFlossingBulletCooldown = 3;
 	mLastFlossingBulletFiredTime = 3;
+	mToothpasteBulletCooldown = 0.25;
+	mLastToothpasteBulletFiredTime = 1;
 }
 
 Base::~Base()
@@ -107,7 +109,8 @@ Base::~Base()
 
 void Base::Update(float deltaTime)
 {
-	mLastFlossingBulletFiredTime += HAMURTIMER->DeltaTime();
+	mLastFlossingBulletFiredTime += deltaTime;
+	mLastToothpasteBulletFiredTime += deltaTime;
 }
 
 void Base::Fire(const HamurVec3 &targetPos, const BulletTypes &bulletType)
@@ -122,6 +125,14 @@ void Base::Fire(const HamurVec3 &targetPos, const BulletTypes &bulletType)
 
 		mLastFlossingBulletFiredTime = 0;
 	}
+	else if(bulletType == BulletTypes::ToothPasteBulletType)
+	{
+		if(mLastToothpasteBulletFiredTime < mToothpasteBulletCooldown)
+			return;
+
+		mLastToothpasteBulletFiredTime = 0;
+	}
+
 
 	std::list<Bullet *>::iterator Iter;
 

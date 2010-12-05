@@ -41,6 +41,8 @@ class Base : public HamurObject
 		bool update;
 		float mFlossingBulletCooldown;
 		float mLastFlossingBulletFiredTime;
+		float mToothpasteBulletCooldown;
+		float mLastToothpasteBulletFiredTime;
 };
 
 #endif
