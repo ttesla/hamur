@@ -37,6 +37,8 @@ void WaterBullet::Explode()
 	{
 		mAnimation->PlayAnimation(false);
 
+		std::list<Bacteria *> eraseList;
+
 		//Get enemies from wave and damage all
 		std::list<Bacteria *> *bacterias = Wave::GetAllSpawnedBacterias();
 		std::list<Bacteria *>::iterator Iter;
@@ -45,12 +47,20 @@ void WaterBullet::Explode()
 		{
 			if((*Iter)->DecreaseLife(1))
 			{
-				HAMURWORLD->DeleteObject((*Iter)->GetName());
-				bacterias->erase(Iter++);
+				eraseList.push_back((*Iter));
+				/*bacterias->erase(Iter++);
 				if(bacterias->end() == Iter)
-					break;
+					break;*/
 			}
 		}
+
+		for(Iter = eraseList.begin(); Iter != eraseList.end(); Iter++)
+		{
+			HAMURWORLD->DeleteObject((*Iter)->GetName());
+			bacterias->remove((*Iter));
+		}
+
+		eraseList.clear();
 	
 	
 		mRemainingCooldown = mCooldownTime;
