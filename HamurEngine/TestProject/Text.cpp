@@ -74,3 +74,8 @@ void Text::SetText( const string &text )
 	HAMURTEXMR->DeleteTexture(mID);
 	mID = HAMURTEXMR->AddTexture(mSurface, mName);
 }
+
+void Text::DeleteText()
+{
+	HAMURTEXMR->DeleteTexture(mID);
+}

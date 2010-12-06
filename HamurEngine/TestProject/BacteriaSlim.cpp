@@ -11,6 +11,16 @@ BacteriaSlim::BacteriaSlim(const string &name, const string &sprite, const int &
 	this->mWidth = 10.0;
 }
 
+void BacteriaSlim::DoHit()
+{
+
+}
+
+void BacteriaSlim::UndoHit()
+{
+
+}
+
 /* Not using it at the moment...
 
 void BacteriaSlim::Draw(float deltaTime)

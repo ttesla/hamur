@@ -15,6 +15,10 @@ class BacteriaStrayer : public Bacteria
 		virtual void Update(float deltaTime);
 		//virtual void Draw(float deltaTime);	
 		//void setPhysics(); We are not using physics at the moment...
+		virtual string GetType() { return "strayer"; }
+		virtual int GetInitialLife() { return 2; }
+		void DoHit();
+		void UndoHit();
 
 	private:
 		int mPrevTickCount;

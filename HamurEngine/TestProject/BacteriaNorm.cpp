@@ -10,6 +10,16 @@ BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, const int &
 	this->SetShield(3.0);
 }
 
+void BacteriaNorm::DoHit()
+{
+
+}
+
+void BacteriaNorm::UndoHit()
+{
+
+}
+
 /* Not using it at the moment...
 
 void Bacteria::setPhysics()

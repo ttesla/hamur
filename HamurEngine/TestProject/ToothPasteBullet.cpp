@@ -22,6 +22,11 @@ void ToothPasteBullet::Update(float deltaTime)
 					HAMURWORLD->DeleteObject((*Iter)->GetName()); //Deleting bacteria
 					bacterias->erase(Iter);
 				}
+				else
+				{
+					(*Iter)->DoHit();
+				}
+
 				return;
 			}
 		}
