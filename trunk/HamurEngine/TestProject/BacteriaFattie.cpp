@@ -58,3 +58,13 @@ void BacteriaFattie::Update(float deltaTime)
 	Bacteria::Update(deltaTime);
 }
 */
+
+void BacteriaFattie::DoHit()
+{
+
+}
+
+void BacteriaFattie::UndoHit()
+{
+
+}

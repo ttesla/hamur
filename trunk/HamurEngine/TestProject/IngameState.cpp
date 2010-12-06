@@ -165,6 +165,7 @@ void IngameState::Enter()
 	startTeeth();
 	createLevel();
 	startGUI();
+	//GoToFeedbackState();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
 
@@ -184,12 +185,12 @@ void IngameState::Update(float deltaTime)
 		ActivateBrush(false);
 		toothBrushUses++;
 	}
-	else if(HAMUREVENT->IsMouseDown(Keys::Mouse::LeftButton))
+	else if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
 	}
 
-	if(HAMUREVENT->IsMouseDown(Keys::Mouse::RightButton))
+	if(HAMUREVENT->IsMousePressed(Keys::Mouse::RightButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::FlossingBulletType);
 	}

@@ -93,6 +93,16 @@ void BacteriaShooter::Update(float deltaTime)
 	Bacteria::Update(deltaTime);
 }
 
+void BacteriaShooter::DoHit()
+{
+
+}
+
+void BacteriaShooter::UndoHit()
+{
+
+}
+
 BacteriaShooter::~BacteriaShooter()
 {
 	std::vector<Bullet *>::iterator Iter;

@@ -21,6 +21,10 @@ class BacteriaShooter : public Bacteria
 		//void setPhysics(); We are not using physics at the moment...
 		bool isMoving();
 		void Fire(const HamurVec3 &targetPos);
+		virtual string GetType() { return "shooter"; }
+		virtual int GetInitialLife() { return 2; }
+		void DoHit();
+		void UndoHit();
 
 	private:
 		// Minimun length or distance to the base

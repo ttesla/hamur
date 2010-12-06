@@ -15,7 +15,10 @@ class BacteriaSlim : public Bacteria
         //virtual void Draw(float deltaTime);	
 		//virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
-
+		virtual string GetType() { return "slim"; }
+		virtual int GetInitialLife() { return 1; }
+		void DoHit();
+		void UndoHit();
 	private:
 };
 

@@ -15,6 +15,10 @@ class BacteriaFattie : public Bacteria
         //virtual void Draw(float deltaTime);	
 		//virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
+		virtual string GetType() { return "fattie"; }
+		virtual int GetInitialLife() { return 5; }
+		void DoHit();
+		void UndoHit();
 
 	private:
 

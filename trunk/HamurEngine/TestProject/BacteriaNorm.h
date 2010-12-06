@@ -15,6 +15,10 @@ class BacteriaNorm : public Bacteria
         //virtual void Draw(float deltaTime);	
 		//virtual void Update(float deltaTime);
 		//void setPhysics(); We are not using physics at the moment...
+		virtual string GetType() { return "norm"; }
+		virtual int GetInitialLife() { return 3; }
+		void DoHit();
+		void UndoHit();
 
 	private:
 		

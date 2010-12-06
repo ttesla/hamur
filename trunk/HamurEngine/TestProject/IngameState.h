@@ -67,6 +67,13 @@ private:
 
 	Text *currentWaveText;
 
+	// For the bacteria count
+	Panel *stP; Text *st;
+	Panel *slP; Text *sl;
+	Panel *shP; Text *sh;
+	Panel *noP; Text *no;
+	Panel *faP; Text *fa;
+
 	//Levels
 	Level *mondayLevel;
 	Level *thursdayLevel;
@@ -77,7 +84,8 @@ private:
 	void startBase();
 	void startTeeth();
 	void createLevel();
-	void startGUI();
+	void startGUI(); 
+		void showBacteriaCount();
 	void openEscapeWindow();
 	void closeEscapeWindow();
 

@@ -19,9 +19,9 @@ class Text : public GUIElement
 		virtual ~Text();
 		virtual void Update(float deltaTime);
 		virtual void Draw(float deltaTime);
-
+		
 		void SetText(const string &text);
-	
+		void DeleteText();
 	private:
 		string mText;
 		HamurVec3 mPosition;

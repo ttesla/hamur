@@ -52,16 +52,46 @@ Bacteria::Bacteria(const string &name, const string &sprite, const int &spriteCo
 
 	mAnimation = new Animation(sprite, spriteCount);
 	mAnimation->PlayAnimation(true);
+
+	mHitTimer = 3;
+}
+
+void Bacteria::SetAnimation(const string& sprite, const int& spriteCount)
+{
+	if (this->mAnimation != NULL)
+	{
+		delete mAnimation;
+		mAnimation = NULL;
+	}
+	
+	mAnimation = new Animation(sprite, spriteCount);
+	mAnimation->PlayAnimation(true);
 }
 
 void Bacteria::Draw(float deltaTime)
 {
 	//HamurObject::Draw(deltaTime);
+	// We paint a bar with the life of the bacteria
+	float h = 4;
+	float w = mLife*15/GetInitialLife();
+	HamurPlotter::DrawSolidRectangle(this->mPos.x, this->mPos.y - this->mHeight, w, h, HamurColor::GREEN);
+
 	mAnimation->Draw(mPos, mRotation);
 }
 
 void Bacteria::Update( float deltaTime )
 {
+	if(mHitTimer != 3)
+	{
+		mHitTimer -= deltaTime;
+		
+		if(mHitTimer <= 0)
+		{
+			mHitTimer = 3;
+			UndoHit();
+		}
+	}
+
 	mAnimation->Update(deltaTime * 5);
 
 	if(IsAttacking2Tooth(deltaTime))

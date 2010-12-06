@@ -28,12 +28,17 @@ class Bacteria : public HamurObject
 		void SetLife(float pLife){mLife = pLife;}
 		void SetShield(float pShield){mShield = pShield;}
 		HamurVec3 GetMovementDirection(){return movementDirection;}
-
+		virtual string GetType() = 0;
+		virtual int GetInitialLife() = 0;
 		// returns true: bacteria killed, false otherwise
 		bool DecreaseLife (int bulletPower);
 		virtual bool IsAttacking2Tooth(float deltaTime);
 
 		void ResetMovement();
+
+		void SetAnimation(const string& sprite, const int &spriteCount);
+		virtual void DoHit() = 0;
+		virtual void UndoHit() = 0;
 
 	protected:
 		Teeth *mTeeth;
@@ -44,6 +49,8 @@ class Bacteria : public HamurObject
 		float mShield;
 		float mSpeed;
 		float mDamage;
+
+		float mHitTimer;
 };
 
 #endif
