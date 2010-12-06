@@ -153,6 +153,32 @@ void IngameState::startGUI()
 	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - 100;
 	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
+
+	c; c.x = 750; c.y = 40;
+	stP = new Panel ("stPanel", c, "Graphics/bact_strayer/bact_strayer_0.png", 20, 20);
+	c.x += 20;
+	string font = "Fonts/LambadaDexter.ttf";
+	st = new Text("stcount", HamurString::ParseInt(0).GetString(), font, 20, c, HamurColorRGB::BLACK);
+	c.y += 30;
+	c.x -= 20; 
+	slP = new Panel ("slPanel", c, "Graphics/slim_0.png", 20, 20);
+	c.x += 20;
+	sl = new Text("slcount", HamurString::ParseInt(0).GetString(), font, 20, c, HamurColorRGB::BLACK);
+	c.y += 30;
+	c.x -= 20;
+	shP = new Panel ("shPanel", c, "Graphics/bact_shooter/bact_shooter_0.png", 20, 20);
+	c.x += 20;
+	sh = new Text("shcount", HamurString::ParseInt(0).GetString(), font, 20, c, HamurColorRGB::BLACK);
+	c.y += 30;
+	c.x -= 20;
+	noP = new Panel ("noPanel", c, "Graphics/bact_normal/bact_norm_0.png", 20, 20);
+	c.x += 20;
+	no = new Text("nocount", HamurString::ParseInt(0).GetString(), font, 20, c, HamurColorRGB::BLACK);
+	c.y += 30;
+	c.x -= 20;
+	noP = new Panel ("faPanel", c, "Graphics/bact1/bact1_0.png", 20, 20);
+	c.x += 20;
+	fa = new Text("facount", HamurString::ParseInt(0).GetString(), font, 20, c, HamurColorRGB::BLACK);
 }
 
 void IngameState::Enter()
@@ -165,15 +191,66 @@ void IngameState::Enter()
 	startTeeth();
 	createLevel();
 	startGUI();
-	//GoToFeedbackState();
+
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->Start();
 	//static_cast<Level *>(HAMURWORLD->GetHamurObject(Level::mActiveLevel))->SetActive(true);
 
 	mWaveTextTimer = 3;
 }
 
+void IngameState::showBacteriaCount()
+{
+	// NUMBER OF BACTERIAS SPAWNED
+	int strayerCount, slimCount, shooterCount, normCount, fattieCount;
+	strayerCount = slimCount = shooterCount = normCount = fattieCount = 0;
+
+	list<Bacteria *> *bact = Wave::GetAllSpawnedBacterias();
+	list<Bacteria *>::iterator it;
+	for (it = bact->begin(); it != bact->end(); it++)
+	{
+		if ((*it)->GetType() == "strayer")
+		{
+			strayerCount++;	
+		}
+		else if ((*it)->GetType() == "slim")
+		{
+			slimCount++;
+		}
+		else if ((*it)->GetType() == "shooter")
+		{
+			shooterCount++;
+		}
+		else if ((*it)->GetType() == "norm")
+		{
+			normCount++;
+		}
+		else if ((*it)->GetType() == "fattie")
+		{
+			fattieCount++;
+		}
+	}
+
+	/*
+	cout << "BACTERIAS: " << endl;
+	cout << "strayer: " << strayerCount << endl;
+	cout << "slim: " << slimCount << endl;
+	cout << "shooter: " << shooterCount << endl;
+	cout << "norm: " << normCount << endl;
+	cout << "fattie: " << fattieCount << endl;
+	cout << "--------------" << endl;
+	*/
+
+	st->SetText(HamurString::ParseInt(strayerCount).GetString());
+	sh->SetText(HamurString::ParseInt(shooterCount).GetString());
+	sl->SetText(HamurString::ParseInt(slimCount).GetString());
+	no->SetText(HamurString::ParseInt(normCount).GetString());
+	fa->SetText(HamurString::ParseInt(fattieCount).GetString());
+}
+
 void IngameState::Update(float deltaTime)
 {
+	showBacteriaCount();
+
 	if (waterButton->isPushed())
 	{
 		HAMURAUMR->PlayFX("waterGlassFX");
@@ -185,12 +262,12 @@ void IngameState::Update(float deltaTime)
 		ActivateBrush(false);
 		toothBrushUses++;
 	}
-	else if(HAMUREVENT->IsMousePressed(Keys::Mouse::LeftButton))
+	else if(HAMUREVENT->IsMouseDown(Keys::Mouse::LeftButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::ToothPasteBulletType);
 	}
 
-	if(HAMUREVENT->IsMousePressed(Keys::Mouse::RightButton))
+	if(HAMUREVENT->IsMouseDown(Keys::Mouse::RightButton))
 	{
 		base->Fire(HamurVec3(HAMUREVENT->GetMouseX(), HAMUREVENT->GetMouseY(), 0), BulletTypes::FlossingBulletType);
 	}
