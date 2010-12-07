@@ -12,12 +12,14 @@ BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, const int &
 
 void BacteriaNorm::DoHit()
 {
-
+	this->SetAnimation("Graphics/bact_normal/bact_norm_hit", 1);
+	this->mHitTimer = 2.99;
 }
 
 void BacteriaNorm::UndoHit()
 {
-
+	this->SetAnimation("Graphics/bact_normal/bact_norm", 3);
+	this->mHitTimer = 3;
 }
 
 /* Not using it at the moment...
