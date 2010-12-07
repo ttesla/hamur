@@ -10,7 +10,9 @@ class Button : public GUIElement
 		virtual void Update(float deltaTime);
 		//virtual void Draw(float deltaTime);
 		bool isPushed();
-
+		bool isSelected(){return mSelected;}
+		void SetSelected(bool sel) {mSelected = sel;}
 	private:
+		bool mSelected; // Only for selection buttons
 		
 };

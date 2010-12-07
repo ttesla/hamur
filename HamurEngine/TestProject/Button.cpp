@@ -2,13 +2,13 @@
 
 Button::Button(const string &name):GUIElement(name)
 {
-
+	mSelected = false;
 }
 
 Button::Button(const string &name, const HamurVec3 &position, const string &sprite, 
 			   const int width, const int height): GUIElement(name, position, sprite, width, height)
 {
-
+	mSelected = false;
 }
 
 void Button::Update(float deltaTime)

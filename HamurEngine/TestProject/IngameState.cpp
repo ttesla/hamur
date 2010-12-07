@@ -183,6 +183,15 @@ void IngameState::startGUI()
 
 void IngameState::Enter()
 {
+	map<string,string> m = FeedbackInfo::GetInstance()->GetFoodSelection();
+	cout << m["snack1"] << endl;
+	cout << m["snack2"] << endl;
+	cout << m["snack3"] << endl;
+	cout << m["snack4"] << endl;
+	cout << m["snack5"] << endl;
+	cout << m["snack6"] << endl;
+
+
 	toothBrushUses = 0;
 	waveText = NULL;
 
