@@ -16,7 +16,7 @@ TestState::~TestState()
 // ENTER
 void TestState::Enter() 
 {
-	HAMURWORLD->AddObject(new HamurObject("a", "data/teeth.png", HamurColorRGB::BLACK));
+	HAMURWORLD->AddObject(new HamurObject("a", "data/font.png", HamurColorRGB::BLACK));
     HAMURWORLD->AddObject(new HamurObject("B1", "data/normal.png"));
     HAMURWORLD->AddObject(new HamurObject("B2", "data/fatty.png"));
 	HAMURWORLD->AddObject(new HamurObject("B3", "data/slim.png"));
