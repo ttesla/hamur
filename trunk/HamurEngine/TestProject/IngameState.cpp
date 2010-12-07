@@ -469,7 +469,7 @@ void IngameState::ShowWaveText( const string &waveName )
 	if(waveText == NULL)
 	{
 		HamurVec3 c;
-		c.x = HamurOpenGL::GetInstance()->GetScreenWidth() - 200;
+		c.x = HamurOpenGL::GetInstance()->GetScreenWidth()/2;
 		c.y = 15;
 
 		waveText = new Text("waveText", Wave::GetActiveWave()->GetName() + " Wave Started", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
