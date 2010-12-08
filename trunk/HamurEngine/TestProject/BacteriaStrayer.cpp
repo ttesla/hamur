@@ -43,11 +43,11 @@ void BacteriaStrayer::Update(float deltaTime)
 void BacteriaStrayer::DoHit()
 {
 	this->SetAnimation("Graphics/bact_strayer/bact_strayer_hit", 1);
-	this->mHitTimer = 2.99;
+	this->mHitTimer = 1.49;
 }
 
 void BacteriaStrayer::UndoHit()
 {
 	this->SetAnimation("Graphics/bact_strayer/bact_strayer", 4);
-	this->mHitTimer = 3;
+	this->mHitTimer = 1.5;
 }

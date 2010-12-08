@@ -81,13 +81,13 @@ void Bacteria::Draw(float deltaTime)
 
 void Bacteria::Update( float deltaTime )
 {
-	if(mHitTimer != 3)
+	if(mHitTimer != 1.5)
 	{
 		mHitTimer -= deltaTime;
 		
 		if(mHitTimer <= 0)
 		{
-			mHitTimer = 3;
+			mHitTimer = 1.5;
 			UndoHit();
 		}
 	}

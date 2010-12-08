@@ -96,13 +96,13 @@ void BacteriaShooter::Update(float deltaTime)
 void BacteriaShooter::DoHit()
 {
 	this->SetAnimation("Graphics/bact_shooter/bact_shooter_hit", 1);
-	this->mHitTimer = 2.99;
+	this->mHitTimer = 1.49;
 }
 
 void BacteriaShooter::UndoHit()
 {
 	this->SetAnimation("Graphics/bact_shooter/bact_shooter", 3);
-	this->mHitTimer = 3;
+	this->mHitTimer = 1.5;
 }
 
 BacteriaShooter::~BacteriaShooter()
