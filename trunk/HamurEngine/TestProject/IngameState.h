@@ -55,8 +55,11 @@ private:
 	/****************
 		INGAME GUI  *
 	*****************/
+	Panel *ingameGUI;
+
 	Window *escapeWindow;
 	Panel *currentFoodPanel;
+	Panel *coverPanel;
 	Panel *timeLeftPanel;
 	Panel *lifePanel;
 	Panel *shieldPanel;
