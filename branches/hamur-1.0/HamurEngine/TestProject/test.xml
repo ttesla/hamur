@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<Texts>
+	<Feedbacks>
+		<!-- Food selection -->
+		<Feedback name="fb1">
+			Man ska vara noga med att äta. 
+		</Feedback>
+		<Feedback name="fb2">
+			Äter du för många saker tar tänderna också skada, även om det är nyttiga saker. Två eller tre mellanmål om dagen borde räcka.
+		</Feedback>
+		<Feedback name="fb3">
+			Att äta något gott och onyttigt är ingen fara, så länge man bara gör det ibland så att tänderna orkar med och är noga med att sköta borstning. 
+		</Feedback>
+		<Feedback name="fb4">
+			Du visste säkert redan att äta sån där saker inte är bra för tänderna.
+		</Feedback>
+		<Feedback name="fb5">
+			Du vet hur man gör bra matval.
+		</Feedback>
+		<!-- Health & Shield -->
+		<Feedback name="fb6">
+			När tänderna själva tar skada är det riktigt farligt eftersom dom inte kan laga sig själva särskilt snabbt. 
+		</Feedback>
+		<Feedback name="fb7">
+			Idag var du visst skötsam med tänderna. 
+		</Feedback>
+		<Feedback name="fb8">
+			Ja, tänderna klarade sig visst bra idag.
+		</Feedback>
+		<Feedback name="fb9">
+			Det gick visst inte allt för bra. Du måste vara mer nogrann med att skydda tänderna. 
+		</Feedback>
+		<Feedback name="fb10">
+			Aj-aj-aj. Bakterierna kom nästan in och skadade tänderna. Du borde nog riktigt vara försiktigt nästa gång. 
+		</Feedback>
+		<!-- Toothbrushing -->
+		<Feedback name="fb11">
+			Kom ihåg att borsta tänderna ordentligt nästa gång.
+		</Feedback>
+	</Feedbacks>
+	<HowToPlay>
+		1
+		Place the saffron strands in a small cup and cover with 1/2 c. hot water.
+		2
+		Heat the oil over medium heat in a large skillet at least 11 inches in diameter.
+		3
+		When hot, add the sausage and brown it. Remove to paper towels and drain.
+		4
+		Add the garlic to the oil and cook for 30 seconds, stirring constantly.
+		5
+		Add the onion and bell pepper and cook for about 1 minute.
+		6
+		Add the dry spices, the thyme and half the parsley.
+		7
+		Continue to cook until the vegetables are tender, about 2 minutes more.
+		8
+		Add the rice and stir together, coating each grain of rice.
+		9
+		When the rice is shiny, add the saffron and its water.
+		10
+		Add the clam juice and chicken stock.
+		11
+		Bring to a boil, lower to a slow simmer and cover. Cook for about 25 minutes, stirring off the bottom occasionally so the rice doesn't burn.
+		12
+		The last time you stir the rice before it's done, stir in the tomato.
+		13
+		While the rice cooks, rinse the shellfish well under cold water. It isn't necessary to peel and devein the shrimp, but you can if you like. It is necessary to trim any external "beard" from the mussels.
+		14
+		When rice is tender but still firm to the bite (taste some to tell), add the shellfish.
+		15
+		Tuck each shrimp under the surface of the rice, then arrange the clams on top. Cover for 1 minute.
+		16
+		Shut off the heat, arrange the mussels and remaining parsley on top, then re-cover and bring the skillet to the table.
+		17
+		The mussels and clams will steam open. When they open, they're ready to eat.
+	</HowToPlay>
+	<FoodDivisions>
+		<Goods>
+			<Good>Egg</Good>
+			<Good>Apple</Good>
+			<Good>Flingor</Good>
+			<Good>Mork_smorgas</Good>
+			<Good>Smoothie</Good>
+		</Goods>
+		<NotSoGoods>
+			<NotSoGood>Nyponsoppa</NotSoGood>
+			<NotSoGood>Vit_smorgas</NotSoGood>
+		</NotSoGoods>
+		<Bads>
+			<Bad>Chips</Bad>
+			<Bad>Glass</Bad>
+			<Bad>Godis</Bad>
+			<Bad>Kakor</Bad>
+			<Bad>Lask</Bad>
+			<Bad>Saft</Bad>
+		</Bads>
+	</FoodDivisions>
+	
+</Texts>
