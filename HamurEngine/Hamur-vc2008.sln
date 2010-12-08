@@ -3,17 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hamur", "Hamur\Hamur.vcproj", "{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "TestProject\TestProject.vcproj", "{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059} = {A63E4CF8-02DC-4E5F-AF41-F4CA10341059}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HamurTest", "HamurTest\HamurTest.vcproj", "{545D5C13-0FC8-4B13-BB39-263F2867B18E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059} = {A63E4CF8-02DC-4E5F-AF41-F4CA10341059}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "tinyxml\tinyxml_lib.vcproj", "{C406DAEC-0886-4771-8DEA-9D7329B46CC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,18 +18,10 @@ Global
 		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Debug|Win32.Build.0 = Debug|Win32
 		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Release|Win32.ActiveCfg = Release|Win32
 		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Release|Win32.Build.0 = Release|Win32
-		{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}.Debug|Win32.ActiveCfg = Debug|Win32
-		{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}.Debug|Win32.Build.0 = Debug|Win32
-		{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}.Release|Win32.ActiveCfg = Release|Win32
-		{30152A8C-7791-4F0D-BB11-A5A940A0E1E2}.Release|Win32.Build.0 = Release|Win32
 		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Debug|Win32.Build.0 = Debug|Win32
 		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Release|Win32.ActiveCfg = Release|Win32
 		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Release|Win32.Build.0 = Release|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.Build.0 = Debug|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.ActiveCfg = Release|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
