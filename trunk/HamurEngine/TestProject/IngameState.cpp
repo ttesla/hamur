@@ -133,28 +133,33 @@ void IngameState::startGUI()
 	string root = "Graphics/";
 
 	// Window (appears when escape is pushed)
-	c.x = w/2; c.y = h/2; 
-	
+	c.x = w/2; c.y = h/2; c.z = -1;
+	Panel *paux = new Panel("test", c, "Graphics/ingameGUI.png", 800, 600);
+	paux->ScaleSprite(1.38, 1.38);
+	c.z = 0;
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
-	c.x = 50; c.y = 50; //c.z = +10.0;
+	c.x = 40; c.y = 40; //c.z = +10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
-	c.x = 20; c.y = 300; 
+	currentFoodPanel->ScaleSprite(1.38, 1.38);
+	Panel *over = new Panel("overPanel", c, "Graphics/currentfoodover.png",100,100);
+	over->ScaleSprite(1.38, 1.38);
+	c.x = 19; c.y = 312; 
 	timeLeftPanel = new Panel("timeLeftPanel", c, root + "greenbar.png", 10, 300);
 	timeLeftPanel->SetVisible(false);
-	c.x += 10;
-	lifePanel = new Panel("lifePanel", c, root + "redbar.png", 10, 300);	
-	c.x += 10;
+	c.x += 3;
+	lifePanel = new Panel("lifePanel", c, root + "redbar.png", 10, 300);
+	c.x += 21;
 	shieldPanel = new Panel("shieldPanel", c, root + "bluebar.png", 10, 300);
 	c.x = 40; c.y = 600-40;
-	waterButton = new Button("waterButton", c, "Graphics/testwater.png", 100, 100);
-	c.x = 150; c.y = 600-40;
+	waterButton = new Button("waterButton", c, "Graphics/waterbutton.png", 100, 100);
+	c.x = 750; c.y = 600-40;
 	brushButton = new Button("brushButton", c, "Graphics/brush.png", 100, 100);
 	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2;
 	c.y = HamurOpenGL::GetInstance()->GetScreenHeight() / 2 - 100;
 	brushText = new Text("brushText", "Brush Time!", "Fonts/LambadaDexter.ttf", 40, c, HamurColorRGB::BLACK);
 	ActivateBrush(false);
 
-	c; c.x = 750; c.y = 40;
+	c; c.x = 750; c.y = 30;
 	stP = new Panel ("stPanel", c, "Graphics/bact_strayer/bact_strayer_0.png", 20, 20);
 	c.x += 20;
 	string font = "Fonts/LambadaDexter.ttf";
