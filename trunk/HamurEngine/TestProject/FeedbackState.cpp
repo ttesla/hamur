@@ -308,7 +308,7 @@ string FeedbackState::chooseFeedback()
 	c.x = 400;
 	c.y = 425;
 	c.z = 3.0;
-
+	
 	string* textLines = tdr->FormatText(message, lines);
 	fbText = new Text* [lines];
 
@@ -318,6 +318,7 @@ string FeedbackState::chooseFeedback()
 		fbText[i] = new Text("fbtext" + s.GetString() + Level::mActiveLevel, textLines[i], "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
 		c.y += 20;
 	}
+	
 
 	return message;
 }

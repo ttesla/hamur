@@ -48,7 +48,7 @@ Bacteria::Bacteria(const string &name, const string &sprite, const int &spriteCo
     mWidth = 20;
     mHeight = 20;
 
-	mDamage = 3;
+	//mDamage = 3; Now it is done in the subtypes
 
 	mAnimation = new Animation(sprite, spriteCount);
 	mAnimation->PlayAnimation(true);
@@ -91,8 +91,8 @@ void Bacteria::Update( float deltaTime )
 			UndoHit();
 		}
 	}
-
-	mAnimation->Update(deltaTime * 5);
+	else
+		mAnimation->Update(deltaTime * 5);
 
 	if(IsAttacking2Tooth(deltaTime))
 		return;

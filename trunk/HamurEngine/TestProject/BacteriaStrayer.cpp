@@ -1,12 +1,14 @@
 #include "BacteriaStrayer.h"
 #include <cstdlib> 
 #include <ctime> 
+#include "TextDataReader.h"
 using namespace std;
  
 BacteriaStrayer::BacteriaStrayer(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, spriteCount, basePosition, speed)
 {
 	// We set Life and Shield for Norms
-	this->SetLife(2.0); // Example values at the moment
+	this->SetLife(TextDataReader::GetInstance()->GetStrayerLife()); // Example values at the moment
+	this->SetDamage(TextDataReader::GetInstance()->GetStrayerDamage());
 	this->SetShield(3.0); 
 	this->mPrevTickCount = (double)SDL_GetTicks();
 	this->mMovementRange = 500;

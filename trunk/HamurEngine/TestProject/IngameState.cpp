@@ -141,7 +141,7 @@ void IngameState::startGUI()
 	c.x = 40; c.y = 40; c.z = 10.0;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	currentFoodPanel->ScaleSprite(1.38, 1.38);
-	//c.z = 11;
+	c.z = 11;
 	coverPanel = new Panel("coverPanel", c, "Graphics/currentfoodover.png",100,100);
 	coverPanel->ScaleSprite(1.38, 1.38);
 	c.x = 19; c.y = 312; c.z = 10;

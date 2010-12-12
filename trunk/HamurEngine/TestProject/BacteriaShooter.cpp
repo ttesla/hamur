@@ -1,12 +1,14 @@
 #include "BacteriaShooter.h"
 #include <cstdlib> 
 #include <ctime> 
+#include "TextDataReader.h"
 using namespace std;
  
 BacteriaShooter::BacteriaShooter(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, spriteCount, basePosition, speed)
 {
 	// We set Life and Shield for Norms
-	this->SetLife(2.0); // Example values at the moment
+	this->SetLife(TextDataReader::GetInstance()->GetShooterLife()); // Example values at the moment
+	this->SetDamage(TextDataReader::GetInstance()->GetShooterDamage());
 	this->SetShield(3.0); 
 	this->mRadius = 200;
 	this->mLastShot = SDL_GetTicks();

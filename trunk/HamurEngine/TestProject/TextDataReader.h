@@ -21,6 +21,17 @@ class TextDataReader
 		list<string> GetNSGFood();
 		list<string> GetBadFood();
 		
+		int GetStrayerLife();
+		int GetStrayerDamage();
+		int GetShooterLife();
+		int GetShooterDamage();
+		int GetSlimLife();
+		int GetSlimDamage();
+		int GetFattieLife();
+		int GetFattieDamage();
+		int GetNormLife();
+		int GetNormDamage();
+
 		// Other functions for other kinds of texts
 		//string GetStory(...)
 		string* FormatText(string text, int lines);

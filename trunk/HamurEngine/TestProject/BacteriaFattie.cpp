@@ -1,12 +1,14 @@
 #include "BacteriaFattie.h"
 #include <cstdlib> 
 #include <ctime> 
+#include "TextDataReader.h"
 using namespace std;
  
 BacteriaFattie::BacteriaFattie(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, spriteCount, basePosition, speed)
 {
 	// We set Life and Shield for Norms
-	this->SetLife(5.0); // Example values at the moment
+	this->SetLife(TextDataReader::GetInstance()->GetFattieLife()); // Example values at the moment
+	this->SetDamage(TextDataReader::GetInstance()->GetFattieDamage());
 	this->SetShield(3.0); 
 	this->mWidth = 30.0;
 }
@@ -61,10 +63,12 @@ void BacteriaFattie::Update(float deltaTime)
 
 void BacteriaFattie::DoHit()
 {
-
+	this->SetAnimation("Graphics/bact1/bact1_hit", 1);
+	this->mHitTimer = 1.49;
 }
 
 void BacteriaFattie::UndoHit()
 {
-
+	this->SetAnimation("Graphics/bact1/bact1", 4);
+	this->mHitTimer = 1.5;
 }

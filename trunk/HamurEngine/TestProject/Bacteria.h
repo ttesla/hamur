@@ -25,8 +25,11 @@ class Bacteria : public HamurObject
 
 		float GetLife(){return mLife;}
 		float GetShield(){return mShield;}
+		float GetDamage(){return mDamage;}
 		void SetLife(float pLife){mLife = pLife;}
 		void SetShield(float pShield){mShield = pShield;}
+		void SetDamage(float pDamage){mDamage = pDamage;}
+
 		HamurVec3 GetMovementDirection(){return movementDirection;}
 		virtual string GetType() = 0;
 		virtual int GetInitialLife() = 0;

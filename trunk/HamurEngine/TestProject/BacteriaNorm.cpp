@@ -1,12 +1,14 @@
 #include "BacteriaNorm.h"
 #include <cstdlib> 
 #include <ctime> 
+#include "TextDataReader.h"
 using namespace std;
  
 BacteriaNorm::BacteriaNorm(const string &name, const string &sprite, const int &spriteCount, HamurVec3 basePosition, const float &speed):Bacteria(name, sprite, spriteCount, basePosition, speed)
 {
 	// We set Life and Shield for Norms
-	this->SetLife(3.0); // Example values at the moment
+	this->SetLife(TextDataReader::GetInstance()->GetNormLife()); // Example values at the moment
+	this->SetDamage(TextDataReader::GetInstance()->GetNormDamage());
 	this->SetShield(3.0);
 }
 

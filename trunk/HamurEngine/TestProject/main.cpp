@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	HAMURSTATEMR->RegisterState(new GameOverState());
 	HAMURSTATEMR->RegisterState(new StoryState());
 
-	HAMURSTATEMR->ChangeState("MenuState");
+	 HAMURSTATEMR->ChangeState("MenuState");
 	//HAMURSTATEMR->ChangeState("IngameState");
 	
 	/* To test FB state 
@@ -58,8 +58,6 @@ int main(int argc, char *argv[])
 	fbi->SetHealth(0, 900);
 	fbi->SetShield(0, 900);
 	*/
-
-
 	//HAMURSTATEMR->ChangeState("FeedbackState");
 	//static_cast<FeedbackState*>(HAMURSTATEMR->GetCurrentState())->SetFeedback(fs, 30, 55, 20);
 	

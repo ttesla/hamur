@@ -190,3 +190,263 @@ TextDataReader::~TextDataReader()
 {
 
 }
+
+int TextDataReader::GetStrayerLife()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* st = b->FirstChildElement("Strayer");
+			if (st)
+			{
+				TiXmlElement* l = st->FirstChildElement("Life");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetStrayerDamage()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* st = b->FirstChildElement("Strayer");
+			if (st)
+			{
+				TiXmlElement* d = st->FirstChildElement("Damage");
+
+				if (d)
+				{
+					ret = atoi(d->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetShooterLife()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* sh = b->FirstChildElement("Shooter");
+			if (sh)
+			{
+				TiXmlElement* l = sh->FirstChildElement("Life");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetShooterDamage()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* sh = b->FirstChildElement("Shooter");
+			if (sh)
+			{
+				TiXmlElement* d = sh->FirstChildElement("Damage");
+
+				if (d)
+				{
+					ret = atoi(d->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetSlimLife()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* sl = b->FirstChildElement("Slim");
+			if (sl)
+			{
+				TiXmlElement* l = sl->FirstChildElement("Life");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetSlimDamage()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* sl = b->FirstChildElement("Slim");
+			if (sl)
+			{
+				TiXmlElement* l = sl->FirstChildElement("Damage");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetFattieLife()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* fa = b->FirstChildElement("Fattie");
+			if (fa)
+			{
+				TiXmlElement* l = fa->FirstChildElement("Life");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetFattieDamage()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* fa = b->FirstChildElement("Fattie");
+			if (fa)
+			{
+				TiXmlElement* l = fa->FirstChildElement("Damage");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetNormLife()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* no = b->FirstChildElement("Norm");
+			if (no)
+			{
+				TiXmlElement* l = no->FirstChildElement("Life");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
+
+int TextDataReader::GetNormDamage()
+{
+	int ret;
+	TiXmlElement* root = doc.FirstChildElement("Texts");
+
+	if (root)
+	{
+		TiXmlElement* b = root->FirstChildElement( "Bacterias" );
+		if (b)
+		{
+			TiXmlElement* no = b->FirstChildElement("Fattie");
+			if (no)
+			{
+				TiXmlElement* l = no->FirstChildElement("Damage");
+
+				if (l)
+				{
+					ret = atoi(l->GetText());
+				}
+			}
+		}
+	}	
+
+	return ret;
+}
