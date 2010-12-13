@@ -1,8 +1,12 @@
 #include "FeedbackState.h"
 #include "StoryState.h"
+#include <wchar.h>
+#include <locale.h>
+#include <string>
 
 FeedbackState::FeedbackState() : HamurState("FeedbackState")
 {
+
 }
 
 FeedbackState::~FeedbackState()
@@ -231,7 +235,7 @@ string FeedbackState::chooseFeedback()
 	}
 	else if (fbi->GetBadSnacks() > 1 || fbi->GetNSGSnacks() == 3)
 	{
-		message += "Du visste säkert redan att äta sån där saker inte är bra för tänderna. "; //tdr->GetFeedback("fb4");
+		message += "Du visste säkert redan att äta sån där saker inte är bra för tänderna. "; 
 		lines++;
 	}
 	else if (totalSnacks >= 2 && totalSnacks <= 3)
@@ -302,13 +306,13 @@ string FeedbackState::chooseFeedback()
 	cout << "LEV: " << Level::mActiveLevel << " - FBMessage: " << message << endl;
 	cout << "TotalSnacks: " << totalSnacks << " G: " << fbi->GetGoodSnacks() << " NSG: " << fbi->GetNSGSnacks() << " BAD: " << fbi->GetBadSnacks() << endl;
 	cout << "TBU: " << fbi->GetToothBrushUses()<< endl;
-
+	
 	HamurString s;
 	HamurVec3 c; 
 	c.x = 400;
 	c.y = 425;
 	c.z = 3.0;
-	
+
 	string* textLines = tdr->FormatText(message, lines);
 	fbText = new Text* [lines];
 
@@ -319,6 +323,30 @@ string FeedbackState::chooseFeedback()
 		c.y += 20;
 	}
 	
+	//--
+	/*
+	HamurVec3 c; 
+	c.x = 400;
+	c.y = 425;
+	c.z = 3.0;
+	char test[256];
+	ifstream infile;
+	infile.open ("test.txt", ifstream::in);
+
+	int i = 0;
+	while (infile.good())
+	{
+		infile.getline(test, 256, '\n');
+		cout << i << ": " << test << endl;
+		message = test;
+		i++;
+	}
+
+	Text *t = new Text("fbtext", message, "Fonts/DejaVuSans.ttf", 20, c, HamurColorRGB::BLACK);
+	infile.close();
+	*/
+	//--
+
 
 	return message;
 }

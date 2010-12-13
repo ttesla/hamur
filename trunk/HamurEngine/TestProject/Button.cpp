@@ -3,12 +3,14 @@
 Button::Button(const string &name):GUIElement(name)
 {
 	mSelected = false;
+	mHover = true;
 }
 
 Button::Button(const string &name, const HamurVec3 &position, const string &sprite, 
 			   const int width, const int height): GUIElement(name, position, sprite, width, height)
 {
 	mSelected = false;
+	mHover = true;
 }
 
 void Button::Update(float deltaTime)
@@ -20,14 +22,17 @@ void Button::Update(float deltaTime)
 	float halfH = mHeight/2;
 	
 	// On mouse over animation
-	if((mousePos.x > this->GetPosition().x - halfW) && (mousePos.x < this->GetPosition().x + halfW)
-			&& (mousePos.y > this->GetPosition().y - halfH) && (mousePos.y < this->GetPosition().y + halfH))
+	if (mHover)
 	{
-		this->ScaleSprite(1.2, 1.2);
-	}
-	else
-	{
-		this->ScaleSprite(1, 1);
+		if((mousePos.x > this->GetPosition().x - halfW) && (mousePos.x < this->GetPosition().x + halfW)
+				&& (mousePos.y > this->GetPosition().y - halfH) && (mousePos.y < this->GetPosition().y + halfH))
+		{
+			this->ScaleSprite(1.2, 1.2);
+		}
+		else
+		{
+			this->ScaleSprite(1, 1);
+		}
 	}
 }
 

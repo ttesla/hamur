@@ -12,7 +12,10 @@ class Button : public GUIElement
 		bool isPushed();
 		bool isSelected(){return mSelected;}
 		void SetSelected(bool sel) {mSelected = sel;}
+		void SetHover(bool hover) {mHover = hover;}
+
 	private:
 		bool mSelected; // Only for selection buttons
+		bool mHover;
 		
 };

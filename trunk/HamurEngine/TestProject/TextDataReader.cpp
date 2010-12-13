@@ -16,7 +16,7 @@ TextDataReader* TextDataReader::GetInstance()
 
 TextDataReader::TextDataReader( char *fileName )
 {
-	if(!doc.LoadFile(fileName))
+	if(!doc.LoadFile(fileName, TIXML_ENCODING_UTF8))
 	{
 		HAMURLOG->WriteLog("Xml file could not be loaded");
 		HAMURENGINE->Stop();
@@ -63,6 +63,7 @@ string TextDataReader::GetHowToPlay()
 		if (element)
 		{
 			text = element->GetText();
+			//element->
 		}
 	}
 

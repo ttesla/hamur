@@ -27,7 +27,7 @@ void IngameState::startTeeth()
 	int h = HamurOpenGL::GetInstance()->GetScreenHeight();
 	HamurVec3 c;
 	
-	c.x = w/2; c.y = h/2; c.z = -0.1;
+	c.x = w/2; c.y = h/2; c.z = -1;
 	teeth = new Teeth("teeth", "Graphics/teeth.png", 1000, 1000);
 	teeth->SetPosition(c);
 	
@@ -138,12 +138,13 @@ void IngameState::startGUI()
 	ingameGUI->ScaleSprite(1.38, 1.38);
 	c.z = 0;
 	string s = "Graphics/Food/" + Wave::GetActiveWave()->GetName() + ".png";
-	c.x = 40; c.y = 40; c.z = 10.0;
+	c.x = 40; c.y = 40; c.z = 10;
 	currentFoodPanel = new Panel("currentFoodPanel", c, s, 120, 120);
 	currentFoodPanel->ScaleSprite(1.38, 1.38);
-	c.z = 11;
+	c.z = 10;
 	coverPanel = new Panel("coverPanel", c, "Graphics/currentfoodover.png",100,100);
 	coverPanel->ScaleSprite(1.38, 1.38);
+	coverPanel->SetTransparency(0.5);
 	c.x = 19; c.y = 312; c.z = 10;
 	timeLeftPanel = new Panel("timeLeftPanel", c, root + "greenbar.png", 10, 300);
 	timeLeftPanel->SetVisible(false);
@@ -153,6 +154,7 @@ void IngameState::startGUI()
 	shieldPanel = new Panel("shieldPanel", c, root + "bluebar.png", 10, 300);
 	c.x = 40; c.y = 600-40;
 	waterButton = new Button("waterButton", c, "Graphics/waterbutton.png", 100, 100);
+	waterButton->SetHover(false);
 	c.x = 750; c.y = 600-40;
 	brushButton = new Button("brushButton", c, "Graphics/brush2.png", 100, 100);
 	c.x = HamurOpenGL::GetInstance()->GetScreenWidth() / 2;
