@@ -76,13 +76,9 @@ void HamurEngine::Run()
         glLoadIdentity();
         glTranslatef(0, 0, -1.0f); 
         
-        // Updates...
-        HAMURSTATEMR->GetCurrentState()->Update(deltaTime); // Update state first
-        HAMURWORLD->UpdateAllObjects(deltaTime);            // Update all objects
-        
-        // Drawings...
-        HAMURSTATEMR->GetCurrentState()->Draw(deltaTime);   // Draw state first
-        HAMURWORLD->DrawAllObjects(deltaTime);              // Draw all objects
+        // State Update & Draw
+        HAMURSTATEMR->GetCurrentState()->Update(deltaTime); 
+        HAMURSTATEMR->GetCurrentState()->Draw(deltaTime);
 
         // Check if game window closed by user
         if(HAMUREVENT->IsQuitPerformed()) 

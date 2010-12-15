@@ -2,7 +2,6 @@
 #include "../hamurTextureManager.h"
 #include "../helper/hamurMath.h"
 #include "../helper/hamurLog.h"
-#include "hamurWorld.h"
 #include "../hamurDefinitions.h"
 #include "../helper/hamurColor.h"
 
@@ -15,7 +14,6 @@ HamurObject::HamurObject(const string& name)
 {
     mPos.SetZero();
     mScale.SetAll(1.0f);
-    HAMURWORLD->AddObject(this);
     HAMURLOG->WriteLogln("Object created: " + mName);
 }
 
@@ -26,7 +24,6 @@ HamurObject::HamurObject(const string& name, const string& spritePath)
 	mPos.SetZero();
     mScale.SetAll(1.0f);
     SetSprite(spritePath);
-    HAMURWORLD->AddObject(this);
     HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
 }
 
@@ -37,7 +34,6 @@ HamurObject::HamurObject(const string& name, const string& spritePath, const Ham
     mPos.SetZero();
     mScale.SetAll(1.0f);
     SetSprite(spritePath, colorkey);
-    HAMURWORLD->AddObject(this);
     HAMURLOG->WriteLogln("Object created: " + mName + ", " + spritePath);
 }
 
@@ -47,7 +43,7 @@ HamurObject::~HamurObject()
     HAMURLOG->WriteLogln("Object deleted: " + mName);
 }
 
-void HamurObject::Draw(float deltaTime)
+void HamurObject::Draw()
 {
     HAMURTEXMR->BlitTexture(mSpriteID, mPos, mScale, mRotation, mTransparency);
 }

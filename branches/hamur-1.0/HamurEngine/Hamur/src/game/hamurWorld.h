@@ -33,8 +33,6 @@ class HamurWorld : public Singleton<HamurWorld>
         bool AddObject(HamurObject* newObject);
         bool DeleteObject(const string& objectName);
         bool HasObject(const string& objectName) const;
-        void UpdateAllObjects(float deltaTime);
-        void DrawAllObjects(float deltaTime);
 
         HamurObject* GetHamurObject(const string& objectName) const;
         HamurObject* GetHamurObjectByIndex(int index) const;
@@ -55,7 +53,6 @@ class HamurWorld : public Singleton<HamurWorld>
         void InitializePhysics();
 
         map<string, HamurObject*> mWorldObjects;
-		std::vector<string> mDeleteList;
         // BOX2D Attributes
         b2Vec2 mGravity;
         bool mDoSleep;
