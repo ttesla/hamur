@@ -1,4 +1,4 @@
-#include "Bacteria.h"
+ #include "Bacteria.h"
 #include <cstdlib> 
 #include <ctime> 
 #include "Tooth.h"
@@ -81,13 +81,13 @@ void Bacteria::Draw(float deltaTime)
 
 void Bacteria::Update( float deltaTime )
 {
-	if(mHitTimer != 1.5)
+	if(mHitTimer != 0.25)
 	{
 		mHitTimer -= deltaTime;
 		
 		if(mHitTimer <= 0)
 		{
-			mHitTimer = 1.5;
+			mHitTimer = 0.25;
 			UndoHit();
 		}
 	}
@@ -110,9 +110,10 @@ bool Bacteria::DecreaseLife(int bulletPower)
 	
 	if (mLife <= 0)
 	{
+		HAMURAUMR->PlayFX("bacteriaDeath");
 		return true;
 	}
-
+	
 	return false;
 }
 

@@ -64,11 +64,11 @@ void BacteriaFattie::Update(float deltaTime)
 void BacteriaFattie::DoHit()
 {
 	this->SetAnimation("Graphics/bact1/bact1_hit", 1);
-	this->mHitTimer = 1.49;
+	this->mHitTimer = 0.249;
 }
 
 void BacteriaFattie::UndoHit()
 {
 	this->SetAnimation("Graphics/bact1/bact1", 4);
-	this->mHitTimer = 1.5;
+	this->mHitTimer = 0.25;
 }

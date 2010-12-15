@@ -16,13 +16,13 @@ BacteriaSlim::BacteriaSlim(const string &name, const string &sprite, const int &
 void BacteriaSlim::DoHit()
 {
 	this->SetAnimation("Graphics/slim_hit", 1);
-	this->mHitTimer = 1.49;
+	this->mHitTimer = 0.249;
 }
 
 void BacteriaSlim::UndoHit()
 {
 	this->SetAnimation("Graphics/slim", 1);
-	this->mHitTimer = 1.5;
+	this->mHitTimer = 0.25;
 }
 
 /* Not using it at the moment...

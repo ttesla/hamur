@@ -14,6 +14,8 @@ IngameState::~IngameState()
 void IngameState::startSound()
 {
 	HAMURAUMR->AddFX("waterGlassFX", "Sounds/WaterGlassUse.wav");
+	HAMURAUMR->AddFX("brushingTeeth", "Sounds/brushing_teeth.wav");
+	HAMURAUMR->AddFX("bacteriaDeath", "Sounds/bacteria_death.wav");
 }
 
 void IngameState::startBase()
@@ -266,6 +268,7 @@ void IngameState::Update(float deltaTime)
 	}
 	else if(brushButton->isPushed() && brushButton->IsActive())
 	{
+		HAMURAUMR->PlayFX("brushingTeeth");
 		base->UseBrush();
 		ActivateBrush(false);
 		toothBrushUses++;
