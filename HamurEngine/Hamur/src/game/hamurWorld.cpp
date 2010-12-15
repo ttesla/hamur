@@ -57,13 +57,10 @@ bool HamurWorld::DeleteObject(const string& objectName)
     {
         if(iter->second)
 		{
-			mDeleteList.push_back(iter->second->GetName());
-            //delete iter->second;
-			iter->second->SetActive(false);
-			iter->second->SetVisible(false);
+            delete iter->second;
 		}
 
-        //mWorldObjects.erase(iter);
+        mWorldObjects.erase(iter);
         return true;
     }
 
@@ -82,49 +79,6 @@ bool HamurWorld::HasObject(const string& name) const
         return false;
 
     return true;
-}
-
-
-void HamurWorld::UpdateAllObjects(float deltaTime)
-{
-    map<string, HamurObject*>::iterator iter;
-
-    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
-    {
-        if(iter->second)
-        {
-            if(iter->second->IsActive())
-                iter->second->Update(deltaTime);
-        }
-    }
-
-	if(!mDeleteList.empty())
-	{
-		for(int i = 0; i < mDeleteList.size(); i++)
-		{
-			map<string, HamurObject*>::iterator iter = mWorldObjects.find((mDeleteList[i]));
-			delete iter->second;
-			iter->second = NULL;
-			mWorldObjects.erase(iter);
-		}
-
-		mDeleteList.clear();
-	}
-}
-
-
-void HamurWorld::DrawAllObjects(float deltaTime)
-{
-    map<string, HamurObject*>::iterator iter;
-
-    for(iter = mWorldObjects.begin(); iter != mWorldObjects.end(); iter++)
-    {
-        if(iter->second)
-        {
-            if(iter->second->IsVisible())
-                iter->second->Draw(deltaTime);
-        }
-    }
 }
 
 

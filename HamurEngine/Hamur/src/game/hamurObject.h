@@ -5,6 +5,7 @@
 #include "../helper/hamurVec2.h"
 #include "../helper/hamurColor.h"
 #include "../helper/hamurRect.h"
+#include "hamurWorld.h"
 //#include "hamurPhysics.h"
 
 #include <string>
@@ -15,7 +16,7 @@ using std::string;
 namespace hamur
 {
 
-// Forward declerations
+// Forward declarations
 class HamurTextureManager;
 
 
@@ -41,14 +42,14 @@ class HamurObject
         * All update logic should be written here.
         * @param deltaTime Delta time is passed as parameter by the engine
         */
-        virtual void Update(float deltaTime) {};
+        virtual void Update() {};
 
         /**
         * draw function of the object. 
         * All drawings should be written here.
         * @param deltaTime Delta time is passed as parameter by the engine
         */
-        virtual void Draw(float deltaTime);
+        virtual void Draw();
 
         /**
         * Set rotation angle of the object
