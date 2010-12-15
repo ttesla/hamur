@@ -94,8 +94,8 @@ bool HamurOpenGL::InitGL()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
 
-    glAlphaFunc ( GL_GREATER, 0.1f ) ;
-    glEnable ( GL_ALPHA_TEST ) ;
+    //glAlphaFunc ( GL_GREATER, 0.1f ) ;
+    //glEnable ( GL_ALPHA_TEST ) ;
 
 	// Set projection
 	glMatrixMode(GL_PROJECTION);
