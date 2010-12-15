@@ -31,8 +31,9 @@ void TestState::Update(float deltaTime)
     }
     
     mAngle += 10*deltaTime;
-    HAMURWORLD->GetHamurObject("Contra")->RotateDegree(mAngle);
-    HAMURWORLD->GetHamurObject("Contra")->SetTransparency(mAngle/100);
+    HamurObject* contra = HAMURWORLD->GetHamurObject("Contra");
+    contra->RotateDegree(mAngle);
+    contra->SetTransparency(mAngle/100);
     
     HAMURCONSOLE << HAMURTIMER->DeltaTime() << "\n";
 	
@@ -43,7 +44,12 @@ void TestState::Update(float deltaTime)
 // DRAW
 void TestState::Draw(float deltaTime) 
 {
-    HAMURWORLD->GetHamurObject("Contra")->Draw();
+    for(int i = 0; i < 100; i++)
+    {
+        HamurObject* contra = HAMURWORLD->GetHamurObject("Contra");
+        contra->SetPosition(20+i*5, 560);
+        contra->Draw();
+    }
 }
 
 
