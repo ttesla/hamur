@@ -1,11 +1,17 @@
 #ifndef HAMURMATH_H
 #define HAMURMATH_H
 
+#ifndef PI
 #define PI 3.14159265359f
+#endif
+
+#ifndef INT_MAX
+#define INT_MAX 2147483647
+#endif
 
 #include "hamurVec2.h"
 #include "hamurVec3.h"
-#include <cstdlib> 
+#include <cstdlib>
 #include <ctime>
 
 
