@@ -7,4 +7,4 @@ project (HamurEngine)
 add_subdirectory (Hamur)
 
 # Test project made with Hamur
-add_subdirectory (TestProject)
+add_subdirectory (HamurTest)
