@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hamur", "Hamur\Hamur.vcxproj", "{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HamurTest", "HamurTest\HamurTest.vcxproj", "{545D5C13-0FC8-4B13-BB39-263F2867B18E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059} = {A63E4CF8-02DC-4E5F-AF41-F4CA10341059}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		NewConf|Win32 = NewConf|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Debug|Win32.Build.0 = Debug|Win32
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.NewConf|Win32.ActiveCfg = NewConf|Win32
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.NewConf|Win32.Build.0 = NewConf|Win32
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Release|Win32.ActiveCfg = Release|Win32
+		{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}.Release|Win32.Build.0 = Release|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Debug|Win32.Build.0 = Debug|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.NewConf|Win32.ActiveCfg = Release|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.NewConf|Win32.Build.0 = Release|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Release|Win32.ActiveCfg = Release|Win32
+		{545D5C13-0FC8-4B13-BB39-263F2867B18E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
