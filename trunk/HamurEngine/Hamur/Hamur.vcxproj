@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="NewConf|Win32">
+      <Configuration>NewConf</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A63E4CF8-02DC-4E5F-AF41-F4CA10341059}</ProjectGuid>
+    <RootNamespace>Hamur</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="propertySheets\FMOD_Release.props" />
+    <Import Project="propertySheets\SDL_Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="propertySheets\FMOD_Release.props" />
+    <Import Project="propertySheets\SDL_Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="propertySheets\FMOD_Debug.props" />
+    <Import Project="propertySheets\SDL_Debug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/Hamur/libraries/hamur/Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)/Hamur/libraries/hamur/Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>libraries;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>libraries;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NewConf|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>libraries;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game\hamurAnimation.h" />
+    <ClInclude Include="src\hamurDefinitions.h" />
+    <ClInclude Include="src\hamurEngine.h" />
+    <ClInclude Include="src\hamurEvent.h" />
+    <ClInclude Include="src\hamurFont.h" />
+    <ClInclude Include="src\hamurGP.h" />
+    <ClInclude Include="src\hamurOpenGL.h" />
+    <ClInclude Include="src\hamurSingleton.h" />
+    <ClInclude Include="src\hamurTexture.h" />
+    <ClInclude Include="src\hamurTextureManager.h" />
+    <ClInclude Include="src\hamurTimer.h" />
+    <ClInclude Include="src\audio\hamurAudioManager.h" />
+    <ClInclude Include="src\Audio\hamurFX.h" />
+    <ClInclude Include="src\Audio\hamurSong.h" />
+    <ClInclude Include="src\Audio\hamurStream.h" />
+    <ClInclude Include="src\game\hamurObject.h" />
+    <ClInclude Include="src\game\hamurState.h" />
+    <ClInclude Include="src\game\hamurStateManager.h" />
+    <ClInclude Include="src\game\hamurWorld.h" />
+    <ClInclude Include="src\hamur.h" />
+    <ClInclude Include="src\helper\hamurColor.h" />
+    <ClInclude Include="src\helper\hamurConsole.h" />
+    <ClInclude Include="src\helper\hamurFile.h" />
+    <ClInclude Include="src\helper\hamurHash.h" />
+    <ClInclude Include="src\helper\hamurLog.h" />
+    <ClInclude Include="src\helper\hamurMath.h" />
+    <ClInclude Include="src\helper\hamurPlotter.h" />
+    <ClInclude Include="src\helper\hamurRect.h" />
+    <ClInclude Include="src\helper\hamurString.h" />
+    <ClInclude Include="src\helper\hamurVec2.h" />
+    <ClInclude Include="src\helper\hamurVec3.h" />
+    <ClInclude Include="libraries\Box2D\Common\b2BlockAllocator.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2Body.h" />
+    <ClInclude Include="libraries\Box2D\Collision\b2BroadPhase.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="libraries\Box2D\Collision\Shapes\b2CircleShape.h" />
+    <ClInclude Include="libraries\Box2D\Collision\b2Collision.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2Contact.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2ContactManager.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="libraries\Box2D\Collision\b2Distance.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2DistanceJoint.h" />
+    <ClInclude Include="libraries\Box2D\Collision\b2DynamicTree.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2Fixture.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2FrictionJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2GearJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2Joint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2LineJoint.h" />
+    <ClInclude Include="libraries\Box2D\Common\b2Math.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2MouseJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="libraries\Box2D\Collision\Shapes\b2PolygonShape.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2PrismaticJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2PulleyJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2RevoluteJoint.h" />
+    <ClInclude Include="libraries\Box2D\Common\b2Settings.h" />
+    <ClInclude Include="libraries\Box2D\Collision\Shapes\b2Shape.h" />
+    <ClInclude Include="libraries\Box2D\Common\b2StackAllocator.h" />
+    <ClInclude Include="libraries\Box2D\Collision\b2TimeOfImpact.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2TimeStep.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Contacts\b2TOISolver.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\Joints\b2WeldJoint.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2World.h" />
+    <ClInclude Include="libraries\Box2D\Dynamics\b2WorldCallbacks.h" />
+    <ClInclude Include="libraries\Box2D\Box2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\game\hamurAnimation.cpp" />
+    <ClCompile Include="src\hamurEngine.cpp" />
+    <ClCompile Include="src\hamurEvent.cpp" />
+    <ClCompile Include="src\hamurGP.cpp" />
+    <ClCompile Include="src\hamurOpenGL.cpp" />
+    <ClCompile Include="src\hamurTexture.cpp" />
+    <ClCompile Include="src\hamurTextureManager.cpp" />
+    <ClCompile Include="src\hamurTimer.cpp" />
+    <ClCompile Include="src\audio\hamurAudioManager.cpp" />
+    <ClCompile Include="src\Audio\hamurFX.cpp" />
+    <ClCompile Include="src\Audio\hamurSong.cpp" />
+    <ClCompile Include="src\Audio\hamurStream.cpp" />
+    <ClCompile Include="src\game\hamurObject.cpp" />
+    <ClCompile Include="src\game\hamurState.cpp" />
+    <ClCompile Include="src\game\hamurStateManager.cpp" />
+    <ClCompile Include="src\game\hamurWorld.cpp" />
+    <ClCompile Include="src\helper\hamurColor.cpp" />
+    <ClCompile Include="src\helper\hamurFile.cpp" />
+    <ClCompile Include="src\helper\hamurLog.cpp" />
+    <ClCompile Include="src\helper\hamurMath.cpp" />
+    <ClCompile Include="src\helper\hamurPlotter.cpp" />
+    <ClCompile Include="src\helper\hamurString.cpp" />
+    <ClCompile Include="libraries\Box2D\Common\b2BlockAllocator.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2Body.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2BroadPhase.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2CircleContact.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\Shapes\b2CircleShape.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2CollideCircle.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2CollidePolygon.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2Collision.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2Contact.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2ContactManager.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2ContactSolver.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2Distance.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2DistanceJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2DynamicTree.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2Fixture.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2FrictionJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2GearJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2Island.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2Joint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2LineJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Common\b2Math.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2MouseJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2PolygonContact.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\Shapes\b2PolygonShape.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2PulleyJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Common\b2Settings.cpp" />
+    <ClCompile Include="libraries\Box2D\Common\b2StackAllocator.cpp" />
+    <ClCompile Include="libraries\Box2D\Collision\b2TimeOfImpact.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Contacts\b2TOISolver.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2World.cpp" />
+    <ClCompile Include="libraries\Box2D\Dynamics\b2WorldCallbacks.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
