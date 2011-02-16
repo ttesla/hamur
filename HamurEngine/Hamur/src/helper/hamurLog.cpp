@@ -9,7 +9,7 @@ HamurLog::HamurLog() : mLogFileName("hamur.log") , mDebugMode(true), initLogLeng
 {
 
 // If we are in DEBUG mode enable extensive debugging
-// else disable it. Hope this works in 
+// else disable it. Hope this works in Linux
 #if defined( _DEBUG ) || defined( DEBUG )
 	mDebugMode = true;
 #else
