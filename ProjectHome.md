@@ -1,0 +1,1 @@
+Hamur is a cross-platform game engine which targets 2D games.
